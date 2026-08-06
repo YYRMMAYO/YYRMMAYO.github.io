@@ -1,8 +1,8 @@
-# 🎨 My Software — 个人软件作品展示站
+# YYRMM 的软件库 — 个人软件展示站
 
 > A bilingual (中文 / English) static site showcasing the software I build. Hosted on GitHub Pages for free at **https://yyrmmayo.github.io**.
 
-纯静态个人软件展示网站：中英双语一键切换、现代简约卡片布局、手机/电脑自适应，零依赖、加载飞快（全站约 12KB）。
+纯静态个人软件展示网站：中英双语一键切换、现代简约卡片布局、手机/电脑自适应，零依赖、加载飞快（页面文件约 12KB，另含头像图约 150KB）。
 
 ## ✨ 站点特色
 

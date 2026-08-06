@@ -1,23 +1,32 @@
 /* ============================================================
- * 我的软件 — 双语静态站
+ * YYRMM 的软件库 — 双语静态站
  * 修改指南：编辑下方 I18N 和 softwareList 即可，无需动其他代码。
  * ============================================================ */
 
-/* ---------- 1. 界面文案（站点名称等可在此修改） ---------- */
+/* ---------- 1. 个人介绍（在这里修改你的名字和简介） ---------- */
+const PROFILE = {
+  name: { zh: "YYRMMAYO", en: "YYRMMAYO" },
+  bio: {
+    zh: "caillo~\n雅最可爱啦！OvO",
+    en: "caillo~\nYá is the cutest! OvO",
+  },
+};
+
+/* ---------- 2. 界面文案（站点名称等可在此修改） ---------- */
 const I18N = {
-  brand:         { zh: "我的软件", en: "My Software" },
-  heroTitle:     { zh: "我的软件作品", en: "My Software Projects" },
+  brand:         { zh: "YYRMM的软件库", en: "YYRMM's Software Library" },
+  heroTitle:     { zh: "YYRMM 的软件库", en: "YYRMM's Software Library" },
   heroSub:       { zh: "这里收录了我开发的软件，欢迎试用与反馈。", en: "A collection of software I've built. Try them out and share your feedback." },
   sectionTitle:  { zh: "软件列表", en: "Software List" },
   sectionDesc:   { zh: "点击卡片上的按钮即可前往 GitHub 详情页下载。", en: "Use the buttons on each card to visit the GitHub page and download." },
   emptyState:    { zh: "暂无可展示的软件，敬请期待。", en: "No software to show yet. Stay tuned!" },
-  footerName:    { zh: "我的软件", en: "My Software" },
+  footerName:    { zh: "YYRMM的软件库", en: "YYRMM's Software Library" },
   footerHost:    { zh: "托管于 GitHub Pages", en: "Hosted on GitHub Pages" },
   btnDownload:   { zh: "下载", en: "Download" },
   btnWebsite:    { zh: "主页", en: "Website" },
 };
 
-/* ---------- 2. 软件数据（已从 GitHub 仓库整理，SC01 已按要求排除） ----------
+/* ---------- 3. 软件数据（已从 GitHub 仓库整理，SC01 已按要求排除） ----------
  * 字段说明：
  *   icon   卡片缩略图上的大图标（emoji 或文字，或换成真实截图）
  *   name   软件名称 { zh, en }
@@ -162,6 +171,9 @@ function applyI18n() {
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     el.textContent = t(el.dataset.i18n);
   });
+  // 个人介绍
+  document.getElementById("profile-name").textContent = PROFILE.name[lang];
+  document.getElementById("profile-bio").textContent = PROFILE.bio[lang];
   // 语言切换按钮：显示"将要切换到的语言"
   const btn = document.getElementById("lang-toggle");
   btn.textContent = lang === "zh" ? "EN" : "中文";

@@ -7,8 +7,8 @@
   --surface: #ffffff;
   --text: #1f2430;
   --text-muted: #6b7280;
-  --accent: #4f46e5;
-  --accent-soft: #eef2ff;
+  --accent: #7c3aed;
+  --accent-soft: #f3e8ff;
   --border: #e5e7eb;
   --radius: 10px;
   --max-width: 1080px;
@@ -81,6 +81,36 @@ body {
   margin-top: 10px;
   font-size: 16px;
   color: var(--text-muted);
+}
+
+/* ---------- 个人介绍 ---------- */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0 auto 8px;
+  max-width: 720px;
+}
+
+.profile-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.profile-name {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.profile-bio {
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 15px;
+  white-space: pre-line;
 }
 
 /* ---------- 内容区 ---------- */
@@ -180,7 +210,7 @@ body {
   border: 1px solid var(--accent);
 }
 
-.btn-primary:hover { background: #4338ca; }
+.btn-primary:hover { background: #6d28d9; }
 
 .btn-ghost {
   background: transparent;
@@ -211,6 +241,7 @@ body {
 /* ---------- 响应式 ---------- */
 @media (max-width: 640px) {
   .hero { padding: 40px 0 24px; }
+  .profile { flex-direction: column; text-align: center; }
   .section { padding: 24px 0 48px; }
   .grid { grid-template-columns: 1fr; gap: 14px; }
 }
