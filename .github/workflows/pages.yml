@@ -32,6 +32,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        # GitHub Pages 后端在故障排障期可能延迟很久，提高到 30 分钟
-        # 避免 action 提前放弃并取消部署
-        timeout: 1800000
+        with:
+          # GitHub Pages 后端在故障排障期可能延迟很久，提高到 30 分钟
+          # 避免 action 提前放弃并取消部署
+          timeout: 1800000
