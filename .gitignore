@@ -1,0 +1,6 @@
+# Reasonix 会话数据（不应提交）
+.reasonix/
+
+# Python
+__pycache__/
+*.pyc
