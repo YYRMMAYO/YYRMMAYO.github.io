@@ -18,8 +18,8 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,10 +29,53 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
+      # 自写部署步骤：绕开 deploy-pages@v4 的 10 分钟超时硬上限
+      # （GitHub Pages 后端排障期队列延迟可能超过 10 分钟，action 会提前放弃）
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
-        with:
-          # GitHub Pages 后端在故障排障期可能延迟很久，提高到 30 分钟
-          # 避免 action 提前放弃并取消部署
-          timeout: 1800000
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          API="$GITHUB_API_URL/repos/$GITHUB_REPOSITORY"
+
+          # 1. 获取 OIDC id token（默认 audience，与 deploy-pages 相同）
+          id_token=$(curl -fsS -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL" | jq -r .value)
+          echo "oidc token acquired"
+
+          # 2. 取当前 run 上传的 artifact id
+          artifact_id=$(curl -fsS -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
+            "$API/actions/artifacts?name=github-pages&per_page=100" \
+            | jq -r --argjson run "$GITHUB_RUN_ID" '.artifacts[] | select(.workflow_run.id == $run) | .id' | sort -n | tail -1)
+          if [ -z "$artifact_id" ]; then echo "artifact not found for run $GITHUB_RUN_ID"; exit 1; fi
+          echo "artifact id: $artifact_id"
+
+          # 3. 创建 Pages deployment
+          resp=$(curl -fsS -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
+            -H "Content-Type: application/json" \
+            -d "{\"artifact_id\": $artifact_id, \"pages_build_version\": \"$GITHUB_SHA\", \"oidc_token\": \"$id_token\"}" \
+            "$API/pages/deployments")
+          echo "create response: $resp"
+          deploy_id=$(echo "$resp" | jq -r '.id // .status_url // ""' | sed 's|.*/||')
+          if [ -z "$deploy_id" ]; then deploy_id="$GITHUB_SHA"; fi
+          echo "deployment id: $deploy_id"
+
+          # 4. 轮询部署状态（每 10 秒，最长约 55 分钟）
+          for i in $(seq 1 330); do
+            st=$(curl -fsS -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
+              "$API/pages/deployments/$deploy_id" | jq -r .status)
+            echo "[$i] deployment status: $st"
+            case "$st" in
+              succeed)
+                echo "DEPLOYED OK"
+                exit 0
+                ;;
+              deployment_failed|deployment_perms_error|deployment_content_failed|deployment_cancelled|deployment_lost)
+                echo "deployment failed with status: $st"
+                exit 1
+                ;;
+            esac
+            sleep 10
+          done
+          echo "timed out waiting for deployment"
+          exit 1
