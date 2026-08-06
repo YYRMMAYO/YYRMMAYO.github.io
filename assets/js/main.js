@@ -122,12 +122,12 @@ function renderTags(tags) {
 
 function renderLinks(links) {
   const map = [
-    { key: "download", label: t("btnDownload"), cls: "btn-primary", arrow: "⬇" },
-    { key: "website", label: t("btnWebsite"), cls: "btn-ghost", arrow: "" },
+    { key: "download", label: t("btnDownload"), cls: "btn-primary" },
+    { key: "website", label: t("btnWebsite"), cls: "btn-ghost" },
   ];
   return map
     .filter((m) => links[m.key])
-    .map((m) => `<a class="btn ${m.cls}" href="${links[m.key]}" target="_blank" rel="noopener">${m.label} ${m.arrow}</a>`)
+    .map((m) => `<a class="btn ${m.cls}" href="${links[m.key]}" target="_blank" rel="noopener">${m.label}</a>`)
     .join("");
 }
 
