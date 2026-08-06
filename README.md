@@ -21,16 +21,7 @@
 | **OBS 排障助手 (macOS)** | OBS 直播排障助手 macOS 版：离线知识库、智能诊断、系统监控、场景模板 | Rust (Tauri v2) + Blazor WASM | [github.com/YYRMMAYO/OBS-Helpmac](https://github.com/YYRMMAYO/OBS-Helpmac) |
 | **司南工具箱** | 免费非营利 Windows 辅助工具：系统检测、清理优化、网络诊断、故障排查 | C# / WPF (.NET 10) | [github.com/YYRMMAYO/WINhelper](https://github.com/YYRMMAYO/WINhelper) |
 
-## 🛠 本地预览与修改
 
-```powershell
-cd 本站目录
-python -m http.server 8000
-# 浏览器打开 http://localhost:8000
-```
-
-- **修改软件列表**：编辑 `assets/js/main.js` 中的 `softwareList` 数组（名称、简介、标签、链接均为中英双语）
-- **修改文案 / 站点名**：同一文件顶部的 `I18N` 对象
 - **修改样式**：`assets/css/style.css`
 
 ## 🚀 部署方式
