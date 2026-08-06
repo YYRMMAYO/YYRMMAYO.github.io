@@ -1,6 +1,9 @@
 # Reasonix 会话数据（不应提交）
 .reasonix/
 
+# 本地个人指南（不发布到网站）
+编辑与部署指南.md
+
 # Python
 __pycache__/
 *.pyc
