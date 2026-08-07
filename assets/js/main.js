@@ -8,7 +8,7 @@ const PROFILE = {
   name: { zh: "YYRMMAYO", en: "YYRMMAYO" },
   bio: {
     zh: "冷过春绪，雨过天晴",
-    en: "After the cold, spring returns; after the rain, the sky clears.",
+    en: "YA IS LOVELY",
   },
 };
 
