@@ -18,11 +18,13 @@ const I18N = {
   heroTitle:     { zh: "YYRMM 的软件库", en: "YYRMM's Software Library" },
   heroSub:       { zh: "这里收录了我开发的软件，欢迎试用与反馈。", en: "A collection of software I've built. Try them out and share your feedback." },
   sectionTitle:  { zh: "软件列表", en: "Software List" },
-  sectionDesc:   { zh: "点击卡片上的按钮即可前往 GitHub 详情页下载。", en: "Use the buttons on each card to visit the GitHub page and download." },
+  sectionDesc:   { zh: "每款软件提供 GitHub 与网盘两种下载方式，点击卡片上的按钮即可获取。", en: "Each app offers both GitHub and cloud-drive downloads — use the buttons on each card." },
   emptyState:    { zh: "暂无可展示的软件，敬请期待。", en: "No software to show yet. Stay tuned!" },
   footerName:    { zh: "YYRMM的软件库", en: "YYRMM's Software Library" },
   footerHost:    { zh: "托管于 GitHub Pages", en: "Hosted on GitHub Pages" },
-  btnDownload:   { zh: "下载", en: "Download" },
+  btnGithub:     { zh: "GitHub 下载", en: "GitHub Download" },
+  btnNetdisk:    { zh: "网盘下载", en: "Netdisk Download" },
+  pwdLabel:      { zh: "密码", en: "Password" },
   btnWebsite:    { zh: "主页", en: "Website" },
 };
 
@@ -32,7 +34,8 @@ const I18N = {
  *   name   软件名称 { zh, en }
  *   desc   软件简介 { zh, en }
  *   tags   标签，可写字符串（中英相同）或 { zh, en }
- *   links  download 填该软件 GitHub 仓库详情页地址（点击"下载"跳转过去下载）；
+ *   links  download 填该软件 GitHub 仓库详情页地址（点击"GitHub 下载"跳转过去下载）；
+ *          netdisk 填网盘分享地址 { url, pwd }，pwd 为访问密码；不填则不显示"网盘下载"按钮
  *          website 可填官网等其他页面；不需要的项留空 "" 对应按钮自动隐藏
  *   accent 卡片主题色（十六进制）
  * 添加新软件：复制任意一个 { ... }, 条目，替换内容即可。
@@ -48,6 +51,7 @@ const softwareList = [
     tags: ["Windows", { zh: "AI 资源库", en: "AI Resources" }, { zh: "开源", en: "Open Source" }],
     links: {
       download: "https://github.com/YYRMMAYO/AIStudioHub",
+      netdisk: { url: "https://wwbpq.lanzouu.com/b01d75a4yb", pwd: "YYKWY" },
       website: "",
     },
     accent: "#4f46e5",
@@ -76,6 +80,7 @@ const softwareList = [
     tags: ["Windows", { zh: "OBS 排障", en: "OBS Troubleshooting" }, { zh: "免费", en: "Free" }],
     links: {
       download: "https://github.com/YYRMMAYO/OBS_Helper",
+      netdisk: { url: "https://wwbpq.lanzouu.com/b01d7578be", pwd: "YYKWY" },
       website: "",
     },
     accent: "#dc2626",
@@ -104,6 +109,7 @@ const softwareList = [
     tags: ["Windows", { zh: "系统工具", en: "System Utility" }, { zh: "免费", en: "Free" }],
     links: {
       download: "https://github.com/YYRMMAYO/WINhelper",
+      netdisk: { url: "https://wwbpq.lanzouu.com/b01d71xtzg", pwd: "YYRMM" },
       website: "",
     },
     accent: "#2563eb",
@@ -130,14 +136,20 @@ function renderTags(tags) {
 }
 
 function renderLinks(links) {
-  const map = [
-    { key: "download", label: t("btnDownload"), cls: "btn-primary" },
-    { key: "website", label: t("btnWebsite"), cls: "btn-ghost" },
-  ];
-  return map
-    .filter((m) => links[m.key])
-    .map((m) => `<a class="btn ${m.cls}" href="${links[m.key]}" target="_blank" rel="noopener">${m.label}</a>`)
-    .join("");
+  const github = links.download
+    ? `<a class="btn btn-primary" href="${links.download}" target="_blank" rel="noopener">${t("btnGithub")}</a>`
+    : "";
+  const netdisk = links.netdisk && links.netdisk.url
+    ? `<span class="netdisk-block"><a class="btn btn-ghost" href="${links.netdisk.url}" target="_blank" rel="noopener">${t("btnNetdisk")}</a>${
+        links.netdisk.pwd
+          ? `<span class="netdisk-pwd">${t("pwdLabel")}${lang === "zh" ? "：" : ": "}${links.netdisk.pwd}</span>`
+          : ""
+      }</span>`
+    : "";
+  const website = links.website
+    ? `<a class="btn btn-ghost" href="${links.website}" target="_blank" rel="noopener">${t("btnWebsite")}</a>`
+    : "";
+  return github + netdisk + website;
 }
 
 function renderCards() {

@@ -192,7 +192,22 @@ body {
 .card-links {
   margin-top: 14px;
   display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
   gap: 8px;
+}
+
+/* 网盘按钮 + 密码小字 */
+.netdisk-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.netdisk-pwd {
+  font-size: 11px;
+  color: var(--text-muted);
 }
 
 .btn {
