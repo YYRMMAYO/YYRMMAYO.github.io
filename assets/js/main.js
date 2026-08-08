@@ -166,7 +166,7 @@ const softwareList = [
  * 以下为逻辑代码，一般无需修改
  * ============================================================ */
 
-let lang = localStorage.getItem("site-lang") || (navigator.language || "zh").startsWith("zh") ? "zh" : "en";
+let lang = localStorage.getItem("site-lang") || ((navigator.language || "zh").startsWith("zh") ? "zh" : "en");
 
 function t(key) {
   return I18N[key] ? I18N[key][lang] : key;
