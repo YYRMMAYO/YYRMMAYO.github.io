@@ -22,6 +22,7 @@
     <div class="container">
       <h1 class="hero-title" data-i18n="heroTitle">我的软件作品</h1>
       <p class="hero-sub" data-i18n="heroSub">这里收录了我开发的软件，欢迎试用与反馈。</p>
+      <button id="intro-replay" class="btn btn-primary intro-replay" type="button" data-i18n="btnIntro">▶ 观看开场动画</button>
     </div>
   </section>
 
@@ -53,6 +54,28 @@
     </div>
   </footer>
 
+  <!-- ===== 开场动画（首次进入自动播放，可跳过/重播） ===== -->
+  <div id="intro-overlay" class="intro-overlay" aria-hidden="true">
+    <div class="intro-progress"><div id="intro-progress-bar" class="intro-progress-bar"></div></div>
+    <div class="intro-stage">
+      <div id="intro-scenes" class="intro-scenes"></div>
+    </div>
+    <div class="intro-controls">
+      <div id="intro-dots" class="intro-dots"></div>
+      <button id="intro-skip" class="intro-skip" type="button" data-i18n="introSkip">跳过 ▸</button>
+    </div>
+  </div>
+
+  <!-- ===== 功能展示弹窗 ===== -->
+  <div id="feature-modal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card" role="dialog" aria-modal="true" data-i18n-aria="modalAria" aria-label="Features">
+      <button class="modal-close" type="button" data-close data-i18n-aria="closeAria" aria-label="Close">&times;</button>
+      <div id="modal-content" class="modal-content"></div>
+    </div>
+  </div>
+
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/showcase.js"></script>
 </body>
 </html>

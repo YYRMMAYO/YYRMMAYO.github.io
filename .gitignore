@@ -7,3 +7,6 @@
 # Python
 __pycache__/
 *.pyc
+
+# Reasonix 本地配置（不应提交）
+reasonix.toml

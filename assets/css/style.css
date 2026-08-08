@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    简约风样式 —— 无动画、无渐变装饰，轻量快速
    ============================================================ */
 
@@ -214,6 +214,7 @@ body {
   display: inline-flex;
   align-items: center;
   font-size: 13px;
+  font-family: inherit;
   padding: 7px 15px;
   border-radius: 999px;
   text-decoration: none;
@@ -259,4 +260,337 @@ body {
   .profile { flex-direction: column; text-align: center; }
   .section { padding: 24px 0 48px; }
   .grid { grid-template-columns: 1fr; gap: 14px; }
+}
+
+/* ============================================================
+   开场动画 & 功能展示弹窗（showcase.js）
+   ============================================================ */
+
+body.modal-open { overflow: hidden; }
+
+/* ---------- 开场动画 ---------- */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 45%, #4c1d95 100%);
+  color: #fff;
+  opacity: 0;
+  visibility: hidden;
+  overflow-y: auto;
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+.intro-overlay.show { opacity: 1; visibility: visible; }
+
+.intro-progress {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: rgba(255,255,255,0.15);
+  z-index: 2;
+}
+.intro-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #a78bfa, #f0abfc);
+  border-radius: 0 3px 3px 0;
+  transition: width 0.1s linear;
+}
+
+.intro-stage {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 24px 72px;
+}
+.intro-scenes { position: relative; width: 100%; max-width: 880px; min-height: 430px; }
+
+.intro-scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.intro-scene.active { opacity: 1; visibility: visible; }
+
+.intro-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s ease 0.05s, transform 0.55s ease 0.05s;
+}
+.intro-scene.active .intro-head { opacity: 1; transform: none; }
+
+.intro-icon {
+  width: 56px; height: 56px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  flex-shrink: 0;
+}
+.intro-name { font-size: 26px; font-weight: 800; letter-spacing: 0.5px; }
+.intro-tagline { margin-top: 3px; font-size: 14px; color: rgba(255,255,255,0.75); }
+
+.intro-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.intro-shot-wrap {
+  opacity: 0;
+  transform: translateY(24px) scale(0.97);
+  transition: opacity 0.6s ease 0.15s, transform 0.6s ease 0.15s;
+}
+.intro-scene.active .intro-shot-wrap { opacity: 1; transform: none; }
+
+.intro-shot {
+  width: clamp(280px, 56vw, 440px);
+  border-radius: 12px;
+  border: 3px solid rgba(255,255,255,0.85);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.45);
+  display: block;
+  background: #fff;
+}
+
+.intro-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  width: min(360px, 88vw);
+}
+.intro-features li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: rgba(255,255,255,0.94);
+  opacity: 0;
+  transform: translateX(14px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.intro-features li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.62em;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: #f0abfc;
+}
+.intro-scene.active .intro-features li:nth-child(1) { transition-delay: 0.35s; }
+.intro-scene.active .intro-features li:nth-child(2) { transition-delay: 0.55s; }
+.intro-scene.active .intro-features li:nth-child(3) { transition-delay: 0.75s; }
+.intro-scene.active .intro-features li:nth-child(4) { transition-delay: 0.95s; }
+.intro-scene.active .intro-features li { opacity: 1; transform: none; }
+
+/* 结尾欢迎场景 */
+.intro-scene-end { gap: 14px; }
+.intro-end-title {
+  font-size: clamp(30px, 7vw, 52px);
+  font-weight: 900;
+  letter-spacing: 4px;
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.intro-end-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.75);
+  opacity: 0;
+  transition: opacity 0.6s ease 0.25s;
+}
+.intro-scene-end.active .intro-end-title,
+.intro-scene-end.active .intro-end-sub { opacity: 1; transform: none; }
+
+.intro-controls {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 22px 18px;
+  z-index: 2;
+}
+.intro-dots { display: flex; gap: 7px; }
+.intro-dot {
+  width: 8px; height: 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.35);
+  transition: width 0.3s ease, background 0.3s ease;
+}
+.intro-dot.active { width: 22px; background: #fff; }
+
+.intro-skip {
+  border: 1px solid rgba(255,255,255,0.45);
+  background: transparent;
+  color: #fff;
+  font-size: 13px;
+  padding: 5px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.intro-skip:hover { background: rgba(255,255,255,0.15); }
+
+/* ---------- 功能展示弹窗 ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal.open { opacity: 1; visibility: visible; }
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(17, 17, 30, 0.55);
+  backdrop-filter: blur(4px);
+}
+.modal-card {
+  position: relative;
+  background: var(--surface);
+  border-radius: 14px;
+  max-width: 720px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 26px 28px 28px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+  transform: translateY(16px) scale(0.98);
+  transition: transform 0.3s ease;
+}
+.modal.open .modal-card { transform: none; }
+
+.modal-close {
+  position: absolute;
+  top: 12px; right: 14px;
+  width: 34px; height: 34px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--text-muted);
+  cursor: pointer;
+  z-index: 2;
+}
+.modal-close:hover { color: var(--accent); border-color: var(--accent); }
+
+.modal-content { display: flex; flex-direction: column; }
+.modal-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-right: 34px;
+}
+.modal-icon {
+  width: 54px; height: 54px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  border-radius: 13px;
+  flex-shrink: 0;
+}
+.modal-name { font-size: 21px; font-weight: 800; }
+.modal-tagline { margin-top: 3px; font-size: 14px; color: var(--text-muted); }
+
+.modal-shot {
+  width: 100%;
+  margin-top: 18px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  display: block;
+}
+
+.modal-features {
+  list-style: none;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.modal-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 9px 13px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fafbfc;
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: mf-in 0.45s ease forwards;
+}
+.mf-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+@keyframes mf-in {
+  to { opacity: 1; transform: none; }
+}
+
+/* 功能展示按钮 */
+.btn-show {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  cursor: pointer;
+}
+.btn-show:hover { background: var(--accent); color: #fff; }
+
+/* 开场动画重播按钮 */
+.intro-replay { margin-top: 20px; cursor: pointer; }
+
+/* ---------- 动效减弱：关闭动画 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .intro-overlay,
+  .intro-scene,
+  .modal,
+  .modal-card {
+    transition: none !important;
+  }
+  .intro-head,
+  .intro-shot-wrap,
+  .intro-features li,
+  .intro-end-title,
+  .intro-end-sub,
+  .modal-feature {
+    transition: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 640px) {
+  .intro-stage { padding: 48px 16px 84px; }
+  .intro-body { flex-direction: column; gap: 18px; }
+  .intro-features { width: 100%; }
+  .modal { padding: 10px; }
+  .modal-card { padding: 18px 16px 20px; }
 }

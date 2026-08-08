@@ -26,6 +26,11 @@ const I18N = {
   btnNetdisk:    { zh: "网盘下载", en: "Netdisk Download" },
   pwdLabel:      { zh: "密码", en: "Password" },
   btnWebsite:    { zh: "主页", en: "Website" },
+  btnShow:       { zh: "功能展示", en: "Features" },
+  btnIntro:      { zh: "▶ 观看开场动画", en: "▶ Watch Intro" },
+  introSkip:     { zh: "跳过 ▸", en: "Skip ▸" },
+  modalAria:     { zh: "功能展示", en: "Features" },
+  closeAria:     { zh: "关闭", en: "Close" },
 };
 
 /* ---------- 3. 软件数据（已从 GitHub 仓库整理，SC01 已按要求排除） ----------
@@ -42,11 +47,24 @@ const I18N = {
  * -------------------------------------------------------- */
 const softwareList = [
   {
+    key: "aistudio",
     icon: "🎨",
     name: { zh: "AIStudioHub", en: "AIStudioHub" },
     desc: {
       zh: "AI 制作资源整合中心：汇集 154 个主流 AI 平台与开源工具（视频制作、图像生成、音乐音频、网页制作、文本大模型），内置离线中文教程与 AI Agent / Skill 专区，支持模糊搜索、收藏与个性化主题。",
       en: "An AI production resource hub: 154 mainstream AI platforms & open-source tools (video, image, music, web, LLM), offline Chinese tutorials, and an AI Agent / Skills section — with fuzzy search, favorites and themes.",
+    },
+    shot: "assets/images/showcase/aistudio.jpg",
+    features: {
+      tagline: { zh: "AI 制作资源整合中心", en: "AI production resource hub" },
+      items: [
+        { zh: "汇集 154 个主流 AI 平台与开源工具", en: "154 mainstream AI platforms & open-source tools" },
+        { zh: "视频、图像、音乐、网页、文本大模型五大分类", en: "Video, image, music, web & LLM categories" },
+        { zh: "内置离线中文教程库", en: "Offline Chinese tutorial library" },
+        { zh: "AI Agent / Skill 专区", en: "AI Agent / Skills section" },
+        { zh: "模糊搜索 + 一键收藏", en: "Fuzzy search + favorites" },
+        { zh: "多套个性化主题", en: "Personalizable themes" },
+      ],
     },
     tags: ["Windows", { zh: "AI 资源库", en: "AI Resources" }, { zh: "开源", en: "Open Source" }],
     links: {
@@ -57,6 +75,7 @@ const softwareList = [
     accent: "#4f46e5",
   },
   {
+    key: "guidecraft",
     icon: "🤖",
     name: { zh: "GuideCraft", en: "GuideCraft" },
     desc: {
@@ -71,11 +90,24 @@ const softwareList = [
     accent: "#0d9488",
   },
   {
+    key: "obs",
     icon: "🎥",
     name: { zh: "OBS 排障助手（Windows）", en: "OBS Helper (Windows)" },
     desc: {
       zh: "面向直播新手的 OBS Studio 排障工具：内置 85 条问题知识库，支持智能诊断、日志分析、OBS 远程控制台、全局热键、场景自动切换与直播间一键搭建，纯离线可用。",
       en: "An OBS Studio troubleshooting tool for livestreaming beginners: 85-entry offline knowledge base, smart diagnosis, log analysis, OBS remote console, global hotkeys, auto scene switching and one-click livestream setup.",
+    },
+    shot: "assets/images/showcase/obs.jpg",
+    features: {
+      tagline: { zh: "直播排障一步到位", en: "Livestream troubleshooting, solved" },
+      items: [
+        { zh: "内置 85 条问题知识库，离线可用", en: "85-entry offline knowledge base" },
+        { zh: "智能诊断：一键定位黑屏 / 卡顿 / 音画不同步", en: "Smart diagnosis: black screen, lag & A/V sync" },
+        { zh: "日志分析：快速定位崩溃与报错", en: "Log analysis for crashes & errors" },
+        { zh: "OBS 远程控制台 + 全局热键", en: "OBS remote console + global hotkeys" },
+        { zh: "场景自动切换 + 直播间一键搭建", en: "Auto scene switching + one-click livestream setup" },
+        { zh: "纯离线运行，无需联网", en: "Fully offline, no network needed" },
+      ],
     },
     tags: ["Windows", { zh: "OBS 排障", en: "OBS Troubleshooting" }, { zh: "免费", en: "Free" }],
     links: {
@@ -86,6 +118,7 @@ const softwareList = [
     accent: "#dc2626",
   },
   {
+    key: "obs-mac",
     icon: "🍎",
     name: { zh: "OBS 排障助手（macOS）", en: "OBS Helper (macOS)" },
     desc: {
@@ -100,11 +133,24 @@ const softwareList = [
     accent: "#d97706",
   },
   {
+    key: "sinan",
     icon: "🧰",
     name: { zh: "司南工具箱", en: "Sinan Toolbox" },
     desc: {
       zh: "完全免费、非盈利的 Windows 辅助工具：专注系统检测、清理优化、网络诊断与故障排查，本地运行、操作安全，内置 AI 助手与多套个性化主题。",
       en: "A completely free, non-profit Windows utility focused on system detection, cleanup & optimization, network diagnostics and troubleshooting — runs locally, safe to use, with an AI assistant and multiple themes.",
+    },
+    shot: "assets/images/showcase/sinan.jpg",
+    features: {
+      tagline: { zh: "你的 Windows 全能工具箱", en: "Your all-in-one Windows toolbox" },
+      items: [
+        { zh: "系统检测：硬件与系统信息一目了然", en: "System detection: hardware & OS info at a glance" },
+        { zh: "清理优化：垃圾清理 + 开机加速", en: "Cleanup & optimization + faster boot" },
+        { zh: "网络诊断：网络故障检测与修复", en: "Network diagnostics & repair" },
+        { zh: "故障排查工具集", en: "Troubleshooting toolkit" },
+        { zh: "内置 AI 助手", en: "Built-in AI assistant" },
+        { zh: "多套主题，完全免费", en: "Multiple themes, 100% free" },
+      ],
     },
     tags: ["Windows", { zh: "系统工具", en: "System Utility" }, { zh: "免费", en: "Free" }],
     links: {
@@ -170,7 +216,9 @@ function renderCards() {
           <h3 class="card-title">${s.name[lang]}</h3>
           <p class="card-desc">${s.desc[lang]}</p>
           <div class="card-tags">${renderTags(s.tags)}</div>
-          <div class="card-links">${renderLinks(s.links)}</div>
+          <div class="card-links">${renderLinks(s.links)}${
+            s.features ? `<button class="btn btn-show" type="button" data-feature-key="${s.key}">${t("btnShow")}</button>` : ""
+          }</div>
         </div>
       </article>`
     )
@@ -183,6 +231,9 @@ function applyI18n() {
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     el.textContent = t(el.dataset.i18n);
   });
+  document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+    el.setAttribute("aria-label", t(el.dataset.i18nAria));
+  });
   // 个人介绍
   document.getElementById("profile-name").textContent = PROFILE.name[lang];
   document.getElementById("profile-bio").textContent = PROFILE.bio[lang];
@@ -190,6 +241,10 @@ function applyI18n() {
   const btn = document.getElementById("lang-toggle");
   btn.textContent = lang === "zh" ? "EN" : "中文";
   renderCards();
+  // 若功能弹窗正开着，跟随语言刷新内容
+  if (window.Showcase && typeof window.Showcase.refreshOpen === "function") {
+    window.Showcase.refreshOpen();
+  }
 }
 
 document.getElementById("lang-toggle").addEventListener("click", () => {
