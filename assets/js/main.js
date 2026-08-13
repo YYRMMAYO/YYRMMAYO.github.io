@@ -210,8 +210,8 @@ function renderCards() {
   grid.innerHTML = softwareList
     .map(
       (s) => `
-      <article class="card">
-        <div class="card-thumb" style="background: linear-gradient(135deg, ${s.accent}1a, ${s.accent}45);">${s.icon}</div>
+      <article class="card" data-reveal style="--card-accent:${s.accent}">
+        <div class="card-thumb"><span class="card-icon">${s.icon}</span></div>
         <div class="card-body">
           <h3 class="card-title">${s.name[lang]}</h3>
           <p class="card-desc">${s.desc[lang]}</p>

@@ -9,6 +9,17 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
+  <!-- ===== 背景层：极光 + 网格 + 粒子网络 + 暗角 ===== -->
+  <div class="bg-scene" aria-hidden="true">
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+    <div class="aurora aurora-3"></div>
+    <div class="bg-grid"></div>
+    <canvas id="bg-canvas"></canvas>
+    <div class="bg-vignette"></div>
+  </div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
   <!-- ===== 顶部导航 ===== -->
   <header class="site-header">
     <div class="container header-inner">
@@ -20,14 +31,14 @@
   <!-- ===== Hero 区 ===== -->
   <section class="hero">
     <div class="container">
-      <h1 class="hero-title" data-i18n="heroTitle">我的软件作品</h1>
-      <p class="hero-sub" data-i18n="heroSub">这里收录了我开发的软件，欢迎试用与反馈。</p>
-      <button id="intro-replay" class="btn btn-primary intro-replay" type="button" data-i18n="btnIntro">▶ 观看开场动画</button>
+      <h1 class="hero-title" data-reveal data-i18n="heroTitle">我的软件作品</h1>
+      <p class="hero-sub" data-reveal data-reveal-delay="1" data-i18n="heroSub">这里收录了我开发的软件，欢迎试用与反馈。</p>
+      <button id="intro-replay" class="btn btn-primary intro-replay" data-reveal data-reveal-delay="2" type="button" data-i18n="btnIntro">▶ 观看开场动画</button>
     </div>
   </section>
 
   <!-- ===== 个人介绍 ===== -->
-  <section class="profile container">
+  <section class="profile container" data-reveal>
     <img id="profile-avatar" class="profile-avatar" src="assets/images/avatar.png" alt="avatar" />
     <div class="profile-info">
       <h2 id="profile-name" class="profile-name"></h2>
@@ -38,8 +49,8 @@
   <!-- ===== 软件展示区 ===== -->
   <main class="container">
     <section class="section">
-      <h2 class="section-title" data-i18n="sectionTitle">软件列表</h2>
-      <p class="section-desc" data-i18n="sectionDesc">点击卡片上的按钮即可下载或访问项目主页。</p>
+      <h2 class="section-title" data-reveal data-i18n="sectionTitle">软件列表</h2>
+      <p class="section-desc" data-reveal data-reveal-delay="1" data-i18n="sectionDesc">点击卡片上的按钮即可下载或访问项目主页。</p>
       <div id="software-grid" class="grid">
         <!-- 卡片由 assets/js/main.js 根据数据动态生成 -->
       </div>
@@ -77,5 +88,6 @@
 
   <script src="assets/js/main.js"></script>
   <script src="assets/js/showcase.js"></script>
+  <script src="assets/js/fx.js"></script>
 </body>
 </html>
