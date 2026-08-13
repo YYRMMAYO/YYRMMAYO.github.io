@@ -203,4 +203,45 @@
       window.setTimeout(function () { card.classList.remove("pressed"); }, 220);
     });
   }
+
+  /* ---------------- 6. 侧边栏开关（移动端抽屉） ---------------- */
+  var sidebar = document.getElementById("sidebar");
+  var openBtn = document.getElementById("sidebar-open");
+  var closeBtn = document.getElementById("sidebar-close");
+  var scrim = document.getElementById("sidebar-scrim");
+
+  function setSidebar(open) {
+    if (!sidebar) return;
+    sidebar.classList.toggle("open", open);
+    if (scrim) scrim.classList.toggle("show", open);
+    document.body.classList.toggle("nav-open", open);
+  }
+
+  if (openBtn) openBtn.addEventListener("click", function () { setSidebar(true); });
+  if (closeBtn) closeBtn.addEventListener("click", function () { setSidebar(false); });
+  if (scrim) scrim.addEventListener("click", function () { setSidebar(false); });
+
+  // 点击导航链接后关闭抽屉
+  Array.prototype.forEach.call(document.querySelectorAll(".side-link"), function (link) {
+    link.addEventListener("click", function () { setSidebar(false); });
+  });
+
+  /* ---------------- 7. 导航滚动高亮 ---------------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".side-link"));
+  var spySections = ["home", "profile", "software"]
+    .map(function (id) { return document.getElementById(id); })
+    .filter(Boolean);
+
+  if ("IntersectionObserver" in window && spySections.length && navLinks.length) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          navLinks.forEach(function (l) {
+            l.classList.toggle("active", l.getAttribute("href") === "#" + en.target.id);
+          });
+        }
+      });
+    }, { rootMargin: "-40% 0px -55% 0px", threshold: 0 });
+    spySections.forEach(function (s) { spy.observe(s); });
+  }
 })();

@@ -20,50 +20,81 @@
   </div>
   <div class="cursor-glow" aria-hidden="true"></div>
 
-  <!-- ===== 顶部导航 ===== -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#" data-i18n="brand">我的软件</a>
+  <!-- ===== 左侧导航栏 ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <a class="brand" href="#home" data-i18n="brand">我的软件</a>
+      <button id="sidebar-close" class="sidebar-close" type="button" data-i18n-aria="closeAria" aria-label="关闭">&times;</button>
+    </div>
+
+    <nav class="side-nav" aria-label="站点导航">
+      <a class="side-link active" href="#home" data-i18n="navHome">首页</a>
+      <a class="side-link" href="#profile" data-i18n="navProfile">关于我</a>
+      <a class="side-link" href="#software" data-i18n="navSoftware">软件列表</a>
+    </nav>
+
+    <div class="side-social">
+      <a class="side-social-link" href="https://space.bilibili.com/539873580?spm_id_from=333.1007.0.0" target="_blank" rel="noopener">
+        <span class="side-social-icon" aria-hidden="true">📺</span>
+        <span data-i18n="linkBilibili">哔哩哔哩</span>
+      </a>
+      <a class="side-social-link" href="https://github.com/YYRMMAYO?tab=repositories" target="_blank" rel="noopener">
+        <span class="side-social-icon" aria-hidden="true">🐙</span>
+        <span data-i18n="linkGithub">GitHub</span>
+      </a>
+    </div>
+
+    <div class="sidebar-bottom">
       <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language">EN</button>
     </div>
-  </header>
+  </aside>
+  <div class="sidebar-scrim" id="sidebar-scrim" aria-hidden="true"></div>
 
-  <!-- ===== Hero 区 ===== -->
-  <section class="hero">
-    <div class="container">
-      <h1 class="hero-title" data-reveal data-i18n="heroTitle">我的软件作品</h1>
-      <p class="hero-sub" data-reveal data-reveal-delay="1" data-i18n="heroSub">这里收录了我开发的软件，欢迎试用与反馈。</p>
-      <button id="intro-replay" class="btn btn-primary intro-replay" data-reveal data-reveal-delay="2" type="button" data-i18n="btnIntro">▶ 观看开场动画</button>
-    </div>
-  </section>
+  <!-- ===== 移动端顶栏 ===== -->
+  <div class="mobile-bar">
+    <button id="sidebar-open" class="sidebar-open" type="button" data-i18n-aria="menuAria" aria-label="打开菜单">☰</button>
+    <a class="brand" href="#home" data-i18n="brand">我的软件</a>
+  </div>
 
-  <!-- ===== 个人介绍 ===== -->
-  <section class="profile container" data-reveal>
-    <img id="profile-avatar" class="profile-avatar" src="assets/images/avatar.png" alt="avatar" />
-    <div class="profile-info">
-      <h2 id="profile-name" class="profile-name"></h2>
-      <p id="profile-bio" class="profile-bio"></p>
-    </div>
-  </section>
-
-  <!-- ===== 软件展示区 ===== -->
-  <main class="container">
-    <section class="section">
-      <h2 class="section-title" data-reveal data-i18n="sectionTitle">软件列表</h2>
-      <p class="section-desc" data-reveal data-reveal-delay="1" data-i18n="sectionDesc">点击卡片上的按钮即可下载或访问项目主页。</p>
-      <div id="software-grid" class="grid">
-        <!-- 卡片由 assets/js/main.js 根据数据动态生成 -->
+  <!-- ===== 内容区 ===== -->
+  <div class="page">
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="container">
+        <h1 class="hero-title" data-reveal data-i18n="heroTitle">我的软件作品</h1>
+        <p class="hero-sub" data-reveal data-reveal-delay="1" data-i18n="heroSub">这里收录了我开发的软件，欢迎试用与反馈。</p>
+        <button id="intro-replay" class="btn btn-primary intro-replay" data-reveal data-reveal-delay="2" type="button" data-i18n="btnIntro">▶ 观看开场动画</button>
       </div>
-      <p id="empty-state" class="empty-state" hidden data-i18n="emptyState">暂无可展示的软件，敬请期待。</p>
     </section>
-  </main>
 
-  <!-- ===== 页脚 ===== -->
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; <span id="year"></span> <span data-i18n="footerName">我的软件</span> · <span data-i18n="footerHost">托管于 GitHub Pages</span></p>
-    </div>
-  </footer>
+    <!-- 个人介绍 -->
+    <section class="profile container" id="profile" data-reveal>
+      <img id="profile-avatar" class="profile-avatar" src="assets/images/avatar.png" alt="avatar" />
+      <div class="profile-info">
+        <h2 id="profile-name" class="profile-name"></h2>
+        <p id="profile-bio" class="profile-bio"></p>
+      </div>
+    </section>
+
+    <!-- 软件展示区 -->
+    <main class="container" id="software">
+      <section class="section">
+        <h2 class="section-title" data-reveal data-i18n="sectionTitle">软件列表</h2>
+        <p class="section-desc" data-reveal data-reveal-delay="1" data-i18n="sectionDesc">点击卡片上的按钮即可下载或访问项目主页。</p>
+        <div id="software-grid" class="grid">
+          <!-- 卡片由 assets/js/main.js 根据数据动态生成 -->
+        </div>
+        <p id="empty-state" class="empty-state" hidden data-i18n="emptyState">暂无可展示的软件，敬请期待。</p>
+      </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; <span id="year"></span> <span data-i18n="footerName">我的软件</span> · <span data-i18n="footerHost">托管于 GitHub Pages</span></p>
+      </div>
+    </footer>
+  </div>
 
   <!-- ===== 开场动画（首次进入自动播放，可跳过/重播） ===== -->
   <div id="intro-overlay" class="intro-overlay" aria-hidden="true">
@@ -77,7 +108,7 @@
     </div>
   </div>
 
-  <!-- ===== 功能展示弹窗 ===== -->
+  <!-- ===== 软件详情弹窗 ===== -->
   <div id="feature-modal" class="modal" aria-hidden="true">
     <div class="modal-backdrop" data-close></div>
     <div class="modal-card" role="dialog" aria-modal="true" data-i18n-aria="modalAria" aria-label="Features">

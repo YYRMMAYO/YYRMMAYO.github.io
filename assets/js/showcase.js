@@ -17,12 +17,13 @@
   const modal     = document.getElementById("feature-modal");
   const modalBody = document.getElementById("modal-content");
 
-  /* 有 features 的产品即"主流产品"，用于开场动画与功能展示 */
-  const products = (typeof softwareList !== "undefined" ? softwareList : []).filter(
+  /* 有 features 的产品用于开场动画；byKey 收录全部软件用于详情弹窗 */
+  const allSoftware = (typeof softwareList !== "undefined" ? softwareList : []);
+  const products = allSoftware.filter(
     (s) => s.features && Array.isArray(s.features.items) && s.features.items.length
   );
   const byKey = {};
-  products.forEach((p) => (byKey[p.key] = p));
+  allSoftware.forEach((p) => (byKey[p.key] = p));
 
   /* lang 是 main.js 顶层的全局 let（非 window 属性），读取时做防御 */
   function curLang() {
@@ -35,6 +36,10 @@
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
+  }
+
+  function i18n(key) {
+    return typeof t === "function" ? t(key) : key;
   }
 
   /* ---------------- 开场动画 ---------------- */
@@ -145,27 +150,40 @@
     const p = byKey[key];
     if (!p) return;
     const L = curLang() === "en" ? "en" : "zh";
-    modalBody.dataset.key = key;
-    modalBody.innerHTML = `
-      <div class="modal-head">
-        <span class="modal-icon" style="background:${p.accent}1a;border:1px solid ${p.accent}55">${p.icon}</span>
-        <div class="modal-head-text">
-          <h3 class="modal-name">${esc(p.name[L])}</h3>
-          <p class="modal-tagline">${esc(p.features.tagline[L])}</p>
-        </div>
-      </div>
-      <img class="modal-shot" src="${p.shot}" alt="${esc(p.name[L])}" />
-      <ul class="modal-features">
-        ${p.features.items
+    const tagline = p.features && p.features.tagline ? p.features.tagline[L] : "";
+    const items = p.features && Array.isArray(p.features.items) ? p.features.items : [];
+    const shotHtml = p.shot
+      ? `<div class="modal-shot-wrap"><img class="modal-shot" src="${p.shot}" alt="${esc(p.name[L])}" /></div>`
+      : "";
+    const featuresHtml = items.length
+      ? `<ul class="modal-features">${items
           .map(
             (f, i) =>
-              `<li class="modal-feature" style="animation-delay:${120 + i * 110}ms">
+              `<li class="modal-feature" style="animation-delay:${140 + i * 100}ms">
                  <span class="mf-dot" style="background:${p.accent}"></span>
                  <span>${esc(f[L])}</span>
                </li>`
           )
-          .join("")}
-      </ul>`;
+          .join("")}</ul>`
+      : "";
+    const linksHtml = typeof renderLinks === "function" ? renderLinks(p.links) : "";
+    const taglineHtml = tagline ? `<p class="modal-tagline">${esc(tagline)}</p>` : "";
+
+    modalBody.dataset.key = key;
+    modalBody.innerHTML = `
+      <div class="modal-accent" style="background:linear-gradient(90deg, ${p.accent}, ${p.accent}22)"></div>
+      <div class="modal-head">
+        <span class="modal-icon" style="background:${p.accent}26;border:1px solid ${p.accent}">${p.icon}</span>
+        <div class="modal-head-text">
+          <h3 class="modal-name">${esc(p.name[L])}</h3>
+          ${taglineHtml}
+        </div>
+      </div>
+      <h4 class="modal-desc-title">${esc(i18n("detailIntro"))}</h4>
+      <p class="modal-desc">${esc(p.desc[L])}</p>
+      ${shotHtml}
+      ${featuresHtml}
+      ${linksHtml ? `<div class="modal-actions">${linksHtml}</div>` : ""}`;
     modal.classList.add("open");
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");

@@ -22,14 +22,21 @@ const I18N = {
   emptyState:    { zh: "暂无可展示的软件，敬请期待。", en: "No software to show yet. Stay tuned!" },
   footerName:    { zh: "YYRMM的软件库", en: "YYRMM's Software Library" },
   footerHost:    { zh: "托管于 GitHub Pages", en: "Hosted on GitHub Pages" },
+  navHome:       { zh: "首页", en: "Home" },
+  navProfile:    { zh: "关于我", en: "About" },
+  navSoftware:   { zh: "软件列表", en: "Software" },
+  linkBilibili:  { zh: "哔哩哔哩", en: "Bilibili" },
+  linkGithub:    { zh: "GitHub", en: "GitHub" },
+  menuAria:      { zh: "打开菜单", en: "Open menu" },
   btnGithub:     { zh: "GitHub 下载", en: "GitHub Download" },
   btnNetdisk:    { zh: "网盘下载", en: "Netdisk Download" },
   pwdLabel:      { zh: "密码", en: "Password" },
   btnWebsite:    { zh: "主页", en: "Website" },
-  btnShow:       { zh: "功能展示", en: "Features" },
+  btnShow:       { zh: "查看详情", en: "Details" },
   btnIntro:      { zh: "▶ 观看开场动画", en: "▶ Watch Intro" },
   introSkip:     { zh: "跳过 ▸", en: "Skip ▸" },
-  modalAria:     { zh: "功能展示", en: "Features" },
+  modalAria:     { zh: "软件详情", en: "Software details" },
+  detailIntro:   { zh: "软件介绍", en: "About this software" },
   closeAria:     { zh: "关闭", en: "Close" },
 };
 
@@ -216,9 +223,7 @@ function renderCards() {
           <h3 class="card-title">${s.name[lang]}</h3>
           <p class="card-desc">${s.desc[lang]}</p>
           <div class="card-tags">${renderTags(s.tags)}</div>
-          <div class="card-links">${renderLinks(s.links)}${
-            s.features ? `<button class="btn btn-show" type="button" data-feature-key="${s.key}">${t("btnShow")}</button>` : ""
-          }</div>
+          <div class="card-links">${renderLinks(s.links)}<button class="btn btn-show" type="button" data-feature-key="${s.key}">${t("btnShow")}</button></div>
         </div>
       </article>`
     )
