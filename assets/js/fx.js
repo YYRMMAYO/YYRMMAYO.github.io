@@ -1,9 +1,9 @@
 /* ============================================================
  * YYRMM 的软件库 — 视觉特效（纯原生 JS，无依赖）
  * 1) 滚动进场 reveal（IntersectionObserver + MutationObserver）
- * 2) 粒子网络背景（canvas，粒子数受控）
+ * 2) 粒子网络背景（canvas，粒子数受控，性能优先）
  * 3) 鼠标跟随光晕
- * 4) 卡片轻微倾斜（仅精细指针设备）
+ * 4) 卡片点击涟漪反馈
  * 全部尊重 prefers-reduced-motion
  * ============================================================ */
 (function () {
@@ -75,16 +75,18 @@
     var particles = [];
     var raf = null;
     var palette = ["139,92,246", "34,211,238", "244,114,182"]; // r,g,b
-    var LINK = 130;
+    var LINK = 110;
+    var LINK2 = LINK * LINK;
 
     function resize() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5); // 限制高分屏像素量
       w = canvas.clientWidth || window.innerWidth;
       h = canvas.clientHeight || window.innerHeight;
       canvas.width = Math.floor(w * dpr);
       canvas.height = Math.floor(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      var target = Math.max(16, Math.min(64, Math.round((w * h) / 24000)));
+      // 粒子数受控：稀疏即可，避免每帧 O(n²) 连线开销过大
+      var target = Math.max(10, Math.min(28, Math.round((w * h) / 42000)));
       while (particles.length < target) particles.push(spawn());
       particles.length = target;
     }
@@ -101,36 +103,39 @@
     }
 
     function step() {
-      ctx.clearRect(0, 0, w, h);
-      var i, j, p, q, dx, dy, d2, a;
-      for (i = 0; i < particles.length; i++) {
-        p = particles[i];
-        for (j = i + 1; j < particles.length; j++) {
-          q = particles[j];
-          dx = p.x - q.x;
-          dy = p.y - q.y;
-          d2 = dx * dx + dy * dy;
-          if (d2 < LINK * LINK) {
-            a = (1 - Math.sqrt(d2) / LINK) * 0.16;
-            ctx.strokeStyle = "rgba(" + p.c + "," + a.toFixed(3) + ")";
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(q.x, q.y);
-            ctx.stroke();
+      // 开场动画 / 弹窗全屏遮挡时跳过绘制，省 CPU
+      if (!document.body.classList.contains("modal-open")) {
+        ctx.clearRect(0, 0, w, h);
+        var i, j, p, q, dx, dy, d2, a;
+        for (i = 0; i < particles.length; i++) {
+          p = particles[i];
+          for (j = i + 1; j < particles.length; j++) {
+            q = particles[j];
+            dx = p.x - q.x;
+            dy = p.y - q.y;
+            d2 = dx * dx + dy * dy;
+            if (d2 < LINK2) {
+              a = (1 - Math.sqrt(d2) / LINK) * 0.16;
+              ctx.strokeStyle = "rgba(" + p.c + "," + a.toFixed(3) + ")";
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(q.x, q.y);
+              ctx.stroke();
+            }
           }
         }
-      }
-      for (i = 0; i < particles.length; i++) {
-        p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < -20) p.x = w + 20; else if (p.x > w + 20) p.x = -20;
-        if (p.y < -20) p.y = h + 20; else if (p.y > h + 20) p.y = -20;
-        ctx.fillStyle = "rgba(" + p.c + ",0.72)";
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, 6.2832);
-        ctx.fill();
+        for (i = 0; i < particles.length; i++) {
+          p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < -20) p.x = w + 20; else if (p.x > w + 20) p.x = -20;
+          if (p.y < -20) p.y = h + 20; else if (p.y > h + 20) p.y = -20;
+          ctx.fillStyle = "rgba(" + p.c + ",0.72)";
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, 6.2832);
+          ctx.fill();
+        }
       }
       raf = requestAnimationFrame(step);
     }
@@ -159,30 +164,7 @@
     );
   }
 
-  /* ---------------- 4. 卡片轻微倾斜 ---------------- */
-  if (finePointer && !reduced) {
-    document.addEventListener(
-      "pointermove",
-      function (e) {
-        var card = e.target && e.target.closest ? e.target.closest(".card") : null;
-        if (!card) return;
-        var r = card.getBoundingClientRect();
-        var px = (e.clientX - r.left) / r.width - 0.5;
-        var py = (e.clientY - r.top) / r.height - 0.5;
-        card.style.transform =
-          "perspective(900px) rotateX(" + (-py * 4).toFixed(2) + "deg) rotateY(" + (px * 6).toFixed(2) + "deg) translateY(-6px)";
-      },
-      { passive: true }
-    );
-    document.addEventListener("pointerout", function (e) {
-      var card = e.target && e.target.closest ? e.target.closest(".card") : null;
-      if (card && !(card.contains(e.relatedTarget))) {
-        card.style.transform = "";
-      }
-    });
-  }
-
-  /* ---------------- 5. 卡片点击涟漪反馈 ---------------- */
+  /* ---------------- 4. 卡片点击涟漪反馈 ---------------- */
   if (!reduced) {
     document.addEventListener("pointerdown", function (e) {
       if (e.button !== 0) return;
@@ -202,46 +184,5 @@
       window.setTimeout(function () { if (rip.parentNode) rip.parentNode.removeChild(rip); }, 750);
       window.setTimeout(function () { card.classList.remove("pressed"); }, 220);
     });
-  }
-
-  /* ---------------- 6. 侧边栏开关（移动端抽屉） ---------------- */
-  var sidebar = document.getElementById("sidebar");
-  var openBtn = document.getElementById("sidebar-open");
-  var closeBtn = document.getElementById("sidebar-close");
-  var scrim = document.getElementById("sidebar-scrim");
-
-  function setSidebar(open) {
-    if (!sidebar) return;
-    sidebar.classList.toggle("open", open);
-    if (scrim) scrim.classList.toggle("show", open);
-    document.body.classList.toggle("nav-open", open);
-  }
-
-  if (openBtn) openBtn.addEventListener("click", function () { setSidebar(true); });
-  if (closeBtn) closeBtn.addEventListener("click", function () { setSidebar(false); });
-  if (scrim) scrim.addEventListener("click", function () { setSidebar(false); });
-
-  // 点击导航链接后关闭抽屉
-  Array.prototype.forEach.call(document.querySelectorAll(".side-link"), function (link) {
-    link.addEventListener("click", function () { setSidebar(false); });
-  });
-
-  /* ---------------- 7. 导航滚动高亮 ---------------- */
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".side-link"));
-  var spySections = ["home", "profile", "software"]
-    .map(function (id) { return document.getElementById(id); })
-    .filter(Boolean);
-
-  if ("IntersectionObserver" in window && spySections.length && navLinks.length) {
-    var spy = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) {
-          navLinks.forEach(function (l) {
-            l.classList.toggle("active", l.getAttribute("href") === "#" + en.target.id);
-          });
-        }
-      });
-    }, { rootMargin: "-40% 0px -55% 0px", threshold: 0 });
-    spySections.forEach(function (s) { spy.observe(s); });
   }
 })();

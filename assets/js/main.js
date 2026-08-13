@@ -25,9 +25,6 @@ const I18N = {
   navHome:       { zh: "首页", en: "Home" },
   navProfile:    { zh: "关于我", en: "About" },
   navSoftware:   { zh: "软件列表", en: "Software" },
-  linkBilibili:  { zh: "哔哩哔哩", en: "Bilibili" },
-  linkGithub:    { zh: "GitHub", en: "GitHub" },
-  menuAria:      { zh: "打开菜单", en: "Open menu" },
   btnGithub:     { zh: "GitHub 下载", en: "GitHub Download" },
   btnNetdisk:    { zh: "网盘下载", en: "Netdisk Download" },
   pwdLabel:      { zh: "密码", en: "Password" },
@@ -245,6 +242,7 @@ function applyI18n() {
   // 语言切换按钮：显示"将要切换到的语言"
   const btn = document.getElementById("lang-toggle");
   btn.textContent = lang === "zh" ? "EN" : "中文";
+  btn.setAttribute("aria-label", lang === "zh" ? "切换语言" : "Switch language");
   renderCards();
   // 若功能弹窗正开着，跟随语言刷新内容
   if (window.Showcase && typeof window.Showcase.refreshOpen === "function") {
