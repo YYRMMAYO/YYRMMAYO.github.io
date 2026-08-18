@@ -1,7 +1,7 @@
 /* ============================================================
  * YYRMM 的软件库 — 视觉特效（纯原生 JS，无依赖）
  * 1) 滚动进场 reveal（IntersectionObserver + MutationObserver）
- * 2) 粒子网络背景（canvas，粒子数受控，性能优先）
+ * 2) 星河背景（canvas：闪烁星光 + 流星，粒子数受控，性能优先）
  * 3) 鼠标跟随光晕
  * 4) 卡片点击涟漪反馈
  * 全部尊重 prefers-reduced-motion
@@ -67,16 +67,16 @@
     mo.observe(grid || document.body, { childList: true, subtree: true });
   }
 
-  /* ---------------- 2. 粒子网络背景 ---------------- */
+  /* ---------------- 2. 星河背景（闪烁星光 + 流星） ---------------- */
   var canvas = document.getElementById("bg-canvas");
   if (canvas && !reduced) {
     var ctx = canvas.getContext("2d");
     var w = 0, h = 0, dpr = 1;
-    var particles = [];
+    var stars = [];
+    var meteors = [];
     var raf = null;
-    var palette = ["139,92,246", "34,211,238", "244,114,182"]; // r,g,b
-    var LINK = 110;
-    var LINK2 = LINK * LINK;
+    var lastMeteorAt = 0;
+    var STAR_COLORS = ["#fdf6e3", "#f2c879", "#e88ab0", "#e8a87c"]; // 星白 / 金 / 玫 / 桃
 
     function resize() {
       dpr = Math.min(window.devicePixelRatio || 1, 1.5); // 限制高分屏像素量
@@ -85,62 +85,98 @@
       canvas.width = Math.floor(w * dpr);
       canvas.height = Math.floor(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      // 粒子数受控：稀疏即可，避免每帧 O(n²) 连线开销过大
-      var target = Math.max(10, Math.min(28, Math.round((w * h) / 42000)));
-      while (particles.length < target) particles.push(spawn());
-      particles.length = target;
+      // 星光数量按面积降采样：约每 4200px² 一颗，120~220 之间
+      var target = Math.max(120, Math.min(220, Math.round((w * h) / 4200)));
+      while (stars.length < target) stars.push(spawnStar());
+      stars.length = target;
     }
 
-    function spawn() {
+    function spawnStar() {
       return {
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        r: Math.random() * 1.6 + 0.6,
-        c: palette[(Math.random() * palette.length) | 0]
+        r: Math.random() * 1.1 + 0.3,          // 半径 0.3~1.4
+        tw: Math.random() * 0.06 + 0.02,       // 闪烁速率
+        ph: Math.random() * Math.PI * 2,       // 随机相位
+        vy: Math.random() * 0.12,              // 缓慢漂移
+        c: STAR_COLORS[(Math.random() * STAR_COLORS.length) | 0]
       };
     }
 
-    function step() {
+    // 生成一颗流星：从头亮白点 + 向运动反方向渐隐尾迹
+    function spawnMeteor(now) {
+      var fromLeft = Math.random() > 0.5;
+      var angle = (fromLeft ? -1 : 1) * (Math.PI / 4 + Math.random() * Math.PI / 8); // 45°~67° 斜射
+      var speed = 9 + Math.random() * 5;
+      var x0 = Math.random() * w * 0.6 + w * 0.15;
+      var y0 = -20;
+      meteors.push({
+        x: x0, y: y0,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        life0: now,          // 出生时刻（ms）
+        maxLife: 800,        // 寿命 ms
+        len: 60 + Math.random() * 40
+      });
+      if (meteors.length > 3) meteors.shift();
+    }
+
+    function drawMeteor(m, now) {
+      var t = now - m.life0;
+      if (t >= m.maxLife) return false;
+      m.x += m.vx;
+      m.y += m.vy;
+      var fade = 1 - t / m.maxLife;
+      // 尾迹：从头点向运动反方向渐变
+      var g = ctx.createLinearGradient(m.x, m.y, m.x - m.vx * 6, m.y - m.vy * 6);
+      g.addColorStop(0, "rgba(253,246,227," + (0.9 * fade).toFixed(3) + ")");
+      g.addColorStop(0.35, "rgba(242,200,121," + (0.45 * fade).toFixed(3) + ")");
+      g.addColorStop(1, "rgba(242,200,121,0)");
+      ctx.strokeStyle = g;
+      ctx.lineWidth = 2;
+      ctx.lineCap = "round";
+      ctx.beginPath();
+      ctx.moveTo(m.x, m.y);
+      ctx.lineTo(m.x - m.vx * 6, m.y - m.vy * 6);
+      ctx.stroke();
+      return true;
+    }
+
+    function step(now) {
       // 开场动画 / 弹窗全屏遮挡时跳过绘制，省 CPU
       if (!document.body.classList.contains("modal-open")) {
         ctx.clearRect(0, 0, w, h);
-        var i, j, p, q, dx, dy, d2, a;
-        for (i = 0; i < particles.length; i++) {
-          p = particles[i];
-          for (j = i + 1; j < particles.length; j++) {
-            q = particles[j];
-            dx = p.x - q.x;
-            dy = p.y - q.y;
-            d2 = dx * dx + dy * dy;
-            if (d2 < LINK2) {
-              a = (1 - Math.sqrt(d2) / LINK) * 0.16;
-              ctx.strokeStyle = "rgba(" + p.c + "," + a.toFixed(3) + ")";
-              ctx.lineWidth = 1;
-              ctx.beginPath();
-              ctx.moveTo(p.x, p.y);
-              ctx.lineTo(q.x, q.y);
-              ctx.stroke();
-            }
-          }
-        }
-        for (i = 0; i < particles.length; i++) {
-          p = particles[i];
-          p.x += p.vx;
-          p.y += p.vy;
-          if (p.x < -20) p.x = w + 20; else if (p.x > w + 20) p.x = -20;
-          if (p.y < -20) p.y = h + 20; else if (p.y > h + 20) p.y = -20;
-          ctx.fillStyle = "rgba(" + p.c + ",0.72)";
+        var i, s, a;
+        for (i = 0; i < stars.length; i++) {
+          s = stars[i];
+          s.y += s.vy;
+          if (s.y > h + 4) { s.y = -4; s.x = Math.random() * w; }
+          a = 0.35 + 0.5 * (0.5 + 0.5 * Math.sin(now * 0.001 * s.tw * 10 + s.ph)); // 闪烁
+          ctx.globalAlpha = a;
+          ctx.fillStyle = s.c;
           ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, 6.2832);
+          ctx.arc(s.x, s.y, s.r, 0, 6.2832);
           ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+        // 流星：每 4~9s 生成一颗
+        if (now - lastMeteorAt > 4000 + Math.random() * 5000) {
+          lastMeteorAt = now;
+          spawnMeteor(now);
+        }
+        for (i = meteors.length - 1; i >= 0; i--) {
+          if (!drawMeteor(meteors[i], now)) meteors.splice(i, 1);
         }
       }
       raf = requestAnimationFrame(step);
     }
 
-    function start() { if (!raf) raf = requestAnimationFrame(step); }
+    function start() {
+      if (!raf) {
+        lastMeteorAt = performance.now();
+        raf = requestAnimationFrame(step);
+      }
+    }
     function stop() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
 
     resize();

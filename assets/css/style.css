@@ -1,32 +1,42 @@
 /* ============================================================
-   YYRMM 的软件库 — 赛博朋克 / 未来感主题
-   深色背景 · 霓虹渐变 · 玻璃态 · 轻量动效
+   YYRMM 的软件库 — 七夕 · 星河浪漫主题
+   深色夜空 · 星光 · 银河 · 鹊桥 · 金粉点缀
    说明：主要动画用 transform / opacity，重排少；粒子数量受控。
+   主题色板与《第101种理由》游戏页保持对齐（--bg-void/--indigo/--ink/--accent/--gold）。
    ============================================================ */
 
 :root {
-  /* 底色 */
-  --bg: #05060d;
-  --bg-2: #0b0d1c;
+  /* 夜空基底（与游戏页 --bg-void / --indigo 对齐） */
+  --bg: #07060d;
+  --bg-2: #0d0a1f;
+  --indigo: #141a3c;
+  --indigo-2: #1c2450;
 
   /* 玻璃表面 */
   --surface: rgba(255, 255, 255, 0.045);
-  --surface-strong: rgba(255, 255, 255, 0.08);
-  --border: rgba(255, 255, 255, 0.09);
+  --surface-strong: rgba(255, 255, 255, 0.09);
+  --border: rgba(246, 239, 228, 0.10);
 
-  /* 文字 */
-  --text: #e9edf6;
-  --text-muted: #9aa3bd;
+  /* 文字（暖白 / 米金，对齐游戏页 --ink / --ink-soft） */
+  --text: #f6efe4;
+  --text-muted: #d6c8b4;
 
-  /* 霓虹色板 */
-  --violet: #8b5cf6;
-  --cyan: #22d3ee;
-  --pink: #f472b6;
-  --green: #34d399;
-  --accent: #7c3aed;
+  /* 七夕强调色 */
+  --peach: #e8a87c;   /* 桃（= 游戏 --accent） */
+  --pink: #e88ab0;    /* 玫瑰粉（= 游戏 --accent-2） */
+  --gold: #f2c879;    /* 金（= 游戏 --gold） */
+  --red: #d94b5a;     /* 朱红（点缀） */
+  --star: #fdf6e3;    /* 星光白 */
 
-  --grad: linear-gradient(135deg, #7c3aed 0%, #22d3ee 50%, #f472b6 100%);
-  --grad-soft: linear-gradient(135deg, rgba(124,58,237,.55), rgba(34,211,238,.45), rgba(244,114,182,.5));
+  --accent: #e8a87c;
+
+  --grad: linear-gradient(100deg, #f2c879 0%, #e8a87c 38%, #e88ab0 100%);
+  --grad-soft: linear-gradient(135deg, rgba(242, 200, 121, 0.5), rgba(232, 168, 124, 0.45), rgba(232, 138, 176, 0.5));
+
+  /* 字体（零依赖系统字体栈；标题用楷体系，与游戏页一致） */
+  --font-hand: "STKaiti", "KaiTi", "Kaiti SC", "楷体", "Songti SC", serif;
+  --font-ui: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Segoe UI",
+    system-ui, -apple-system, sans-serif;
 
   --radius: 16px;
   --max-width: 1080px;
@@ -38,8 +48,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
-    system-ui, -apple-system, sans-serif;
+  font-family: var(--font-ui);
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -47,13 +56,13 @@ body {
   min-height: 100vh;
 }
 
-::selection { background: rgba(139, 92, 246, 0.45); color: #fff; }
+::selection { background: rgba(232, 168, 124, 0.4); color: #fff; }
 
-/* 滚动条 */
+/* 滚动条（金粉渐变） */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #7c3aed, #22d3ee);
+  background: linear-gradient(180deg, #f2c879, #e88ab0);
   border-radius: 999px;
   border: 2px solid var(--bg);
 }
@@ -69,13 +78,13 @@ body {
 .page, .hero, .profile, main, .site-footer { position: relative; z-index: 1; }
 
 :focus-visible {
-  outline: 2px solid var(--cyan);
+  outline: 2px solid var(--gold);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
 /* ============================================================
-   背景层：极光 · 网格 · 粒子画布 · 暗角
+   背景层：夜空 · 光晕 · 银河斜带 · 星光画布 · 暗角
    ============================================================ */
 .bg-scene {
   position: fixed;
@@ -84,48 +93,68 @@ body {
   overflow: hidden;
   pointer-events: none;
   background:
-    radial-gradient(120% 90% at 80% -10%, rgba(34, 211, 238, 0.12), transparent 55%),
-    radial-gradient(120% 90% at 10% 110%, rgba(124, 58, 237, 0.16), transparent 55%),
-    linear-gradient(180deg, #06070f 0%, #070815 55%, #05060d 100%);
+    radial-gradient(120% 90% at 80% -10%, rgba(232, 168, 124, 0.10), transparent 55%),
+    radial-gradient(120% 90% at 10% 110%, rgba(232, 138, 176, 0.12), transparent 55%),
+    radial-gradient(130% 100% at 50% 120%, rgba(20, 26, 60, 0.55), transparent 60%),
+    linear-gradient(180deg, #07060d 0%, #0d0a1f 55%, #141a3c 100%);
 }
 
-.aurora {
+/* 桃 / 金 / 玫 光晕（原极光换肤） */
+.glow {
   position: absolute;
   border-radius: 50%;
   opacity: 0.5;
   will-change: transform;
 }
-.aurora-1 {
+.glow-1 {
   width: 62vmax; height: 62vmax;
   left: -18vmax; top: -24vmax;
-  background: radial-gradient(circle at center, rgba(124, 58, 237, 0.55), transparent 64%);
+  background: radial-gradient(circle at center, rgba(232, 138, 176, 0.42), transparent 64%);
   animation: drift1 26s ease-in-out infinite alternate;
 }
-.aurora-2 {
+.glow-2 {
   width: 54vmax; height: 54vmax;
   right: -20vmax; top: -8vmax;
-  background: radial-gradient(circle at center, rgba(34, 211, 238, 0.4), transparent 62%);
+  background: radial-gradient(circle at center, rgba(242, 200, 121, 0.30), transparent 62%);
   animation: drift2 32s ease-in-out infinite alternate;
 }
-.aurora-3 {
+.glow-3 {
   width: 50vmax; height: 50vmax;
   left: 24vmax; bottom: -26vmax;
-  background: radial-gradient(circle at center, rgba(244, 114, 182, 0.34), transparent 62%);
+  background: radial-gradient(circle at center, rgba(232, 168, 124, 0.28), transparent 62%);
   animation: drift3 38s ease-in-out infinite alternate;
 }
 @keyframes drift1 { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(9vmax, 7vmax, 0) scale(1.12); } }
 @keyframes drift2 { from { transform: translate3d(0, 0, 0) scale(1.08); } to { transform: translate3d(-8vmax, 6vmax, 0) scale(1); } }
 @keyframes drift3 { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(-7vmax, -8vmax, 0) scale(1.14); } }
 
-.bg-grid {
+/* 银河斜带（纯 CSS） */
+.galaxy-band {
+  position: absolute;
+  width: 160vmax; height: 46vmax;
+  left: 50%; top: 18%;
+  transform: translateX(-50%) rotate(-18deg);
+  background: radial-gradient(ellipse at center, rgba(246, 239, 228, 0.10), rgba(232, 138, 176, 0.06) 45%, transparent 70%);
+  filter: blur(30px);
+  opacity: 0.8;
+}
+
+/* CSS 点缀星光（微弱闪烁小点，canvas 为主） */
+.star-css {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
-  background-size: 44px 44px;
-  -webkit-mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 0%, transparent 75%);
-  mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 0%, transparent 75%);
+    radial-gradient(1.5px 1.5px at 12% 22%, rgba(253, 246, 227, 0.8), transparent 100%),
+    radial-gradient(1px 1px at 28% 68%, rgba(242, 200, 121, 0.7), transparent 100%),
+    radial-gradient(1.5px 1.5px at 46% 12%, rgba(253, 246, 227, 0.6), transparent 100%),
+    radial-gradient(1px 1px at 63% 44%, rgba(232, 138, 176, 0.6), transparent 100%),
+    radial-gradient(1.5px 1.5px at 78% 78%, rgba(253, 246, 227, 0.7), transparent 100%),
+    radial-gradient(1px 1px at 90% 26%, rgba(242, 200, 121, 0.6), transparent 100%);
+  animation: twinkle 4.5s ease-in-out infinite alternate;
+}
+@keyframes twinkle {
+  from { opacity: 0.35; }
+  to { opacity: 0.85; }
 }
 
 #bg-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -145,7 +174,7 @@ body {
   border-radius: 50%;
   pointer-events: none;
   z-index: 1;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.14), rgba(34, 211, 238, 0.07) 42%, transparent 66%);
+  background: radial-gradient(circle, rgba(232, 168, 124, 0.13), rgba(242, 200, 121, 0.06) 42%, transparent 66%);
   transform: translate3d(-100vw, -100vh, 0);
 }
 
@@ -156,7 +185,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 55;
-  background: rgba(5, 6, 13, 0.72);
+  background: rgba(7, 6, 13, 0.72);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   backdrop-filter: blur(14px) saturate(140%);
   border-bottom: 1px solid var(--border);
@@ -187,6 +216,7 @@ body {
   transition: color 0.25s ease, background 0.25s ease;
 }
 .top-link:hover { color: var(--text); background: var(--surface-strong); }
+.top-link.active { color: var(--gold); }
 
 .top-actions {
   display: flex;
@@ -209,7 +239,7 @@ body {
   color: #fff;
   background: var(--surface);
   border-color: var(--border);
-  box-shadow: 0 0 14px rgba(34, 211, 238, 0.35);
+  box-shadow: 0 0 14px rgba(242, 200, 121, 0.35);
   transform: translateY(-1px);
 }
 
@@ -224,9 +254,9 @@ body {
   transition: border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
 }
 .lang-toggle:hover {
-  border-color: var(--cyan);
+  border-color: var(--gold);
   color: #fff;
-  box-shadow: 0 0 16px rgba(34, 211, 238, 0.35);
+  box-shadow: 0 0 16px rgba(242, 200, 121, 0.35);
 }
 
 .brand {
@@ -234,40 +264,201 @@ body {
   font-weight: 800;
   letter-spacing: 0.3px;
   text-decoration: none;
+  font-family: var(--font-hand);
   background: var(--grad);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 0 14px rgba(139, 92, 246, 0.4));
+  filter: drop-shadow(0 0 14px rgba(242, 200, 121, 0.4));
 }
 
 /* 内容区 */
 .page { min-height: 100vh; }
 
 /* ============================================================
-   标题区
+   标题区（七夕主视觉）
    ============================================================ */
 .hero {
-  padding: 72px 0 36px;
+  padding: 84px 0 48px;
   text-align: center;
+  scroll-margin-top: 76px;
+}
+
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--gold);
+  padding: 5px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(242, 200, 121, 0.35);
+  background: rgba(242, 200, 121, 0.07);
+  box-shadow: 0 0 18px rgba(242, 200, 121, 0.18);
 }
 
 .hero-title {
-  font-size: clamp(34px, 6vw, 56px);
-  font-weight: 900;
-  letter-spacing: 0.5px;
-  line-height: 1.12;
+  margin-top: 20px;
+  font-family: var(--font-hand);
+  font-size: clamp(36px, 6.4vw, 60px);
+  font-weight: 800;
+  letter-spacing: 1px;
+  line-height: 1.14;
+  background: var(--grad);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 26px rgba(242, 200, 121, 0.35));
+  animation: grad-shift 8s linear infinite;
+}
+@keyframes grad-shift {
+  0% { background-position: 0% 0; }
+  100% { background-position: 220% 0; }
+}
+
+.hero-sub {
+  margin-top: 16px;
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-cta {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+/* 鹊桥装饰（纯装饰，aria-hidden） */
+.magpie-bridge {
+  position: relative;
+  width: min(560px, 86vw);
+  height: 90px;
+  margin: 26px auto 0;
+  pointer-events: none;
+}
+.magpie-bridge::before {
+  content: "";
+  position: absolute;
+  left: 4%; right: 4%;
+  top: 8px;
+  height: 46px;
+  border-top: 2px dashed rgba(242, 200, 121, 0.5);
+  border-radius: 50%;
+}
+.magpie-bridge .bird {
+  position: absolute;
+  top: 0;
+  font-size: 20px;
+  opacity: 0.9;
+  animation: bird-float 5s ease-in-out infinite;
+}
+.magpie-bridge .bird:nth-child(1) { left: 8%;  animation-delay: 0s; }
+.magpie-bridge .bird:nth-child(2) { left: 34%; animation-delay: 1.4s; }
+.magpie-bridge .bird:nth-child(3) { left: 60%; animation-delay: 2.6s; }
+.magpie-bridge .bird:nth-child(4) { left: 84%; animation-delay: 3.7s; }
+@keyframes bird-float {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-10px) rotate(8deg); }
+}
+
+/* ============================================================
+   游戏体验专区
+   ============================================================ */
+.game {
+  scroll-margin-top: 76px;
+}
+
+.game-panel {
+  position: relative;
+  margin: 8px auto 40px;
+  max-width: 720px;
+  padding: 40px 40px 42px;
+  text-align: center;
+  border-radius: 24px;
+  background:
+    radial-gradient(120% 140% at 50% -20%, rgba(232, 138, 176, 0.14), transparent 55%),
+    var(--surface);
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  overflow: hidden;
+}
+/* 渐变边框 */
+.game-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, rgba(242, 200, 121, 0.45), rgba(232, 138, 176, 0.45), rgba(242, 200, 121, 0.25));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+/* 顶部流光 */
+.game-panel::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--pink), transparent);
+  opacity: 0.8;
+}
+
+.game-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  color: var(--gold);
+  border: 1px solid rgba(242, 200, 121, 0.4);
+  background: rgba(242, 200, 121, 0.08);
+}
+
+.game-title {
+  margin-top: 18px;
+  font-family: var(--font-hand);
+  font-size: clamp(26px, 4.4vw, 38px);
+  font-weight: 800;
+  letter-spacing: 1px;
   background: var(--grad);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 0 26px rgba(139, 92, 246, 0.35));
+  filter: drop-shadow(0 0 20px rgba(232, 138, 176, 0.35));
 }
 
-.hero-sub {
-  margin-top: 14px;
-  font-size: 16px;
+.game-desc {
+  margin: 14px auto 0;
+  max-width: 520px;
+  font-size: 15px;
   color: var(--text-muted);
+}
+
+.btn-play-lg {
+  margin-top: 26px;
+  font-size: 16px;
+  padding: 13px 34px;
+}
+
+.game-note {
+  margin-top: 14px;
+  font-size: 12.5px;
+  color: rgba(214, 200, 180, 0.72);
 }
 
 /* ============================================================
@@ -286,6 +477,7 @@ body {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   box-shadow: 0 10px 34px rgba(0, 0, 0, 0.35);
+  scroll-margin-top: 76px;
 }
 
 .profile-avatar {
@@ -298,10 +490,11 @@ body {
   background:
     linear-gradient(var(--bg-2), var(--bg-2)) padding-box,
     var(--grad) border-box;
-  box-shadow: 0 0 30px rgba(139, 92, 246, 0.35);
+  box-shadow: 0 0 30px rgba(242, 200, 121, 0.35);
 }
 
 .profile-name {
+  font-family: var(--font-hand);
   font-size: 22px;
   font-weight: 800;
 }
@@ -321,8 +514,13 @@ body {
 .section-title {
   display: inline-block;
   position: relative;
+  font-family: var(--font-hand);
   font-size: clamp(22px, 3vw, 28px);
   font-weight: 800;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 .section-title::after {
   content: "";
@@ -332,7 +530,7 @@ body {
   height: 3px;
   border-radius: 999px;
   background: var(--grad);
-  box-shadow: 0 0 14px rgba(139, 92, 246, 0.6);
+  box-shadow: 0 0 14px rgba(242, 200, 121, 0.6);
 }
 
 .section-desc {
@@ -352,7 +550,7 @@ body {
 }
 
 .card {
-  --card-accent: #8b5cf6;
+  --card-accent: #e8a87c;
   position: relative;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -481,6 +679,7 @@ body {
 .btn {
   display: inline-flex;
   align-items: center;
+  gap: 6px;
   font-size: 13px;
   font-family: inherit;
   font-weight: 600;
@@ -496,12 +695,28 @@ body {
   background: var(--grad);
   color: #fff;
   border: 1px solid transparent;
-  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.35);
+  box-shadow: 0 4px 20px rgba(232, 168, 124, 0.35);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
   filter: brightness(1.1);
-  box-shadow: 0 10px 28px rgba(139, 92, 246, 0.5), 0 0 18px rgba(34, 211, 238, 0.35);
+  box-shadow: 0 10px 28px rgba(232, 168, 124, 0.5), 0 0 18px rgba(242, 200, 121, 0.35);
+}
+
+/* 主 CTA（金粉渐变 + 光晕） */
+.btn-play {
+  background: var(--grad);
+  color: #fff;
+  border: 1px solid transparent;
+  font-size: 15px;
+  padding: 11px 26px;
+  box-shadow: 0 6px 24px rgba(232, 138, 176, 0.45);
+  position: relative;
+}
+.btn-play:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 12px 34px rgba(232, 138, 176, 0.6), 0 0 22px rgba(242, 200, 121, 0.45);
 }
 
 .btn-ghost {
@@ -512,23 +727,152 @@ body {
 .btn-ghost:hover {
   border-color: var(--accent);
   color: #fff;
-  box-shadow: 0 0 16px rgba(139, 92, 246, 0.35);
+  box-shadow: 0 0 16px rgba(232, 168, 124, 0.35);
 }
 
 /* 功能展示按钮 */
 .btn-show {
   background: transparent;
-  color: var(--cyan);
-  border: 1px solid color-mix(in srgb, var(--cyan) 45%, transparent);
+  color: var(--peach);
+  border: 1px solid color-mix(in srgb, var(--peach) 45%, transparent);
 }
 .btn-show:hover {
-  background: color-mix(in srgb, var(--cyan) 14%, transparent);
+  background: color-mix(in srgb, var(--peach) 14%, transparent);
   color: #fff;
-  box-shadow: 0 0 18px rgba(34, 211, 238, 0.4);
+  box-shadow: 0 0 18px rgba(232, 168, 124, 0.4);
 }
 
 /* 开场动画重播按钮 */
 .intro-replay { margin-top: 20px; }
+
+/* ============================================================
+   右侧弧形导航盘（radial-nav）
+   ============================================================ */
+.radial-nav {
+  position: fixed;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 230px;
+  height: 230px;
+  z-index: 60;
+  pointer-events: auto; /* 允许滚轮在导航区内切换 */
+}
+
+/* 雷达扫描光 */
+.radial-sweep {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(242, 200, 121, 0.16) 46deg, transparent 96deg);
+  animation: sweep 8s linear infinite;
+  pointer-events: none;
+}
+@keyframes sweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 扇形弧轨（仅保留 215°~325° 弧段） */
+.radial-track {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    conic-gradient(from 215deg, rgba(242, 200, 121, 0.16) 0deg, rgba(232, 138, 176, 0.12) 110deg, transparent 110deg);
+  -webkit-mask: radial-gradient(circle, transparent 58%, #000 60%, #000 84%, transparent 86%);
+  mask: radial-gradient(circle, transparent 58%, #000 60%, #000 84%, transparent 86%);
+  pointer-events: none;
+}
+
+/* 圆心徽标 */
+.radial-hub {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 52px; height: 52px;
+  margin: -26px 0 0 -26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  background: rgba(13, 10, 31, 0.85);
+  border: 1px solid rgba(242, 200, 121, 0.35);
+  box-shadow: 0 0 18px rgba(242, 200, 121, 0.22), inset 0 0 14px rgba(232, 138, 176, 0.12);
+  pointer-events: none;
+  animation: hub-pulse 3.6s ease-in-out infinite;
+}
+@keyframes hub-pulse {
+  0%, 100% { box-shadow: 0 0 14px rgba(242, 200, 121, 0.18), inset 0 0 12px rgba(232, 138, 176, 0.1); }
+  50% { box-shadow: 0 0 26px rgba(242, 200, 121, 0.4), inset 0 0 18px rgba(232, 138, 176, 0.2); }
+}
+
+.radial-items { position: absolute; inset: 0; }
+
+/* 导航项：JS 用 rotate+translate+rotate 三段式定位到弧上并回正 */
+.radial-item {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 44px; height: 44px;
+  margin: -22px 0 0 -22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 18px;
+  text-decoration: none;
+  background: rgba(13, 10, 31, 0.82);
+  border: 1px solid rgba(246, 239, 228, 0.18);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  opacity: 0.5;
+  transition: opacity 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease,
+    transform 0.35s var(--ease), background 0.3s ease;
+  cursor: pointer;
+}
+.radial-item .ri-icon { line-height: 1; }
+
+/* 悬浮标签 */
+.radial-item .ri-label {
+  position: absolute;
+  right: 54px;
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(13, 10, 31, 0.9);
+  border: 1px solid rgba(242, 200, 121, 0.35);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.radial-item:hover .ri-label,
+.radial-item.active .ri-label {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.radial-item:hover {
+  opacity: 1;
+  border-color: rgba(242, 200, 121, 0.7);
+  box-shadow: 0 0 20px rgba(242, 200, 121, 0.4);
+  background: rgba(20, 26, 60, 0.92);
+}
+
+.radial-item.active {
+  opacity: 1;
+  scale: 1.18;
+  border-color: transparent;
+  background:
+    linear-gradient(rgba(13, 10, 31, 0.9), rgba(13, 10, 31, 0.9)) padding-box,
+    var(--grad) border-box;
+  box-shadow: 0 0 24px rgba(232, 138, 176, 0.5), 0 0 44px rgba(242, 200, 121, 0.3);
+}
 
 /* ============================================================
    空状态 / 页脚
@@ -542,7 +886,7 @@ body {
 
 .site-footer {
   border-top: 1px solid var(--border);
-  background: rgba(5, 6, 13, 0.6);
+  background: rgba(7, 6, 13, 0.6);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   padding: 22px 0;
@@ -575,9 +919,9 @@ body.modal-open { overflow: hidden; }
   display: flex;
   flex-direction: column;
   background:
-    radial-gradient(110% 90% at 80% 0%, rgba(34, 211, 238, 0.16), transparent 55%),
-    radial-gradient(110% 90% at 10% 110%, rgba(244, 114, 182, 0.16), transparent 55%),
-    linear-gradient(135deg, #0b0718 0%, #141030 45%, #1c0f2e 100%);
+    radial-gradient(110% 90% at 80% 0%, rgba(242, 200, 121, 0.12), transparent 55%),
+    radial-gradient(110% 90% at 10% 110%, rgba(232, 138, 176, 0.14), transparent 55%),
+    linear-gradient(135deg, #07060d 0%, #141a3c 45%, #1c2450 100%);
   color: #fff;
   opacity: 0;
   visibility: hidden;
@@ -593,11 +937,12 @@ body.modal-open { overflow: hidden; }
   inset: 0;
   z-index: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-  background-size: 42px 42px;
-  -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, transparent 78%);
-  mask-image: radial-gradient(ellipse at center, #000 0%, transparent 78%);
+    radial-gradient(1.5px 1.5px at 20% 30%, rgba(253, 246, 227, 0.5), transparent 100%),
+    radial-gradient(1px 1px at 70% 20%, rgba(242, 200, 121, 0.4), transparent 100%),
+    radial-gradient(1.5px 1.5px at 85% 65%, rgba(232, 138, 176, 0.4), transparent 100%),
+    radial-gradient(1px 1px at 40% 80%, rgba(253, 246, 227, 0.4), transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, transparent 82%);
+  mask-image: radial-gradient(ellipse at center, #000 0%, transparent 82%);
   pointer-events: none;
 }
 
@@ -613,7 +958,7 @@ body.modal-open { overflow: hidden; }
   width: 0%;
   background: var(--grad);
   border-radius: 0 3px 3px 0;
-  box-shadow: 0 0 12px rgba(139, 92, 246, 0.8);
+  box-shadow: 0 0 12px rgba(242, 200, 121, 0.8);
   transition: width 0.1s linear;
 }
 
@@ -676,6 +1021,7 @@ body.modal-open { overflow: hidden; }
   70%, 100% { transform: scale(1.2); opacity: 0; }
 }
 .intro-name {
+  font-family: var(--font-hand);
   font-size: 26px; font-weight: 800; letter-spacing: 0.5px;
   text-shadow: 0 0 18px rgba(255, 255, 255, 0.25);
 }
@@ -701,7 +1047,7 @@ body.modal-open { overflow: hidden; }
   position: absolute;
   inset: 0;
   border-radius: 12px;
-  background: linear-gradient(115deg, transparent 32%, rgba(255, 255, 255, 0.16) 46%, rgba(34, 211, 238, 0.22) 50%, rgba(255, 255, 255, 0.16) 54%, transparent 68%);
+  background: linear-gradient(115deg, transparent 32%, rgba(255, 255, 255, 0.16) 46%, rgba(242, 200, 121, 0.22) 50%, rgba(255, 255, 255, 0.16) 54%, transparent 68%);
   background-size: 240% 100%;
   background-position: 120% 0;
   animation: shimmer 3.4s ease-in-out infinite;
@@ -717,7 +1063,7 @@ body.modal-open { overflow: hidden; }
   border-radius: 12px;
   border: 2px solid transparent;
   background: linear-gradient(#fff, #fff) padding-box, var(--grad) border-box;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5), 0 0 30px rgba(139, 92, 246, 0.35);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5), 0 0 30px rgba(232, 138, 176, 0.35);
   display: block;
 }
 
@@ -745,7 +1091,7 @@ body.modal-open { overflow: hidden; }
   width: 9px; height: 9px;
   border-radius: 50%;
   background: var(--pink);
-  box-shadow: 0 0 10px rgba(244, 114, 182, 0.9);
+  box-shadow: 0 0 10px rgba(232, 138, 176, 0.9);
 }
 .intro-scene.active .intro-features li:nth-child(1) { transition-delay: 0.35s; }
 .intro-scene.active .intro-features li:nth-child(2) { transition-delay: 0.55s; }
@@ -756,6 +1102,7 @@ body.modal-open { overflow: hidden; }
 /* 结尾欢迎场景 */
 .intro-scene-end { gap: 14px; }
 .intro-end-title {
+  font-family: var(--font-hand);
   font-size: clamp(30px, 7vw, 52px);
   font-weight: 900;
   letter-spacing: 4px;
@@ -765,15 +1112,11 @@ body.modal-open { overflow: hidden; }
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 0 24px rgba(139, 92, 246, 0.5));
+  filter: drop-shadow(0 0 24px rgba(242, 200, 121, 0.5));
   opacity: 0;
   transform: scale(0.94);
   transition: opacity 0.6s ease, transform 0.6s ease;
   animation: grad-shift 5s linear infinite;
-}
-@keyframes grad-shift {
-  0% { background-position: 0% 0; }
-  100% { background-position: 220% 0; }
 }
 .intro-end-sub {
   font-size: 16px;
@@ -783,7 +1126,7 @@ body.modal-open { overflow: hidden; }
 }
 .intro-end-sub::after {
   content: "_";
-  color: var(--cyan);
+  color: var(--gold);
   animation: blink 1s steps(1) infinite;
 }
 @keyframes blink { 50% { opacity: 0; } }
@@ -806,7 +1149,7 @@ body.modal-open { overflow: hidden; }
   background: rgba(255, 255, 255, 0.35);
   transition: width 0.3s ease, background 0.3s ease;
 }
-.intro-dot.active { width: 22px; background: var(--cyan); box-shadow: 0 0 10px rgba(34, 211, 238, 0.8); }
+.intro-dot.active { width: 22px; background: var(--gold); box-shadow: 0 0 10px rgba(242, 200, 121, 0.8); }
 
 .intro-skip {
   border: 1px solid rgba(255, 255, 255, 0.45);
@@ -838,13 +1181,13 @@ body.modal-open { overflow: hidden; }
 .modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(5, 6, 13, 0.62);
+  background: rgba(7, 6, 13, 0.62);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
 .modal-card {
   position: relative;
-  background: rgba(15, 17, 32, 0.88);
+  background: rgba(13, 10, 31, 0.88);
   border: 1px solid var(--border);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
@@ -854,7 +1197,7 @@ body.modal-open { overflow: hidden; }
   max-height: 90vh;
   overflow-y: auto;
   padding: 26px 28px 28px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 40px rgba(139, 92, 246, 0.2);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 40px rgba(232, 138, 176, 0.2);
   transform: translateY(16px) scale(0.98);
   transition: transform 0.3s ease;
 }
@@ -874,7 +1217,7 @@ body.modal-open { overflow: hidden; }
   z-index: 2;
   transition: color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
-.modal-close:hover { color: var(--pink); border-color: var(--pink); box-shadow: 0 0 14px rgba(244, 114, 182, 0.5); }
+.modal-close:hover { color: var(--pink); border-color: var(--pink); box-shadow: 0 0 14px rgba(232, 138, 176, 0.5); }
 
 .modal-content { display: flex; flex-direction: column; }
 .modal-head {
@@ -906,7 +1249,7 @@ body.modal-open { overflow: hidden; }
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 1px;
-  color: var(--cyan);
+  color: var(--gold);
 }
 
 .modal-desc {
@@ -927,13 +1270,13 @@ body.modal-open { overflow: hidden; }
   border-radius: 10px;
   border: 1px solid var(--border);
   display: block;
-  background: #0b0d1c;
+  background: var(--indigo);
 }
 .modal-shot-wrap::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(115deg, transparent 32%, rgba(255, 255, 255, 0.14) 46%, rgba(34, 211, 238, 0.2) 50%, rgba(255, 255, 255, 0.14) 54%, transparent 68%);
+  background: linear-gradient(115deg, transparent 32%, rgba(255, 255, 255, 0.14) 46%, rgba(242, 200, 121, 0.2) 50%, rgba(255, 255, 255, 0.14) 54%, transparent 68%);
   background-size: 240% 100%;
   animation: shimmer 3.2s ease-in-out infinite;
   pointer-events: none;
@@ -985,7 +1328,12 @@ body.modal-open { overflow: hidden; }
 /* ============================================================
    响应式
    ============================================================ */
-.hero, .profile, main { scroll-margin-top: 72px; }
+.hero, .profile, main, .game { scroll-margin-top: 76px; }
+
+/* 移动端 / 触屏设备：隐藏弧形导航盘（topbar 横向链接兜底） */
+@media (max-width: 768px), (pointer: coarse) {
+  .radial-nav { display: none; }
+}
 
 @media (max-width: 640px) {
   .topbar .brand { display: none; }
@@ -994,7 +1342,8 @@ body.modal-open { overflow: hidden; }
   .social-link { width: 30px; height: 30px; }
   .lang-toggle { font-size: 12px; padding: 5px 10px; }
   .top-actions { gap: 6px; margin-left: auto; }
-  .hero { padding: 52px 0 28px; }
+  .hero { padding: 56px 0 30px; }
+  .game-panel { padding: 30px 22px 32px; }
   .profile { flex-direction: column; text-align: center; }
   .section { padding: 28px 0 52px; }
   .grid { grid-template-columns: 1fr; gap: 16px; }
@@ -1011,7 +1360,8 @@ body.modal-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 
-  .aurora-1, .aurora-2, .aurora-3, .card-icon,
+  .glow-1, .glow-2, .glow-3, .card-icon, .star-css,
+  .magpie-bridge .bird, .radial-sweep, .radial-hub,
   .intro-icon::after, .intro-shot-wrap::after, .intro-end-sub::after,
   .modal-shot-wrap::after,
   .card-ripple {

@@ -76,8 +76,8 @@
         )
         .join("") +
       `<div class="intro-scene intro-scene-end" data-scene="${products.length}">
-        <div class="intro-end-title">${esc(curLang() === "en" ? "YYRMM's Software Library" : "YYRMM 的软件库")}</div>
-        <div class="intro-end-sub">${esc(curLang() === "en" ? "Explore my software" : "欢迎探索我的软件作品")}</div>
+        <div class="intro-end-title">${esc(curLang() === "en" ? "Starlit Night · Love Lasts" : "星河为证 · 爱意长存")}</div>
+        <div class="intro-end-sub">${esc(curLang() === "en" ? "Two hearts, one sky — welcome" : "金风玉露一相逢，便胜却人间无数 — 欢迎探索")}</div>
       </div>`;
     dotsEl.innerHTML = products
       .map((_, i) => `<span class="intro-dot" data-dot="${i}"></span>`)
