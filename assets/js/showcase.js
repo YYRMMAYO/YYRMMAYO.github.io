@@ -62,9 +62,11 @@
             </div>
           </div>
           <div class="intro-body">
-            <div class="intro-shot-wrap">
-              <img class="intro-shot" src="${p.shot}" alt="${esc(p.name[L])}" />
-            </div>
+            ${
+              p.shot
+                ? `<div class="intro-shot-wrap"><img class="intro-shot" src="${p.shot}" alt="${esc(p.name[L])}" /></div>`
+                : `<div class="intro-shot-wrap intro-shot-fallback" style="background:linear-gradient(135deg, ${p.accent}, ${p.accent}99)"><span class="intro-shot-fallback-icon">${p.icon}</span></div>`
+            }
             <ul class="intro-features">
               ${p.features.items
                 .slice(0, 4)

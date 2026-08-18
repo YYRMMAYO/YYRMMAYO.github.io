@@ -15,6 +15,7 @@
 
 | 软件 | 简介 | 技术栈 | 仓库 |
 |---|---|---|---|
+| **第101种理由** | 2.5D 恋爱叙事游戏：9 段爱情故事改编剧情，AI 生成立绘，点击推进 + 双选项互动，离线可玩，支持安卓 / Windows / 浏览器 | HTML/CSS/JS（数据驱动） | [github.com/YYRMMAYO/love101](https://github.com/YYRMMAYO/love101) |
 | **AIStudioHub** | AI 制作资源整合中心：154 个主流 AI 平台与开源工具，离线中文教程，AI Agent / Skill 专区 | C# / WPF (.NET 8) | [github.com/YYRMMAYO/AIStudioHub](https://github.com/YYRMMAYO/AIStudioHub) |
 | **GuideCraft** | 引导式 AI 助手：多轮对话把想法变成可运行的 Python 自动化脚本，支持主流大模型 | C# / WPF (.NET 10) | [github.com/YYRMMAYO/GuideCraft](https://github.com/YYRMMAYO/GuideCraft) |
 | **OBS 排障助手 (Windows)** | OBS 直播排障工具：85 条离线知识库、智能诊断、OBS 控制台、全局热键、一键搭建直播间 | C# / WPF (.NET 10) | [github.com/YYRMMAYO/OBS_Helper](https://github.com/YYRMMAYO/OBS_Helper) |

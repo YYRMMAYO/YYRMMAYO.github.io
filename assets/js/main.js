@@ -51,6 +51,32 @@ const I18N = {
  * -------------------------------------------------------- */
 const softwareList = [
   {
+    key: "love101",
+    icon: "💘",
+    name: { zh: "第101种理由", en: "Love 101" },
+    desc: {
+      zh: "数据驱动的 2.5D 恋爱叙事游戏：剧情改编自 9 段爱情故事，AI 生成立绘，部分场景以 CSS 3D 做半立体叙述。点击推进剧情、双选项互动、进度自动保存，完全离线可玩，支持安卓 / Windows / 浏览器。",
+      en: "A data-driven 2.5D romance narrative game adapted from 9 love stories, featuring AI-generated art and CSS 3D semi-stereoscopic scenes. Tap to advance the story, choose between two options, auto-save your progress — fully offline, playable on Android / Windows / browser.",
+    },
+    features: {
+      tagline: { zh: "一个关于爱的 2.5D 叙事游戏", en: "A 2.5D narrative game about love" },
+      items: [
+        { zh: "9 段爱情故事改编剧情", en: "9 adapted love stories" },
+        { zh: "AI 生成立绘 + CSS 3D 半立体场景", en: "AI art + CSS 3D semi-stereoscopic scenes" },
+        { zh: "点击推进 · 双选项互动", en: "Tap to advance, two-choice interactions" },
+        { zh: "进度自动保存，完全离线可玩", en: "Auto-saved progress, fully offline" },
+        { zh: "支持安卓 / Windows / 浏览器", en: "Playable on Android / Windows / browser" },
+      ],
+    },
+    tags: ["Windows", "Android", "Web", { zh: "叙事游戏", en: "Narrative Game" }],
+    links: {
+      download: "https://github.com/YYRMMAYO/love101/releases/tag/v1.0.0",
+      netdisk: { url: "https://wwbpq.lanzouu.com/b01d75y5fc", pwd: "00" },
+      website: "https://github.com/YYRMMAYO/love101",
+    },
+    accent: "#e11d48",
+  },
+  {
     key: "aistudio",
     icon: "🎨",
     name: { zh: "AIStudioHub", en: "AIStudioHub" },
