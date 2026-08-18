@@ -16,23 +16,15 @@ const PROFILE = {
 const I18N = {
   brand:         { zh: "YYRMM的软件库", en: "YYRMM's Software Library" },
   heroTitle:     { zh: "YYRMM 的软件库", en: "YYRMM's Software Library" },
-  heroSub:       { zh: "金风玉露一相逢，便胜却人间无数。", en: "One meeting of golden wind and jade dew — outshines countless worldly nights." },
-  heroKicker:    { zh: "🎑 星河为证 · Starlit", en: "🎑 Starlit Night · 星河为证" },
+  heroSub:       { zh: "这里收录了我开发的软件，欢迎试用与反馈。", en: "A collection of software I've built. Try them out and share your feedback." },
   sectionTitle:  { zh: "软件列表", en: "Software List" },
   sectionDesc:   { zh: "每款软件提供 GitHub 与网盘两种下载方式，点击卡片上的按钮即可获取。", en: "Each app offers both GitHub and cloud-drive downloads — use the buttons on each card." },
   emptyState:    { zh: "暂无可展示的软件，敬请期待。", en: "No software to show yet. Stay tuned!" },
   footerName:    { zh: "YYRMM的软件库", en: "YYRMM's Software Library" },
   footerHost:    { zh: "托管于 GitHub Pages", en: "Hosted on GitHub Pages" },
   navHome:       { zh: "首页", en: "Home" },
-  navGame:       { zh: "游戏体验", en: "The Game" },
   navProfile:    { zh: "关于我", en: "About" },
   navSoftware:   { zh: "软件列表", en: "Software" },
-  btnPlay:       { zh: "体验游戏 ▶", en: "Play the Game ▶" },
-  btnBrowse:     { zh: "浏览软件", en: "Browse Software" },
-  qixiBadge:     { zh: "七夕限定 · QIXI", en: "QIXI SPECIAL" },
-  gameFullTitle: { zh: "第101种理由 · 一个关于爱的叙事游戏", en: "The 101st Reason · A Narrative Game About Love" },
-  gameDesc:      { zh: "一段关于爱的互动叙事：在浩瀚星河中，为 TA 找到第 101 种理由。全配音、多线剧情，与你一同写下这个七夕的答案。", en: "An interactive story about love: beneath the vast starry river, find the 101st reason for TA. Fully voiced, multi-branch — write this Qixi's answer together." },
-  gameNote:      { zh: "将跳转到独立游戏页面（约 70MB，请耐心加载）", en: "Opens the standalone game page (~70MB, please be patient)" },
   btnGithub:     { zh: "GitHub 下载", en: "GitHub Download" },
   btnNetdisk:    { zh: "网盘下载", en: "Netdisk Download" },
   pwdLabel:      { zh: "密码", en: "Password" },
@@ -43,12 +35,6 @@ const I18N = {
   modalAria:     { zh: "软件详情", en: "Software details" },
   detailIntro:   { zh: "软件介绍", en: "About this software" },
   closeAria:     { zh: "关闭", en: "Close" },
-};
-
-/* ---------- 2.5 游戏入口信息 ---------- */
-const GAME = {
-  url: "games/love101.html",
-  size: "~70MB",
 };
 
 /* ---------- 3. 软件数据（已从 GitHub 仓库整理，SC01 已按要求排除） ----------

@@ -3,20 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="YYRMM 的软件库 — 七夕 · 星河主题个人软件作品集，含《第101种理由》叙事游戏" />
-  <meta name="theme-color" content="#07060d" />
+  <meta name="description" content="My software showcase — 我的软件作品集" />
   <title>YYRMM的软件库</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%A8%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <!-- ===== 背景层：夜空 · 光晕 · 银河 · 星光画布 · 暗角 ===== -->
+  <!-- ===== 背景层：极光 + 网格 + 粒子网络 + 暗角 ===== -->
   <div class="bg-scene" aria-hidden="true">
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
-    <div class="glow glow-3"></div>
-    <div class="galaxy-band"></div>
-    <div class="star-css"></div>
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+    <div class="aurora aurora-3"></div>
+    <div class="bg-grid"></div>
     <canvas id="bg-canvas"></canvas>
     <div class="bg-vignette"></div>
   </div>
@@ -25,16 +23,15 @@
   <!-- ===== 顶部导航栏 ===== -->
   <header class="topbar">
     <div class="container topbar-inner">
-      <a class="brand" href="#home" data-i18n="brand">YYRMM的软件库</a>
+      <a class="brand" href="#home" data-i18n="brand">我的软件</a>
       <nav class="top-nav" aria-label="站点导航">
         <a class="top-link" href="#home" data-i18n="navHome">首页</a>
-        <a class="top-link" href="#game" data-i18n="navGame">游戏体验</a>
         <a class="top-link" href="#profile" data-i18n="navProfile">关于我</a>
         <a class="top-link" href="#software" data-i18n="navSoftware">软件列表</a>
       </nav>
       <div class="top-actions">
         <a class="social-link" href="https://space.bilibili.com/539873580?spm_id_from=333.1007.0.0" target="_blank" rel="noopener" aria-label="Bilibili">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.276 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373Z"/></svg>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373Z"/></svg>
         </a>
         <a class="social-link" href="https://github.com/YYRMMAYO?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
@@ -44,48 +41,18 @@
     </div>
   </header>
 
-  <!-- ===== 右侧弧形导航盘（导航项由 nav.js 生成） ===== -->
-  <nav class="radial-nav" id="radial-nav" aria-label="区块导航">
-    <div class="radial-sweep" aria-hidden="true"></div>
-    <div class="radial-track" aria-hidden="true"></div>
-    <div class="radial-hub" aria-hidden="true">🌙</div>
-    <div class="radial-items"></div>
-  </nav>
-
   <!-- ===== 内容区 ===== -->
   <div class="page">
-    <!-- S1 七夕主视觉 -->
+    <!-- Hero -->
     <section class="hero" id="home">
       <div class="container">
-        <p class="hero-kicker" data-reveal data-i18n="heroKicker">🎑 星河为证 · Starlit</p>
-        <h1 class="hero-title" data-reveal data-reveal-delay="1" data-i18n="heroTitle">YYRMM 的软件库</h1>
-        <p class="hero-sub" data-reveal data-reveal-delay="2" data-i18n="heroSub">金风玉露一相逢，便胜却人间无数。</p>
-        <div class="hero-cta" data-reveal data-reveal-delay="3">
-          <a class="btn btn-play" href="games/love101.html" data-i18n="btnPlay">体验游戏 ▶</a>
-          <button id="intro-replay" class="btn btn-ghost" type="button" data-i18n="btnIntro">▶ 观看开场动画</button>
-          <a class="btn btn-ghost" href="#software" data-i18n="btnBrowse">浏览软件</a>
-        </div>
-        <div class="magpie-bridge" aria-hidden="true">
-          <span class="bird">🐦</span>
-          <span class="bird">🕊️</span>
-          <span class="bird">🐦</span>
-          <span class="bird">🕊️</span>
-        </div>
+        <h1 class="hero-title" data-reveal data-i18n="heroTitle">我的软件作品</h1>
+        <p class="hero-sub" data-reveal data-reveal-delay="1" data-i18n="heroSub">这里收录了我开发的软件，欢迎试用与反馈。</p>
+        <button id="intro-replay" class="btn btn-primary intro-replay" data-reveal data-reveal-delay="2" type="button" data-i18n="btnIntro">▶ 观看开场动画</button>
       </div>
     </section>
 
-    <!-- S2 游戏体验专区 -->
-    <section class="game container" id="game" data-reveal>
-      <div class="game-panel">
-        <span class="game-badge" data-i18n="qixiBadge">七夕限定</span>
-        <h2 class="game-title" data-i18n="gameFullTitle">第101种理由 · 一个关于爱的叙事游戏</h2>
-        <p class="game-desc" data-i18n="gameDesc">一段关于爱的互动叙事：在浩瀚星河中，为 TA 找到第 101 种理由。配音、插画与多线剧情尽在其中。</p>
-        <a class="btn btn-play btn-play-lg" href="games/love101.html" data-i18n="btnPlay">进入游戏 ▶</a>
-        <p class="game-note" data-i18n="gameNote">将跳转到独立游戏页面（约 70MB，请耐心加载）</p>
-      </div>
-    </section>
-
-    <!-- S3 个人介绍 -->
+    <!-- 个人介绍 -->
     <section class="profile container" id="profile" data-reveal>
       <img id="profile-avatar" class="profile-avatar" src="assets/images/avatar.png" alt="avatar" />
       <div class="profile-info">
@@ -94,11 +61,11 @@
       </div>
     </section>
 
-    <!-- S4 软件展示区 -->
+    <!-- 软件展示区 -->
     <main class="container" id="software">
       <section class="section">
         <h2 class="section-title" data-reveal data-i18n="sectionTitle">软件列表</h2>
-        <p class="section-desc" data-reveal data-reveal-delay="1" data-i18n="sectionDesc">每款软件提供 GitHub 与网盘两种下载方式，点击卡片上的按钮即可获取。</p>
+        <p class="section-desc" data-reveal data-reveal-delay="1" data-i18n="sectionDesc">点击卡片上的按钮即可下载或访问项目主页。</p>
         <div id="software-grid" class="grid">
           <!-- 卡片由 assets/js/main.js 根据数据动态生成 -->
         </div>
@@ -109,7 +76,7 @@
     <!-- 页脚 -->
     <footer class="site-footer">
       <div class="container">
-        <p>&copy; <span id="year"></span> <span data-i18n="footerName">YYRMM的软件库</span> · <span data-i18n="footerHost">托管于 GitHub Pages</span></p>
+        <p>&copy; <span id="year"></span> <span data-i18n="footerName">我的软件</span> · <span data-i18n="footerHost">托管于 GitHub Pages</span></p>
       </div>
     </footer>
   </div>
@@ -136,7 +103,6 @@
   </div>
 
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/nav.js"></script>
   <script src="assets/js/showcase.js"></script>
   <script src="assets/js/fx.js"></script>
 </body>
