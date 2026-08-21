@@ -18,7 +18,7 @@ const I18N = {
   heroTitle:     { zh: "YYRMM 的软件库", en: "YYRMM's Software Library" },
   heroSub:       { zh: "这里收录了我开发的软件，欢迎试用与反馈。", en: "A collection of software I've built. Try them out and share your feedback." },
   sectionTitle:  { zh: "软件列表", en: "Software List" },
-  sectionDesc:   { zh: "每款软件提供 GitHub 与网盘两种下载方式，点击卡片上的按钮即可获取。", en: "Each app offers both GitHub and cloud-drive downloads — use the buttons on each card." },
+  sectionDesc:   { zh: "点击「详细介绍」可在新页面查看完整介绍；卡片按钮直达下载、在线游玩或项目主页。", en: "Click \"Details\" to open the full introduction in a new page; buttons link to downloads, play or the repo." },
   emptyState:    { zh: "暂无可展示的软件，敬请期待。", en: "No software to show yet. Stay tuned!" },
   footerName:    { zh: "YYRMM的软件库", en: "YYRMM's Software Library" },
   footerHost:    { zh: "托管于 GitHub Pages", en: "Hosted on GitHub Pages" },
@@ -27,14 +27,12 @@ const I18N = {
   navSoftware:   { zh: "软件列表", en: "Software" },
   btnGithub:     { zh: "GitHub 下载", en: "GitHub Download" },
   btnNetdisk:    { zh: "网盘下载", en: "Netdisk Download" },
+  btnPlay:       { zh: "▶ 在线游玩", en: "▶ Play Online" },
   pwdLabel:      { zh: "密码", en: "Password" },
   btnWebsite:    { zh: "主页", en: "Website" },
-  btnShow:       { zh: "查看详情", en: "Details" },
+  btnShow:       { zh: "详细介绍", en: "Details" },
   btnIntro:      { zh: "▶ 观看开场动画", en: "▶ Watch Intro" },
   introSkip:     { zh: "跳过 ▸", en: "Skip ▸" },
-  modalAria:     { zh: "软件详情", en: "Software details" },
-  detailIntro:   { zh: "软件介绍", en: "About this software" },
-  closeAria:     { zh: "关闭", en: "Close" },
 };
 
 /* ---------- 3. 软件数据（已从 GitHub 仓库整理，SC01 已按要求排除） ----------
@@ -69,7 +67,9 @@ const softwareList = [
       ],
     },
     tags: ["Windows", "Android", "Web", { zh: "叙事游戏", en: "Narrative Game" }],
+    intro: false, // 不出现在开场动画中（仅作普通软件卡片展示）
     links: {
+      play: "games/love101.html",
       download: "https://github.com/YYRMMAYO/love101/releases/tag/v1.0.0",
       netdisk: { url: "https://wwbpq.lanzouu.com/b01d75y5fc", pwd: "00" },
       website: "https://github.com/YYRMMAYO/love101",
@@ -81,8 +81,8 @@ const softwareList = [
     icon: "🎨",
     name: { zh: "AIStudioHub", en: "AIStudioHub" },
     desc: {
-      zh: "AI 制作资源整合中心：汇集 154 个主流 AI 平台与开源工具（视频制作、图像生成、音乐音频、网页制作、文本大模型），内置离线中文教程与 AI Agent / Skill 专区，支持模糊搜索、收藏与个性化主题。",
-      en: "An AI production resource hub: 154 mainstream AI platforms & open-source tools (video, image, music, web, LLM), offline Chinese tutorials, and an AI Agent / Skills section — with fuzzy search, favorites and themes.",
+      zh: "AI 制作资源整合中心：汇集 181 个主流 AI 平台与开源工具（视频制作、图像生成、音乐音频、网页制作、文本大模型），内置离线中文教程与 AI Agent / Skill 专区，支持模糊搜索、收藏与个性化主题。",
+      en: "An AI production resource hub: 181 mainstream AI platforms & open-source tools (video, image, music, web, LLM), offline Chinese tutorials, and an AI Agent / Skills section — with fuzzy search, favorites and themes.",
     },
     shot: "assets/images/showcase/aistudio.jpg",
     features: {
@@ -124,8 +124,8 @@ const softwareList = [
     icon: "🎥",
     name: { zh: "OBS 排障助手（Windows）", en: "OBS Helper (Windows)" },
     desc: {
-      zh: "面向直播新手的 OBS Studio 排障工具：内置 85 条问题知识库，支持智能诊断、日志分析、OBS 远程控制台、全局热键、场景自动切换与直播间一键搭建，纯离线可用。",
-      en: "An OBS Studio troubleshooting tool for livestreaming beginners: 85-entry offline knowledge base, smart diagnosis, log analysis, OBS remote console, global hotkeys, auto scene switching and one-click livestream setup.",
+      zh: "面向直播新手的 OBS Studio 排障工具：内置 110 条问题知识库，支持智能诊断、日志分析、OBS 远程控制台、全局热键、场景自动切换与直播间一键搭建，纯离线可用。",
+      en: "An OBS Studio troubleshooting tool for livestreaming beginners: 110-entry offline knowledge base, smart diagnosis, log analysis, OBS remote console, global hotkeys, auto scene switching and one-click livestream setup.",
     },
     shot: "assets/images/showcase/obs.jpg",
     features: {
@@ -212,6 +212,9 @@ function renderTags(tags) {
 }
 
 function renderLinks(links) {
+  const play = links.play
+    ? `<a class="btn btn-primary" href="${links.play}" target="_blank" rel="noopener">${t("btnPlay")}</a>`
+    : "";
   const github = links.download
     ? `<a class="btn btn-primary" href="${links.download}" target="_blank" rel="noopener">${t("btnGithub")}</a>`
     : "";
@@ -225,7 +228,7 @@ function renderLinks(links) {
   const website = links.website
     ? `<a class="btn btn-ghost" href="${links.website}" target="_blank" rel="noopener">${t("btnWebsite")}</a>`
     : "";
-  return github + netdisk + website;
+  return play + github + netdisk + website;
 }
 
 function renderCards() {
@@ -241,12 +244,12 @@ function renderCards() {
     .map(
       (s) => `
       <article class="card" data-reveal style="--card-accent:${s.accent}">
-        <div class="card-thumb"><span class="card-icon">${s.icon}</span></div>
+        <div class="card-thumb" data-detail="${s.key}" title="${t("btnShow")}"><span class="card-icon">${s.icon}</span></div>
         <div class="card-body">
-          <h3 class="card-title">${s.name[lang]}</h3>
+          <h3 class="card-title" data-detail="${s.key}">${s.name[lang]}</h3>
           <p class="card-desc">${s.desc[lang]}</p>
           <div class="card-tags">${renderTags(s.tags)}</div>
-          <div class="card-links">${renderLinks(s.links)}<button class="btn btn-show" type="button" data-feature-key="${s.key}">${t("btnShow")}</button></div>
+          <div class="card-links">${renderLinks(s.links)}<a class="btn btn-show" href="detail/${s.key}.html" target="_blank" rel="noopener">${t("btnShow")}</a></div>
         </div>
       </article>`
     )
@@ -270,10 +273,6 @@ function applyI18n() {
   btn.textContent = lang === "zh" ? "EN" : "中文";
   btn.setAttribute("aria-label", lang === "zh" ? "切换语言" : "Switch language");
   renderCards();
-  // 若功能弹窗正开着，跟随语言刷新内容
-  if (window.Showcase && typeof window.Showcase.refreshOpen === "function") {
-    window.Showcase.refreshOpen();
-  }
 }
 
 document.getElementById("lang-toggle").addEventListener("click", () => {

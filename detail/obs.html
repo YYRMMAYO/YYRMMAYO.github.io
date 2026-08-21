@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="OBS 排障助手（Windows）— 面向直播新手的 OBS 排障工具详细介绍" />
+  <title>OBS 排障助手（Windows） — YYRMM的软件库</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%A8%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../assets/css/detail.css" />
+</head>
+<body>
+  <div class="bg-scene" aria-hidden="true">
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+    <div class="aurora aurora-3"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-vignette"></div>
+  </div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="../index.html" data-lang="zh">YYRMM的软件库</a>
+      <a class="brand" href="../index.html" data-lang="en">YYRMM's Software Library</a>
+      <nav class="top-nav">
+        <a class="top-link" href="../index.html#home" data-lang="zh">首页</a>
+        <a class="top-link" href="../index.html#home" data-lang="en">Home</a>
+        <a class="top-link" href="../index.html#software" data-lang="zh">软件列表</a>
+        <a class="top-link" href="../index.html#software" data-lang="en">Software</a>
+      </nav>
+      <div class="top-actions">
+        <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page container">
+    <!-- ===== Hero ===== -->
+    <section class="detail-hero" data-reveal>
+      <div class="detail-icon" style="--accent:#dc2626">🎥</div>
+      <div class="detail-hero-text">
+        <h1 class="detail-name" data-lang="zh">OBS 排障助手（Windows）</h1>
+        <h1 class="detail-name" data-lang="en">OBS Helper (Windows)</h1>
+        <p class="detail-tagline" data-lang="zh">直播排障一步到位</p>
+        <p class="detail-tagline" data-lang="en">Livestream troubleshooting, solved</p>
+        <div class="detail-meta">
+          <span class="chip">Windows 10/11</span>
+          <span class="chip" data-lang="zh">OBS 排障</span>
+          <span class="chip" data-lang="en">OBS Troubleshooting</span>
+          <span class="chip" data-lang="zh">免费</span>
+          <span class="chip" data-lang="en">Free</span>
+          <span class="chip" data-lang="zh">纯离线</span>
+          <span class="chip" data-lang="en">Offline-first</span>
+          <span class="chip">.NET 10</span>
+        </div>
+        <div class="detail-actions">
+          <a class="btn btn-primary" href="https://github.com/YYRMMAYO/OBS_Helper" target="_blank" rel="noopener">
+            <span data-lang="zh">GitHub 下载</span><span data-lang="en">GitHub Download</span>
+          </a>
+          <a class="btn btn-cyan" href="https://wwbpq.lanzouu.com/b01d7578be" target="_blank" rel="noopener">
+            <span data-lang="zh">网盘下载（密码 YYKWY）</span><span data-lang="en">Netdisk (pwd YYKWY)</span>
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/YYRMMAYO/OBS_Helper" target="_blank" rel="noopener">
+            <span data-lang="zh">GitHub 仓库</span><span data-lang="en">Repository</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 软件介绍 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">软件介绍</h2>
+      <h2 class="detail-title" data-lang="en">About</h2>
+      <div class="detail-text">
+        <div data-lang="zh">
+          <p>OBS 排障助手是一款面向直播新手的 <strong>OBS Studio 排障工具</strong>，<strong>纯离线可用</strong>：110 条问题知识库、排障指引与日志分析规则全部内嵌在程序里，不联网也能查。连上 OBS 之后，还能远程控制场景、录制与推流，并做一键体检。</p>
+          <p>这是原 Blazor WebAssembly + WebView2 版本的<strong>原生 WPF 重构</strong>，功能一比一对齐，但去掉了浏览器内核这一层：冷启动直接起窗口、自包含单目录发布、无需安装 WebView2 与 .NET 运行时。V2.1 起支持<strong>增量更新与知识库独立更新</strong>：更新只下载变更文件（2.0 → 2.1.1 增量包仅 1.27MB），问题库可脱离应用单独升级。</p>
+        </div>
+        <div data-lang="en">
+          <p>OBS Helper is a <strong>troubleshooting tool for OBS Studio</strong> designed for livestreaming beginners. It works <strong>fully offline</strong>: a 110-entry knowledge base, troubleshooting guides and log-analysis rules are all embedded. Once connected to OBS, you can remotely control scenes, recording and streaming, and run a one-click health check.</p>
+          <p>This is a <strong>native WPF rewrite</strong> of the former Blazor WebAssembly + WebView2 version — features are aligned 1:1, but the browser-kernel layer is gone: cold start opens the window directly, self-contained single-folder publishing, no WebView2 or .NET runtime needed. Since V2.1 it supports <strong>incremental updates and standalone knowledge-base updates</strong>: only changed files are downloaded (the 2.0 → 2.1.1 delta pack is just 1.27MB).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 功能特性 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">功能特性</h2>
+      <h2 class="detail-title" data-lang="en">Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card" data-lang="zh"><strong>110 条问题库，完全离线</strong>10 个分类：现象 / 成因 / 分步解决 / 小贴士 / 相关问题，步骤可勾选</div>
+        <div class="feature-card" data-lang="en"><strong>110-entry offline KB</strong>10 categories: symptoms / causes / steps / tips / related</div>
+        <div class="feature-card" data-lang="zh"><strong>免费 AI 诊断，开箱即用</strong>智谱 + Pollinations 双通道，本地限频，失败自动回退离线引擎</div>
+        <div class="feature-card" data-lang="en"><strong>Free AI diagnosis</strong>Zhipu + Pollinations channels, rate-limited, offline fallback</div>
+        <div class="feature-card" data-lang="zh"><strong>远程控制 OBS</strong>场景切换、元素显隐、音频、录制 / 推流 / 虚拟摄像头、定时停止</div>
+        <div class="feature-card" data-lang="en"><strong>Remote OBS control</strong>Scenes, visibility, audio, record / stream / vcam, timers</div>
+        <div class="feature-card" data-lang="zh"><strong>全局热键</strong>Ctrl+Alt+R/S/C/M/O，全部可在设置里改键或停用</div>
+        <div class="feature-card" data-lang="en"><strong>Global hotkeys</strong>Ctrl+Alt+R/S/C/M/O, remappable or disabled</div>
+        <div class="feature-card" data-lang="zh"><strong>深度日志分析</strong>离线解析：23 条规则 + 3 项量化比值，分析前先脱敏</div>
+        <div class="feature-card" data-lang="en"><strong>Deep log analysis</strong>23 rules + 3 ratios offline, sanitized first</div>
+        <div class="feature-card" data-lang="zh"><strong>场景模板一键落地</strong>6 套内置直播间模板，连上 OBS 一键生成场景与来源</div>
+        <div class="feature-card" data-lang="en"><strong>One-click scene templates</strong>6 built-in templates, instant scenes &amp; sources</div>
+        <div class="feature-card" data-lang="zh"><strong>场景自动切换 + 系统监控</strong>按前台窗口自动切场景；CPU / 内存 / 网络 / 磁盘实时曲线</div>
+        <div class="feature-card" data-lang="en"><strong>Auto scene switching + monitor</strong>Switch by window title; live CPU / RAM / net / disk curves</div>
+        <div class="feature-card" data-lang="zh"><strong>增量更新，更新更轻</strong>只下载变更文件，逐文件 SHA-256 校验，失败自动回退整包</div>
+        <div class="feature-card" data-lang="en"><strong>Incremental updates</strong>Download only changed files, SHA-256 verified, full-pack fallback</div>
+        <div class="feature-card" data-lang="zh"><strong>OBS 配置管理</strong>备份 / 导出（默认脱敏）/ 导入（覆盖或合并，自动预备份）/ 重置</div>
+        <div class="feature-card" data-lang="en"><strong>OBS config management</strong>Backup / export (sanitized) / import (auto-backup) / reset</div>
+        <div class="feature-card" data-lang="zh"><strong>隐私优先</strong>凭据双层加密（AES-256-GCM + DPAPI）；只有主动发起诊断才联网</div>
+        <div class="feature-card" data-lang="en"><strong>Privacy-first</strong>Double-layer encryption (AES-256-GCM + DPAPI); online only on demand</div>
+        <div class="feature-card" data-lang="zh"><strong>零第三方依赖</strong>原生 WPF + .NET 10，无 NuGet、无 WebView2，自包含单目录秒开</div>
+        <div class="feature-card" data-lang="en"><strong>Zero dependencies</strong>Native WPF + .NET 10, no NuGet / WebView2, instant startup</div>
+      </div>
+    </section>
+
+    <!-- ===== README 亮点 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">项目档案</h2>
+      <h2 class="detail-title" data-lang="en">Project Details</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-label">Diagnosis</div>
+          <div class="info-value" data-lang="zh">本地规则引擎（免费离线）/ 免费 AI（智谱 10 次/天 + Pollinations 20 次/天）/ 云端大模型（自带 Key）</div>
+          <div class="info-value" data-lang="en">Local rule engine (free/offline) / free AI (Zhipu 10/day + Pollinations 20/day) / cloud LLM (own key)</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Privacy</div>
+          <div class="info-value" data-lang="zh">偏好存 prefs.json（无凭据）；密码与 Key 双层加密存 secrets.dat</div>
+          <div class="info-value" data-lang="en">Prefs in prefs.json (no credentials); secrets double-encrypted in secrets.dat</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Stack</div>
+          <div class="info-value" data-lang="zh">原生 WPF + .NET 10，零 NuGet 依赖，obs-websocket 协议纯手写</div>
+          <div class="info-value" data-lang="en">Native WPF + .NET 10, zero NuGet deps, hand-written obs-websocket</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Update</div>
+          <div class="info-value" data-lang="zh">GitHub Releases + 蓝奏云镜像（提取码 YYKWY）；增量包低至 1.27MB</div>
+          <div class="info-value" data-lang="en">GitHub Releases + Lanzou mirror (code YYKWY); delta as low as 1.27MB</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">License</div>
+          <div class="info-value">MIT</div>
+        </div>
+      </div>
+    </section>
+
+    <a class="back-link" href="../index.html#software" data-lang="zh">← 返回软件列表</a>
+    <a class="back-link" href="../index.html#software" data-lang="en">← Back to software list</a>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p data-lang="zh">© 2026 YYRMM的软件库 · 开源协议见 <a href="https://github.com/YYRMMAYO/OBS_Helper" target="_blank" rel="noopener">OBS_Helper 仓库</a></p>
+      <p data-lang="en">© 2026 YYRMM's Software Library · License: <a href="https://github.com/YYRMMAYO/OBS_Helper" target="_blank" rel="noopener">OBS_Helper repo</a></p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/detail.js"></script>
+</body>
+</html>

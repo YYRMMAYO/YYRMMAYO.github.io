@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GuideCraft — 引导式 AI 助手详细介绍" />
+  <title>GuideCraft — YYRMM的软件库</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%A8%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../assets/css/detail.css" />
+</head>
+<body>
+  <div class="bg-scene" aria-hidden="true">
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+    <div class="aurora aurora-3"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-vignette"></div>
+  </div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="../index.html" data-lang="zh">YYRMM的软件库</a>
+      <a class="brand" href="../index.html" data-lang="en">YYRMM's Software Library</a>
+      <nav class="top-nav">
+        <a class="top-link" href="../index.html#home" data-lang="zh">首页</a>
+        <a class="top-link" href="../index.html#home" data-lang="en">Home</a>
+        <a class="top-link" href="../index.html#software" data-lang="zh">软件列表</a>
+        <a class="top-link" href="../index.html#software" data-lang="en">Software</a>
+      </nav>
+      <div class="top-actions">
+        <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page container">
+    <!-- ===== Hero ===== -->
+    <section class="detail-hero" data-reveal>
+      <div class="detail-icon" style="--accent:#0d9488">🤖</div>
+      <div class="detail-hero-text">
+        <h1 class="detail-name">GuideCraft</h1>
+        <p class="detail-tagline" data-lang="zh">引导式 AI 助手 · 把想法变成可运行的 Python 脚本</p>
+        <p class="detail-tagline" data-lang="en">Guided AI assistant · turn ideas into runnable Python scripts</p>
+        <div class="detail-meta">
+          <span class="chip">Windows</span>
+          <span class="chip" data-lang="zh">AI 助手</span>
+          <span class="chip" data-lang="en">AI Assistant</span>
+          <span class="chip" data-lang="zh">免费</span>
+          <span class="chip" data-lang="en">Free</span>
+          <span class="chip">.NET 10</span>
+        </div>
+        <div class="detail-actions">
+          <a class="btn btn-primary" href="https://github.com/YYRMMAYO/GuideCraft" target="_blank" rel="noopener">
+            <span data-lang="zh">GitHub 下载</span><span data-lang="en">GitHub Download</span>
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/YYRMMAYO/GuideCraft" target="_blank" rel="noopener">
+            <span data-lang="zh">GitHub 仓库</span><span data-lang="en">Repository</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 软件介绍 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">软件介绍</h2>
+      <h2 class="detail-title" data-lang="en">About</h2>
+      <div class="detail-text">
+        <div data-lang="zh">
+          <p>GuideCraft 是一款<strong>引导式 AI 助手</strong>：像资深技术顾问一样，通过多轮对话帮你把模糊想法变成<strong>可运行的 Python 自动化脚本</strong>。不会编程也能做自动化——产品、运营、创业者，把想法说出来，剩下的交给 GuideCraft。</p>
+          <p>AI 主动提问，围绕 <strong>8 个需求维度</strong>逐步澄清（每轮最多 2 问），对话顶部实时显示收集进度；信息齐备后自动输出<strong>结构化中文需求文档</strong>与单文件 Python 脚本（含中文注释、main 入口、依赖清单）。生成代码可<strong>一键沙盒试运行</strong>（AST 预检 + 子进程隔离 + 超时保护），支持「加上错误处理」这类自然语言迭代，AI 会自动更新代码。</p>
+          <p>会话与产物保存在本机 SQLite，重启可恢复；API Key 经 Windows DPAPI 加密，数据链 <strong>AES-256-GCM 字段级加密</strong>。支持千问 / DeepSeek / OpenAI / Claude / Gemini / GLM / Kimi / MiniMax / 混元 / Grok / Mistral 等主流模型及自定义 OpenAI 兼容端点。</p>
+        </div>
+        <div data-lang="en">
+          <p>GuideCraft is a <strong>guided AI assistant</strong> that, like a senior technical consultant, turns vague ideas into <strong>runnable Python automation scripts</strong> through multi-turn conversation. No coding skills required — product people, operators and founders describe their idea, and GuideCraft handles the rest.</p>
+          <p>The AI proactively asks questions to clarify <strong>8 requirement dimensions</strong> (max 2 questions per round), showing collection progress at the top of the chat. Once enough info is gathered, it outputs a <strong>structured requirement document</strong> and a single-file Python script (Chinese comments, main entry, dependency list). Generated code can be <strong>test-run in a local sandbox</strong> with one click (AST pre-check + child-process isolation + timeout). Iterate naturally — "add error handling" — and the AI updates the code.</p>
+          <p>Sessions and artifacts persist in local SQLite; API keys are encrypted with Windows DPAPI and data uses <strong>AES-256-GCM field-level encryption</strong>. Supports Qwen / DeepSeek / OpenAI / Claude / Gemini / GLM / Kimi / MiniMax / Hunyuan / Grok / Mistral and custom OpenAI-compatible endpoints.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 功能特性 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">功能特性</h2>
+      <h2 class="detail-title" data-lang="en">Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card" data-lang="zh"><strong>引导式对话</strong>AI 主动提问，8 个需求维度逐步澄清，每轮最多 2 问</div>
+        <div class="feature-card" data-lang="en"><strong>Guided Q&amp;A</strong>AI asks across 8 requirement dimensions, max 2 questions per round</div>
+        <div class="feature-card" data-lang="zh"><strong>进度可视化</strong>对话顶部实时显示收集进度与当前阶段</div>
+        <div class="feature-card" data-lang="en"><strong>Visible progress</strong>Live collection progress and current stage at top</div>
+        <div class="feature-card" data-lang="zh"><strong>需求摘要</strong>自动输出结构化中文需求文档，可确认或补充</div>
+        <div class="feature-card" data-lang="en"><strong>Requirement doc</strong>Auto-generated structured document, confirm or amend</div>
+        <div class="feature-card" data-lang="zh"><strong>可运行产物</strong>单文件 Python 脚本：中文注释 + main 入口 + 依赖清单</div>
+        <div class="feature-card" data-lang="en"><strong>Runnable output</strong>Single-file Python script with comments, main &amp; deps</div>
+        <div class="feature-card" data-lang="zh"><strong>沙盒试运行</strong>AST 预检 + 子进程隔离 + 超时保护，一键本地执行</div>
+        <div class="feature-card" data-lang="en"><strong>Sandbox run</strong>AST pre-check + process isolation + timeout, one click</div>
+        <div class="feature-card" data-lang="zh"><strong>自然语言迭代</strong>「加上错误处理」—— AI 自动更新代码</div>
+        <div class="feature-card" data-lang="en"><strong>NL iteration</strong>"Add error handling" — the AI updates the code</div>
+        <div class="feature-card" data-lang="zh"><strong>缓存命中优化</strong>System Prompt 稳定 + 摘要持久化，最大化 DeepSeek / Qwen 缓存命中</div>
+        <div class="feature-card" data-lang="en"><strong>Cache optimization</strong>Stable system prompt + persisted summary maximize DeepSeek / Qwen hits</div>
+        <div class="feature-card" data-lang="zh"><strong>用量统计</strong>本地记录 token / 缓存命中率 / 费用估算</div>
+        <div class="feature-card" data-lang="en"><strong>Usage stats</strong>Local token / cache-hit / cost estimates</div>
+        <div class="feature-card" data-lang="zh"><strong>一键导出</strong>完整项目 ZIP（main.py + requirements.txt + README + 需求文档）</div>
+        <div class="feature-card" data-lang="en"><strong>One-click export</strong>Full project ZIP (main.py + requirements + README + doc)</div>
+        <div class="feature-card" data-lang="zh"><strong>全球模型 + 双主题 + 双语</strong>10+ 主流模型，深浅主题与中英界面运行时切换</div>
+        <div class="feature-card" data-lang="en"><strong>Global models + themes + i18n</strong>10+ models, light/dark themes, zh/en runtime switch</div>
+        <div class="feature-card" data-lang="zh"><strong>安全设计</strong>DPAPI + AES-256-GCM、SQL 参数化、无遥测无日志</div>
+        <div class="feature-card" data-lang="en"><strong>Security</strong>DPAPI + AES-256-GCM, parameterized SQL, no telemetry</div>
+      </div>
+    </section>
+
+    <!-- ===== README 亮点 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">项目档案</h2>
+      <h2 class="detail-title" data-lang="en">Project Details</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-label">Stack</div>
+          <div class="info-value" data-lang="zh">.NET 10 + WPF · MVVM（CommunityToolkit.Mvvm）+ 依赖注入</div>
+          <div class="info-value" data-lang="en">.NET 10 + WPF · MVVM (CommunityToolkit.Mvvm) + DI</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Storage</div>
+          <div class="info-value" data-lang="zh">SQLite（Microsoft.Data.Sqlite）+ AES-256-GCM 字段级加密</div>
+          <div class="info-value" data-lang="en">SQLite (Microsoft.Data.Sqlite) + AES-256-GCM field encryption</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">AI Access</div>
+          <div class="info-value" data-lang="zh">OpenAI 兼容 REST，SSE 流式，429/5xx 自动重试，自定义端点</div>
+          <div class="info-value" data-lang="en">OpenAI-compatible REST, SSE streaming, 429/5xx retries, custom endpoints</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Data</div>
+          <div class="info-value" data-lang="zh">%AppData%\GuideCraft\guidecraft.db；API Key 仅存本机（DPAPI）</div>
+          <div class="info-value" data-lang="en">%AppData%\GuideCraft\guidecraft.db; keys stored locally (DPAPI)</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Requirement</div>
+          <div class="info-value" data-lang="zh">生成的代码需 Python 3.8+：pip install -r requirements.txt</div>
+          <div class="info-value" data-lang="en">Generated code needs Python 3.8+: pip install -r requirements.txt</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">License</div>
+          <div class="info-value">MIT © 2026 YYRMMAYO</div>
+        </div>
+      </div>
+    </section>
+
+    <a class="back-link" href="../index.html#software" data-lang="zh">← 返回软件列表</a>
+    <a class="back-link" href="../index.html#software" data-lang="en">← Back to software list</a>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p data-lang="zh">© 2026 YYRMM的软件库 · 开源协议见 <a href="https://github.com/YYRMMAYO/GuideCraft" target="_blank" rel="noopener">GuideCraft 仓库</a></p>
+      <p data-lang="en">© 2026 YYRMM's Software Library · License: <a href="https://github.com/YYRMMAYO/GuideCraft" target="_blank" rel="noopener">GuideCraft repo</a></p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/detail.js"></script>
+</body>
+</html>

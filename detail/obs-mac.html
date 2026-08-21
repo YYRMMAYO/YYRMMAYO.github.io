@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="OBS 排障助手（macOS）— 面向直播新手的 OBS 排障工具详细介绍" />
+  <title>OBS 排障助手（macOS） — YYRMM的软件库</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%A8%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../assets/css/detail.css" />
+</head>
+<body>
+  <div class="bg-scene" aria-hidden="true">
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+    <div class="aurora aurora-3"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-vignette"></div>
+  </div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="../index.html" data-lang="zh">YYRMM的软件库</a>
+      <a class="brand" href="../index.html" data-lang="en">YYRMM's Software Library</a>
+      <nav class="top-nav">
+        <a class="top-link" href="../index.html#home" data-lang="zh">首页</a>
+        <a class="top-link" href="../index.html#home" data-lang="en">Home</a>
+        <a class="top-link" href="../index.html#software" data-lang="zh">软件列表</a>
+        <a class="top-link" href="../index.html#software" data-lang="en">Software</a>
+      </nav>
+      <div class="top-actions">
+        <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page container">
+    <!-- ===== Hero ===== -->
+    <section class="detail-hero" data-reveal>
+      <div class="detail-icon" style="--accent:#d97706">🍎</div>
+      <div class="detail-hero-text">
+        <h1 class="detail-name" data-lang="zh">OBS 排障助手（macOS）</h1>
+        <h1 class="detail-name" data-lang="en">OBS Helper (macOS)</h1>
+        <p class="detail-tagline" data-lang="zh">面向直播新手的 OBS Studio 排障工具</p>
+        <p class="detail-tagline" data-lang="en">OBS Studio troubleshooting for livestreaming beginners</p>
+        <div class="detail-meta">
+          <span class="chip">macOS 11+</span>
+          <span class="chip" data-lang="zh">OBS 排障</span>
+          <span class="chip" data-lang="en">OBS Troubleshooting</span>
+          <span class="chip" data-lang="zh">开源</span>
+          <span class="chip" data-lang="en">Open Source</span>
+          <span class="chip">Tauri v2</span>
+        </div>
+        <div class="detail-actions">
+          <a class="btn btn-primary" href="https://github.com/YYRMMAYO/OBS-Helpmac" target="_blank" rel="noopener">
+            <span data-lang="zh">GitHub 下载</span><span data-lang="en">GitHub Download</span>
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/YYRMMAYO/OBS-Helpmac" target="_blank" rel="noopener">
+            <span data-lang="zh">GitHub 仓库</span><span data-lang="en">Repository</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 软件介绍 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">软件介绍</h2>
+      <h2 class="detail-title" data-lang="en">About</h2>
+      <div class="detail-text">
+        <div data-lang="zh">
+          <p>OBS 排障助手 macOS 版是一款面向直播新手的 <strong>OBS Studio 排障工具</strong>。知识库、排障指引与日志分析规则全部内嵌在应用里，<strong>不联网也能查、能分析、能控制 OBS</strong>。连上 OBS 后，可远程切换场景、录制与推流，并做一键体检。</p>
+          <p>本版本采用<strong>原生 Tauri v2（Rust）桌面壳 + Blazor WebAssembly 前端</strong>，功能与 Windows 版对齐，版本号同步至 v1.5.0。支持 macOS 11（Big Sur）及以上，提供 Apple Silicon 与 Intel 双架构 <code>.dmg</code>。注意：macOS 版<strong>不内置免费 AI 通道</strong>（仅本地规则引擎 + 自带云端 Key），保持最小依赖与最简发布。</p>
+        </div>
+        <div data-lang="en">
+          <p>OBS Helper (macOS) is an <strong>OBS Studio troubleshooting tool</strong> for livestreaming beginners. The knowledge base, troubleshooting guides and log-analysis rules are all embedded — <strong>you can search, analyze and control OBS without network</strong>. Once connected, remotely switch scenes, record, stream, and run a one-click health check.</p>
+          <p>Built with a <strong>native Tauri v2 (Rust) shell + Blazor WebAssembly frontend</strong>, it aligns with the Windows version (v1.5.0). Supports macOS 11 (Big Sur) and later, with <code>.dmg</code> for both Apple Silicon and Intel. Note: the macOS build ships <strong>no built-in free AI channel</strong> (local rule engine + your own cloud key only) to keep dependencies minimal.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 功能特性 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">功能特性</h2>
+      <h2 class="detail-title" data-lang="en">Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card" data-lang="zh"><strong>知识库完全离线</strong>分类问题库 + Markdown 排障指引，断网也能用</div>
+        <div class="feature-card" data-lang="en"><strong>Fully offline KB</strong>Categorized problems + Markdown guides, works offline</div>
+        <div class="feature-card" data-lang="zh"><strong>本地智能诊断，免费</strong>本地规则引擎读取系统 / 日志 / 配置定位问题，零费用</div>
+        <div class="feature-card" data-lang="en"><strong>Free local diagnosis</strong>Rule engine reads system / logs / config, zero cost</div>
+        <div class="feature-card" data-lang="zh"><strong>远程控制 OBS</strong>场景、元素显隐、音频、录制 / 推流 / 虚拟摄像头、定时停止</div>
+        <div class="feature-card" data-lang="en"><strong>Remote OBS control</strong>Scenes, visibility, audio, record / stream / vcam, timers</div>
+        <div class="feature-card" data-lang="zh"><strong>全局快捷键</strong>Ctrl+Option+R/S/C/M/O，全部可改键或停用</div>
+        <div class="feature-card" data-lang="en"><strong>Global hotkeys</strong>Ctrl+Option+R/S/C/M/O, remappable or disabled</div>
+        <div class="feature-card" data-lang="zh"><strong>深度日志分析</strong>脱敏 + 特征规则扫描，一键体检配置</div>
+        <div class="feature-card" data-lang="en"><strong>Deep log analysis</strong>Sanitized + signature-rule scanning, one-click config check</div>
+        <div class="feature-card" data-lang="zh"><strong>场景模板一键落地</strong>内置直播间模板，未连接时可导出标准场景 JSON</div>
+        <div class="feature-card" data-lang="en"><strong>One-click scene templates</strong>Built-in templates; export standard scene JSON offline</div>
+        <div class="feature-card" data-lang="zh"><strong>菜单栏 + 迷你小窗</strong>菜单栏直接控制录制 / 推流 / 虚拟摄像头，小窗可拖拽记忆位置</div>
+        <div class="feature-card" data-lang="en"><strong>Menu bar + mini panel</strong>Record / stream / vcam from menu bar; draggable mini panel</div>
+        <div class="feature-card" data-lang="zh"><strong>场景自动切换</strong>按前台应用自动切换 OBS 场景，规则可编辑</div>
+        <div class="feature-card" data-lang="en"><strong>Auto scene switching</strong>Switch by foreground app, editable rules</div>
+        <div class="feature-card" data-lang="zh"><strong>系统监控</strong>CPU / 内存 / 网络 / 磁盘 1 秒实时曲线，与 OBS 帧率丢帧联动</div>
+        <div class="feature-card" data-lang="en"><strong>System monitor</strong>1s live curves linked to OBS FPS / dropped frames</div>
+        <div class="feature-card" data-lang="zh"><strong>隐私优先</strong>默认不发起网络请求；密码与 Key 经系统钥匙串加密</div>
+        <div class="feature-card" data-lang="en"><strong>Privacy-first</strong>No network by default; secrets via system Keychain</div>
+        <div class="feature-card" data-lang="zh"><strong>双架构 .dmg</strong>Apple Silicon 与 Intel 双架构，自包含 .app/.dmg</div>
+        <div class="feature-card" data-lang="en"><strong>Dual-arch .dmg</strong>Apple Silicon + Intel, self-contained .app/.dmg</div>
+      </div>
+    </section>
+
+    <!-- ===== README 亮点 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">项目档案</h2>
+      <h2 class="detail-title" data-lang="en">Project Details</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-label">Diagnosis</div>
+          <div class="info-value" data-lang="zh">本地规则引擎（默认，免费纯离线）+ 云端大模型（自带 Key，钥匙串加密）</div>
+          <div class="info-value" data-lang="en">Local rule engine (default, free/offline) + cloud LLM (own key, Keychain)</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Security</div>
+          <div class="info-value" data-lang="zh">宿主命令白名单、目录限定 + 防穿越、HTTPS + SSRF 拦截、ZIP 导入防 Zip Slip</div>
+          <div class="info-value" data-lang="en">Host-command whitelist, path canonicalize, HTTPS + SSRF guard, Zip Slip protection</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Stack</div>
+          <div class="info-value" data-lang="zh">Tauri v2 (Rust) + Blazor WASM + .NET 10，零外部依赖</div>
+          <div class="info-value" data-lang="en">Tauri v2 (Rust) + Blazor WASM + .NET 10, zero external deps</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Install</div>
+          <div class="info-value" data-lang="zh">GitHub Releases 下载 .dmg 拖入「应用程序」；需 OBS + obs-websocket 5.x</div>
+          <div class="info-value" data-lang="en">Download .dmg from Releases, drag to Applications; needs OBS + obs-websocket 5.x</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">License</div>
+          <div class="info-value">MIT © 2026 OBS Helper</div>
+        </div>
+      </div>
+    </section>
+
+    <a class="back-link" href="../index.html#software" data-lang="zh">← 返回软件列表</a>
+    <a class="back-link" href="../index.html#software" data-lang="en">← Back to software list</a>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p data-lang="zh">© 2026 YYRMM的软件库 · 开源协议见 <a href="https://github.com/YYRMMAYO/OBS-Helpmac" target="_blank" rel="noopener">OBS-Helpmac 仓库</a></p>
+      <p data-lang="en">© 2026 YYRMM's Software Library · License: <a href="https://github.com/YYRMMAYO/OBS-Helpmac" target="_blank" rel="noopener">OBS-Helpmac repo</a></p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/detail.js"></script>
+</body>
+</html>

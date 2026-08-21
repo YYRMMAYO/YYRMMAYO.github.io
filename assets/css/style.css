@@ -434,6 +434,10 @@ body {
 
 .card-title { font-size: 17px; font-weight: 700; }
 
+/* 标题 / 缩略图可点击（在新窗口打开详细介绍页） */
+.card-thumb[data-detail], .card-title[data-detail] { cursor: pointer; }
+.card-title[data-detail]:hover { color: var(--cyan); transition: color 0.25s ease; }
+
 .card-desc {
   margin-top: 8px;
   font-size: 14px;
@@ -835,168 +839,6 @@ body.modal-open { overflow: hidden; }
 }
 .intro-skip:hover { background: rgba(255, 255, 255, 0.15); box-shadow: 0 0 14px rgba(255, 255, 255, 0.25); }
 
-/* ---------- 功能展示弹窗 ---------- */
-.modal {
-  position: fixed;
-  inset: 0;
-  z-index: 90;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-.modal.open { opacity: 1; visibility: visible; }
-
-.modal-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(5, 6, 13, 0.62);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-}
-.modal-card {
-  position: relative;
-  background: rgba(15, 17, 32, 0.88);
-  border: 1px solid var(--border);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  border-radius: 16px;
-  max-width: 720px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 26px 28px 28px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 40px rgba(139, 92, 246, 0.2);
-  transform: translateY(16px) scale(0.98);
-  transition: transform 0.3s ease;
-}
-.modal.open .modal-card { transform: none; }
-
-.modal-close {
-  position: absolute;
-  top: 12px; right: 14px;
-  width: 34px; height: 34px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  border-radius: 50%;
-  font-size: 20px;
-  line-height: 1;
-  color: var(--text-muted);
-  cursor: pointer;
-  z-index: 2;
-  transition: color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-}
-.modal-close:hover { color: var(--pink); border-color: var(--pink); box-shadow: 0 0 14px rgba(244, 114, 182, 0.5); }
-
-.modal-content { display: flex; flex-direction: column; }
-.modal-head {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding-right: 34px;
-}
-.modal-icon {
-  width: 54px; height: 54px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 28px;
-  border-radius: 13px;
-  flex-shrink: 0;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.12);
-}
-.modal-name { font-size: 21px; font-weight: 800; }
-.modal-tagline { margin-top: 3px; font-size: 14px; color: var(--text-muted); }
-
-.modal-accent {
-  height: 3px;
-  width: 100%;
-  border-radius: 999px;
-  margin-bottom: 16px;
-}
-
-.modal-desc-title {
-  margin-top: 16px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: var(--cyan);
-}
-
-.modal-desc {
-  margin-top: 6px;
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.75;
-}
-
-.modal-shot-wrap {
-  position: relative;
-  margin-top: 18px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-.modal-shot {
-  width: 100%;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  display: block;
-  background: #0b0d1c;
-}
-.modal-shot-wrap::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(115deg, transparent 32%, rgba(255, 255, 255, 0.14) 46%, rgba(34, 211, 238, 0.2) 50%, rgba(255, 255, 255, 0.14) 54%, transparent 68%);
-  background-size: 240% 100%;
-  animation: shimmer 3.2s ease-in-out infinite;
-  pointer-events: none;
-}
-
-.modal-actions {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid var(--border);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.modal-features {
-  list-style: none;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-}
-.modal-feature {
-  display: flex;
-  align-items: flex-start;
-  gap: 11px;
-  padding: 9px 13px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--surface);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  font-size: 14px;
-  line-height: 1.5;
-  opacity: 0;
-  transform: translateY(10px);
-  animation: mf-in 0.45s ease forwards;
-}
-.mf-dot {
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  margin-top: 6px;
-  flex-shrink: 0;
-  box-shadow: 0 0 8px currentColor;
-}
-@keyframes mf-in {
-  to { opacity: 1; transform: none; }
-}
-
 /* ============================================================
    响应式
    ============================================================ */
@@ -1016,8 +858,6 @@ body.modal-open { overflow: hidden; }
   .intro-stage { padding: 48px 16px 84px; }
   .intro-body { flex-direction: column; gap: 18px; }
   .intro-features { width: 100%; }
-  .modal { padding: 10px; }
-  .modal-card { padding: 18px 16px 20px; }
 }
 
 /* ============================================================
@@ -1028,14 +868,13 @@ body.modal-open { overflow: hidden; }
 
   .aurora-1, .aurora-2, .aurora-3, .card-icon,
   .intro-icon::after, .intro-shot-wrap::after, .intro-end-sub::after,
-  .modal-shot-wrap::after,
   .card-ripple {
     animation: none !important;
   }
 
-  .intro-overlay, .intro-scene, .modal, .modal-card,
+  .intro-overlay, .intro-scene,
   .intro-head, .intro-shot-wrap, .intro-features li,
-  .intro-end-title, .intro-end-sub, .modal-feature,
+  .intro-end-title, .intro-end-sub,
   .reveal, .btn, .lang-toggle, .card, .card-icon {
     transition: none !important;
     animation: none !important;
@@ -1044,7 +883,7 @@ body.modal-open { overflow: hidden; }
   .card.pressed { scale: none; }
 
   .intro-head, .intro-shot-wrap, .intro-features li,
-  .intro-end-title, .intro-end-sub, .modal-feature,
+  .intro-end-title, .intro-end-sub,
   .reveal {
     opacity: 1 !important;
     transform: none !important;
