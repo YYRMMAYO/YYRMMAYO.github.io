@@ -59,16 +59,5 @@
     document.querySelectorAll("[data-reveal]").forEach((el) => el.classList.add("in-view"));
   }
 
-  /* ---------------- 3. 鼠标跟随光晕 ---------------- */
-  const glow = document.querySelector(".cursor-glow");
-  const finePointer = !!(window.matchMedia && window.matchMedia("(pointer: fine)").matches);
-  if (glow && finePointer && !reduced) {
-    window.addEventListener(
-      "pointermove",
-      (e) => {
-        glow.style.transform = "translate3d(" + e.clientX + "px," + e.clientY + "px,0)";
-      },
-      { passive: true }
-    );
-  }
+  /* ---------------- 3. 克制的交互反馈（预留扩展位） ---------------- */
 })();
