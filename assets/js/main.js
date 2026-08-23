@@ -31,8 +31,6 @@ const I18N = {
   pwdLabel:      { zh: "密码", en: "Password" },
   btnWebsite:    { zh: "主页", en: "Website" },
   btnShow:       { zh: "详细介绍", en: "Details" },
-  btnIntro:      { zh: "▶ 观看开场动画", en: "▶ Watch Intro" },
-  introSkip:     { zh: "跳过 ▸", en: "Skip ▸" },
 };
 
 /* ---------- 3. 软件数据（已从 GitHub 仓库整理，SC01 已按要求排除） ----------
@@ -67,7 +65,6 @@ const softwareList = [
       ],
     },
     tags: ["Windows", "Android", "Web", { zh: "叙事游戏", en: "Narrative Game" }],
-    intro: false, // 不出现在开场动画中（仅作普通软件卡片展示）
     links: {
       play: "games/love101.html",
       download: "https://github.com/YYRMMAYO/love101/releases/tag/v1.0.0",
