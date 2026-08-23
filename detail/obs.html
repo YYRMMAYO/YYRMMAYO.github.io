@@ -27,7 +27,7 @@
     </div>
   </header>
 
-  <main class="page container">
+  <main class="page container" data-app="obs">
     <!-- ===== Hero ===== -->
     <section class="detail-hero" data-reveal>
       <div class="detail-icon" style="--accent:#dc2626">🎥</div>
@@ -138,6 +138,13 @@
       </div>
     </section>
 
+    <!-- ===== 更新记录（数据由 scripts/sync-changelog.py 同步生成） ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">更新记录</h2>
+      <h2 class="detail-title" data-lang="en">Changelog</h2>
+      <div id="changelog" class="changelog"></div>
+    </section>
+
     <a class="back-link" href="../index.html#software" data-lang="zh">← 返回软件列表</a>
     <a class="back-link" href="../index.html#software" data-lang="en">← Back to software list</a>
   </main>
@@ -149,6 +156,7 @@
     </div>
   </footer>
 
+  <script src="../assets/js/changelog.js"></script>
   <script src="../assets/js/detail.js"></script>
 </body>
 </html>

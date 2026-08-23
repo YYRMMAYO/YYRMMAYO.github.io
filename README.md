@@ -11,6 +11,7 @@
 - **响应式**：卡片网格自适应，手机 / 平板 / 桌面均舒适浏览
 - **开场动画**：首次进入自动播放软件巡礼动画（AIStudioHub / OBS 排障助手 / 司南工具箱），可跳过 / 重播
 - **详细介绍页**：点击卡片「详细介绍」或标题 / 缩略图，在新窗口打开独立介绍页（内容与各仓库 README 同步）
+- **更新记录**：每个软件详情页底部展示该软件**最新 3 个版本**的主要更新，由脚本从源码仓库一键同步生成（中英双语，英文缺失时自动回退中文）
 - **直达下载**：每个软件卡片点击「下载」即跳转到对应 GitHub 仓库详情页
 
 ## 📦 收录软件
@@ -24,8 +25,28 @@
 | **OBS 排障助手 (macOS)** | OBS 直播排障助手 macOS 版：离线知识库、智能诊断、系统监控、场景模板 | Rust (Tauri v2) + Blazor WASM | [github.com/YYRMMAYO/OBS-Helpmac](https://github.com/YYRMMAYO/OBS-Helpmac) |
 | **司南工具箱** | 免费非营利 Windows 辅助工具：系统检测、清理优化、网络诊断、故障排查 | C# / WPF (.NET 10) | [github.com/YYRMMAYO/WINhelper](https://github.com/YYRMMAYO/WINhelper) |
 
+## 🛠️ 修改指南
 
-- **修改样式**：`assets/css/style.css`
+- **软件列表 / 文案**：`assets/js/main.js`（`softwareList` 与 `I18N` 数据）
+- **更新记录**：重跑 `scripts/sync-changelog.py`（详见上方「更新记录一键同步」）
+- **修改样式**：`assets/css/style.css`（主页）/ `assets/css/detail.css`（详情页）
+
+## 🔄 更新记录一键同步
+
+每个软件详情页的「更新记录」区块数据由 `scripts/sync-changelog.py` 自动生成，**不要手改** `assets/js/changelog.js`。
+
+```bash
+python scripts/sync-changelog.py
+```
+
+脚本行为：
+
+1. **自动解析**：司南工具箱（`F:\new\WINHELP\README.md` 的 `## vX.Y.Z 更新内容` 章节）、OBS 排障助手 Windows（`F:\OBS\NOBS\RELEASE_NOTES_v*.md`）
+2. **手动维护源**：`scripts/changelog-source.json` — 无源码解析的项目（OBS macOS / AIStudioHub / GuideCraft / 第101种理由）在此维护中英双语条目；也可为自动解析项目补充英文翻译
+3. **保留最新 3 版**：按版本号从新到旧排序，每软件仅保留最新 3 个版本，旧版本自动丢弃
+4. **生成数据**：输出 `assets/js/changelog.js`，详情页读取该数据渲染；`en` 字段为空时自动回退显示中文
+
+> 发布新版本后：更新对应仓库 README / RELEASE_NOTES（或编辑 `changelog-source.json`），然后重跑脚本即可。
 
 ## 🚀 部署方式
 

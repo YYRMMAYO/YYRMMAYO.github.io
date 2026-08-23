@@ -381,6 +381,64 @@ body {
   color: var(--text-body);
 }
 
+/* 更新记录（数据由 scripts/sync-changelog.py 生成） */
+.changelog {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.changelog-empty {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.changelog-entry {
+  border: 1px solid var(--hairline);
+  border-left: 3px solid var(--gold);
+  background: var(--graphite);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px 12px;
+}
+.changelog-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  margin-bottom: 8px;
+}
+.changelog-ver {
+  font-family: "SFMono-Regular", "Cascadia Mono", Consolas, "Roboto Mono", monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+}
+.changelog-tagline {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.changelog-items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.changelog-items li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-body);
+}
+.changelog-items li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.68em;
+  width: 7px; height: 7px;
+  background: var(--patina);
+}
+.changelog-items li strong { color: var(--text); font-weight: 600; }
+
 /* 返回链接 */
 .back-link {
   display: inline-flex;

@@ -24,6 +24,7 @@
       btn.textContent = lang === "zh" ? "EN" : "中文";
       btn.setAttribute("aria-label", lang === "zh" ? "切换语言" : "Switch language");
     }
+    renderChangelog();
   }
 
   const toggle = document.getElementById("lang-toggle");
@@ -59,5 +60,48 @@
     document.querySelectorAll("[data-reveal]").forEach((el) => el.classList.add("in-view"));
   }
 
-  /* ---------------- 3. 克制的交互反馈（预留扩展位） ---------------- */
+  /* ---------------- 3. 更新记录渲染 ----------------
+   * 数据来自 assets/js/changelog.js（由 scripts/sync-changelog.py 生成）
+   * 页面 <main data-app="key"> 决定展示哪个软件的记录；en 为空时回退中文 */
+  function escHtml(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function renderChangelog() {
+    const host = document.querySelector("main[data-app]");
+    const box = document.getElementById("changelog");
+    if (!host || !box) return;
+    const key = host.dataset.app;
+    const entries = (typeof CHANGELOG !== "undefined" && CHANGELOG[key]) || [];
+    if (!entries.length) {
+      box.innerHTML = '<p class="changelog-empty">' +
+        escHtml(lang === "zh" ? "暂无更新记录。" : "No changelog yet.") + "</p>";
+      return;
+    }
+    box.innerHTML = entries
+      .map((e) => {
+        const tagline = e.tagline ? (e.tagline[lang] || e.tagline.zh || "") : "";
+        const items = (e.items || [])
+          .map((it) => {
+            const txt = it[lang] || it.zh || "";
+            return txt ? `<li>${escHtml(txt)}</li>` : "";
+          })
+          .join("");
+        return `
+        <div class="changelog-entry">
+          <div class="changelog-head">
+            <span class="changelog-ver">${escHtml(e.version)}</span>
+            ${tagline ? `<span class="changelog-tagline">${escHtml(tagline)}</span>` : ""}
+          </div>
+          ${items ? `<ul class="changelog-items">${items}</ul>` : ""}
+        </div>`;
+      })
+      .join("");
+  }
+
+  /* ---------------- 4. 克制的交互反馈（预留扩展位） ---------------- */
 })();
