@@ -32,10 +32,69 @@
   --hairline:        rgba(214, 204, 178, 0.14);  /* 默认边框 / 分隔线 */
   --hairline-strong: rgba(201, 162, 39, 0.55);   /* 激活边框 / 焦点 */
 
+  /* 派生表面色（随主题整体切换，避免硬编码） */
+  --topbar-bg:    rgba(10, 9, 6, 0.9);           /* 顶部栏毛玻璃底色 */
+  --selection-bg: rgba(201, 162, 39, 0.32);      /* 文字选区背景 */
+  --selection-fg: #fff;                          /* 文字选区前景 */
+  --gold-soft:    rgba(201, 162, 39, 0.08);      /* 金色 hover 底 */
+  --gold-rail:    rgba(201, 162, 39, 0.15);      /* 进度条轨道 */
+  --gold-ripple:  rgba(201, 162, 39, 0.14);      /* 卡片涟漪 */
+  --patina-soft:  rgba(87, 160, 143, 0.1);       /* 铜绿 hover 底 */
+  --shadow-strong: rgba(0, 0, 0, 0.5);           /* 图标投影 */
+  --on-gold:      #14110a;                       /* 金色按钮上的文字 */
+  --glow-gold:    rgba(201, 162, 39, 0.05);      /* 背景金色光晕 */
+  --glow-patina:  rgba(87, 160, 143, 0.05);      /* 背景铜绿光晕 */
+
   --radius: 8px;
   --radius-sm: 4px;
   --max-width: 1080px;
   --ease: cubic-bezier(0.22, 0.7, 0.2, 1);
+}
+
+/* ============================================================
+   浅色主题：暖白漆面（Neo Kinpaku Light）
+   同一套设计语言：细线边框、扁平克制、金/铜绿双色；
+   仅把"漆面"换成暖米白，金与铜绿加深以保证浅底对比度。
+   启用方式：<html data-theme="light">（assets/js/theme.js 控制）
+   ============================================================ */
+[data-theme="light"] {
+  /* 地面与表面（暖矿物白，绝不用纯黑 / 纯白） */
+  --lacquer:      #f5f2ea;   /* 页面底色 */
+  --lacquer-deep: #ebe7dc;   /* 最深内嵌面（页脚 / 输入框） */
+  --raised:       #fdfbf5;   /* 面板 / 卡片 */
+  --graphite:     #f1ede3;   /* 非激活态 / 内嵌表面 */
+  --graphite-2:   #e8e3d7;   /* 比 graphite 高一级 */
+
+  /* 品牌色：深金（主） + 深铜绿（次），浅底上保证可读 */
+  --gold:        #9c7c1e;
+  --gold-pale:   #b8922e;
+  --gold-deep:   #7a5f15;
+  --patina:      #2f7d6d;
+  --patina-pale: #3c9584;
+  --patina-deep: #245f52;
+
+  /* 文字层级（中性暖墨色） */
+  --text:        #2c2820;   /* 标题 / 强调 */
+  --text-body:   #413c31;   /* 正文 */
+  --text-muted:  #6d675a;   /* 元数据 */
+  --text-faint:  #918a7a;   /* 弱化 */
+
+  /* 细线（暖褐） */
+  --hairline:        rgba(84, 70, 40, 0.18);
+  --hairline-strong: rgba(156, 124, 30, 0.65);
+
+  /* 派生表面色 */
+  --topbar-bg:    rgba(250, 248, 241, 0.92);
+  --selection-bg: rgba(156, 124, 30, 0.26);
+  --selection-fg: #2c2820;
+  --gold-soft:    rgba(156, 124, 30, 0.1);
+  --gold-rail:    rgba(156, 124, 30, 0.18);
+  --gold-ripple:  rgba(156, 124, 30, 0.16);
+  --patina-soft:  rgba(47, 125, 109, 0.12);
+  --shadow-strong: rgba(60, 48, 20, 0.28);
+  --on-gold:      #fdfbf5;
+  --glow-gold:    rgba(156, 124, 30, 0.07);
+  --glow-patina:  rgba(47, 125, 109, 0.07);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -52,7 +111,7 @@ body {
   min-height: 100vh;
 }
 
-::selection { background: rgba(201, 162, 39, 0.32); color: #fff; }
+::selection { background: var(--selection-bg); color: var(--selection-fg); }
 
 /* 滚动条：克制的深色 + 金色细条 */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
@@ -90,8 +149,8 @@ body {
   overflow: hidden;
   pointer-events: none;
   background:
-    radial-gradient(110% 80% at 78% -8%, rgba(201, 162, 39, 0.05), transparent 55%),
-    radial-gradient(90% 70% at 8% 108%, rgba(87, 160, 143, 0.05), transparent 55%),
+    radial-gradient(110% 80% at 78% -8%, var(--glow-gold), transparent 55%),
+    radial-gradient(90% 70% at 8% 108%, var(--glow-patina), transparent 55%),
     var(--lacquer);
 }
 
@@ -105,7 +164,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 55;
-  background: rgba(10, 9, 6, 0.9);
+  background: var(--topbar-bg);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--hairline);
@@ -143,7 +202,7 @@ body {
   font-weight: 500;
   transition: color 0.2s ease, background 0.2s ease;
 }
-.top-link:hover { color: var(--gold); background: rgba(201, 162, 39, 0.08); }
+.top-link:hover { color: var(--gold); background: var(--gold-soft); }
 
 .top-actions {
   display: flex;
@@ -164,7 +223,7 @@ body {
 .social-link:hover {
   color: var(--gold);
   border-color: var(--hairline-strong);
-  background: rgba(201, 162, 39, 0.06);
+  background: var(--gold-soft);
 }
 
 .lang-toggle {
@@ -178,6 +237,24 @@ body {
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 .lang-toggle:hover {
+  border-color: var(--hairline-strong);
+  color: var(--gold);
+}
+
+/* 主题切换按钮（太阳 / 月亮，与语言按钮同族） */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px; height: 34px;
+  border: 1px solid var(--hairline);
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.theme-toggle:hover {
   border-color: var(--hairline-strong);
   color: var(--gold);
 }
@@ -311,7 +388,7 @@ body {
   position: relative;
   background: var(--raised);
   border: 1px solid var(--hairline);
-  border-top: 2px solid color-mix(in srgb, var(--card-accent) 62%, #000);
+  border-top: 2px solid color-mix(in srgb, var(--card-accent) 62%, var(--raised));
   border-radius: var(--radius);
   overflow: hidden;
   display: flex;
@@ -341,7 +418,7 @@ body {
 .card-icon {
   display: inline-block;
   line-height: 1;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 4px 10px var(--shadow-strong));
 }
 
 .card-body {
@@ -407,7 +484,7 @@ body {
   border-radius: 50%;
   pointer-events: none;
   z-index: 3;
-  background: radial-gradient(circle, rgba(201, 162, 39, 0.14) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--gold-ripple) 0%, transparent 70%);
   transform: scale(0);
   opacity: 0.8;
   animation: rip 0.6s ease-out forwards;
@@ -435,7 +512,7 @@ body {
 
 .btn-primary {
   background: var(--gold);
-  color: #14110a;
+  color: var(--on-gold);
   border: 1px solid var(--gold);
 }
 .btn-primary:hover {
@@ -461,7 +538,7 @@ body {
   border: 1px solid color-mix(in srgb, var(--patina) 55%, transparent);
 }
 .btn-show:hover {
-  background: rgba(87, 160, 143, 0.1);
+  background: var(--patina-soft);
   color: var(--patina-pale);
   border-color: var(--patina);
 }
@@ -520,7 +597,7 @@ body.modal-open { overflow: hidden; }
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 2px;
-  background: rgba(201, 162, 39, 0.15);
+  background: var(--gold-rail);
   z-index: 2;
 }
 .intro-progress-bar {
@@ -618,7 +695,7 @@ body.modal-open { overflow: hidden; }
 }
 .intro-shot-fallback-icon {
   font-size: clamp(48px, 9vw, 72px);
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 4px 12px var(--shadow-strong));
 }
 
 .intro-features {
@@ -711,6 +788,7 @@ body.modal-open { overflow: hidden; }
   .topbar-inner { height: auto; min-height: 56px; flex-wrap: wrap; padding: 4px 0; row-gap: 2px; }
   .top-link { font-size: 13px; padding: 5px 8px; }
   .social-link { width: 30px; height: 30px; }
+  .theme-toggle { width: 30px; height: 30px; }
   .lang-toggle { font-size: 12px; padding: 5px 10px; }
   .top-actions { gap: 6px; margin-left: auto; }
   .hero { padding: 60px 0 34px; }

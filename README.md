@@ -8,10 +8,11 @@
 
 - **中英双语**：右上角一键切换，偏好自动记忆（localStorage），主页与各软件详情页同步生效
 - **Neo Kinpaku 主题**：深色漆面 + 金箔金 / 铜绿双色，细线边框、扁平克制（设计规范参考 impeccable），无任何外部依赖
+- **深/浅双主题**：右上角一键切换深色漆面 ⇄ 暖白漆面，偏好自动记忆（localStorage），主页与各详情页同步生效
 - **响应式**：卡片网格自适应，手机 / 平板 / 桌面均舒适浏览
 - **开场动画**：首次进入自动播放软件巡礼动画（AIStudioHub / OBS 排障助手 / 司南工具箱），可跳过 / 重播
 - **详细介绍页**：点击卡片「详细介绍」或标题 / 缩略图，在新窗口打开独立介绍页（内容与各仓库 README 同步）
-- **更新记录**：每个软件详情页底部展示该软件**最新 3 个版本**的主要更新，由脚本从源码仓库一键同步生成（中英双语，英文缺失时自动回退中文）
+- **更新记录**：每个软件详情页底部展示从 **GitHub Releases / Tags 拉取的最近 3 个版本**主要更新，由脚本一键同步（中英双语，英文缺失时自动回退中文）
 - **直达下载**：每个软件卡片点击「下载」即跳转到对应 GitHub 仓库详情页
 
 ## 📦 收录软件
@@ -39,14 +40,15 @@
 python scripts/sync-changelog.py
 ```
 
-脚本行为：
+脚本行为（需要联网访问 GitHub API）：
 
-1. **自动解析**：司南工具箱（`F:\new\WINHELP\README.md` 的 `## vX.Y.Z 更新内容` 章节）、OBS 排障助手 Windows（`F:\OBS\NOBS\RELEASE_NOTES_v*.md`）
-2. **手动维护源**：`scripts/changelog-source.json` — 无源码解析的项目（OBS macOS / AIStudioHub / GuideCraft / 第101种理由）在此维护中英双语条目；也可为自动解析项目补充英文翻译
-3. **保留最新 3 版**：按版本号从新到旧排序，每软件仅保留最新 3 个版本，旧版本自动丢弃
-4. **生成数据**：输出 `assets/js/changelog.js`，详情页读取该数据渲染；`en` 字段为空时自动回退显示中文
+1. **拉取 GitHub Releases**：`api.github.com/repos/YYRMMAYO/<仓库>/releases`，无 Release 的仓库回退 **Tags**
+2. **解析 Release 正文**：提取 `- ` 列表项为更新条目，自动跳过下载/验证类小节、过滤安装包 / SHA-256 等资产噪音，每版本最多 8 条
+3. **手动维护源**：`scripts/changelog-source.json` — 中英双语条目优先采用，正文缺失的版本用它兜底
+4. **保留最新 3 版**：按版本号从新到旧排序，每软件仅保留最近 3 个版本，旧版本自动丢弃
+5. **生成数据**：输出 `assets/js/changelog.js`，详情页渲染并提示"最近 N/3 个更新版本，来自 GitHub Releases / Tags"；`en` 字段为空时自动回退显示中文
 
-> 发布新版本后：更新对应仓库 README / RELEASE_NOTES（或编辑 `changelog-source.json`），然后重跑脚本即可。
+> 发布新版本（打 tag / 发 Release）后，重跑脚本即可同步；不在 GitHub 上的版本不会展示。
 
 ## 🚀 部署方式
 

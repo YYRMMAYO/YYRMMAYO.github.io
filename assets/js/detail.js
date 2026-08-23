@@ -82,8 +82,16 @@
         escHtml(lang === "zh" ? "暂无更新记录。" : "No changelog yet.") + "</p>";
       return;
     }
-    box.innerHTML = entries
-      .map((e) => {
+    // 来源提示：以下为最近 3 个更新版本（数据来自 GitHub Releases / Tags，见 sync-changelog.py）
+    const MAX_KEPT = 3;
+    const count = entries.length;
+    const note = lang === "zh"
+      ? "以下为该软件最近的 <strong>" + count + "/" + MAX_KEPT + "</strong> 个更新版本，数据来自 GitHub Releases / Tags"
+      : "Latest <strong>" + count + "/" + MAX_KEPT + "</strong> versions below, pulled from GitHub Releases / Tags";
+    box.innerHTML =
+      '<p class="changelog-note">' + note + "</p>" +
+      entries
+        .map((e) => {
         const tagline = e.tagline ? (e.tagline[lang] || e.tagline.zh || "") : "";
         const items = (e.items || [])
           .map((it) => {

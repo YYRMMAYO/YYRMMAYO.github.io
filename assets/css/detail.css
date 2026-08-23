@@ -25,10 +25,58 @@
   --hairline:        rgba(214, 204, 178, 0.14);
   --hairline-strong: rgba(201, 162, 39, 0.55);
 
+  /* 派生表面色（随主题整体切换，避免硬编码） */
+  --topbar-bg:    rgba(10, 9, 6, 0.9);
+  --selection-bg: rgba(201, 162, 39, 0.32);
+  --selection-fg: #fff;
+  --gold-soft:    rgba(201, 162, 39, 0.08);
+  --patina-soft:  rgba(87, 160, 143, 0.1);
+  --on-gold:      #14110a;
+  --glow-gold:    rgba(201, 162, 39, 0.05);
+  --glow-patina:  rgba(87, 160, 143, 0.05);
+
   --radius: 8px;
   --radius-sm: 4px;
   --max-width: 1000px;
   --ease: cubic-bezier(0.22, 0.7, 0.2, 1);
+}
+
+/* ============================================================
+   浅色主题：暖白漆面（与主页一致，Neo Kinpaku Light）
+   同一套设计语言：细线边框、扁平克制、金/铜绿双色；
+   仅把"漆面"换成暖米白，金与铜绿加深以保证浅底对比度。
+   启用方式：<html data-theme="light">（assets/js/theme.js 控制）
+   ============================================================ */
+[data-theme="light"] {
+  --lacquer:      #f5f2ea;
+  --lacquer-deep: #ebe7dc;
+  --raised:       #fdfbf5;
+  --graphite:     #f1ede3;
+  --graphite-2:   #e8e3d7;
+
+  --gold:        #9c7c1e;
+  --gold-pale:   #b8922e;
+  --gold-deep:   #7a5f15;
+  --patina:      #2f7d6d;
+  --patina-pale: #3c9584;
+  --patina-deep: #245f52;
+
+  --text:        #2c2820;
+  --text-body:   #413c31;
+  --text-muted:  #6d675a;
+  --text-faint:  #918a7a;
+
+  --hairline:        rgba(84, 70, 40, 0.18);
+  --hairline-strong: rgba(156, 124, 30, 0.65);
+
+  --topbar-bg:    rgba(250, 248, 241, 0.92);
+  --selection-bg: rgba(156, 124, 30, 0.26);
+  --selection-fg: #2c2820;
+  --gold-soft:    rgba(156, 124, 30, 0.1);
+  --patina-soft:  rgba(47, 125, 109, 0.12);
+  --on-gold:      #fdfbf5;
+  --glow-gold:    rgba(156, 124, 30, 0.07);
+  --glow-patina:  rgba(47, 125, 109, 0.07);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -45,7 +93,7 @@ body {
   min-height: 100vh;
 }
 
-::selection { background: rgba(201, 162, 39, 0.32); color: #fff; }
+::selection { background: var(--selection-bg); color: var(--selection-fg); }
 
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: var(--lacquer); }
@@ -81,8 +129,8 @@ body {
   overflow: hidden;
   pointer-events: none;
   background:
-    radial-gradient(110% 80% at 78% -8%, rgba(201, 162, 39, 0.05), transparent 55%),
-    radial-gradient(90% 70% at 8% 108%, rgba(87, 160, 143, 0.05), transparent 55%),
+    radial-gradient(110% 80% at 78% -8%, var(--glow-gold), transparent 55%),
+    radial-gradient(90% 70% at 8% 108%, var(--glow-patina), transparent 55%),
     var(--lacquer);
 }
 
@@ -95,7 +143,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 55;
-  background: rgba(10, 9, 6, 0.9);
+  background: var(--topbar-bg);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--hairline);
@@ -133,7 +181,7 @@ body {
   font-weight: 500;
   transition: color 0.2s ease, background 0.2s ease;
 }
-.top-link:hover { color: var(--gold); background: rgba(201, 162, 39, 0.08); }
+.top-link:hover { color: var(--gold); background: var(--gold-soft); }
 
 .top-actions { display: flex; align-items: center; gap: 8px; }
 
@@ -152,6 +200,24 @@ body {
   color: var(--gold);
 }
 
+/* 主题切换按钮（太阳 / 月亮，与语言按钮同族） */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px; height: 34px;
+  border: 1px solid var(--hairline);
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.theme-toggle:hover {
+  border-color: var(--hairline-strong);
+  color: var(--gold);
+}
+
 /* ============================================================
    详情 Hero
    ============================================================ */
@@ -166,7 +232,7 @@ body {
   border-radius: var(--radius);
   background: var(--raised);
   border: 1px solid var(--hairline);
-  border-top: 2px solid color-mix(in srgb, var(--card-accent, var(--gold)) 62%, #000);
+  border-top: 2px solid color-mix(in srgb, var(--card-accent, var(--gold)) 62%, var(--raised));
 }
 
 .detail-icon {
@@ -242,7 +308,7 @@ body {
 
 .btn-primary {
   background: var(--gold);
-  color: #14110a;
+  color: var(--on-gold);
   border: 1px solid var(--gold);
 }
 .btn-primary:hover {
@@ -268,7 +334,7 @@ body {
   border: 1px solid color-mix(in srgb, var(--patina) 55%, transparent);
 }
 .btn-cyan:hover {
-  background: rgba(87, 160, 143, 0.1);
+  background: var(--patina-soft);
   color: var(--patina-pale);
   border-color: var(--patina);
 }
@@ -391,6 +457,27 @@ body {
   font-size: 14px;
   color: var(--text-muted);
 }
+/* 更新记录提醒条：集满 3 条后推送至 GitHub Pages 上线 */
+.changelog-note {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 9px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid color-mix(in srgb, var(--patina) 42%, var(--hairline));
+  background: color-mix(in srgb, var(--patina) 7%, var(--raised));
+  color: var(--text-muted);
+}
+.changelog-note::before {
+  content: "";
+  flex-shrink: 0;
+  width: 7px; height: 7px;
+  background: var(--patina);
+  border-radius: 1px;
+}
+.changelog-note strong { color: var(--text); font-weight: 600; }
 .changelog-entry {
   border: 1px solid var(--hairline);
   border-left: 3px solid var(--gold);
@@ -484,6 +571,7 @@ body {
   .topbar .brand { display: none; }
   .topbar-inner { height: auto; min-height: 56px; flex-wrap: wrap; padding: 4px 0; row-gap: 2px; }
   .top-link { font-size: 13px; padding: 5px 8px; }
+  .theme-toggle { width: 30px; height: 30px; }
   .lang-toggle { font-size: 12px; padding: 5px 10px; }
   .page { padding: 30px 0 52px; }
   .detail-hero { padding: 24px 20px 22px; gap: 18px; justify-content: center; text-align: center; }
