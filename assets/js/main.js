@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
  * YYRMM 的软件库 — 双语静态站
  * 修改指南：编辑下方 I18N 和 softwareList 即可，无需动其他代码。
  * ============================================================ */
@@ -15,10 +15,11 @@ const PROFILE = {
 /* ---------- 2. 界面文案（站点名称等可在此修改） ---------- */
 const I18N = {
   brand:         { zh: "YYRMM的软件库", en: "YYRMM's Software Library" },
-  heroTitle:     { zh: "YYRMM 的软件库", en: "YYRMM's Software Library" },
+  heroTitle:     { zh: "YYRMM的软件库", en: "YYRMM's Software Library" },
   heroSub:       { zh: "这里收录了我开发的软件，欢迎试用与反馈。", en: "A collection of software I've built. Try them out and share your feedback." },
+  heroEyebrow:   { zh: "软件作品集", en: "Software Showcase" },
   sectionTitle:  { zh: "软件列表", en: "Software List" },
-  sectionDesc:   { zh: "点击「详细介绍」可在新页面查看完整介绍；卡片按钮直达下载、在线游玩或项目主页。", en: "Click \"Details\" to open the full introduction in a new page; buttons link to downloads, play or the repo." },
+  sectionDesc:   { zh: "点击「详细介绍」可在新页面查看完整介绍；卡片按钮直达下载或项目主页。", en: "Click \"Details\" to open the full introduction in a new page; buttons link to downloads or the repo." },
   emptyState:    { zh: "暂无可展示的软件，敬请期待。", en: "No software to show yet. Stay tuned!" },
   footerName:    { zh: "YYRMM的软件库", en: "YYRMM's Software Library" },
   footerHost:    { zh: "托管于 GitHub Pages", en: "Hosted on GitHub Pages" },
@@ -27,10 +28,12 @@ const I18N = {
   navSoftware:   { zh: "软件列表", en: "Software" },
   btnGithub:     { zh: "GitHub 下载", en: "GitHub Download" },
   btnNetdisk:    { zh: "网盘下载", en: "Netdisk Download" },
-  btnPlay:       { zh: "▶ 在线游玩", en: "▶ Play Online" },
   pwdLabel:      { zh: "密码", en: "Password" },
   btnWebsite:    { zh: "主页", en: "Website" },
   btnShow:       { zh: "详细介绍", en: "Details" },
+  badgeStopped:  { zh: "停止开发", en: "Discontinued" },
+  introEyebrow:  { zh: "卷首语", en: "Preface" },
+  introTitle:    { zh: "关于本项目", en: "About This Project" },
 };
 
 /* ---------- 3. 软件数据（已从 GitHub 仓库整理，SC01 已按要求排除） ----------
@@ -64,14 +67,13 @@ const softwareList = [
         { zh: "支持安卓 / Windows / 浏览器", en: "Playable on Android / Windows / browser" },
       ],
     },
-    tags: ["Windows", "Android", "Web", { zh: "叙事游戏", en: "Narrative Game" }],
+    tags: ["Windows", "Android", { zh: "叙事游戏", en: "Narrative Game" }],
     links: {
-      play: "games/love101.html",
       download: "https://github.com/YYRMMAYO/love101/releases/tag/v1.0.0",
       netdisk: { url: "https://wwbpq.lanzouu.com/b01d75y5fc", pwd: "00" },
       website: "https://github.com/YYRMMAYO/love101",
     },
-    accent: "#e11d48",
+    accent: "#b03a48",
   },
   {
     key: "aistudio",
@@ -99,50 +101,36 @@ const softwareList = [
       netdisk: { url: "https://wwbpq.lanzouu.com/b01d75a4yb", pwd: "YYKWY" },
       website: "",
     },
-    accent: "#4f46e5",
-  },
-  {
-    key: "guidecraft",
-    icon: "🤖",
-    name: { zh: "GuideCraft", en: "GuideCraft" },
-    desc: {
-      zh: "引导式 AI 助手：通过多轮对话把你的模糊想法变成可运行的 Python 自动化脚本，支持千问 / DeepSeek / OpenAI / Claude 等主流模型，生成代码可一键沙盒试运行并导出项目。",
-      en: "A guided AI assistant that turns vague ideas into runnable Python automation scripts through Q&A — supports Qwen / DeepSeek / OpenAI / Claude, with sandbox test-run and one-click project export.",
-    },
-    tags: ["Windows", { zh: "AI 助手", en: "AI Assistant" }, { zh: "免费", en: "Free" }],
-    links: {
-      download: "https://github.com/YYRMMAYO/GuideCraft",
-      website: "",
-    },
-    accent: "#0d9488",
+    accent: "#9c7c1e",
   },
   {
     key: "obs",
     icon: "🎥",
     name: { zh: "OBS 排障助手（Windows）", en: "OBS Helper (Windows)" },
+    version: "V2.8.0",
     desc: {
-      zh: "面向直播新手的 OBS Studio 排障工具：内置 110 条问题知识库，支持智能诊断、日志分析、OBS 远程控制台、全局热键、场景自动切换与直播间一键搭建，纯离线可用。",
-      en: "An OBS Studio troubleshooting tool for livestreaming beginners: 110-entry offline knowledge base, smart diagnosis, log analysis, OBS remote console, global hotkeys, auto scene switching and one-click livestream setup.",
+      zh: "面向直播新手的 OBS Studio 排障工具：110 条离线知识库、智能诊断、录制守护与实时日志预警、黑屏/音频/虚拟摄像头三合一深度体检、OBS 远程控制台，纯离线可用。",
+      en: "An OBS Studio troubleshooting tool for livestreaming beginners: 110-entry offline knowledge base, smart diagnosis, recording watchdog, real-time log alerts, black-screen / audio / virtual-camera health checks and an OBS remote console — fully offline.",
     },
     shot: "assets/images/showcase/obs.jpg",
     features: {
       tagline: { zh: "直播排障一步到位", en: "Livestream troubleshooting, solved" },
       items: [
-        { zh: "内置 85 条问题知识库，离线可用", en: "85-entry offline knowledge base" },
-        { zh: "智能诊断：一键定位黑屏 / 卡顿 / 音画不同步", en: "Smart diagnosis: black screen, lag & A/V sync" },
-        { zh: "日志分析：快速定位崩溃与报错", en: "Log analysis for crashes & errors" },
+        { zh: "110 条问题知识库，离线可用", en: "110-entry offline knowledge base" },
+        { zh: "录制守护：断连 / 心跳超时 / 重连确认三层告警", en: "Recording watchdog with 3-layer alerts" },
+        { zh: "实时日志尾随：掉帧、过载、断流即时预警", en: "Live log tailing for frame loss & overload" },
+        { zh: "黑屏 / 音频设备 / 虚拟摄像头三合一深度体检", en: "Black-screen / audio / virtual-cam checks" },
         { zh: "OBS 远程控制台 + 全局热键", en: "OBS remote console + global hotkeys" },
-        { zh: "场景自动切换 + 直播间一键搭建", en: "Auto scene switching + one-click livestream setup" },
         { zh: "纯离线运行，无需联网", en: "Fully offline, no network needed" },
       ],
     },
-    tags: ["Windows", { zh: "OBS 排障", en: "OBS Troubleshooting" }, { zh: "免费", en: "Free" }],
+    tags: ["Windows", "V2.8.0", { zh: "OBS 排障", en: "OBS Troubleshooting" }, { zh: "免费", en: "Free" }],
     links: {
       download: "https://github.com/YYRMMAYO/OBS_Helper",
       netdisk: { url: "https://wwbpq.lanzouu.com/b01d7578be", pwd: "YYKWY" },
       website: "",
     },
-    accent: "#dc2626",
+    accent: "#a63a2b",
   },
   {
     key: "obs-mac",
@@ -157,12 +145,40 @@ const softwareList = [
       download: "https://github.com/YYRMMAYO/OBS-Helpmac",
       website: "",
     },
-    accent: "#d97706",
+    accent: "#8b5a2b",
+  },
+  {
+    key: "obs-plugin",
+    icon: "🔌",
+    name: { zh: "OBS 排障助手 · 插件版", en: "OBS Helper Plugin" },
+    version: "v2.7.0",
+    desc: {
+      zh: "纯原生 C++ / Qt6 的 OBS Studio 前端插件：以停靠面板直接嵌入 OBS 主窗口，七大专栏覆盖体检、日志分析、设置体检、性能监控、插件管理、工具箱与系统信息，全程只读检测、零额外进程。",
+      en: "A native C++ / Qt6 front-end plugin for OBS Studio: embeds a dock panel right inside the main window with seven tabs — health check, log analysis, settings audit, performance monitor, plugin manager, toolbox and system info. Read-only, zero extra processes.",
+    },
+    features: {
+      tagline: { zh: "嵌进 OBS 的直播体检台", en: "A checkup desk inside OBS" },
+      items: [
+        { zh: "停靠面板嵌入 OBS 主窗口，无需 .NET 运行库", en: "Dock panel in OBS, no .NET runtime needed" },
+        { zh: "本地离线解析日志，对齐官方 Log Analyzer 规则", en: "Offline log analysis aligned with official rules" },
+        { zh: "「元凶插件」一键禁用，崩溃转储定位崩溃模块", en: "One-click disable of culprit plugins; crash dump parsing" },
+        { zh: "性能监控：帧耗时 / GPU 占用 / 丢帧实时告警", en: "Perf monitor: frame time, GPU usage, drop alerts" },
+        { zh: "录制路径预检 + 损坏录制件扫描 + 开播一键自检", en: "Record path pre-check, corrupt file scan, pre-flight self-check" },
+        { zh: "诊断报告一键导出，推流密钥自动脱敏", en: "One-click report export, stream key sanitized" },
+      ],
+    },
+    tags: ["Windows x64", "OBS 30.x–32.x", "v2.7.0", { zh: "开源", en: "Open Source" }],
+    links: {
+      download: "https://github.com/YYRMMAYO/OBS_Helper_Plugin/releases",
+      website: "https://github.com/YYRMMAYO/OBS_Helper_Plugin",
+    },
+    accent: "#3d5a56",
   },
   {
     key: "sinan",
     icon: "🧰",
     name: { zh: "司南工具箱", en: "Sinan Toolbox" },
+    status: "discontinued",
     desc: {
       zh: "完全免费、非盈利的 Windows 辅助工具：专注系统检测、清理优化、网络诊断与故障排查，本地运行、操作安全，内置 AI 助手与多套个性化主题。",
       en: "A completely free, non-profit Windows utility focused on system detection, cleanup & optimization, network diagnostics and troubleshooting — runs locally, safe to use, with an AI assistant and multiple themes.",
@@ -185,7 +201,7 @@ const softwareList = [
       netdisk: { url: "https://wwbpq.lanzouu.com/b01d71xtzg", pwd: "YYRMM" },
       website: "",
     },
-    accent: "#2563eb",
+    accent: "#4a6b52",
   },
 ];
 
@@ -209,9 +225,6 @@ function renderTags(tags) {
 }
 
 function renderLinks(links) {
-  const play = links.play
-    ? `<a class="btn btn-primary" href="${links.play}" target="_blank" rel="noopener">${t("btnPlay")}</a>`
-    : "";
   const github = links.download
     ? `<a class="btn btn-primary" href="${links.download}" target="_blank" rel="noopener">${t("btnGithub")}</a>`
     : "";
@@ -225,7 +238,7 @@ function renderLinks(links) {
   const website = links.website
     ? `<a class="btn btn-ghost" href="${links.website}" target="_blank" rel="noopener">${t("btnWebsite")}</a>`
     : "";
-  return play + github + netdisk + website;
+  return github + netdisk + website;
 }
 
 function renderCards() {
@@ -240,10 +253,14 @@ function renderCards() {
   grid.innerHTML = softwareList
     .map(
       (s) => `
-      <article class="card" data-reveal style="--card-accent:${s.accent}">
-        <div class="card-thumb" data-detail="${s.key}" title="${t("btnShow")}"><span class="card-icon">${s.icon}</span></div>
+      <article class="card${s.status === "discontinued" ? " is-discontinued" : ""}" data-reveal style="--card-accent:${s.accent}">
+        <div class="card-thumb" data-detail="${s.key}" title="${t("btnShow")}"><span class="card-icon">${s.icon}</span>${
+          s.status === "discontinued" ? `<span class="stamp-badge">${t("badgeStopped")}</span>` : ""
+        }</div>
         <div class="card-body">
-          <h3 class="card-title" data-detail="${s.key}">${s.name[lang]}</h3>
+          <h3 class="card-title" data-detail="${s.key}">${s.name[lang]}${
+            s.version ? ` <span class="card-version">${s.version}</span>` : ""
+          }${s.status === "discontinued" ? `<span class="title-stamp">${t("badgeStopped")}</span>` : ""}</h3>
           <p class="card-desc">${s.desc[lang]}</p>
           <div class="card-tags">${renderTags(s.tags)}</div>
           <div class="card-links">${renderLinks(s.links)}<a class="btn btn-show" href="detail/${s.key}.html" target="_blank" rel="noopener">${t("btnShow")}</a></div>
@@ -262,6 +279,10 @@ function applyI18n() {
   document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
     el.setAttribute("aria-label", t(el.dataset.i18nAria));
   });
+  // 静态双语区块（如「关于本项目」）：中文模式只显示中文，英文模式只显示英文
+  document.querySelectorAll("[data-lang]").forEach((el) => {
+    el.style.display = el.dataset.lang === lang ? "" : "none";
+  });
   // 个人介绍
   document.getElementById("profile-name").textContent = PROFILE.name[lang];
   document.getElementById("profile-bio").textContent = PROFILE.bio[lang];
@@ -270,6 +291,7 @@ function applyI18n() {
   btn.textContent = lang === "zh" ? "EN" : "中文";
   btn.setAttribute("aria-label", lang === "zh" ? "切换语言" : "Switch language");
   renderCards();
+  if (typeof window.splitHeroTitle === "function") window.splitHeroTitle();
 }
 
 document.getElementById("lang-toggle").addEventListener("click", () => {

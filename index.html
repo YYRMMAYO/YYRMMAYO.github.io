@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="My software showcase — 我的软件作品集" />
+  <meta name="description" content="YYRMM的软件库 — 个人软件作品集 · 纯静态 · 中英双语" />
   <title>YYRMM的软件库</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%A8%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
   <!-- 主题脚本：head 中同步加载，第一时间应用已保存的主题（防闪烁） -->
   <script src="assets/js/theme.js"></script>
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <!-- ===== 背景层：纯色漆面（Neo Kinpaku） ===== -->
+  <!-- ===== 背景层：纸墨主题（Paper & Ink） ===== -->
   <div class="bg-scene" aria-hidden="true"></div>
 
   <!-- ===== 顶部导航栏 ===== -->
@@ -38,11 +38,42 @@
 
   <!-- ===== 内容区 ===== -->
   <div class="page">
-    <!-- Hero -->
+    <!-- Hero：逐字水墨浮现 + 印章落款（动画融入版式，不遮挡页面） -->
     <section class="hero" id="home">
       <div class="container">
-        <h1 class="hero-title" data-reveal data-i18n="heroTitle">我的软件作品</h1>
-        <p class="hero-sub" data-reveal data-reveal-delay="1" data-i18n="heroSub">这里收录了我开发的软件，欢迎试用与反馈。</p>
+        <p class="hero-eyebrow"><span class="eyebrow-rule"></span><span data-i18n="heroEyebrow">软件作品集</span><span class="eyebrow-rule"></span></p>
+        <div class="hero-title-row">
+          <h1 class="hero-title" id="hero-title" data-i18n="heroTitle" aria-label="YYRMM的软件库">YYRMM的软件库</h1>
+        </div>
+        <p class="hero-sub" data-reveal data-i18n="heroSub">这里收录了我开发的软件，欢迎试用与反馈。</p>
+      </div>
+    </section>
+
+    <!-- 项目介绍 -->
+    <section class="intro container" id="intro" data-reveal>
+      <div class="intro-head">
+        <span class="intro-eyebrow" data-i18n="introEyebrow">卷首语</span>
+        <h2 class="intro-title" data-i18n="introTitle">关于本项目</h2>
+      </div>
+      <div class="intro-body">
+        <p class="intro-text" data-lang="zh">
+          「YYRMM的软件库」是个人软件作品的集中展示站点，收录<strong>第101种理由</strong>、<strong>AIStudioHub</strong>、<strong>OBS 排障助手</strong>系列（Windows / macOS / OBS 插件）与<strong>司南工具箱</strong>等项目。
+          各软件均配有独立的详细介绍页；「更新记录」由脚本自动同步自对应仓库的 GitHub Releases / Tags，与正式发布版本保持一致。
+        </p>
+        <p class="intro-text" data-lang="en">
+          A centralized showcase for my software — <strong>Love 101</strong>, <strong>AIStudioHub</strong>, the <strong>OBS Helper</strong> family (Windows / macOS / OBS plugin) and <strong>Sinan Toolbox</strong>.
+          Every project has a dedicated detail page; changelogs are synced automatically from each repository's GitHub Releases / Tags and stay in step with official versions.
+        </p>
+        <ul class="intro-points" data-lang="zh">
+          <li>中英双语 · 深浅双主题</li>
+          <li>独立详情页 · 版本更新记录</li>
+          <li>全部开源 · MIT 协议</li>
+        </ul>
+        <ul class="intro-points" data-lang="en">
+          <li>Bilingual · Light / dark themes</li>
+          <li>Dedicated detail pages · changelogs</li>
+          <li>All open source · MIT licensed</li>
+        </ul>
       </div>
     </section>
 

@@ -2,7 +2,7 @@
  * 更新记录数据 — 由 scripts/sync-changelog.py 自动生成，请勿手改
  * 重新生成：python scripts/sync-changelog.py
  * 数据来源：GitHub Releases / Tags（每个软件最近 3 个版本）
- * 生成时间：2026-08-23 12:47
+ * 生成时间：2026-08-25 11:49
  * ============================================================ */
 const CHANGELOG = {
   "aistudio": [
@@ -122,127 +122,6 @@ const CHANGELOG = {
       ]
     }
   ],
-  "guidecraft": [
-    {
-      "version": "v2.0.1",
-      "tagline": {
-        "zh": "设置导航重构 + 引导动画回归",
-        "en": ""
-      },
-      "items": [
-        {
-          "zh": "左侧导航从 RadioButton+Converter 改为 ListBox+ObservableCollection，根除 RadioButton 组 ConvertBack 回环 bug（点击任何 tab 都会弹回首个 tab）",
-          "en": ""
-        },
-        {
-          "zh": "新增 NotNullConverter 类（替代反向的 InverseBoolConverter 用于\"选中后可用\"判断）",
-          "en": ""
-        },
-        {
-          "zh": "StringEqualsBoolConverter.ConvertBack 同步加固（Binding.DoNothing + 枚举解析）",
-          "en": ""
-        },
-        {
-          "zh": "About tab 版本号用 Run.Text 绑定永远空白（Run.Text 非依赖属性）→ 改用 TextBlock Text 绑定",
-          "en": ""
-        },
-        {
-          "zh": "MainWindow 之前未订阅 WelcomeStepChanged 事件，WelcomeOverlay 静态显示 → 订阅后卡片淡入+缩放+上浮 + 圆点高亮随步骤切换",
-          "en": ""
-        },
-        {
-          "zh": "删除导航 7 个 emoji（🤖🎨🌐🧭⚡📊ℹ️）和内容区\"＋ 新增\"→\"新增\"",
-          "en": ""
-        },
-        {
-          "zh": "Models tab 空状态加引导提示",
-          "en": ""
-        },
-        {
-          "zh": "App.xaml.cs 崩溃日志路径 → 系统临时目录",
-          "en": ""
-        }
-      ]
-    },
-    {
-      "version": "v1.5.0",
-      "tagline": {
-        "zh": "",
-        "en": ""
-      },
-      "items": [
-        {
-          "zh": "The ✕ button in the drawer header",
-          "en": ""
-        },
-        {
-          "zh": "Clicking the dimmed area outside the drawer",
-          "en": ""
-        },
-        {
-          "zh": "Pressing `Esc` The drawer is 480px wide by default and can be dragged between 380px and 640px via a 4px `GridSplitter` o…",
-          "en": ""
-        },
-        {
-          "zh": "模型 — full CRUD for user-defined model profiles",
-          "en": ""
-        },
-        {
-          "zh": "外观 — light / dark theme",
-          "en": ""
-        },
-        {
-          "zh": "语言 — UI language (简体中文 / English)",
-          "en": ""
-        },
-        {
-          "zh": "布局 — sidebar position (left / right)",
-          "en": ""
-        },
-        {
-          "zh": "关于 — version, update check, download link The \"module page\" that lived in the content area is gone. The \"对话 / 设置\" tabs t…",
-          "en": ""
-        }
-      ]
-    },
-    {
-      "version": "v1.3.0",
-      "tagline": {
-        "zh": "",
-        "en": ""
-      },
-      "items": [
-        {
-          "zh": "外观 — interface theme (light / dark)",
-          "en": ""
-        },
-        {
-          "zh": "语言 / Language — UI language (简体中文 / English)",
-          "en": ""
-        },
-        {
-          "zh": "布局 — sidebar position (left / right) + drag hint",
-          "en": ""
-        },
-        {
-          "zh": "关于与更新 — version + update check + download The single overloaded settings card from v1.2.0 is replaced with this modular…",
-          "en": ""
-        },
-        {
-          "zh": "0 warnings / 0 errors in Debug and Release configurations",
-          "en": ""
-        },
-        {
-          "zh": "Self-contained Windows installer (~52 MB)",
-          "en": ""
-        },
-        {
-          "zh": "GuideCraft-Setup-1.3.0.exe MIT License · Source: [github.com/YYRMMAYO/GuideCraft](https://github.com/YYRMMAYO/GuideCraft…",
-          "en": ""
-        }
-      ]
-    }
-  ],
   "love101": [
     {
       "version": "v1.0.0",
@@ -268,94 +147,127 @@ const CHANGELOG = {
   ],
   "obs": [
     {
-      "version": "v2.3.0",
+      "version": "v2.8.0",
       "tagline": {
-        "zh": "插件生态打磨（去 emoji 统一设计 · 本机体检全盘定位 · 插件目录 38 条）",
+        "zh": "",
         "en": ""
       },
       "items": [
         {
-          "zh": "自动化：Source Switcher（来源自动轮播）、Media Controls（媒体控制面板）、 URL Source（API/URL 数据上屏）；",
+          "zh": "直播 / 录制中最怕的「静默失败」从此有人盯：三层异常信号监控，出事立刻托盘强提醒——",
           "en": ""
         },
         {
-          "zh": "视觉特效：Freeze Filter（画面冻结保险丝）、Retro Effects（CRT/VHS 复古特效）；",
+          "zh": "断连告警：WebSocket 断开且当时正在录制（OBS 崩溃 / 被关闭时用户在游戏中毫无察觉）；",
           "en": ""
         },
         {
-          "zh": "AI 智能：Auto Subtitle（讯飞实时中文字幕，国内直连）;",
+          "zh": "心跳超时：录制中连续 3 次 `GetRecordStatus` 查询失败（约 6 秒），提示 OBS 疑似假死、 卡在「正在停止录制」时不要强制关机；",
           "en": ""
         },
         {
-          "zh": "音频：Waveform（高精度实时波形可视化）；",
+          "zh": "重连后确认：自动重连成功后发现录制已被中断，明确告知并引导一键重启录制。",
           "en": ""
         },
         {
-          "zh": "多平台 / 竖屏：Source Dock（来源投独立窗口监看）、Spout2 输入输出（与 TouchDesigner / Resolume 等 GPU 纹理互通）；",
+          "zh": "同类告警单次异常期间只弹一次；状态恢复正常自动复位。设置 →「后台与遥控」可关。",
           "en": ""
         },
         {
-          "zh": "录制 / 后期：Replay Source（回放缓冲即时重播）。 收录前逐一验证仓库可达性与 Releases 资产；「直达下载」按钮全部有效。 知识库走分离热更新通道：老版本（V2.2+）用户无需升级应用即可收到新目录。",
+          "zh": "事中监控补全：后台只读尾随 `%AppData%\\obs-studio\\logs` 最新会话日志， 直播中出现掉帧、编码过载、断流、插件加载失败等特征时即时托盘提醒，不用等下播翻日志。",
           "en": ""
         },
         {
-          "zh": "插件广场页与全部联动入口（日志分析 / 智能诊断 / 场景模板 / 搭建向导 / 模板推荐插件行）统一为纯文字 + 品牌色徽标风格，与全应用设计语言一致；",
+          "zh": "匹配规则与离线日志分析器同源共享（一处维护）；命中前先脱敏；仅取警告级以上。",
           "en": ""
         },
         {
-          "zh": "分类筛选 chips 与分区标题不再渲染知识库自带的 icon 字段——即使外部热更新的 目录数据仍带旧图标，界面也不会再出现 emoji（字段保留以兼容旧版数据解析）；",
+          "zh": "双重防打扰：同类告警 90 秒抑制 + 每小时全局 12 条限流；自动跟随 OBS 滚动到新日志文件， 首次挂载从文件末尾开始，不重放历史。设置 →「后台与遥控」可关。",
           "en": ""
         }
       ]
     },
     {
-      "version": "v2.2.0",
+      "version": "v2.7.1",
       "tagline": {
-        "zh": "插件生态（目录热更新 · 本机体检 · 日志联动 · 搭建向导）",
+        "zh": "",
         "en": ""
       },
       "items": [
         {
-          "zh": "本机已装插件体检（只读）：扫描 OBS 安装目录（进程 / 注册表 / 默认路径三重定位， 兼容便携版与用户级插件目录），枚举已装插件的 DLL 名称与文件版本； 顶部新增「本机已装 N 个插件」面板，逐条标注 「广场收录 / 未收录」，…",
+          "zh": "告别单一紫色：设置 →「外观与无障碍」→「主题色」新增 5 套柔和配色色板，一键切换、即时生效、随配置持久化：",
           "en": ""
         },
         {
-          "zh": "直达 Releases 下载：每张卡片新增「⬇ 下载」按钮，直达该插件 GitHub Releases 最新版页面； 并展示「最新 vX.Y.Z」角标。查询走 GitHub API，带内存 + 磁盘双层缓存（24h 保鲜）与 在途请求合并，…",
+          "zh": "青瓷绿（默认）：`#157a70`，冷静专业",
           "en": ""
         },
         {
-          "zh": "AI 插件性能预算提示（P1-2）：AI 分类的卡片标注公开开销参考 （抠像约 +5~15% CPU / 100~300MB 内存，字幕约 +5~10% CPU / 200~500MB 等）， 并联动系统监控实时采样——空闲内存 < 500…",
+          "zh": "海盐蓝：`#3d6da0`，经典稳重",
           "en": ""
         },
         {
-          "zh": "关注插件启动查新（P2-1）：卡片可「☆ 关注」，应用启动时静默检查新版本 （24h 节流，首次关注先建立基线不轰炸），有新版仅角落 Toast 不弹窗。",
+          "zh": "鼠尾草绿：`#4b7061`，自然温和",
           "en": ""
         },
         {
-          "zh": "日志分析器新增「嫌疑模块」提取：`os_dlopen(...)` 加载失败、`Module '...' not loaded`、 崩溃报告肇事模块等线索都会提取出具体 DLL 名。",
+          "zh": "深海松石：`#0f766e`，沉稳内敛",
           "en": ""
         },
         {
-          "zh": "命中的发现卡片上直接给出 「🧩 在插件广场查看 →」 跳转按钮（能对上广场条目时）， 未收录的也会显示嫌疑模块名便于排查；智能诊断页同步支持。",
+          "zh": "雾紫（经典）：`#7b2ff7`，保留旧版情怀",
           "en": ""
         },
         {
-          "zh": "新增两条日志规则：检测到 StreamFX（停更插件）→ 给出迁移建议； 检测到 obs-multi-rtmp → 提示已知问题与 Aitum Multistream 替代评估。",
+          "zh": "每套配色含浅色 / 深色两整套色阶（基础 / 悬停 / 按下 / 柔和底 / 深变体 / 反衬文字），按钮、选中态、开关、复选框、小标等全界面统一跟随。",
           "en": ""
         },
         {
-          "zh": "插件广场 7 分类 × 28 个精选条目全部外置到 `plugins.json`， 与问题库共用同一套分离热更新机制：本地覆盖文件 + 内嵌种子 + 远程双通道 （GitHub raw 主通道 / Release 资产 `OBS_Helpe…",
+          "zh": "所有浅/深基础色与反衬文字对比度均按 WCAG AA（≥4.5:1）校准。",
           "en": ""
         }
       ]
     },
     {
-      "version": "v2.1.1",
+      "version": "v2.7.0",
       "tagline": {
-        "zh": "交叉检验修复（更新链路加固）",
+        "zh": "色彩 / 采样率 / 磁盘写入 / 编码顾问 / 推流节点五卡体检",
         "en": ""
       },
-      "items": []
+      "items": [
+        {
+          "zh": "A 组：浏览器告警挂件失效（widget URL 过期 / 缓存）、自定义 Dock 无法刷新、 OBS 隐性开销（隐藏来源未关停 / 重复捕获 / 浏览器源数量）、双编码 GPU 预算；",
+          "en": ""
+        },
+        {
+          "zh": "B 组：x264 与 NVENC P1~P7 预设速查、录像 CQP 恒定质量参考值 （H.264 18~20 / AV1 22）、字幕转写插件方案、推流节点实测选点；",
+          "en": ""
+        },
+        {
+          "zh": "C 组：磁盘写入速度不足导致录制卡顿（HDD / 满盘 SSD）。 所有 `related` 引用均校验为真实条目 id；随包热更新通道照常生效。",
+          "en": ""
+        },
+        {
+          "zh": "版本号 2.6.0 → 2.7.0；HeadlessTest 路由自检实测 18 路由全 PASS。",
+          "en": ""
+        },
+        {
+          "zh": "插件广场经核验已在 AI 分类收录 LocalVocal / Auto Subtitle / CleanStream / OBS Detect 四个字幕转写类精选，本版不重复扩充插件数据。",
+          "en": ""
+        },
+        {
+          "zh": "新增单元测试覆盖五个新核心 + 关键帧自检项 + 新日志规则， 全量 241 项测试通过（build 零警告零错误）。",
+          "en": ""
+        },
+        {
+          "zh": "全部新功能只读探测或独立 IO 测试：不改任何 OBS 配置与系统设置；",
+          "en": ""
+        },
+        {
+          "zh": "磁盘测速临时文件用后即删，异常路径也有 finally 兜底清理；",
+          "en": ""
+        }
+      ]
     }
   ],
   "obs-mac": [
@@ -391,6 +303,32 @@ const CHANGELOG = {
           "en": "Privacy first: no network requests by default; API keys and OBS passwords encrypted in the system keychain"
         }
       ]
+    }
+  ],
+  "obs-plugin": [
+    {
+      "version": "v2.7.0",
+      "tagline": {
+        "zh": "",
+        "en": ""
+      },
+      "items": []
+    },
+    {
+      "version": "v2.6.3",
+      "tagline": {
+        "zh": "",
+        "en": ""
+      },
+      "items": []
+    },
+    {
+      "version": "v2.6.2",
+      "tagline": {
+        "zh": "",
+        "en": ""
+      },
+      "items": []
     }
   ],
   "sinan": [

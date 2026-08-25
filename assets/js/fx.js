@@ -2,12 +2,32 @@
  * YYRMM 的软件库 — 视觉特效（纯原生 JS，无依赖）
  * 1) 滚动进场 reveal（IntersectionObserver + MutationObserver）
  * 2) 卡片点击涟漪反馈
- * 全部尊重 prefers-reduced-motion；无粒子、无光晕（Neo Kinpaku 克制原则）
+ * 全部尊重 prefers-reduced-motion；无粒子、无光晕（纸墨主题克制原则）
  * ============================================================ */
 (function () {
   "use strict";
 
   var reduced = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+
+  /* ---------------- 0. Hero 标题逐字水墨入场 ---------------- */
+  // 把标题文本拆成单字 span（--i 控制依次浮现的延迟）；
+  // 语言切换 / 重绘后由 main.js 再次调用。
+  window.splitHeroTitle = function () {
+    var el = document.getElementById("hero-title");
+    if (!el) return;
+    var text = el.textContent.trim();
+    if (!text || el.dataset.split === text) return;
+    el.dataset.split = text;
+    el.textContent = "";
+    Array.prototype.forEach.call(text, function (ch, i) {
+      var s = document.createElement("span");
+      s.className = "char";
+      s.style.setProperty("--i", i);
+      s.textContent = ch;
+      el.appendChild(s);
+    });
+  };
+  window.splitHeroTitle();
 
   /* ---------------- 1. 滚动进场 reveal ---------------- */
   var io = null;

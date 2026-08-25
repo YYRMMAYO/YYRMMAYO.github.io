@@ -1,82 +1,85 @@
 /* ============================================================
-   YYRMM 的软件库 — 详情页样式（与主页同主题：Neo Kinpaku）
-   深色漆面 · 金箔金主色 · 铜绿次色 · 细线边框 · 克制动效
+   YYRMM 的软件库 — 详情页样式（纸墨主题，与主页同源）
+   宣纸浅色 ⇄ 墨色深底 · 朱砂点睛 · 低饱和金辅助 · 黛青次色
    ============================================================ */
 
 :root {
-  --lacquer:      #12100b;
-  --lacquer-deep: #0a0906;
-  --raised:       #1a1711;
-  --graphite:     #242019;
-  --graphite-2:   #2d2820;
+  /* 宣纸浅色（默认日间主题） */
+  --lacquer:      #f6f1e6;
+  --lacquer-deep: #ece5d2;
+  --raised:       #fbf7ee;
+  --graphite:     #f0ead9;
+  --graphite-2:   #e7dfcc;
 
-  --gold:        #c9a227;
-  --gold-pale:   #e2c160;
-  --gold-deep:   #8a6d1f;
-  --patina:      #57a08f;
-  --patina-pale: #7fc0b0;
-  --patina-deep: #3a6f63;
+  /* 主色：朱砂（沿用 --gold 变量名承载主强调色） */
+  --gold:        #a63a2b;
+  --gold-pale:   #b94834;
+  --gold-deep:   #872d21;
+  /* 次色：黛青 */
+  --patina:      #3e5c57;
+  --patina-pale: #557a74;
+  --patina-deep: #2c453f;
 
-  --text:        #ece9e1;
-  --text-body:   #d6d2c7;
-  --text-muted:  #a49e8f;
-  --text-faint:  #7c776a;
+  --text:        #2b261c;
+  --text-body:   #454033;
+  --text-muted:  #6f6858;
+  --text-faint:  #998f79;
 
-  --hairline:        rgba(214, 204, 178, 0.14);
-  --hairline-strong: rgba(201, 162, 39, 0.55);
+  --hairline:        rgba(70, 58, 35, 0.18);
+  --hairline-strong: rgba(166, 58, 43, 0.6);
 
   /* 派生表面色（随主题整体切换，避免硬编码） */
-  --topbar-bg:    rgba(10, 9, 6, 0.9);
-  --selection-bg: rgba(201, 162, 39, 0.32);
-  --selection-fg: #fff;
-  --gold-soft:    rgba(201, 162, 39, 0.08);
-  --patina-soft:  rgba(87, 160, 143, 0.1);
-  --on-gold:      #14110a;
-  --glow-gold:    rgba(201, 162, 39, 0.05);
-  --glow-patina:  rgba(87, 160, 143, 0.05);
+  --topbar-bg:    rgba(246, 241, 230, 0.92);
+  --selection-bg: rgba(166, 58, 43, 0.22);
+  --selection-fg: #2b261c;
+  --gold-soft:    rgba(166, 58, 43, 0.08);
+  --patina-soft:  rgba(62, 92, 87, 0.1);
+  --on-gold:      #f6f1e6;
+  --glow-gold:    rgba(166, 58, 43, 0.05);
+  --glow-patina:  rgba(150, 120, 31, 0.05);
 
-  --radius: 8px;
-  --radius-sm: 4px;
+  --radius: 3px;
+  --radius-sm: 2px;
   --max-width: 1000px;
   --ease: cubic-bezier(0.22, 0.7, 0.2, 1);
+  --font-display: "Noto Serif SC", "Source Han Serif SC", "Source Han Serif CN",
+    "Songti SC", "STSong", "SimSun", Georgia, serif;
 }
 
 /* ============================================================
-   浅色主题：暖白漆面（与主页一致，Neo Kinpaku Light）
-   同一套设计语言：细线边框、扁平克制、金/铜绿双色；
-   仅把"漆面"换成暖米白，金与铜绿加深以保证浅底对比度。
-   启用方式：<html data-theme="light">（assets/js/theme.js 控制）
+   墨色深底（夜间主题）：墨底 · 月白字 · 朱砂与暗金点睛
+   启用方式：<html data-theme="dark">（assets/js/theme.js 控制）
    ============================================================ */
-[data-theme="light"] {
-  --lacquer:      #f5f2ea;
-  --lacquer-deep: #ebe7dc;
-  --raised:       #fdfbf5;
-  --graphite:     #f1ede3;
-  --graphite-2:   #e8e3d7;
+[data-theme="dark"] {
+  --lacquer:      #191510;
+  --lacquer-deep: #12100b;
+  --raised:       #211c15;
+  --graphite:     #272118;
+  --graphite-2:   #302920;
 
-  --gold:        #9c7c1e;
-  --gold-pale:   #b8922e;
-  --gold-deep:   #7a5f15;
-  --patina:      #2f7d6d;
-  --patina-pale: #3c9584;
-  --patina-deep: #245f52;
+  --gold:        #cd6249;
+  --gold-pale:   #dd7a62;
+  --gold-deep:   #b34e37;
+  --patina:      #85a89f;
+  --patina-pale: #a3c2ba;
+  --patina-deep: #67897f;
 
-  --text:        #2c2820;
-  --text-body:   #413c31;
-  --text-muted:  #6d675a;
-  --text-faint:  #918a7a;
+  --text:        #ede6d7;
+  --text-body:   #d8d0bf;
+  --text-muted:  #a59c88;
+  --text-faint:  #7d7462;
 
-  --hairline:        rgba(84, 70, 40, 0.18);
-  --hairline-strong: rgba(156, 124, 30, 0.65);
+  --hairline:        rgba(222, 210, 180, 0.16);
+  --hairline-strong: rgba(205, 98, 73, 0.6);
 
-  --topbar-bg:    rgba(250, 248, 241, 0.92);
-  --selection-bg: rgba(156, 124, 30, 0.26);
-  --selection-fg: #2c2820;
-  --gold-soft:    rgba(156, 124, 30, 0.1);
-  --patina-soft:  rgba(47, 125, 109, 0.12);
-  --on-gold:      #fdfbf5;
-  --glow-gold:    rgba(156, 124, 30, 0.07);
-  --glow-patina:  rgba(47, 125, 109, 0.07);
+  --topbar-bg:    rgba(18, 16, 11, 0.9);
+  --selection-bg: rgba(205, 98, 73, 0.32);
+  --selection-fg: #f6f1e6;
+  --gold-soft:    rgba(205, 98, 73, 0.1);
+  --patina-soft:  rgba(133, 168, 159, 0.12);
+  --on-gold:      #191510;
+  --glow-gold:    rgba(205, 98, 73, 0.06);
+  --glow-patina:  rgba(201, 168, 106, 0.05);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -84,8 +87,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
-    system-ui, -apple-system, sans-serif;
+  font-family: var(--font-display);
   background: var(--lacquer);
   color: var(--text-body);
   line-height: 1.8;
@@ -129,9 +131,16 @@ body {
   overflow: hidden;
   pointer-events: none;
   background:
-    radial-gradient(110% 80% at 78% -8%, var(--glow-gold), transparent 55%),
-    radial-gradient(90% 70% at 8% 108%, var(--glow-patina), transparent 55%),
+    radial-gradient(90% 60% at 88% -10%, var(--glow-gold), transparent 60%),
+    radial-gradient(80% 55% at 0% 110%, var(--glow-patina), transparent 60%),
     var(--lacquer);
+}
+.bg-scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
 }
 
 .aurora, .bg-grid, .bg-vignette, .cursor-glow { display: none; }
@@ -539,6 +548,36 @@ body {
   transition: color 0.2s ease;
 }
 .back-link:hover { color: var(--gold); }
+
+/* 「停止开发」告示横幅 */
+.status-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+  padding: 13px 18px;
+  border: 1px solid color-mix(in srgb, var(--gold) 45%, var(--hairline));
+  border-left: 3px solid var(--gold);
+  background: color-mix(in srgb, var(--gold) 6%, var(--raised));
+  border-radius: var(--radius-sm);
+}
+.status-banner::before {
+  content: "停";
+  flex-shrink: 0;
+  width: 34px; height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold);
+  border: 2px solid var(--gold);
+  border-radius: var(--radius-sm);
+  transform: rotate(-6deg);
+}
+.status-banner p { font-size: 14px; line-height: 1.7; color: var(--text-muted); }
+.status-banner strong { color: var(--gold); font-weight: 600; }
 
 /* ============================================================
    页脚

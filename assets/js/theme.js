@@ -12,7 +12,7 @@
   var root = document.documentElement;
 
   /* ---------------- 1. 初始化：读取偏好并立即应用（防闪烁） ---------------- */
-  var saved = "dark";
+  var saved = "light";
   try {
     var v = localStorage.getItem(KEY);
     if (v === "dark" || v === "light") saved = v;

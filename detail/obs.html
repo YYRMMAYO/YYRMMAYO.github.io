@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="OBS 排障助手（Windows）— 面向直播新手的 OBS 排障工具详细介绍" />
+  <meta name="description" content="OBS 排障助手（Windows）V2.8.0 — 面向直播新手的 OBS 排障工具：录制守护、实时日志预警、三合一深度体检" />
   <title>OBS 排障助手（Windows） — YYRMM的软件库</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%A8%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
   <!-- 主题脚本：head 中同步加载，第一时间应用已保存的主题（防闪烁） -->
   <script src="../assets/js/theme.js"></script>
   <link rel="stylesheet" href="../assets/css/detail.css" />
@@ -33,14 +33,15 @@
   <main class="page container" data-app="obs">
     <!-- ===== Hero ===== -->
     <section class="detail-hero" data-reveal>
-      <div class="detail-icon" style="--accent:#dc2626">🎥</div>
+      <div class="detail-icon" style="--accent:#a63a2b">🎥</div>
       <div class="detail-hero-text">
-        <h1 class="detail-name" data-lang="zh">OBS 排障助手（Windows）</h1>
-        <h1 class="detail-name" data-lang="en">OBS Helper (Windows)</h1>
-        <p class="detail-tagline" data-lang="zh">直播排障一步到位</p>
-        <p class="detail-tagline" data-lang="en">Livestream troubleshooting, solved</p>
+        <h1 class="detail-name" data-lang="zh">OBS 排障助手（Windows） <span style="font-size:13px;color:var(--gold);border:1.5px solid var(--gold);border-radius:2px;padding:2px 8px;vertical-align:6px;letter-spacing:.08em;display:inline-block">V2.8.0</span></h1>
+        <h1 class="detail-name" data-lang="en">OBS Helper (Windows) <span style="font-size:13px;color:var(--gold);border:1.5px solid var(--gold);border-radius:2px;padding:2px 8px;vertical-align:6px;letter-spacing:.08em;display:inline-block">V2.8.0</span></h1>
+        <p class="detail-tagline" data-lang="zh">直播排障一步到位 · 守护与体检（2026-08-24 发布）</p>
+        <p class="detail-tagline" data-lang="en">Livestream troubleshooting, solved · Guardian &amp; checkup (released 2026-08-24)</p>
         <div class="detail-meta">
           <span class="chip">Windows 10/11</span>
+          <span class="chip">V2.8.0</span>
           <span class="chip" data-lang="zh">OBS 排障</span>
           <span class="chip" data-lang="en">OBS Troubleshooting</span>
           <span class="chip" data-lang="zh">免费</span>
@@ -70,11 +71,13 @@
       <div class="detail-text">
         <div data-lang="zh">
           <p>OBS 排障助手是一款面向直播新手的 <strong>OBS Studio 排障工具</strong>，<strong>纯离线可用</strong>：110 条问题知识库、排障指引与日志分析规则全部内嵌在程序里，不联网也能查。连上 OBS 之后，还能远程控制场景、录制与推流，并做一键体检。</p>
-          <p>这是原 Blazor WebAssembly + WebView2 版本的<strong>原生 WPF 重构</strong>，功能一比一对齐，但去掉了浏览器内核这一层：冷启动直接起窗口、自包含单目录发布、无需安装 WebView2 与 .NET 运行时。V2.1 起支持<strong>增量更新与知识库独立更新</strong>：更新只下载变更文件（2.0 → 2.1.1 增量包仅 1.27MB），问题库可脱离应用单独升级。</p>
+          <p>最新版本 <strong>V2.8.0「守护与体检」</strong>（2026-08-24 发布）带来三层守护与新体检：<strong>录制守护</strong>监控断连 / 心跳超时 / 重连确认，直播中录制静默失败立刻托盘强提醒；<strong>实时日志尾随预警</strong>在掉帧、编码过载、断流发生的当下即时告警，不用等下播翻日志；工具箱新增<strong>黑屏专项、音频设备深度、虚拟摄像头</strong>三张体检卡片，并支持已知风险插件黄标提示。</p>
+          <p>这是原 Blazor WebAssembly + WebView2 版本的<strong>原生 WPF 重构</strong>：冷启动直接起窗口、自包含单目录发布、无需安装 WebView2 与 .NET 运行时。V2.1 起支持<strong>增量更新与知识库独立更新</strong>：更新只下载变更文件（2.0 → 2.1.1 增量包仅 1.27MB），问题库可脱离应用单独升级。</p>
         </div>
         <div data-lang="en">
           <p>OBS Helper is a <strong>troubleshooting tool for OBS Studio</strong> designed for livestreaming beginners. It works <strong>fully offline</strong>: a 110-entry knowledge base, troubleshooting guides and log-analysis rules are all embedded. Once connected to OBS, you can remotely control scenes, recording and streaming, and run a one-click health check.</p>
-          <p>This is a <strong>native WPF rewrite</strong> of the former Blazor WebAssembly + WebView2 version — features are aligned 1:1, but the browser-kernel layer is gone: cold start opens the window directly, self-contained single-folder publishing, no WebView2 or .NET runtime needed. Since V2.1 it supports <strong>incremental updates and standalone knowledge-base updates</strong>: only changed files are downloaded (the 2.0 → 2.1.1 delta pack is just 1.27MB).</p>
+          <p>The latest release, <strong>V2.8.0 "Guardian &amp; Checkup"</strong> (2026-08-24), adds three-layer protection and new checkups: a <strong>recording watchdog</strong> (disconnect / heartbeat-timeout / reconnect-confirm alerts) that tray-notifies you the moment recording silently fails mid-stream; <strong>real-time log tailing alerts</strong> for frame drops, encoder overload and disconnects as they happen; plus three new toolbox cards — <strong>black-screen, audio-device and virtual-camera deep checks</strong> — and yellow-flag warnings for known-risky plugins.</p>
+          <p>This is a <strong>native WPF rewrite</strong> of the former Blazor WebAssembly + WebView2 version: cold start opens the window directly, self-contained single-folder publishing, no WebView2 or .NET runtime needed. Since V2.1 it supports <strong>incremental updates and standalone knowledge-base updates</strong> — only changed files are downloaded (the 2.0 → 2.1.1 delta pack is just 1.27MB).</p>
         </div>
       </div>
     </section>
@@ -84,6 +87,12 @@
       <h2 class="detail-title" data-lang="zh">功能特性</h2>
       <h2 class="detail-title" data-lang="en">Features</h2>
       <div class="feature-grid">
+        <div class="feature-card" data-lang="zh"><strong>录制守护（V2.8 新增）</strong>断连告警 / 心跳超时 / 重连确认三层监控，录制静默失败立刻托盘强提醒</div>
+        <div class="feature-card" data-lang="en"><strong>Recording watchdog (new in V2.8)</strong>Disconnect / heartbeat / reconnect-confirm alerts with instant tray warnings</div>
+        <div class="feature-card" data-lang="zh"><strong>实时日志尾随预警（V2.8 新增）</strong>掉帧、过载、断流、插件加载失败即时提醒，90 秒抑制 + 限流防打扰</div>
+        <div class="feature-card" data-lang="en"><strong>Live log tailing (new in V2.8)</strong>Instant alerts for drops, overload &amp; disconnects, anti-spam throttled</div>
+        <div class="feature-card" data-lang="zh"><strong>三合一深度体检（V2.8 新增）</strong>黑屏专项 / 音频设备 / 虚拟摄像头逐项只读探测，给出系统设置页路径</div>
+        <div class="feature-card" data-lang="en"><strong>Triple deep checkup (new in V2.8)</strong>Black-screen / audio / virtual-cam read-only probes with fix paths</div>
         <div class="feature-card" data-lang="zh"><strong>110 条问题库，完全离线</strong>10 个分类：现象 / 成因 / 分步解决 / 小贴士 / 相关问题，步骤可勾选</div>
         <div class="feature-card" data-lang="en"><strong>110-entry offline KB</strong>10 categories: symptoms / causes / steps / tips / related</div>
         <div class="feature-card" data-lang="zh"><strong>免费 AI 诊断，开箱即用</strong>智谱 + Pollinations 双通道，本地限频，失败自动回退离线引擎</div>
@@ -94,18 +103,14 @@
         <div class="feature-card" data-lang="en"><strong>Global hotkeys</strong>Ctrl+Alt+R/S/C/M/O, remappable or disabled</div>
         <div class="feature-card" data-lang="zh"><strong>深度日志分析</strong>离线解析：23 条规则 + 3 项量化比值，分析前先脱敏</div>
         <div class="feature-card" data-lang="en"><strong>Deep log analysis</strong>23 rules + 3 ratios offline, sanitized first</div>
-        <div class="feature-card" data-lang="zh"><strong>场景模板一键落地</strong>6 套内置直播间模板，连上 OBS 一键生成场景与来源</div>
-        <div class="feature-card" data-lang="en"><strong>One-click scene templates</strong>6 built-in templates, instant scenes &amp; sources</div>
-        <div class="feature-card" data-lang="zh"><strong>场景自动切换 + 系统监控</strong>按前台窗口自动切场景；CPU / 内存 / 网络 / 磁盘实时曲线</div>
-        <div class="feature-card" data-lang="en"><strong>Auto scene switching + monitor</strong>Switch by window title; live CPU / RAM / net / disk curves</div>
+        <div class="feature-card" data-lang="zh"><strong>已知风险插件标注（V2.8）</strong>命中 obs-multi-rtmp、Source Record 等风险插件时黄标提示，名单可热更新</div>
+        <div class="feature-card" data-lang="en"><strong>Risky plugin flags (V2.8)</strong>Yellow flags for known-risky plugins, hot-updatable list</div>
         <div class="feature-card" data-lang="zh"><strong>增量更新，更新更轻</strong>只下载变更文件，逐文件 SHA-256 校验，失败自动回退整包</div>
         <div class="feature-card" data-lang="en"><strong>Incremental updates</strong>Download only changed files, SHA-256 verified, full-pack fallback</div>
-        <div class="feature-card" data-lang="zh"><strong>OBS 配置管理</strong>备份 / 导出（默认脱敏）/ 导入（覆盖或合并，自动预备份）/ 重置</div>
-        <div class="feature-card" data-lang="en"><strong>OBS config management</strong>Backup / export (sanitized) / import (auto-backup) / reset</div>
         <div class="feature-card" data-lang="zh"><strong>隐私优先</strong>凭据双层加密（AES-256-GCM + DPAPI）；只有主动发起诊断才联网</div>
         <div class="feature-card" data-lang="en"><strong>Privacy-first</strong>Double-layer encryption (AES-256-GCM + DPAPI); online only on demand</div>
-        <div class="feature-card" data-lang="zh"><strong>零第三方依赖</strong>原生 WPF + .NET 10，无 NuGet、无 WebView2，自包含单目录秒开</div>
-        <div class="feature-card" data-lang="en"><strong>Zero dependencies</strong>Native WPF + .NET 10, no NuGet / WebView2, instant startup</div>
+        <div class="feature-card" data-lang="zh"><strong>零第三方依赖</strong>原生 WPF + .NET 10，无 NuGet、无 WebView2，自包含单目录秒开；280 项单测全通过</div>
+        <div class="feature-card" data-lang="en"><strong>Zero dependencies</strong>Native WPF + .NET 10, no NuGet / WebView2; 280 unit tests all passing</div>
       </div>
     </section>
 
@@ -131,8 +136,8 @@
         </div>
         <div class="info-item">
           <div class="info-label">Update</div>
-          <div class="info-value" data-lang="zh">GitHub Releases + 蓝奏云镜像（提取码 YYKWY）；增量包低至 1.27MB</div>
-          <div class="info-value" data-lang="en">GitHub Releases + Lanzou mirror (code YYKWY); delta as low as 1.27MB</div>
+          <div class="info-value" data-lang="zh">V2.8.0（2026-08-24）· GitHub Releases + 蓝奏云镜像（提取码 YYKWY）；增量包低至 1.27MB</div>
+          <div class="info-value" data-lang="en">V2.8.0 (2026-08-24) · GitHub Releases + Lanzou mirror (code YYKWY); delta as low as 1.27MB</div>
         </div>
         <div class="info-item">
           <div class="info-label">License</div>

@@ -109,41 +109,6 @@
       ]
     }
   ],
-  "guidecraft": [
-    {
-      "version": "v3.0.0",
-      "tagline": {
-        "zh": "引导式 AI 助手",
-        "en": "Guided AI assistant"
-      },
-      "items": [
-        {
-          "zh": "多轮对话把模糊想法变成可运行的 Python 自动化脚本，支持千问 / DeepSeek / OpenAI / Claude 等主流模型",
-          "en": "Turns vague ideas into runnable Python automation scripts via Q&A; supports Qwen / DeepSeek / OpenAI / Claude"
-        },
-        {
-          "zh": "引导式 AI 增强：6 张场景模板卡片、按阶段快捷回复 chips、需求摘要确认栏",
-          "en": "Guided AI upgrade: 6 scenario template cards, stage-based quick-reply chips, requirement confirmation bar"
-        },
-        {
-          "zh": "沙盒试运行：生成代码可一键沙盒测试并导出项目",
-          "en": "Sandbox test-run: run generated code in sandbox and export the project"
-        },
-        {
-          "zh": "全新视觉设计系统：青绿主题色、分层表面、渐变主按钮，12 预设色板 + 任意 #RRGGBB 自定义",
-          "en": "New visual design system: teal accent, layered surfaces, gradient buttons; 12 presets + custom #RRGGBB"
-        },
-        {
-          "zh": "云端同步：WebDAV（坚果云 / Nextcloud）+ GitHub Gist，PBKDF2-SHA256 + AES-256-GCM 加密，与安卓端字节级互通",
-          "en": "Cloud sync: WebDAV (Nutstore / Nextcloud) + GitHub Gist, PBKDF2-SHA256 + AES-256-GCM encryption, byte-level compatible with Android"
-        },
-        {
-          "zh": "安卓版本：Kotlin + Jetpack Compose，与桌面端同步、主题、模型配置互通",
-          "en": "Android version: Kotlin + Jetpack Compose, sharing sync, themes and model config with desktop"
-        }
-      ]
-    }
-  ],
   "love101": [
     {
       "version": "v1.0.0",

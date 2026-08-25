@@ -42,8 +42,8 @@ MAX_VERSIONS = 3
 GITHUB_SOURCES = {
     "love101":   {"repo": "YYRMMAYO/love101",    "desc": "第101种理由"},
     "aistudio":  {"repo": "YYRMMAYO/AIStudioHub", "desc": "AIStudioHub"},
-    "guidecraft": {"repo": "YYRMMAYO/GuideCraft", "desc": "GuideCraft"},
     "obs":       {"repo": "YYRMMAYO/OBS_Helper",  "desc": "OBS 排障助手 (Windows)"},
+    "obs-plugin": {"repo": "YYRMMAYO/OBS_Helper_Plugin", "desc": "OBS 排障助手 · 插件版"},
     "obs-mac":   {"repo": "YYRMMAYO/OBS-Helpmac", "desc": "OBS 排障助手 (macOS)"},
     "sinan":     {"repo": "YYRMMAYO/WINhelper",   "desc": "司南工具箱"},
 }
@@ -318,7 +318,7 @@ def main():
         encoding="utf-8",
     )
     total = sum(len(v) for v in output.values())
-    print(f"\n✅ 完成：已生成 {OUT_JS.relative_to(ROOT)}（{len(output)} 个软件，共 {total} 条版本记录）")
+    print(f"\n[OK] 完成：已生成 {OUT_JS.relative_to(ROOT)}（{len(output)} 个软件，共 {total} 条版本记录）")
     print("   手动维护：编辑 scripts/changelog-source.json 后重跑本脚本即可。")
 
 

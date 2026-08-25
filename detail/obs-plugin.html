@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="OBS 排障助手 · 插件版 v2.7.0 — 纯原生 C++ / Qt6 的 OBS Studio 前端停靠面板插件，本地体检、日志分析、性能监控" />
+  <title>OBS 排障助手 · 插件版 — YYRMM的软件库</title>
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
+  <!-- 主题脚本：head 中同步加载，第一时间应用已保存的主题（防闪烁） -->
+  <script src="../assets/js/theme.js"></script>
+  <link rel="stylesheet" href="../assets/css/detail.css" />
+</head>
+<body>
+  <div class="bg-scene" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="../index.html">YYRMM的软件库</a>
+      <nav class="top-nav">
+        <a class="top-link" href="../index.html#home" data-lang="zh">首页</a>
+        <a class="top-link" href="../index.html#home" data-lang="en">Home</a>
+        <a class="top-link" href="../index.html#software" data-lang="zh">软件列表</a>
+        <a class="top-link" href="../index.html#software" data-lang="en">Software</a>
+      </nav>
+      <div class="top-actions">
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换主题"></button>
+        <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page container" data-app="obs-plugin">
+    <!-- ===== Hero ===== -->
+    <section class="detail-hero" data-reveal>
+      <div class="detail-icon" style="--accent:#3e5c57">🔌</div>
+      <div class="detail-hero-text">
+        <h1 class="detail-name" data-lang="zh">OBS 排障助手 · 插件版 <span style="font-size:13px;color:var(--gold);border:1.5px solid var(--gold);border-radius:2px;padding:2px 8px;vertical-align:6px;letter-spacing:.08em;display:inline-block">v2.7.0</span></h1>
+        <h1 class="detail-name" data-lang="en">OBS Helper Plugin <span style="font-size:13px;color:var(--gold);border:1.5px solid var(--gold);border-radius:2px;padding:2px 8px;vertical-align:6px;letter-spacing:.08em;display:inline-block">v2.7.0</span></h1>
+        <p class="detail-tagline" data-lang="zh">嵌进 OBS 的直播体检台（2026-08-24 发布）</p>
+        <p class="detail-tagline" data-lang="en">A checkup desk inside OBS (released 2026-08-24)</p>
+        <div class="detail-meta">
+          <span class="chip">Windows x64</span>
+          <span class="chip">OBS Studio 30.x–32.x</span>
+          <span class="chip">v2.7.0</span>
+          <span class="chip" data-lang="zh">C++ / Qt6</span>
+          <span class="chip" data-lang="en">C++ / Qt6</span>
+          <span class="chip" data-lang="zh">开源</span>
+          <span class="chip" data-lang="en">Open Source</span>
+          <span class="chip">MIT</span>
+        </div>
+        <div class="detail-actions">
+          <a class="btn btn-primary" href="https://github.com/YYRMMAYO/OBS_Helper_Plugin/releases" target="_blank" rel="noopener">
+            <span data-lang="zh">GitHub 下载</span><span data-lang="en">GitHub Download</span>
+          </a>
+          <a class="btn btn-cyan" href="https://github.com/YYRMMAYO/OBS_Helper_Plugin" target="_blank" rel="noopener">
+            <span data-lang="zh">GitHub 仓库</span><span data-lang="en">Repository</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 软件介绍 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">软件介绍</h2>
+      <h2 class="detail-title" data-lang="en">About</h2>
+      <div class="detail-text">
+        <div data-lang="zh">
+          <p>OBS 排障助手 · 插件版是一个<strong>纯原生（C++ / Qt6）的 OBS Studio 前端插件</strong>：以「停靠面板」的形式直接嵌入 OBS 主窗口，为你做一次全面的「直播环境体检」——<strong>无需 .NET 运行库、不启动任何额外进程、全程只读检测</strong>。重启 OBS 后在菜单栏「停靠(Docks) → OBS 排障助手」即可打开。</p>
+          <p>最新版本 <strong>v2.7.0</strong>（2026-08-24 发布）新增<strong>录制健康与开播自检</strong>：录制路径真实写入预检（识别 OneDrive 云同步目录、按码率估算剩余可录时长）、损坏录制件扫描（0KB / 未收尾 MP4，可批量 MKV → MP4 抢救）、回放缓存快捷键排障，以及聚合以上各项的<strong>开播前一键自检</strong>——开播前 10 秒出结论。</p>
+          <p>把日志扔给 obsproject.com 之前，先让它在<strong>本地</strong>帮你把问题查清楚：日志分析对齐官方 Log Analyzer 规则集并支持 <code>rules.json</code> 热更新与在线订阅；崩溃转储就地解析出崩溃模块；「元凶插件」可一键禁用验证。</p>
+        </div>
+        <div data-lang="en">
+          <p>OBS Helper Plugin is a <strong>fully native (C++ / Qt6) front-end plugin for OBS Studio</strong>: it embeds a dock panel right inside the main window and runs a complete "livestream environment checkup" — <strong>no .NET runtime, no extra processes, strictly read-only detection</strong>. After installing, open it via the "Docks → OBS Helper" menu.</p>
+          <p>The latest release, <strong>v2.7.0</strong> (2026-08-24), adds <strong>recording health &amp; pre-flight self-check</strong>: real write-probe of the recording path (detects OneDrive sync folders, estimates remaining recordable time by bitrate), corrupt recording scan (0KB files / unfinalized MP4s with batch MKV → MP4 rescue), replay-buffer hotkey troubleshooting, and an aggregated <strong>one-click pre-flight check</strong> that delivers a verdict within 10 seconds before you go live.</p>
+          <p>Before uploading logs to obsproject.com, let it find the problem <strong>locally</strong>: log analysis aligns with the official Log Analyzer rule set (hot-updatable via rules.json + online subscription), crash dumps are parsed in place to identify the crashing module, and "culprit plugins" can be disabled with one click.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 七大专栏 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">功能特性 · 七大专栏</h2>
+      <h2 class="detail-title" data-lang="en">Features · Seven Tabs</h2>
+      <div class="feature-grid">
+        <div class="feature-card" data-lang="zh"><strong>🩺 体检</strong>VC++ / .NET 运行库检测、Game DVR 与游戏模式检测、第三方插件清单、崩溃转储解析（定位崩溃模块）、磁盘空间预警、待重启预警</div>
+        <div class="feature-card" data-lang="en"><strong>🩺 Health Check</strong>Runtime detection, Game DVR / Game Mode, plugin inventory, crash-dump parsing, disk &amp; reboot-pending warnings</div>
+        <div class="feature-card" data-lang="zh"><strong>🔍 日志分析</strong>离线解析任意日志并对齐官方规则集，丢帧/滞后百分比定级，「元凶插件」一键禁用，规则集热更新与在线订阅</div>
+        <div class="feature-card" data-lang="en"><strong>🔍 Log Analysis</strong>Offline parsing aligned with official rules, quantified frame-drop grading, one-click culprit-plugin disable, hot-updatable rules</div>
+        <div class="feature-card" data-lang="zh"><strong>⚙️ 设置体检</strong>读取各 Profile 配置：编码器软编提醒、MP4 录制风险（一键改 MKV）、HDR 兼容性、分辨率帧率、音频设备缺失排查</div>
+        <div class="feature-card" data-lang="en"><strong>⚙️ Settings Audit</strong>Per-profile checks: x264 reminder, MP4 risk (one-click MKV), HDR hints, resolution / fps, missing audio devices</div>
+        <div class="feature-card" data-lang="zh"><strong>📈 性能监控</strong>实时渲染帧耗时 vs 目标帧间隔、CPU / 内存 / GPU 占用与显存、当前日志丢帧过载事件实时告警，1 秒采样</div>
+        <div class="feature-card" data-lang="en"><strong>📈 Performance</strong>Live frame-time vs target, CPU / RAM / GPU / VRAM usage, real-time drop &amp; overload alerts at 1s sampling</div>
+        <div class="feature-card" data-lang="zh"><strong>🧩 插件管理</strong>枚举三个安装位置的全部第三方插件（版本 / 启用状态 / 数字签名），一键禁用恢复，联网检查新版本</div>
+        <div class="feature-card" data-lang="en"><strong>🧩 Plugin Manager</strong>All third-party plugins across three locations (version / state / signature), one-click disable, online update check</div>
+        <div class="feature-card" data-lang="zh"><strong>🧰 工具箱</strong>网络诊断、Game DVR 一键关闭、录制盘写入测速、配置备份恢复、诊断报告导出（密钥脱敏）、录制体检·急救与开播前一键自检</div>
+        <div class="feature-card" data-lang="en"><strong>🧰 Toolbox</strong>Network diagnostics, Game DVR off toggle, disk speed test, config backup, sanitized report export, record rescue &amp; pre-flight check</div>
+        <div class="feature-card" data-lang="zh"><strong>💻 系统信息</strong>CPU / 内存 / 显卡驱动（过旧预警 + NVIDIA 新版比对）/ 显示器 / 硬件编码器一览，NVENC 驱动硬性下限校验</div>
+        <div class="feature-card" data-lang="en"><strong>💻 System Info</strong>CPU / RAM / GPU driver (staleness alert + NVIDIA comparison) / displays / encoders, NVENC minimum-driver check</div>
+      </div>
+    </section>
+
+    <!-- ===== 项目档案 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">项目档案</h2>
+      <h2 class="detail-title" data-lang="en">Project Details</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-label">Architecture</div>
+          <div class="info-value" data-lang="zh">手写导出 OBS 模块接口（不链接 libobs），运行期注册 Dock；log_rules / dump_check / record_check 等核心均可独立单测</div>
+          <div class="info-value" data-lang="en">Hand-written OBS module exports (no libobs linking), runtime dock registration; cores independently unit-testable</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Safety</div>
+          <div class="info-value" data-lang="zh">全程只读检测；所有检测逻辑均有 SEH 结构化异常防护，插件异常不会拖垮 OBS；报告导出自动脱敏推流密钥</div>
+          <div class="info-value" data-lang="en">Read-only checks; SEH-guarded logic so the plugin never takes OBS down; stream keys auto-sanitized in reports</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Install</div>
+          <div class="info-value" data-lang="zh">Setup 安装器自动探测 OBS 目录（含 Steam 版）；便携包手动安装；免管理员用户级安装（OBS 30.2+）；内置一键卸载</div>
+          <div class="info-value" data-lang="en">Setup installer auto-detects OBS (incl. Steam); portable zip; admin-free user-level install (OBS 30.2+); built-in uninstaller</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">i18n</div>
+          <div class="info-value" data-lang="zh">界面默认跟随 OBS 语言设置，可手动切换（跟随 OBS / 中文 / English）；配色跟随宿主深浅色主题</div>
+          <div class="info-value" data-lang="en">UI follows the OBS language setting (overridable: Auto / 中文 / English); colors follow host theme</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">CI</div>
+          <div class="info-value" data-lang="zh">推送 v* tag 自动构建发布；构建时运行规则引擎单元测试；可选代码签名</div>
+          <div class="info-value" data-lang="en">Tag-driven CI builds &amp; releases; rule-engine unit tests run in build; optional code signing</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">License</div>
+          <div class="info-value">MIT</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 更新记录（数据由 scripts/sync-changelog.py 同步生成） ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">更新记录</h2>
+      <h2 class="detail-title" data-lang="en">Changelog</h2>
+      <div id="changelog" class="changelog"></div>
+    </section>
+
+    <a class="back-link" href="../index.html#software" data-lang="zh">← 返回软件列表</a>
+    <a class="back-link" href="../index.html#software" data-lang="en">← Back to software list</a>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p data-lang="zh">© 2026 YYRMM的软件库 · 开源协议见 <a href="https://github.com/YYRMMAYO/OBS_Helper_Plugin" target="_blank" rel="noopener">OBS_Helper_Plugin 仓库</a></p>
+      <p data-lang="en">© 2026 YYRMM's Software Library · License: <a href="https://github.com/YYRMMAYO/OBS_Helper_Plugin" target="_blank" rel="noopener">OBS_Helper_Plugin repo</a></p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/changelog.js"></script>
+  <script src="../assets/js/detail.js"></script>
+</body>
+</html>
