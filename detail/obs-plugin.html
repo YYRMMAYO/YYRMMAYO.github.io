@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="OBS 排障助手 · 插件版 v2.7.0 — 纯原生 C++ / Qt6 的 OBS Studio 前端停靠面板插件，本地体检、日志分析、性能监控" />
+  <meta name="description" content="OBS 排障助手 · 插件版 v2.8.0 — 纯原生 C++ / Qt6 的 OBS Studio 前端停靠面板插件，本地体检、日志分析、性能监控" />
   <title>OBS 排障助手 · 插件版 — YYRMM的软件库</title>
   <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
   <!-- 主题脚本：head 中同步加载，第一时间应用已保存的主题（防闪烁） -->
@@ -34,14 +34,14 @@
     <section class="detail-hero" data-reveal>
       <div class="detail-icon" style="--accent:#3e5c57">🔌</div>
       <div class="detail-hero-text">
-        <h1 class="detail-name" data-lang="zh">OBS 排障助手 · 插件版 <span style="font-size:13px;color:var(--gold);border:1.5px solid var(--gold);border-radius:2px;padding:2px 8px;vertical-align:6px;letter-spacing:.08em;display:inline-block">v2.7.0</span></h1>
-        <h1 class="detail-name" data-lang="en">OBS Helper Plugin <span style="font-size:13px;color:var(--gold);border:1.5px solid var(--gold);border-radius:2px;padding:2px 8px;vertical-align:6px;letter-spacing:.08em;display:inline-block">v2.7.0</span></h1>
-        <p class="detail-tagline" data-lang="zh">嵌进 OBS 的直播体检台（2026-08-24 发布）</p>
-        <p class="detail-tagline" data-lang="en">A checkup desk inside OBS (released 2026-08-24)</p>
+        <h1 class="detail-name" data-lang="zh">OBS 排障助手 · 插件版 <span style="font-size:13px;color:var(--gold);border:1.5px solid var(--gold);border-radius:2px;padding:2px 8px;vertical-align:6px;letter-spacing:.08em;display:inline-block">v2.8.0</span></h1>
+        <h1 class="detail-name" data-lang="en">OBS Helper Plugin <span style="font-size:13px;color:var(--gold);border:1.5px solid var(--gold);border-radius:2px;padding:2px 8px;vertical-align:6px;letter-spacing:.08em;display:inline-block">v2.8.0</span></h1>
+        <p class="detail-tagline" data-lang="zh">嵌进 OBS 的直播体检台（2026-08-27 发布）</p>
+        <p class="detail-tagline" data-lang="en">A checkup desk inside OBS (released 2026-08-27)</p>
         <div class="detail-meta">
           <span class="chip">Windows x64</span>
           <span class="chip">OBS Studio 30.x–32.x</span>
-          <span class="chip">v2.7.0</span>
+          <span class="chip">v2.8.0</span>
           <span class="chip" data-lang="zh">C++ / Qt6</span>
           <span class="chip" data-lang="en">C++ / Qt6</span>
           <span class="chip" data-lang="zh">开源</span>
@@ -66,12 +66,12 @@
       <div class="detail-text">
         <div data-lang="zh">
           <p>OBS 排障助手 · 插件版是一个<strong>纯原生（C++ / Qt6）的 OBS Studio 前端插件</strong>：以「停靠面板」的形式直接嵌入 OBS 主窗口，为你做一次全面的「直播环境体检」——<strong>无需 .NET 运行库、不启动任何额外进程、全程只读检测</strong>。重启 OBS 后在菜单栏「停靠(Docks) → OBS 排障助手」即可打开。</p>
-          <p>最新版本 <strong>v2.7.0</strong>（2026-08-24 发布）新增<strong>录制健康与开播自检</strong>：录制路径真实写入预检（识别 OneDrive 云同步目录、按码率估算剩余可录时长）、损坏录制件扫描（0KB / 未收尾 MP4，可批量 MKV → MP4 抢救）、回放缓存快捷键排障，以及聚合以上各项的<strong>开播前一键自检</strong>——开播前 10 秒出结论。</p>
+          <p>最新版本 <strong>v2.8.0</strong>（2026-08-27 发布）新增<strong>录制健康与开播自检</strong>：录制路径真实写入预检（识别 OneDrive 云同步目录、按码率估算剩余可录时长）、损坏录制件扫描（0KB / 未收尾 MP4，可批量 MKV → MP4 抢救）、回放缓存快捷键排障，以及聚合以上各项的<strong>开播前一键自检</strong>——开播前 10 秒出结论。</p>
           <p>把日志扔给 obsproject.com 之前，先让它在<strong>本地</strong>帮你把问题查清楚：日志分析对齐官方 Log Analyzer 规则集并支持 <code>rules.json</code> 热更新与在线订阅；崩溃转储就地解析出崩溃模块；「元凶插件」可一键禁用验证。</p>
         </div>
         <div data-lang="en">
           <p>OBS Helper Plugin is a <strong>fully native (C++ / Qt6) front-end plugin for OBS Studio</strong>: it embeds a dock panel right inside the main window and runs a complete "livestream environment checkup" — <strong>no .NET runtime, no extra processes, strictly read-only detection</strong>. After installing, open it via the "Docks → OBS Helper" menu.</p>
-          <p>The latest release, <strong>v2.7.0</strong> (2026-08-24), adds <strong>recording health &amp; pre-flight self-check</strong>: real write-probe of the recording path (detects OneDrive sync folders, estimates remaining recordable time by bitrate), corrupt recording scan (0KB files / unfinalized MP4s with batch MKV → MP4 rescue), replay-buffer hotkey troubleshooting, and an aggregated <strong>one-click pre-flight check</strong> that delivers a verdict within 10 seconds before you go live.</p>
+          <p>The latest release, <strong>v2.8.0</strong> (2026-08-27), adds <strong>recording health &amp; pre-flight self-check</strong>: real write-probe of the recording path (detects OneDrive sync folders, estimates remaining recordable time by bitrate), corrupt recording scan (0KB files / unfinalized MP4s with batch MKV → MP4 rescue), replay-buffer hotkey troubleshooting, and an aggregated <strong>one-click pre-flight check</strong> that delivers a verdict within 10 seconds before you go live.</p>
           <p>Before uploading logs to obsproject.com, let it find the problem <strong>locally</strong>: log analysis aligns with the official Log Analyzer rule set (hot-updatable via rules.json + online subscription), crash dumps are parsed in place to identify the crashing module, and "culprit plugins" can be disabled with one click.</p>
         </div>
       </div>

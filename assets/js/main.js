@@ -107,16 +107,16 @@ const softwareList = [
     key: "obs",
     icon: "🎥",
     name: { zh: "OBS 排障助手（Windows）", en: "OBS Helper (Windows)" },
-    version: "V2.8.0",
+    version: "V2.8.2",
     desc: {
-      zh: "面向直播新手的 OBS Studio 排障工具：110 条离线知识库、智能诊断、录制守护与实时日志预警、黑屏/音频/虚拟摄像头三合一深度体检、OBS 远程控制台，纯离线可用。",
-      en: "An OBS Studio troubleshooting tool for livestreaming beginners: 110-entry offline knowledge base, smart diagnosis, recording watchdog, real-time log alerts, black-screen / audio / virtual-camera health checks and an OBS remote console — fully offline.",
+      zh: "面向直播新手的 OBS Studio 排障工具：149 条离线知识库、智能诊断、录制守护与实时日志预警、黑屏/音频/虚拟摄像头三合一深度体检、OBS 远程控制台，纯离线可用。",
+      en: "An OBS Studio troubleshooting tool for livestreaming beginners: 149-entry offline knowledge base, smart diagnosis, recording watchdog, real-time log alerts, black-screen / audio / virtual-camera health checks and an OBS remote console — fully offline.",
     },
     shot: "assets/images/showcase/obs.jpg",
     features: {
       tagline: { zh: "直播排障一步到位", en: "Livestream troubleshooting, solved" },
       items: [
-        { zh: "110 条问题知识库，离线可用", en: "110-entry offline knowledge base" },
+        { zh: "149 条问题知识库，离线可用", en: "149-entry offline knowledge base" },
         { zh: "录制守护：断连 / 心跳超时 / 重连确认三层告警", en: "Recording watchdog with 3-layer alerts" },
         { zh: "实时日志尾随：掉帧、过载、断流即时预警", en: "Live log tailing for frame loss & overload" },
         { zh: "黑屏 / 音频设备 / 虚拟摄像头三合一深度体检", en: "Black-screen / audio / virtual-cam checks" },
@@ -124,7 +124,7 @@ const softwareList = [
         { zh: "纯离线运行，无需联网", en: "Fully offline, no network needed" },
       ],
     },
-    tags: ["Windows", "V2.8.0", { zh: "OBS 排障", en: "OBS Troubleshooting" }, { zh: "免费", en: "Free" }],
+    tags: ["Windows", "V2.8.2", { zh: "OBS 排障", en: "OBS Troubleshooting" }, { zh: "免费", en: "Free" }],
     links: {
       download: "https://github.com/YYRMMAYO/OBS_Helper",
       netdisk: { url: "https://wwbpq.lanzouu.com/b01d7578be", pwd: "YYKWY" },
@@ -151,7 +151,7 @@ const softwareList = [
     key: "obs-plugin",
     icon: "🔌",
     name: { zh: "OBS 排障助手 · 插件版", en: "OBS Helper Plugin" },
-    version: "v2.7.0",
+    version: "v2.8.0",
     desc: {
       zh: "纯原生 C++ / Qt6 的 OBS Studio 前端插件：以停靠面板直接嵌入 OBS 主窗口，七大专栏覆盖体检、日志分析、设置体检、性能监控、插件管理、工具箱与系统信息，全程只读检测、零额外进程。",
       en: "A native C++ / Qt6 front-end plugin for OBS Studio: embeds a dock panel right inside the main window with seven tabs — health check, log analysis, settings audit, performance monitor, plugin manager, toolbox and system info. Read-only, zero extra processes.",
@@ -167,7 +167,7 @@ const softwareList = [
         { zh: "诊断报告一键导出，推流密钥自动脱敏", en: "One-click report export, stream key sanitized" },
       ],
     },
-    tags: ["Windows x64", "OBS 30.x–32.x", "v2.7.0", { zh: "开源", en: "Open Source" }],
+    tags: ["Windows x64", "OBS 30.x–32.x", "v2.8.0", { zh: "开源", en: "Open Source" }],
     links: {
       download: "https://github.com/YYRMMAYO/OBS_Helper_Plugin/releases",
       website: "https://github.com/YYRMMAYO/OBS_Helper_Plugin",

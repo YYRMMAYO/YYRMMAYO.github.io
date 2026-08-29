@@ -21,9 +21,9 @@
 |---|---|---|---|
 | **第101种理由** | 2.5D 恋爱叙事游戏：9 段爱情故事改编剧情，AI 生成立绘，点击推进 + 双选项互动，离线可玩，支持安卓 / Windows | HTML/CSS/JS（数据驱动） | [github.com/YYRMMAYO/love101](https://github.com/YYRMMAYO/love101) |
 | **AIStudioHub** | AI 制作资源整合中心：181 个主流 AI 平台与开源工具，离线中文教程，AI Agent / Skill 专区 | C# / WPF (.NET 8) | [github.com/YYRMMAYO/AIStudioHub](https://github.com/YYRMMAYO/AIStudioHub) |
-| **OBS 排障助手 (Windows)** | V2.8.0「守护与体检」：110 条离线知识库、录制守护、实时日志预警、黑屏/音频/虚拟摄像头三合一深度体检 | C# / WPF (.NET 10) | [github.com/YYRMMAYO/OBS_Helper](https://github.com/YYRMMAYO/OBS_Helper) |
-| **OBS 排障助手 · 插件版** | v2.7.0：纯原生 C++/Qt6 的 OBS Studio 前端停靠面板插件，七大专栏本地体检、日志分析、性能监控 | C++ / Qt6 | [github.com/YYRMMAYO/OBS_Helper_Plugin](https://github.com/YYRMMAYO/OBS_Helper_Plugin) |
-| **OBS 排障助手 (macOS)** | OBS 直播排障助手 macOS 版：离线知识库、智能诊断、系统监控、场景模板 | Rust (Tauri v2) + Blazor WASM | [github.com/YYRMMAYO/OBS-Helpmac](https://github.com/YYRMMAYO/OBS-Helpmac) |
+| **OBS 排障助手 (Windows)** | V2.8.2「守护与体检」：149 条离线知识库、录制守护、实时日志预警、黑屏/音频/虚拟摄像头三合一深度体检 | C# / WPF (.NET 10) | [github.com/YYRMMAYO/OBS_Helper](https://github.com/YYRMMAYO/OBS_Helper) |
+| **OBS 排障助手 · 插件版** | v2.8.0：纯原生 C++/Qt6 的 OBS Studio 前端停靠面板插件，七大专栏本地体检、日志分析、性能监控 | C++ / Qt6 | [github.com/YYRMMAYO/OBS_Helper_Plugin](https://github.com/YYRMMAYO/OBS_Helper_Plugin) |
+| **OBS 排障助手 (macOS)** | OBS 直播排障助手 macOS 版：离线知识库、智能诊断、系统监控、场景模板 | Avalonia 11 / .NET 10 | [github.com/YYRMMAYO/OBS-Helpmac](https://github.com/YYRMMAYO/OBS-Helpmac) |
 | **司南工具箱** ⛔ 已停止开发 | 免费非营利 Windows 辅助工具：系统检测、清理优化、网络诊断、故障排查（现有版本仍可用） | C# / WPF (.NET 10) | [github.com/YYRMMAYO/WINhelper](https://github.com/YYRMMAYO/WINhelper) |
 
 > GuideCraft 已于 2026-08 从站点移除。

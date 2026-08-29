@@ -40,12 +40,12 @@
         <p class="detail-tagline" data-lang="zh">面向直播新手的 OBS Studio 排障工具</p>
         <p class="detail-tagline" data-lang="en">OBS Studio troubleshooting for livestreaming beginners</p>
         <div class="detail-meta">
-          <span class="chip">macOS 11+</span>
+          <span class="chip">macOS 12+</span>
           <span class="chip" data-lang="zh">OBS 排障</span>
           <span class="chip" data-lang="en">OBS Troubleshooting</span>
           <span class="chip" data-lang="zh">开源</span>
           <span class="chip" data-lang="en">Open Source</span>
-          <span class="chip">Tauri v2</span>
+          <span class="chip">Avalonia 11</span>
         </div>
         <div class="detail-actions">
           <a class="btn btn-primary" href="https://github.com/YYRMMAYO/OBS-Helpmac" target="_blank" rel="noopener">
@@ -64,12 +64,12 @@
       <h2 class="detail-title" data-lang="en">About</h2>
       <div class="detail-text">
         <div data-lang="zh">
-          <p>OBS 排障助手 macOS 版是一款面向直播新手的 <strong>OBS Studio 排障工具</strong>。知识库、排障指引与日志分析规则全部内嵌在应用里，<strong>不联网也能查、能分析、能控制 OBS</strong>。连上 OBS 后，可远程切换场景、录制与推流，并做一键体检。</p>
-          <p>本版本采用<strong>原生 Tauri v2（Rust）桌面壳 + Blazor WebAssembly 前端</strong>，功能与 Windows 版对齐，版本号同步至 v1.5.0。支持 macOS 11（Big Sur）及以上，提供 Apple Silicon 与 Intel 双架构 <code>.dmg</code>。注意：macOS 版<strong>不内置免费 AI 通道</strong>（仅本地规则引擎 + 自带云端 Key），保持最小依赖与最简发布。</p>
+          <p>OBS 排障助手 macOS 版是一款面向直播新手的 <strong>OBS Studio 排障工具</strong>。212+ 条分步排障方案、日志分析规则、场景模板全部内嵌在应用里，<strong>不联网也能查、能分析、能控制 OBS</strong>。连上 OBS 后，可远程切换场景、录制与推流，并做一键体检。</p>
+          <p>本版本采用 <strong>Avalonia UI 单进程原生架构</strong>（替代早期 Tauri + WebAssembly 方案），功能与 Windows WPF 版完全对齐，版本号同步至 v2.1.0。支持 macOS 12 及以上，提供 Apple Silicon 与 Intel 双架构 <code>.dmg</code>。注意：macOS 版<strong>不内置免费 AI 通道</strong>（仅本地规则引擎 + 自带云端 Key），保持最小依赖与最简发布。</p>
         </div>
         <div data-lang="en">
-          <p>OBS Helper (macOS) is an <strong>OBS Studio troubleshooting tool</strong> for livestreaming beginners. The knowledge base, troubleshooting guides and log-analysis rules are all embedded — <strong>you can search, analyze and control OBS without network</strong>. Once connected, remotely switch scenes, record, stream, and run a one-click health check.</p>
-          <p>Built with a <strong>native Tauri v2 (Rust) shell + Blazor WebAssembly frontend</strong>, it aligns with the Windows version (v1.5.0). Supports macOS 11 (Big Sur) and later, with <code>.dmg</code> for both Apple Silicon and Intel. Note: the macOS build ships <strong>no built-in free AI channel</strong> (local rule engine + your own cloud key only) to keep dependencies minimal.</p>
+          <p>OBS Helper (macOS) is an <strong>OBS Studio troubleshooting tool</strong> for livestreaming beginners. 212+ step-by-step troubleshooting solutions, log-analysis rules and scene templates are all embedded — <strong>you can search, analyze and control OBS without network</strong>. Once connected, remotely switch scenes, record, stream, and run a one-click health check.</p>
+          <p>Built with a <strong>native Avalonia UI single-process architecture</strong> (replacing the earlier Tauri + WebAssembly approach), it aligns feature-for-feature with the Windows WPF edition (v2.1.0). Supports macOS 12 and later, with <code>.dmg</code> for both Apple Silicon and Intel. Note: the macOS build ships <strong>no built-in free AI channel</strong> (local rule engine + your own cloud key only) to keep dependencies minimal.</p>
         </div>
       </div>
     </section>
@@ -91,8 +91,8 @@
         <div class="feature-card" data-lang="en"><strong>Deep log analysis</strong>Sanitized + signature-rule scanning, one-click config check</div>
         <div class="feature-card" data-lang="zh"><strong>场景模板一键落地</strong>内置直播间模板，未连接时可导出标准场景 JSON</div>
         <div class="feature-card" data-lang="en"><strong>One-click scene templates</strong>Built-in templates; export standard scene JSON offline</div>
-        <div class="feature-card" data-lang="zh"><strong>菜单栏 + 迷你小窗</strong>菜单栏直接控制录制 / 推流 / 虚拟摄像头，小窗可拖拽记忆位置</div>
-        <div class="feature-card" data-lang="en"><strong>Menu bar + mini panel</strong>Record / stream / vcam from menu bar; draggable mini panel</div>
+        <div class="feature-card" data-lang="zh"><strong>菜单栏控制 + 场景模板</strong>菜单栏直达控制录制 / 推流 / 虚拟摄像头；内置直播间模板，迷你小窗规划中</div>
+        <div class="feature-card" data-lang="en"><strong>Menu bar + scene templates</strong>Record / stream / vcam from the menu bar; built-in studio templates, mini panel planned</div>
         <div class="feature-card" data-lang="zh"><strong>场景自动切换</strong>按前台应用自动切换 OBS 场景，规则可编辑</div>
         <div class="feature-card" data-lang="en"><strong>Auto scene switching</strong>Switch by foreground app, editable rules</div>
         <div class="feature-card" data-lang="zh"><strong>系统监控</strong>CPU / 内存 / 网络 / 磁盘 1 秒实时曲线，与 OBS 帧率丢帧联动</div>
@@ -121,8 +121,8 @@
         </div>
         <div class="info-item">
           <div class="info-label">Stack</div>
-          <div class="info-value" data-lang="zh">Tauri v2 (Rust) + Blazor WASM + .NET 10，零外部依赖</div>
-          <div class="info-value" data-lang="en">Tauri v2 (Rust) + Blazor WASM + .NET 10, zero external deps</div>
+          <div class="info-value" data-lang="zh">Avalonia 11 / .NET 10，零外部依赖</div>
+          <div class="info-value" data-lang="en">Avalonia 11 / .NET 10, zero external deps</div>
         </div>
         <div class="info-item">
           <div class="info-label">Install</div>
