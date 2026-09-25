@@ -602,6 +602,51 @@ body {
 .card-title a { color: inherit; text-decoration: none; transition: color 0.2s ease; }
 .card-title a:hover { color: var(--cinnabar); }
 
+/* 资料卡片：下载信息行 —— 醒目的网盘密码 + 免费发布声明 */
+.res-dl-note {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.res-pwd {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  padding: 5px 13px;
+  border: 1px dashed color-mix(in srgb, var(--gold) 60%, var(--hairline));
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--gold) 13%, transparent);
+}
+.res-pwd-label {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+}
+.res-pwd-value {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Courier New", monospace;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+}
+/* 免费发布声明：铜绿描边小条 */
+.res-free {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--qing);
+  border: 1px solid color-mix(in srgb, var(--qing) 45%, var(--hairline));
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--qing) 10%, transparent);
+}
+.res-free svg { flex-shrink: 0; }
+
 .card-tags {
   margin-top: 14px;
   display: flex;

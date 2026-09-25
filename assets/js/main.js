@@ -36,7 +36,8 @@ const I18N = {
   introTitle:    { zh: "关于本项目", en: "About This Project" },
   navResources:   { zh: "资料", en: "Resources" },
   resTitle:       { zh: "资料下载", en: "Resource Downloads" },
-  resDesc:        { zh: "以下资料均由 AI 协助整理与编写，统一存放在云盘；点击「网盘下载」并输入密码即可获取。内容仅供参考，会持续补充与修订。", en: "All materials below were organized and written with the help of AI and are stored on a cloud drive — click \"Netdisk Download\" and enter the password to get them. They are for reference and keep being revised." },
+  resDesc:        { zh: "以下资料均由 AI 协助整理与编写，统一存放在云盘；点击「网盘下载」并输入密码即可获取。所有资料均免费发布，不含任何收费项，内容仅供参考、会持续修订。", en: "All materials below were organized and written with the help of AI and are stored on a cloud drive — click \"Netdisk Download\" and enter the password to get them. They are released free of charge with no paid items, for reference only, and keep being revised." },
+  resFree:        { zh: "免费发布 · 不含收费项", en: "Free · no paid items" },
   resEmptyState:  { zh: "资料整理中，敬请期待。", en: "Materials are being prepared. Stay tuned!" },
   resFeedbackEyebrow: { zh: "问题反馈", en: "Feedback" },
   resFeedbackText:    { zh: "资料有误、缺漏，或者想补充新的资料？欢迎填写反馈表告诉我。", en: "Found a mistake or a gap, or want to suggest new material? Tell me through the feedback form." },
@@ -313,7 +314,9 @@ function renderResourceCards() {
   if (empty) empty.hidden = resourceList.length > 0;
   grid.innerHTML = resourceList
     .map((r) => {
-      const url = r.links && r.links.netdisk ? r.links.netdisk.url : "";
+      const links = r.links || {};
+      const nd = links.netdisk && links.netdisk.url ? links.netdisk : null;
+      const url = nd ? nd.url : "";
       // 资料没有独立详情页：缩略图与标题直接指向云盘链接
       const thumb = url
         ? `<a class="card-thumb-link" href="${url}" target="_blank" rel="noopener" aria-label="${r.name[lang]}"><span class="card-icon">${r.icon}</span></a>`
@@ -321,6 +324,19 @@ function renderResourceCards() {
       const title = url
         ? `<a href="${url}" target="_blank" rel="noopener">${r.name[lang]}</a>`
         : r.name[lang];
+      // 云盘下载按钮取主动作样式；密码单列一行做得醒目，并附「免费发布」声明
+      const netdiskBtn = nd
+        ? `<a class="btn btn-primary" href="${nd.url}" target="_blank" rel="noopener">${t("btnNetdisk")}</a>`
+        : "";
+      const note = nd
+        ? `<div class="res-dl-note">${
+            nd.pwd
+              ? `<span class="res-pwd"><span class="res-pwd-label">${t("pwdLabel")}${
+                  lang === "zh" ? "：" : ": "
+                }</span><b class="res-pwd-value">${nd.pwd}</b></span>`
+              : ""
+          }<span class="res-free"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>${t("resFree")}</span></div>`
+        : "";
       return `
       <article class="card" data-reveal style="--card-accent:${r.accent}">
         <div class="card-thumb">${thumb}</div>
@@ -329,7 +345,11 @@ function renderResourceCards() {
           <p class="card-desc">${r.desc[lang]}</p>
           ${r.meta ? `<p class="card-meta">${r.meta[lang]}</p>` : ""}
           <div class="card-tags">${renderTags(r.tags)}</div>
-          <div class="card-links">${renderLinks(r.links)}</div>
+          <div class="card-links">${netdiskBtn}${renderLinks({
+        download: links.download,
+        website: links.website,
+      })}</div>
+          ${note}
         </div>
       </article>`;
     })
