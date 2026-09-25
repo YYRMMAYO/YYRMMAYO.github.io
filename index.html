@@ -22,6 +22,7 @@
         <a class="top-link" href="#home" data-i18n="navHome">首页</a>
         <a class="top-link" href="#profile" data-i18n="navProfile">关于我</a>
         <a class="top-link" href="#software" data-i18n="navSoftware">软件列表</a>
+        <a class="top-link" href="#resources" data-i18n="navResources">资料</a>
       </nav>
       <div class="top-actions">
         <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换到浅色主题"></button>
@@ -59,10 +60,12 @@
         <p class="intro-text" data-lang="zh">
           「YYRMM的软件库」是个人软件作品的集中展示站点，收录<strong>第101种理由</strong>、<strong>AIStudioHub</strong>、<strong>OBS 排障助手</strong>系列（Windows / macOS / OBS 插件）与<strong>司南工具箱</strong>等项目。
           各软件均配有独立的详细介绍页；「更新记录」由脚本自动同步自对应仓库的 GitHub Releases / Tags，与正式发布版本保持一致。
+          「资料下载」板块另收录由 AI 整理与编写的学习资料合集，可通过云盘直接下载。
         </p>
         <p class="intro-text" data-lang="en">
           A centralized showcase for my software — <strong>Love 101</strong>, <strong>AIStudioHub</strong>, the <strong>OBS Helper</strong> family (Windows / macOS / OBS plugin) and <strong>Sinan Toolbox</strong>.
           Every project has a dedicated detail page; changelogs are synced automatically from each repository's GitHub Releases / Tags and stay in step with official versions.
+          The <strong>Downloads</strong> section also collects study materials organized and written with the help of AI, downloadable straight from a cloud drive.
         </p>
         <ul class="intro-points" data-lang="zh">
           <li>中英双语 · 深浅双主题</li>
@@ -86,15 +89,35 @@
       </div>
     </section>
 
-    <!-- 软件展示区 -->
-    <main class="container" id="software">
-      <section class="section">
+    <!-- 软件展示区 / 资料下载区 -->
+    <main class="container">
+      <section class="section" id="software">
         <h2 class="section-title" data-reveal data-i18n="sectionTitle">软件列表</h2>
         <p class="section-desc" data-reveal data-reveal-delay="1" data-i18n="sectionDesc">点击卡片上的按钮即可下载或访问项目主页。</p>
         <div id="software-grid" class="grid">
           <!-- 卡片由 assets/js/main.js 根据数据动态生成 -->
         </div>
         <p id="empty-state" class="empty-state" hidden data-i18n="emptyState">暂无可展示的软件，敬请期待。</p>
+      </section>
+
+      <!-- 资料下载：点击卡片按钮进入云盘下载；下方为问题反馈入口 -->
+      <section class="section" id="resources">
+        <h2 class="section-title" data-reveal data-i18n="resTitle">资料下载</h2>
+        <p class="section-desc" data-reveal data-reveal-delay="1" data-i18n="resDesc">以下资料均由 AI 协助整理与编写，统一存放在云盘；点击「网盘下载」并输入密码即可获取。内容仅供参考，会持续补充与修订。</p>
+        <div id="resource-grid" class="grid">
+          <!-- 资料卡片由 assets/js/main.js 根据 resourceList 动态生成 -->
+        </div>
+        <p id="resource-empty-state" class="empty-state" hidden data-i18n="resEmptyState">资料整理中，敬请期待。</p>
+        <div class="res-feedback" data-reveal>
+          <div class="res-feedback-text">
+            <span class="res-feedback-eyebrow" data-i18n="resFeedbackEyebrow">问题反馈</span>
+            <p data-i18n="resFeedbackText">资料有误、缺漏，或者想补充新的资料？欢迎填写反馈表告诉我。</p>
+          </div>
+          <a class="btn btn-ghost res-feedback-btn" href="https://docs.qq.com/form/page/DSWp6cGJHZFVRdE1k" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg>
+            <span data-i18n="resFeedbackBtn">各资料的问题反馈</span>
+          </a>
+        </div>
       </section>
     </main>
 

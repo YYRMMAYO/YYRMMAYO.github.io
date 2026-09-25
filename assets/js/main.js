@@ -34,6 +34,13 @@ const I18N = {
   badgeStopped:  { zh: "停止开发", en: "Discontinued" },
   introEyebrow:  { zh: "卷首语", en: "Preface" },
   introTitle:    { zh: "关于本项目", en: "About This Project" },
+  navResources:   { zh: "资料", en: "Resources" },
+  resTitle:       { zh: "资料下载", en: "Resource Downloads" },
+  resDesc:        { zh: "以下资料均由 AI 协助整理与编写，统一存放在云盘；点击「网盘下载」并输入密码即可获取。内容仅供参考，会持续补充与修订。", en: "All materials below were organized and written with the help of AI and are stored on a cloud drive — click \"Netdisk Download\" and enter the password to get them. They are for reference and keep being revised." },
+  resEmptyState:  { zh: "资料整理中，敬请期待。", en: "Materials are being prepared. Stay tuned!" },
+  resFeedbackEyebrow: { zh: "问题反馈", en: "Feedback" },
+  resFeedbackText:    { zh: "资料有误、缺漏，或者想补充新的资料？欢迎填写反馈表告诉我。", en: "Found a mistake or a gap, or want to suggest new material? Tell me through the feedback form." },
+  resFeedbackBtn:     { zh: "各资料的问题反馈", en: "Report an Issue" },
 };
 
 /* ---------- 3. 软件数据（已从 GitHub 仓库整理，SC01 已按要求排除） ----------
@@ -205,6 +212,35 @@ const softwareList = [
   },
 ];
 
+/* ---------- 4. 资料数据（首页「资料下载」板块） ----------
+ * 字段说明（与软件卡片基本一致）：
+ *   icon   资料卡片缩略图上的大图标（emoji 或文字）
+ *   name   资料名称 { zh, en }
+ *   desc   资料简介 { zh, en }
+ *   meta   卡片底部一行小字（份数 / 体积等），可留空
+ *   tags   标签，可写字符串（中英相同）或 { zh, en }
+ *   links  资料统一放云盘：netdisk 填云盘分享地址 { url, pwd }（pwd 为访问密码）；
+ *          资料没有独立详情页，卡片缩略图 / 标题点击即进入该云盘链接
+ *   accent 卡片主题色（十六进制）
+ * 添加新资料：复制任意一个 { ... }, 条目，替换内容即可。
+ * -------------------------------------------------------- */
+const resourceList = [
+  {
+    icon: "📚",
+    name: { zh: "高中理科资料合集", en: "Senior-High Science Study Pack" },
+    desc: {
+      zh: "由 AI 协助整理与编写的高中理科学习资料：物理 / 化学 / 生物 / 数学预习资料、高中数学快捷公式与扩展方法汇总集，以及高中理科测试题库。",
+      en: "Study materials for senior-high science organized and written with the help of AI: preview notes for physics, chemistry, biology and maths, a summary of maths shortcut formulas & extended methods, and a science test bank.",
+    },
+    meta: { zh: "共 7 份文档 · 约 63 MB · AI 整理与编写", en: "7 documents · about 63 MB · organized & written with AI" },
+    tags: [{ zh: "AI 整理与编写", en: "AI-organized" }, { zh: "高中理科", en: "Science" }, "Word / .docx", { zh: "云盘下载", en: "Cloud Drive" }],
+    links: {
+      netdisk: { url: "https://wwbpq.lanzouu.com/b01d79bn7i", pwd: "XY" },
+    },
+    accent: "#3e5c57",
+  },
+];
+
 /* ============================================================
  * 以下为逻辑代码，一般无需修改
  * ============================================================ */
@@ -270,6 +306,36 @@ function renderCards() {
     .join("");
 }
 
+function renderResourceCards() {
+  const grid = document.getElementById("resource-grid");
+  if (!grid) return;
+  const empty = document.getElementById("resource-empty-state");
+  if (empty) empty.hidden = resourceList.length > 0;
+  grid.innerHTML = resourceList
+    .map((r) => {
+      const url = r.links && r.links.netdisk ? r.links.netdisk.url : "";
+      // 资料没有独立详情页：缩略图与标题直接指向云盘链接
+      const thumb = url
+        ? `<a class="card-thumb-link" href="${url}" target="_blank" rel="noopener" aria-label="${r.name[lang]}"><span class="card-icon">${r.icon}</span></a>`
+        : `<span class="card-icon">${r.icon}</span>`;
+      const title = url
+        ? `<a href="${url}" target="_blank" rel="noopener">${r.name[lang]}</a>`
+        : r.name[lang];
+      return `
+      <article class="card" data-reveal style="--card-accent:${r.accent}">
+        <div class="card-thumb">${thumb}</div>
+        <div class="card-body">
+          <h3 class="card-title">${title}</h3>
+          <p class="card-desc">${r.desc[lang]}</p>
+          ${r.meta ? `<p class="card-meta">${r.meta[lang]}</p>` : ""}
+          <div class="card-tags">${renderTags(r.tags)}</div>
+          <div class="card-links">${renderLinks(r.links)}</div>
+        </div>
+      </article>`;
+    })
+    .join("");
+}
+
 function applyI18n() {
   document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
   document.title = t("brand");
@@ -291,6 +357,7 @@ function applyI18n() {
   btn.textContent = lang === "zh" ? "EN" : "中文";
   btn.setAttribute("aria-label", lang === "zh" ? "切换语言" : "Switch language");
   renderCards();
+  renderResourceCards();
   if (typeof window.splitHeroTitle === "function") window.splitHeroTitle();
 }
 

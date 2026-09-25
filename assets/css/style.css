@@ -582,6 +582,26 @@ body {
   line-height: 1.75;
 }
 
+/* 资料卡片：底部一行小字（份数 / 体积等） */
+.card-meta {
+  margin-top: 10px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+}
+
+/* 资料卡片的缩略图 / 标题也可点击（直达云盘，资料没有独立详情页） */
+.card-thumb-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+.card-title a { color: inherit; text-decoration: none; transition: color 0.2s ease; }
+.card-title a:hover { color: var(--cinnabar); }
+
 .card-tags {
   margin-top: 14px;
   display: flex;
@@ -685,6 +705,36 @@ body {
 }
 
 /* ============================================================
+   资料板块：问题反馈条（朱砂细边 + 说明文字 + 反馈按钮）
+   ============================================================ */
+.res-feedback {
+  margin-top: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px 20px;
+  padding: 16px 20px;
+  border: 1px solid var(--hairline);
+  border-left: 2px solid var(--cinnabar);
+  border-radius: var(--radius);
+  background: var(--raised);
+}
+.res-feedback-eyebrow {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  color: var(--qing);
+  margin-bottom: 4px;
+}
+.res-feedback-text p {
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 620px;
+}
+.res-feedback-btn { flex-shrink: 0; gap: 7px; }
+
+/* ============================================================
    空状态 / 页脚
    ============================================================ */
 .empty-state {
@@ -716,16 +766,18 @@ body {
 /* ============================================================
    响应式
    ============================================================ */
-.hero, .intro, .profile, main { scroll-margin-top: 72px; }
+.hero, .intro, .profile, main, #software, #resources { scroll-margin-top: 72px; }
 
 @media (max-width: 640px) {
   .topbar .brand { display: none; }
   .topbar-inner { height: auto; min-height: 58px; flex-wrap: wrap; padding: 4px 0; row-gap: 2px; }
+  /* 窄屏：语言/图标按钮不压缩，导航收缩换行，避免顶栏溢出被裁切 */
+  .top-nav { flex-wrap: wrap; min-width: 0; gap: 0; }
   .top-link { font-size: 13px; padding: 5px 8px; }
   .social-link { width: 30px; height: 30px; }
   .theme-toggle { width: 30px; height: 30px; }
   .lang-toggle { font-size: 12px; padding: 5px 10px; }
-  .top-actions { gap: 6px; margin-left: auto; }
+  .top-actions { gap: 6px; margin-left: auto; flex-shrink: 0; }
   .hero { padding: 56px 0 32px; }
   .hero-title-row { flex-direction: column; gap: 14px; }
   .intro { flex-direction: column; gap: 14px; padding: 20px 22px; }
@@ -733,6 +785,7 @@ body {
   .profile { flex-direction: column; text-align: center; }
   .section { padding: 32px 0 56px; }
   .grid { grid-template-columns: 1fr; gap: 14px; }
+  .res-feedback { flex-direction: column; align-items: flex-start; }
 }
 
 /* ============================================================

@@ -45,11 +45,16 @@
     );
   }
 
+  // 卡片网格：软件列表 + 资料列表（资料卡片没有详情页，仅做进场错位）
+  var CARD_GRIDS = ["software-grid", "resource-grid"];
+
   function staggerCards() {
-    var grid = document.getElementById("software-grid");
-    if (!grid) return;
-    Array.prototype.forEach.call(grid.children, function (card, i) {
-      card.setAttribute("data-reveal-delay", String(i % 3));
+    CARD_GRIDS.forEach(function (id) {
+      var grid = document.getElementById(id);
+      if (!grid) return;
+      Array.prototype.forEach.call(grid.children, function (card, i) {
+        card.setAttribute("data-reveal-delay", String(i % 3));
+      });
     });
   }
 
@@ -74,12 +79,18 @@
   staggerCards();
   setupReveal(document);
 
-  // 语言切换会重绘卡片（main.js renderCards），监听变化重新初始化
+  // 语言切换会重绘卡片（main.js renderCards / renderResourceCards），监听变化重新初始化
   if ("MutationObserver" in window && io) {
-    new MutationObserver(function () {
+    var mo = new MutationObserver(function () {
       staggerCards();
       setupReveal(document);
-    }).observe(document.getElementById("software-grid") || document.body, { childList: true, subtree: true });
+    });
+    var watched = 0;
+    CARD_GRIDS.forEach(function (id) {
+      var grid = document.getElementById(id);
+      if (grid) { mo.observe(grid, { childList: true, subtree: true }); watched++; }
+    });
+    if (!watched) mo.observe(document.body, { childList: true, subtree: true });
   }
 
   /* ---------------- 2. 卡片点击涟漪反馈（极淡金色） ---------------- */
