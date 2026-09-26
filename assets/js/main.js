@@ -115,16 +115,17 @@ const softwareList = [
     key: "obs",
     icon: "🎥",
     name: { zh: "OBS 排障助手（Windows）", en: "OBS Helper (Windows)" },
-    version: "V2.8.2",
+    version: "V2.9.1",
     desc: {
-      zh: "面向直播新手的 OBS Studio 排障工具：149 条离线知识库、智能诊断、录制守护与实时日志预警、黑屏/音频/虚拟摄像头三合一深度体检、OBS 远程控制台，纯离线可用。",
-      en: "An OBS Studio troubleshooting tool for livestreaming beginners: 149-entry offline knowledge base, smart diagnosis, recording watchdog, real-time log alerts, black-screen / audio / virtual-camera health checks and an OBS remote console — fully offline.",
+      zh: "面向直播新手的 OBS Studio 排障工具：212 条离线知识库、跳转式新手引导与官方 OBS 下载入口、智能诊断、录制守护与实时日志预警、黑屏/音频/虚拟摄像头三合一深度体检、OBS 远程控制台，纯离线可用。",
+      en: "An OBS Studio troubleshooting tool for livestreaming beginners: 212-entry offline knowledge base, guided onboarding and an official OBS download entry, smart diagnosis, recording watchdog, real-time log alerts, black-screen / audio / virtual-camera health checks and an OBS remote console — fully offline.",
     },
     shot: "assets/images/showcase/obs.jpg",
     features: {
       tagline: { zh: "直播排障一步到位", en: "Livestream troubleshooting, solved" },
       items: [
-        { zh: "149 条问题知识库，离线可用", en: "149-entry offline knowledge base" },
+        { zh: "212 条问题知识库，离线可用", en: "212-entry offline knowledge base" },
+        { zh: "跳转式新手引导 + 官方 OBS 下载入口（V2.9）", en: "Jump-style onboarding + official OBS download (V2.9)" },
         { zh: "录制守护：断连 / 心跳超时 / 重连确认三层告警", en: "Recording watchdog with 3-layer alerts" },
         { zh: "实时日志尾随：掉帧、过载、断流即时预警", en: "Live log tailing for frame loss & overload" },
         { zh: "黑屏 / 音频设备 / 虚拟摄像头三合一深度体检", en: "Black-screen / audio / virtual-cam checks" },
@@ -132,7 +133,7 @@ const softwareList = [
         { zh: "纯离线运行，无需联网", en: "Fully offline, no network needed" },
       ],
     },
-    tags: ["Windows", "V2.8.2", { zh: "OBS 排障", en: "OBS Troubleshooting" }, { zh: "免费", en: "Free" }],
+    tags: ["Windows", "V2.9.1", { zh: "OBS 排障", en: "OBS Troubleshooting" }, { zh: "免费", en: "Free" }],
     links: {
       download: "https://github.com/YYRMMAYO/OBS_Helper",
       netdisk: { url: "https://wwbpq.lanzouu.com/b01d7578be", pwd: "YYKWY" },
