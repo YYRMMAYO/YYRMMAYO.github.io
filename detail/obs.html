@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="OBS 排障助手（Windows）V2.9.1 — 面向直播新手的 OBS 排障工具：跳转式新手引导、官方 OBS 下载入口、录制守护与实时日志预警、三合一深度体检" />
-  <title>OBS 排障助手（Windows） — YYRMM的软件库</title>
+  <meta name="description" content="OBS帮助助手（Windows）V2.9.6 — 面向直播新手的 OBS 排障工具：简单录像、录制守护与实时日志预警、三合一深度体检、随包内容全量英译，Windows 7 SP1 – 11 可用" />
+  <title>OBS帮助助手（Windows） — YYRMM的软件库</title>
   <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
   <!-- 主题脚本：head 中同步加载，第一时间应用已保存的主题（防闪烁） -->
   <script src="../assets/js/theme.js"></script>
@@ -47,13 +47,13 @@
     <section class="detail-hero" data-reveal style="--card-accent:#a63a2b">
       <div class="detail-icon">🎥</div>
       <div class="detail-hero-text">
-        <h1 class="detail-name" data-lang="zh">OBS 排障助手（Windows） <span class="detail-badge">V2.9.1</span></h1>
-        <h1 class="detail-name" data-lang="en">OBS Helper (Windows) <span class="detail-badge">V2.9.1</span></h1>
-        <p class="detail-tagline" data-lang="zh">直播排障一步到位 · 跳转式新手引导（2026-09-26 发布）</p>
-        <p class="detail-tagline" data-lang="en">Livestream troubleshooting, solved · Guided onboarding (released 2026-09-26)</p>
+        <h1 class="detail-name" data-lang="zh">OBS帮助助手（Windows） <span class="detail-badge">V2.9.6</span></h1>
+        <h1 class="detail-name" data-lang="en">OBS Helper (Windows) <span class="detail-badge">V2.9.6</span></h1>
+        <p class="detail-tagline" data-lang="zh">直播排障一步到位 · 本版更名为「OBS帮助助手」（2026-10-05 发布）</p>
+        <p class="detail-tagline" data-lang="en">Livestream troubleshooting, solved · renamed to OBS帮助助手 (released 2026-10-05)</p>
         <div class="detail-meta">
-          <span class="chip">Windows 10/11</span>
-          <span class="chip">V2.9.1</span>
+          <span class="chip">Windows 7 SP1 – 11</span>
+          <span class="chip">V2.9.6</span>
           <span class="chip" data-lang="zh">OBS 排障</span>
           <span class="chip" data-lang="en">OBS Troubleshooting</span>
           <span class="chip" data-lang="zh">免费</span>
@@ -82,16 +82,16 @@
       <h2 class="detail-title" data-lang="en">About</h2>
       <div class="detail-text">
         <div data-lang="zh">
-          <p>OBS 排障助手是一款面向直播新手的 <strong>OBS Studio 排障工具</strong>，<strong>纯离线可用</strong>：212 条问题知识库、排障指引与日志分析规则全部内嵌在程序里，不联网也能查。连上 OBS 之后，还能远程控制场景、录制与推流，并做一键体检。</p>
-          <p>最新版本 <strong>V2.9.1</strong>（2026-09-26 发布）把新手引导做成<strong>「跳转式引导」</strong>——每一步自动把界面切到对应页面（控制台 / 首页 / 诊断 / 搭建）再讲解，卡片挪到右下角、遮罩压到约 17%，真正做到边看界面边讲；同时新增<strong>官方 OBS 下载入口</strong>：只指向 obsproject.com 与官方 GitHub，安装包直链经 GitHub API 取当前稳定版，避开「下载站」仿冒包，并提示用户自行核对数字签名。</p>
-          <p>V2.9.0 带来首启<strong>四步新手教程</strong>与<strong>插件广场全量复核</strong>（目录 v1.4：57 条逐一实测，剔除 8 个已死条目、新增 8 个活跃条目、标注「维护放缓」），并针对 <strong>OBS 32.2.2</strong> 修掉数处静默失效：日志头字段（CPU / 内存 / 帧率 / 码率）在真实日志里全部解析为空、显卡解析错位导致双显卡告警失效、实时日志尾随预警按 <code>.log</code> 找文件而 OBS 会话日志是 <code>.txt</code>。</p>
-          <p>这是原 Blazor WebAssembly + WebView2 版本的<strong>原生 WPF 重构</strong>：冷启动直接起窗口、自包含单目录发布、无需安装 WebView2 与 .NET 运行时。V2.1 起支持<strong>增量更新与知识库独立更新</strong>：更新只下载变更文件（2.0 → 2.1.1 增量包仅 1.27MB），问题库可脱离应用单独升级。</p>
+          <p><strong>OBS帮助助手</strong>（原「OBS 排障助手」）是一款面向直播新手的 <strong>OBS Studio 排障工具</strong>，<strong>纯离线可用</strong>：212 条问题知识库、排障指引与日志分析规则全部内嵌在程序里，不联网也能查。连上 OBS 之后，还能远程控制场景、录制与推流，并做一键体检。</p>
+          <p>最新版本 <strong>V2.9.6</strong>（2026-10-05 发布）是一次「改名 + 换图标 + 对齐文档」的发布：应用正式更名为 <strong>「OBS帮助助手」</strong>（英文侧仍是 OBS Helper），窗口标题、托盘提示与通知、新手引导、诊断报告署名与安装向导全部换名；应用图标也与仓库封面统一成同一枚（深色圆角底 + 显示器 + 健康波形 + 录制指示点 + 体检对勾），并为 16 / 24 / 32 px 单独重绘。改名不牵动升级路径 —— <code>AppId</code>、<code>OBS_Helper.exe</code>、<code>%LocalAppData%\OBS_Helper\</code> 与 Release 资产命名都刻意保持不变，老用户升级后安装目录、设置与密钥一切照旧。</p>
+          <p>往前几版把「能不能录、录得稳不稳」这条链补齐了：V2.9.4 首页新增<strong>「简单录像」</strong>卡，三档预设（快速录像 / 会议网课 / 游戏高码率）只决定「录什么」，OBS 没启动时还能由本工具先整备份 <code>basic.ini</code>、拉起 <code>obs64.exe</code>、等 obs-websocket 就绪后自动开录；录制中显示已录时长与剩余可录，录完读回文件大小并可一键无损转封装为 MP4。V2.9.3 把随包离线内容（知识库 / 插件广场 / 场景模板 / 排障指引）做成<strong>中英双份</strong>，并把运行环境兼容到 <strong>Windows 7 SP1</strong>；V2.9.2 起<strong>界面与安装向导支持中英即时切换</strong>（1670 条文案键，默认简体中文）。</p>
+          <p>技术侧仍是原生 WPF + .NET 10 的单目录自包含发布，零 NuGet、无 WebView2；<strong>单元测试规模从 381 项扩到 626 项</strong>，Headless 自检 22 项。这是原 Blazor WebAssembly + WebView2 版本的<strong>原生 WPF 重构</strong>：冷启动直接起窗口、无需安装 WebView2 与 .NET 运行时；V2.1 起支持<strong>增量更新与知识库独立更新</strong>：更新只下载变更文件（2.0 → 2.1.1 增量包仅 1.27MB），问题库可脱离应用单独升级。</p>
         </div>
         <div data-lang="en">
-          <p>OBS Helper is a <strong>troubleshooting tool for OBS Studio</strong> designed for livestreaming beginners. It works <strong>fully offline</strong>: a 212-entry knowledge base, troubleshooting guides and log-analysis rules are all embedded. Once connected to OBS, you can remotely control scenes, recording and streaming, and run a one-click health check.</p>
-          <p>The latest release, <strong>V2.9.1</strong> (2026-09-26), turns onboarding into a <strong>jump-style guided tour</strong>: each step navigates the app to the matching page (console / home / diagnosis / setup) before explaining it, with a compact card in the corner and a lightened backdrop — you learn the UI while looking at it. It also adds an <strong>official OBS download entry</strong> that only points to obsproject.com and the official GitHub, resolving the current stable installer through the GitHub API to steer users away from look-alike "download site" bundles, plus a tip to verify the digital signature yourself.</p>
-          <p>V2.9.0 brought the four-step <strong>getting-started tutorial</strong> and a <strong>full audit of the plugin square</strong> (catalog v1.4: all 57 entries re-tested, 8 dead entries removed, 8 active ones added, "slowing" ones flagged), and fixed several silent failures under <strong>OBS 32.2.2</strong>: log header fields (CPU / memory / FPS / bitrate) parsing empty on real logs, GPU mis-parsing that disabled the dual-GPU alert, and live log tailing looking for <code>.log</code> while OBS writes <code>.txt</code> session logs.</p>
-          <p>This is a <strong>native WPF rewrite</strong> of the former Blazor WebAssembly + WebView2 version: cold start opens the window directly, self-contained single-folder publishing, no WebView2 or .NET runtime needed. Since V2.1 it supports <strong>incremental updates and standalone knowledge-base updates</strong> — only changed files are downloaded (the 2.0 → 2.1.1 delta pack is just 1.27MB).</p>
+          <p><strong>OBS帮助助手</strong> (formerly "OBS 排障助手") is a <strong>troubleshooting tool for OBS Studio</strong> designed for livestreaming beginners. It works <strong>fully offline</strong>: a 212-entry knowledge base, troubleshooting guides and log-analysis rules are all embedded. Once connected to OBS, you can remotely control scenes, recording and streaming, and run a one-click health check.</p>
+          <p>The latest release, <strong>V2.9.6</strong> (2026-10-05), is a rename, icon and documentation pass: the app is now called <strong>"OBS帮助助手"</strong> (the English name stays OBS Helper), with the window title, tray tooltip and notifications, onboarding, report byline and installer all following. The app icon now matches the repository artwork (dark rounded tile, monitor, health waveform, record dot and check badge) and was redrawn separately at 16 / 24 / 32 px. None of this touches the upgrade path — <code>AppId</code>, <code>OBS_Helper.exe</code>, <code>%LocalAppData%\OBS_Helper\</code> and the release asset names are deliberately unchanged, so existing users keep their install directory, settings and secrets.</p>
+          <p>Earlier releases filled in the "can you record, and does it hold" chain: V2.9.4 added a <strong>"Simple recording"</strong> card where three presets (quick, meeting / lecture, high-bitrate game) decide only what to record — and if OBS isn't running the tool backs up <code>basic.ini</code>, launches <code>obs64.exe</code> and starts recording once obs-websocket is ready. While recording you see elapsed and remaining time, and when it stops the file size is read back with one-click lossless remux to MP4. V2.9.3 shipped the bundled offline content (knowledge base, plugin square, scene templates, guides) in <strong>both Chinese and English</strong> and extended support down to <strong>Windows 7 SP1</strong>; since V2.9.2 the <strong>UI and installer switch between Chinese and English on the fly</strong> (1670 string keys, Simplified Chinese by default).</p>
+          <p>Under the hood it remains a native WPF + .NET 10 self-contained single-folder build with no NuGet and no WebView2; the <strong>unit-test suite grew from 381 to 626 tests</strong>, alongside 22 headless self-check items. This is a <strong>native WPF rewrite</strong> of the former Blazor WebAssembly + WebView2 version — cold start opens the window directly, with no WebView2 or .NET runtime to install. Since V2.1 it supports <strong>incremental updates and standalone knowledge-base updates</strong>: only changed files are downloaded (the 2.0 → 2.1.1 delta pack is just 1.27MB) and the question library can be upgraded on its own.</p>
         </div>
       </div>
     </section>
@@ -101,16 +101,28 @@
       <h2 class="detail-title" data-lang="zh">功能特性</h2>
       <h2 class="detail-title" data-lang="en">Features</h2>
       <div class="feature-grid">
+        <div class="feature-card" data-lang="zh"><strong>简单录像（V2.9.4 新增）</strong>三档预设只决定「录什么」：快速录像 / 会议网课 / 游戏高码率；输出模式、编码器与码率仍归你自己</div>
+        <div class="feature-card" data-lang="en"><strong>Simple recording (new in V2.9.4)</strong>Three presets decide only what to record — quick, meeting / lecture, high-bitrate game; output mode, encoder and bitrate stay yours</div>
+        <div class="feature-card" data-lang="zh"><strong>OBS 没启动也能录（V2.9.4 新增）</strong>先整备份 basic.ini → 弹出确认 → 拉起 obs64.exe → 等 obs-websocket 就绪（最长 75 秒）→ 自动开录；录制中 / 推流中则直接阻断，不写任何配置</div>
+        <div class="feature-card" data-lang="en"><strong>Records even if OBS is closed (new in V2.9.4)</strong>Backs up basic.ini, asks, launches obs64.exe, waits for obs-websocket (up to 75s) and starts; while recording or streaming it blocks and writes nothing</div>
+        <div class="feature-card" data-lang="zh"><strong>录得稳、找得到（V2.9.4 新增）</strong>录制中显示已录时长与剩余可录；录完读回文件大小（专治「录完才发现是空文件」），可一键打开目录或无损转封装为 MP4</div>
+        <div class="feature-card" data-lang="en"><strong>Recording you can trust (new in V2.9.4)</strong>Elapsed and remaining time while recording; file size read back on stop (the answer to "the file turned out empty"), with open-folder and lossless MP4 remux</div>
+        <div class="feature-card" data-lang="zh"><strong>中英双语即时切换（V2.9.2）</strong>界面、托盘、通知与体检结论共 1670 条文案键，切换无需重启；安装向导也可选语言（默认中文）</div>
+        <div class="feature-card" data-lang="en"><strong>Instant Chinese / English switch (V2.9.2)</strong>1670 string keys across the UI, tray, notifications and verdicts, switched with no restart; the installer offers a language choice too</div>
+        <div class="feature-card" data-lang="zh"><strong>随包内容也是双语的（V2.9.3）</strong>知识库 212 条、插件广场 57 条、场景模板 12 套与排障指引都另有英文并列文件，英文界面下不再是中文</div>
+        <div class="feature-card" data-lang="en"><strong>Bundled content is bilingual too (V2.9.3)</strong>The 212-entry knowledge base, 57 plugins, 12 scene templates and the guides all have parallel English files, so the English UI is no longer half Chinese</div>
+        <div class="feature-card" data-lang="zh"><strong>兼容到 Windows 7 SP1（V2.9.3）</strong>除 Windows 10 / 11 外另提供 Win7 兼容构建，老机器也能装上</div>
+        <div class="feature-card" data-lang="en"><strong>Down to Windows 7 SP1 (V2.9.3)</strong>A dedicated Windows 7 compatible build ships alongside the Windows 10 / 11 one</div>
         <div class="feature-card" data-lang="zh"><strong>录制守护（V2.8 新增）</strong>断连告警 / 心跳超时 / 重连确认三层监控，录制静默失败立刻托盘强提醒</div>
         <div class="feature-card" data-lang="en"><strong>Recording watchdog (new in V2.8)</strong>Disconnect / heartbeat / reconnect-confirm alerts with instant tray warnings</div>
         <div class="feature-card" data-lang="zh"><strong>实时日志尾随预警（V2.8 新增）</strong>掉帧、过载、断流、插件加载失败即时提醒，90 秒抑制 + 限流防打扰</div>
         <div class="feature-card" data-lang="en"><strong>Live log tailing (new in V2.8)</strong>Instant alerts for drops, overload &amp; disconnects, anti-spam throttled</div>
         <div class="feature-card" data-lang="zh"><strong>三合一深度体检（V2.8 新增）</strong>黑屏专项 / 音频设备 / 虚拟摄像头逐项只读探测，给出系统设置页路径</div>
         <div class="feature-card" data-lang="en"><strong>Triple deep checkup (new in V2.8)</strong>Black-screen / audio / virtual-cam read-only probes with fix paths</div>
-        <div class="feature-card" data-lang="zh"><strong>跳转式新手引导（V2.9 新增）</strong>首启四步边走边讲：自动切到控制台 / 首页 / 诊断 / 搭建，卡片给出本步对应页面与站内、站外跳转按钮</div>
-        <div class="feature-card" data-lang="en"><strong>Jump-style onboarding (new in V2.9)</strong>Four steps that navigate the app as they explain, with per-step page chips and in-app / external jump buttons</div>
-        <div class="feature-card" data-lang="zh"><strong>官方 OBS 下载入口（V2.9 新增）</strong>只指向 obsproject.com 与官方 GitHub，安装包直链取当前稳定版；外链走域名白名单，附签名核对提示</div>
-        <div class="feature-card" data-lang="en"><strong>Official OBS download (new in V2.9)</strong>Links only to obsproject.com and the official GitHub, current-stable installer resolved on the fly, signer-verification tips</div>
+        <div class="feature-card" data-lang="zh"><strong>跳转式新手引导（V2.9.1 新增）</strong>首启四步边走边讲：自动切到控制台 / 首页 / 诊断 / 搭建，卡片给出本步对应页面与站内、站外跳转按钮</div>
+        <div class="feature-card" data-lang="en"><strong>Jump-style onboarding (new in V2.9.1)</strong>Four steps that navigate the app as they explain, with per-step page chips and in-app / external jump buttons</div>
+        <div class="feature-card" data-lang="zh"><strong>官方 OBS 下载入口（V2.9.1 新增）</strong>只指向 obsproject.com 与官方 GitHub，安装包直链取当前稳定版；外链走域名白名单，附签名核对提示</div>
+        <div class="feature-card" data-lang="en"><strong>Official OBS download (new in V2.9.1)</strong>Links only to obsproject.com and the official GitHub, current-stable installer resolved on the fly, signer-verification tips</div>
         <div class="feature-card" data-lang="zh"><strong>212 条问题库，完全离线</strong>10 个分类：现象 / 成因 / 分步解决 / 小贴士 / 相关问题，步骤可勾选</div>
         <div class="feature-card" data-lang="en"><strong>212-entry offline KB</strong>10 categories: symptoms / causes / steps / tips / related</div>
         <div class="feature-card" data-lang="zh"><strong>免费 AI 诊断，开箱即用</strong>智谱 + Pollinations 双通道，本地限频，失败自动回退离线引擎</div>
@@ -129,8 +141,8 @@
         <div class="feature-card" data-lang="en"><strong>Incremental updates</strong>Download only changed files, SHA-256 verified, full-pack fallback</div>
         <div class="feature-card" data-lang="zh"><strong>隐私优先</strong>凭据双层加密（AES-256-GCM + DPAPI）；只有主动发起诊断才联网</div>
         <div class="feature-card" data-lang="en"><strong>Privacy-first</strong>Double-layer encryption (AES-256-GCM + DPAPI); online only on demand</div>
-        <div class="feature-card" data-lang="zh"><strong>零第三方依赖</strong>原生 WPF + .NET 10，无 NuGet、无 WebView2，自包含单目录秒开；381 项单测全通过</div>
-        <div class="feature-card" data-lang="en"><strong>Zero dependencies</strong>Native WPF + .NET 10, no NuGet / WebView2; 381 unit tests all passing</div>
+        <div class="feature-card" data-lang="zh"><strong>零第三方依赖</strong>原生 WPF + .NET 10，无 NuGet、无 WebView2，自包含单目录秒开；626 项单测全通过</div>
+        <div class="feature-card" data-lang="en"><strong>Zero dependencies</strong>Native WPF + .NET 10, no NuGet / WebView2; 626 unit tests all passing</div>
       </div>
     </section>
 
@@ -156,8 +168,8 @@
         </div>
         <div class="info-item">
           <div class="info-label">Update</div>
-          <div class="info-value" data-lang="zh">V2.9.1（2026-09-26）· GitHub Releases + 蓝奏云镜像（提取码 YYKWY）；支持应用内增量更新（只下载变更文件）</div>
-          <div class="info-value" data-lang="en">V2.9.1 (2026-09-26) · GitHub Releases + Lanzou mirror (code YYKWY); in-app incremental updates (changed files only)</div>
+          <div class="info-value" data-lang="zh">V2.9.6（2026-10-05）· GitHub Releases + 蓝奏云镜像（提取码 YYKWY）；支持应用内增量更新（只下载变更文件）</div>
+          <div class="info-value" data-lang="en">V2.9.6 (2026-10-05) · GitHub Releases + Lanzou mirror (code YYKWY); in-app incremental updates (changed files only)</div>
         </div>
         <div class="info-item">
           <div class="info-label">License</div>

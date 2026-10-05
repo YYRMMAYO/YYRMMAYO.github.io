@@ -70,7 +70,7 @@ const I18N = {
   footColResources:{ zh: "资料", en: "Resources" },
   footColContact:  { zh: "开源", en: "Open source" },
   footLinkList:    { zh: "全部软件", en: "All software" },
-  footLinkObs:     { zh: "OBS 排障助手", en: "OBS Helper" },
+  footLinkObs:     { zh: "OBS帮助助手", en: "OBS Helper" },
   footLinkAi:      { zh: "AIStudioHub", en: "AIStudioHub" },
   footLinkLove:    { zh: "第101种理由", en: "Love 101" },
   footLinkRes:     { zh: "资料下载", en: "Downloads" },
@@ -124,15 +124,15 @@ const softwareList = [
     key: "aistudio",
     icon: "🎨",
     name: { zh: "AIStudioHub", en: "AIStudioHub" },
+    version: "v1.9.0",
     desc: {
       zh: "AI 制作资源整合中心：汇集 181 个主流 AI 平台与开源工具（视频制作、图像生成、音乐音频、网页制作、文本大模型），内置离线中文教程与 AI Agent / Skill 专区，支持模糊搜索、收藏与个性化主题。",
       en: "An AI production resource hub: 181 mainstream AI platforms & open-source tools (video, image, music, web, LLM), offline Chinese tutorials, and an AI Agent / Skills section — with fuzzy search, favorites and themes.",
     },
-    shot: "assets/images/showcase/aistudio.jpg",
     features: {
       tagline: { zh: "AI 制作资源整合中心", en: "AI production resource hub" },
       items: [
-        { zh: "汇集 154 个主流 AI 平台与开源工具", en: "154 mainstream AI platforms & open-source tools" },
+        { zh: "汇集 181 个主流 AI 平台与开源工具", en: "181 mainstream AI platforms & open-source tools" },
         { zh: "视频、图像、音乐、网页、文本大模型五大分类", en: "Video, image, music, web & LLM categories" },
         { zh: "内置离线中文教程库", en: "Offline Chinese tutorial library" },
         { zh: "AI Agent / Skill 专区", en: "AI Agent / Skills section" },
@@ -151,26 +151,29 @@ const softwareList = [
   {
     key: "obs",
     icon: "🎥",
-    name: { zh: "OBS 排障助手（Windows）", en: "OBS Helper (Windows)" },
-    version: "V2.9.1",
+    name: { zh: "OBS帮助助手（Windows）", en: "OBS Helper (Windows)" },
+    version: "V2.9.6",
     desc: {
-      zh: "面向直播新手的 OBS Studio 排障工具：212 条离线知识库、跳转式新手引导与官方 OBS 下载入口、智能诊断、录制守护与实时日志预警、黑屏/音频/虚拟摄像头三合一深度体检、OBS 远程控制台，纯离线可用。",
-      en: "An OBS Studio troubleshooting tool for livestreaming beginners: 212-entry offline knowledge base, guided onboarding and an official OBS download entry, smart diagnosis, recording watchdog, real-time log alerts, black-screen / audio / virtual-camera health checks and an OBS remote console — fully offline.",
+      zh: "面向直播新手的 OBS Studio 排障工具（V2.9.6 起更名「OBS帮助助手」）：212 条离线知识库、简单录像与一键开录、智能诊断、录制守护与实时日志预警、黑屏/音频/虚拟摄像头三合一深度体检、OBS 远程控制台；界面与随包内容中英双语，纯离线可用。",
+      en: "An OBS Studio troubleshooting tool for livestreaming beginners (renamed \"OBS帮助助手\" as of V2.9.6): 212-entry offline knowledge base, simple recording and one-click start, smart diagnosis, recording watchdog, real-time log alerts, black-screen / audio / virtual-camera health checks and an OBS remote console — bilingual UI and bundled content, fully offline.",
     },
-    shot: "assets/images/showcase/obs.jpg",
     features: {
       tagline: { zh: "直播排障一步到位", en: "Livestream troubleshooting, solved" },
       items: [
         { zh: "212 条问题知识库，离线可用", en: "212-entry offline knowledge base" },
-        { zh: "跳转式新手引导 + 官方 OBS 下载入口（V2.9）", en: "Jump-style onboarding + official OBS download (V2.9)" },
+        { zh: "简单录像：三档预设一键配置 OBS 并开录（V2.9.4）", en: "Simple recording: three presets configure OBS and start (V2.9.4)" },
+        { zh: "OBS 没启动也能录：自动拉起并等就绪后开录（V2.9.4）", en: "Records even if OBS is closed: launches it and waits for ready (V2.9.4)" },
+        { zh: "界面 + 随包内容中英双语，安装包可选语言（V2.9.2 / V2.9.3）", en: "Bilingual UI and bundled content; installer language choice (V2.9.2 / V2.9.3)" },
+        { zh: "跳转式新手引导 + 官方 OBS 下载入口（V2.9.1）", en: "Jump-style onboarding + official OBS download (V2.9.1)" },
+        { zh: "兼容 Windows 7 SP1 – 11，提供 Win7 兼容构建（V2.9.3）", en: "Windows 7 SP1 – 11, with a dedicated Win7 build (V2.9.3)" },
         { zh: "录制守护：断连 / 心跳超时 / 重连确认三层告警", en: "Recording watchdog with 3-layer alerts" },
         { zh: "实时日志尾随：掉帧、过载、断流即时预警", en: "Live log tailing for frame loss & overload" },
         { zh: "黑屏 / 音频设备 / 虚拟摄像头三合一深度体检", en: "Black-screen / audio / virtual-cam checks" },
         { zh: "OBS 远程控制台 + 全局热键", en: "OBS remote console + global hotkeys" },
-        { zh: "纯离线运行，无需联网", en: "Fully offline, no network needed" },
+        { zh: "纯离线运行，无需联网；626 项单元测试全通过", en: "Fully offline, no network needed; 626 unit tests passing" },
       ],
     },
-    tags: ["Windows", "V2.9.1", { zh: "OBS 排障", en: "OBS Troubleshooting" }, { zh: "免费", en: "Free" }],
+    tags: ["Windows", "V2.9.6", { zh: "OBS 排障", en: "OBS Troubleshooting" }, { zh: "免费", en: "Free" }],
     links: {
       download: "https://github.com/YYRMMAYO/OBS_Helper",
       netdisk: { url: "https://wwbpq.lanzouu.com/b01d7578be", pwd: "YYKWY" },
@@ -224,12 +227,12 @@ const softwareList = [
     key: "sinan",
     icon: "🧰",
     name: { zh: "司南工具箱", en: "Sinan Toolbox" },
+    version: "v6.1.0",
     status: "discontinued",
     desc: {
       zh: "完全免费、非盈利的 Windows 辅助工具：专注系统检测、清理优化、网络诊断与故障排查，本地运行、操作安全，内置 AI 助手与多套个性化主题。",
       en: "A completely free, non-profit Windows utility focused on system detection, cleanup & optimization, network diagnostics and troubleshooting — runs locally, safe to use, with an AI assistant and multiple themes.",
     },
-    shot: "assets/images/showcase/sinan.jpg",
     features: {
       tagline: { zh: "你的 Windows 全能工具箱", en: "Your all-in-one Windows toolbox" },
       items: [
@@ -287,7 +290,7 @@ const resourceList = [
 const STATS = [
   { value: "6",   label: { zh: "个收录作品",     en: "projects listed" } },
   { value: "212", label: { zh: "条排障知识库",   en: "troubleshooting entries" } },
-  { value: "381", label: { zh: "项单元测试",     en: "unit tests" } },
+  { value: "626", label: { zh: "项单元测试",     en: "unit tests" } },
   { value: "57",  label: { zh: "个精选插件",     en: "curated plugins" } },
 ];
 
@@ -478,11 +481,21 @@ function renderPreview() {
     })
     .join("");
 
-  // 版本徽章取软件数据里最新的一个版本号
+  // 版本徽章：在「仍在维护」的软件里取最高版本号（按数字比较，不看列表顺序）
   const tag = document.getElementById("preview-tag");
   if (tag) {
-    const versions = softwareList.map((s) => s.version).filter(Boolean);
-    tag.textContent = versions.length ? versions[0] : "latest";
+    const verKey = (v) => (String(v).match(/\d+/g) || []).map(Number);
+    const newest = softwareList
+      .filter((s) => s.version && s.status !== "discontinued")
+      .map((s) => s.version)
+      .sort((a, b) => {
+        const A = verKey(a), B = verKey(b);
+        for (let i = 0; i < 3; i++) {
+          if ((B[i] || 0) !== (A[i] || 0)) return (B[i] || 0) - (A[i] || 0);
+        }
+        return 0;
+      })[0];
+    tag.textContent = newest || "latest";
   }
 
   const status = document.getElementById("preview-status");
