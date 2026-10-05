@@ -49,6 +49,50 @@
 - **修改样式**：`assets/css/style.css`（主页）/ `assets/css/detail.css`（详情页）；两套主题的配色全部集中在文件顶部的 `:root` 与 `[data-theme="dark"]` 两个变量块
 - **改主题默认值**：`assets/js/theme.js` 里的 `var saved = "light";`
 - **背景网格 / 柔光**：`style.css` 的 `.bg-scene::before`（网格，`--grid-line`）与 `.bg-scene::after`（光晕，`--glow-1/2/3`）
+- **首页卡片 / SEO 元数据**：改完 `main.js` 后重跑 `python scripts/prerender.py`（见下方「让搜索引擎收录」）
+
+## 🔍 让搜索引擎收录（SEO）
+
+站点是纯静态的，没有后端，所以收录只靠两件事：**页面本身让爬虫读得到** + **主动去告诉搜索引擎**。
+
+### 已经做好的（不需要你操作）
+
+| 项目 | 位置 |
+|---|---|
+| `robots.txt`（允许抓取 + 指向 sitemap） | 仓库根目录 |
+| `sitemap.xml`（7 个 URL，带 git 提交日期做 `lastmod`） | 仓库根目录，由脚本生成 |
+| 每页 `canonical` + Open Graph + Twitter Card | 7 个页面的 `<head>`，由脚本生成 |
+| 每页 JSON-LD 结构化数据（`WebSite` / `SoftwareApplication`，含版本、平台、许可证、下载地址） | 同上 |
+| 首页软件卡片**预渲染成静态 HTML** | 百度 / Bing / 社交平台的预览抓取不跑 JS，静态化后它们也能读到内容 |
+| OBS 三个版本之间互相静态链接 + 页脚静态链接 | 让爬虫能从任意一页走遍全站 |
+| IndexNow key 文件 | 仓库根目录 `<key>.txt` |
+
+### 需要你操作的（要账号，我做不了）
+
+1. **Google Search Console**（最重要）
+   - 打开 <https://search.google.com/search-console>，添加资源 → 选「网址前缀」→ 填 `https://yyrmmayo.github.io/`
+   - 验证方式选 **HTML 标记**，把给的那串 `content` 值复制出来
+   - 打开 `index.html`，把 `google-site-verification` 那一行的 `content` 换成它，push 上线后再回 GSC 点「验证」
+   - 验证通过后 → 「站点地图」→ 提交 `sitemap.xml`
+2. **Bing Webmaster Tools**：<https://www.bing.com/webmasters> → 可以从 GSC 一键导入
+3. **百度搜索资源平台**：<https://ziyuan.baidu.com> → 添加站点 → **HTML 标签验证** → 同理替换 `index.html` 里 `baidu-site-verification` 的 `content` → 再「普通收录 → 手动提交」这 7 个 URL
+   - 百度对 `github.io` 这类共享子域收录偏慢，提交后要有耐心（几周量级）
+
+### 平时要跑的脚本
+
+```bash
+python scripts/prerender.py        # 首页静态卡片 + 全站 SEO 元数据 + sitemap（改了软件数据/页面标题后跑）
+python scripts/indexnow-submit.py  # 主动通知 Bing / Yandex 等「这些页面变了」（上线后跑）
+```
+
+`prerender.py` 的所有产物都放在 `<!-- PRERENDER:... -->` 与 `<!-- SEO:... -->` 标记之间，**不要手改那两段**，下次运行会被覆盖。
+
+### 几个注意点
+
+- **改软件数据后一定要重跑 `prerender.py`**，否则首页静态卡片会停在旧内容（JS 版仍是最新的，但爬虫看到的是旧的）
+- `index.html` 里那两行**站长验证标签不归脚本管**，可以放心手改；验证通过后也不要删，删了会掉验证
+- 分享封面图 `assets/images/og-cover.png` 由 `scripts/gen-og-cover.ps1` 生成，改文案后重跑该脚本即可（Windows 上用 `powershell -File` 运行；该文件必须存成**带 BOM 的 UTF-8**，否则 PS 5.1 会读成乱码）
+- 想要更好的收录效果，最有效的一步是**绑一个自己的域名**（现在是共享子域 `github.io`）；不绑也能收录，只是慢一些
 
 ## 🔄 更新记录一键同步
 

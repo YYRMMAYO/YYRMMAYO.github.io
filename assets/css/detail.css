@@ -693,6 +693,40 @@ code {
 }
 .changelog-items li strong { color: var(--text); font-weight: 650; }
 
+/* 同系列软件互链（内部链接：把 OBS 三个版本串起来，也便于爬虫走通） */
+.related {
+  margin-top: 28px;
+  padding: 15px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.related-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.related a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 13px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-body);
+  text-decoration: none;
+  font-size: 13.5px;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.related a:hover { border-color: var(--accent-line); color: var(--accent); }
+
 /* 返回链接 */
 .back-link {
   display: inline-flex;

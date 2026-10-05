@@ -98,6 +98,9 @@ const softwareList = [
     key: "love101",
     icon: "💘",
     name: { zh: "第101种理由", en: "Love 101" },
+    version: "v1.0.0",
+    os: "Android, Windows, Web",
+    license: "MIT",
     desc: {
       zh: "数据驱动的 2.5D 恋爱叙事游戏：剧情改编自 9 段爱情故事，AI 生成立绘，部分场景以 CSS 3D 做半立体叙述。点击推进剧情、双选项互动、进度自动保存，完全离线可玩，支持安卓 / Windows / 浏览器。",
       en: "A data-driven 2.5D romance narrative game adapted from 9 love stories, featuring AI-generated art and CSS 3D semi-stereoscopic scenes. Tap to advance the story, choose between two options, auto-save your progress — fully offline, playable on Android / Windows / browser.",
@@ -125,6 +128,8 @@ const softwareList = [
     icon: "🎨",
     name: { zh: "AIStudioHub", en: "AIStudioHub" },
     version: "v1.9.0",
+    os: "Windows",
+    license: "MIT",
     desc: {
       zh: "AI 制作资源整合中心：汇集 181 个主流 AI 平台与开源工具（视频制作、图像生成、音乐音频、网页制作、文本大模型），内置离线中文教程与 AI Agent / Skill 专区，支持模糊搜索、收藏与个性化主题。",
       en: "An AI production resource hub: 181 mainstream AI platforms & open-source tools (video, image, music, web, LLM), offline Chinese tutorials, and an AI Agent / Skills section — with fuzzy search, favorites and themes.",
@@ -153,6 +158,8 @@ const softwareList = [
     icon: "🎥",
     name: { zh: "OBS帮助助手（Windows）", en: "OBS Helper (Windows)" },
     version: "V2.9.6",
+    os: "Windows",
+    license: "MIT",
     desc: {
       zh: "面向直播新手的 OBS Studio 排障工具（V2.9.6 起更名「OBS帮助助手」）：212 条离线知识库、简单录像与一键开录、智能诊断、录制守护与实时日志预警、黑屏/音频/虚拟摄像头三合一深度体检、OBS 远程控制台；界面与随包内容中英双语，纯离线可用。",
       en: "An OBS Studio troubleshooting tool for livestreaming beginners (renamed \"OBS帮助助手\" as of V2.9.6): 212-entry offline knowledge base, simple recording and one-click start, smart diagnosis, recording watchdog, real-time log alerts, black-screen / audio / virtual-camera health checks and an OBS remote console — bilingual UI and bundled content, fully offline.",
@@ -185,6 +192,9 @@ const softwareList = [
     key: "obs-mac",
     icon: "🍎",
     name: { zh: "OBS 排障助手（macOS）", en: "OBS Helper (macOS)" },
+    version: "v2.1.0",
+    os: "macOS",
+    license: "MIT",
     desc: {
       zh: "OBS 直播排障助手 macOS 版：离线知识库、智能诊断、OBS 远程控制台、系统实时监控与场景模板，帮你快速解决黑屏、卡顿、音画不同步等直播问题。",
       en: "OBS troubleshooting assistant for macOS: offline knowledge base, smart diagnosis, OBS remote console, live system monitoring and scene templates — helps fix black screen, lag and A/V sync issues.",
@@ -201,6 +211,8 @@ const softwareList = [
     icon: "🔌",
     name: { zh: "OBS 排障助手 · 插件版", en: "OBS Helper Plugin" },
     version: "v2.8.0",
+    os: "Windows",
+    license: "MIT",
     desc: {
       zh: "纯原生 C++ / Qt6 的 OBS Studio 前端插件：以停靠面板直接嵌入 OBS 主窗口，七大专栏覆盖体检、日志分析、设置体检、性能监控、插件管理、工具箱与系统信息，全程只读检测、零额外进程。",
       en: "A native C++ / Qt6 front-end plugin for OBS Studio: embeds a dock panel right inside the main window with seven tabs — health check, log analysis, settings audit, performance monitor, plugin manager, toolbox and system info. Read-only, zero extra processes.",
@@ -228,6 +240,8 @@ const softwareList = [
     icon: "🧰",
     name: { zh: "司南工具箱", en: "Sinan Toolbox" },
     version: "v6.1.0",
+    os: "Windows",
+    license: "MIT",
     status: "discontinued",
     desc: {
       zh: "完全免费、非盈利的 Windows 辅助工具：专注系统检测、清理优化、网络诊断与故障排查，本地运行、操作安全，内置 AI 助手与多套个性化主题。",

@@ -1,0 +1,9 @@
+# YYRMM 的软件库 — https://yyrmmayo.github.io/
+# 允许全部抓取；只有工具脚本目录不需要进索引。
+
+User-agent: *
+Allow: /
+Disallow: /scripts/
+
+# 收录提交（IndexNow 的 key 文件在仓库根目录）
+Sitemap: https://yyrmmayo.github.io/sitemap.xml

@@ -9,6 +9,52 @@
   <!-- 主题脚本：head 中同步加载，第一时间应用已保存的主题（防闪烁） -->
   <script src="assets/js/theme.js"></script>
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- ===== 站长平台验证：把两个 content 换成对应平台给你的验证码 =====
+       ① Google Search Console：添加资源 → 选「HTML 标记」方式 → 复制那串 content
+          （验证通过后记得点「提交站点地图」，填 sitemap.xml）
+       ② 百度搜索资源平台：添加站点 → 选「HTML 标签验证」→ 复制 content
+       验证通过后这两行的 content 要保持填写状态，删了会掉验证。
+       注意：这一块不归 scripts/prerender.py 管，不会被它覆盖。
+       还没去验证时留着这两个占位值即可，对页面没有影响。 -->
+  <meta name="google-site-verification" content="请替换为 Google Search Console 的验证码" />
+  <meta name="baidu-site-verification" content="请替换为百度搜索资源平台的验证码" />
+  <!-- SEO:START 由 scripts/prerender.py 生成，勿手改 -->
+  <link rel="canonical" href="https://yyrmmayo.github.io/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="YYRMM的软件库" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:title" content="YYRMM的软件库" />
+  <meta property="og:description" content="YYRMM的软件库 — 个人软件作品集 · 纯静态 · 中英双语 · 深浅双主题" />
+  <meta property="og:url" content="https://yyrmmayo.github.io/" />
+  <meta property="og:image" content="https://yyrmmayo.github.io/assets/images/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="YYRMM的软件库" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="YYRMM的软件库" />
+  <meta name="twitter:description" content="YYRMM的软件库 — 个人软件作品集 · 纯静态 · 中英双语 · 深浅双主题" />
+  <meta name="twitter:image" content="https://yyrmmayo.github.io/assets/images/og-cover.png" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "YYRMM的软件库",
+  "alternateName": "YYRMM's Software Library",
+  "url": "https://yyrmmayo.github.io/",
+  "description": "YYRMM的软件库 — 个人软件作品集 · 纯静态 · 中英双语 · 深浅双主题",
+  "inLanguage": [
+    "zh-CN",
+    "en"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "YYRMMAYO",
+    "url": "https://github.com/YYRMMAYO"
+  }
+}
+  </script>
+  <!-- SEO:END -->
 </head>
 <body>
   <!-- ===== 背景层：细网格 + 柔光晕（纯 CSS，无图片） ===== -->
@@ -166,7 +212,62 @@
           <p class="section-desc" data-i18n="sectionDesc">点击卡片上的按钮即可下载或访问项目主页。</p>
         </div>
         <div id="software-grid" class="grid">
-          <!-- 卡片由 assets/js/main.js 根据数据动态生成 -->
+          <!-- PRERENDER:START 由 scripts/prerender.py 生成，勿手改 -->
+          <article class="card" data-reveal style="--card-accent:#b03a48">
+                  <div class="card-thumb" data-detail="love101" title="详细介绍"><span class="card-icon">💘</span></div>
+                  <div class="card-body">
+                    <h3 class="card-title" data-detail="love101">第101种理由 <span class="card-version">v1.0.0</span></h3>
+                    <p class="card-desc">数据驱动的 2.5D 恋爱叙事游戏：剧情改编自 9 段爱情故事，AI 生成立绘，部分场景以 CSS 3D 做半立体叙述。点击推进剧情、双选项互动、进度自动保存，完全离线可玩，支持安卓 / Windows / 浏览器。</p>
+                    <div class="card-tags"><span class="tag">Windows</span><span class="tag">Android</span><span class="tag">叙事游戏</span></div>
+                    <div class="card-links"><a class="btn btn-primary" href="https://github.com/YYRMMAYO/love101/releases/tag/v1.0.0" target="_blank" rel="noopener">GitHub 下载</a><span class="netdisk-block"><a class="btn btn-ghost" href="https://wwbpq.lanzouu.com/b01d75y5fc" target="_blank" rel="noopener">网盘下载</a><span class="netdisk-pwd">密码：00</span></span><a class="btn btn-ghost" href="https://github.com/YYRMMAYO/love101" target="_blank" rel="noopener">主页</a><a class="btn btn-show" href="detail/love101.html" target="_blank" rel="noopener">详细介绍</a></div>
+                  </div>
+                </article>
+                <article class="card" data-reveal style="--card-accent:#9c7c1e">
+                  <div class="card-thumb" data-detail="aistudio" title="详细介绍"><span class="card-icon">🎨</span></div>
+                  <div class="card-body">
+                    <h3 class="card-title" data-detail="aistudio">AIStudioHub <span class="card-version">v1.9.0</span></h3>
+                    <p class="card-desc">AI 制作资源整合中心：汇集 181 个主流 AI 平台与开源工具（视频制作、图像生成、音乐音频、网页制作、文本大模型），内置离线中文教程与 AI Agent / Skill 专区，支持模糊搜索、收藏与个性化主题。</p>
+                    <div class="card-tags"><span class="tag">Windows</span><span class="tag">AI 资源库</span><span class="tag">开源</span></div>
+                    <div class="card-links"><a class="btn btn-primary" href="https://github.com/YYRMMAYO/AIStudioHub" target="_blank" rel="noopener">GitHub 下载</a><span class="netdisk-block"><a class="btn btn-ghost" href="https://wwbpq.lanzouu.com/b01d75a4yb" target="_blank" rel="noopener">网盘下载</a><span class="netdisk-pwd">密码：YYKWY</span></span><a class="btn btn-show" href="detail/aistudio.html" target="_blank" rel="noopener">详细介绍</a></div>
+                  </div>
+                </article>
+                <article class="card" data-reveal style="--card-accent:#a63a2b">
+                  <div class="card-thumb" data-detail="obs" title="详细介绍"><span class="card-icon">🎥</span></div>
+                  <div class="card-body">
+                    <h3 class="card-title" data-detail="obs">OBS帮助助手（Windows） <span class="card-version">V2.9.6</span></h3>
+                    <p class="card-desc">面向直播新手的 OBS Studio 排障工具（V2.9.6 起更名「OBS帮助助手」）：212 条离线知识库、简单录像与一键开录、智能诊断、录制守护与实时日志预警、黑屏/音频/虚拟摄像头三合一深度体检、OBS 远程控制台；界面与随包内容中英双语，纯离线可用。</p>
+                    <div class="card-tags"><span class="tag">Windows</span><span class="tag">V2.9.6</span><span class="tag">OBS 排障</span><span class="tag">免费</span></div>
+                    <div class="card-links"><a class="btn btn-primary" href="https://github.com/YYRMMAYO/OBS_Helper" target="_blank" rel="noopener">GitHub 下载</a><span class="netdisk-block"><a class="btn btn-ghost" href="https://wwbpq.lanzouu.com/b01d7578be" target="_blank" rel="noopener">网盘下载</a><span class="netdisk-pwd">密码：YYKWY</span></span><a class="btn btn-show" href="detail/obs.html" target="_blank" rel="noopener">详细介绍</a></div>
+                  </div>
+                </article>
+                <article class="card" data-reveal style="--card-accent:#8b5a2b">
+                  <div class="card-thumb" data-detail="obs-mac" title="详细介绍"><span class="card-icon">🍎</span></div>
+                  <div class="card-body">
+                    <h3 class="card-title" data-detail="obs-mac">OBS 排障助手（macOS） <span class="card-version">v2.1.0</span></h3>
+                    <p class="card-desc">OBS 直播排障助手 macOS 版：离线知识库、智能诊断、OBS 远程控制台、系统实时监控与场景模板，帮你快速解决黑屏、卡顿、音画不同步等直播问题。</p>
+                    <div class="card-tags"><span class="tag">macOS</span><span class="tag">OBS 排障</span><span class="tag">开源</span></div>
+                    <div class="card-links"><a class="btn btn-primary" href="https://github.com/YYRMMAYO/OBS-Helpmac" target="_blank" rel="noopener">GitHub 下载</a><a class="btn btn-show" href="detail/obs-mac.html" target="_blank" rel="noopener">详细介绍</a></div>
+                  </div>
+                </article>
+                <article class="card" data-reveal style="--card-accent:#3d5a56">
+                  <div class="card-thumb" data-detail="obs-plugin" title="详细介绍"><span class="card-icon">🔌</span></div>
+                  <div class="card-body">
+                    <h3 class="card-title" data-detail="obs-plugin">OBS 排障助手 · 插件版 <span class="card-version">v2.8.0</span></h3>
+                    <p class="card-desc">纯原生 C++ / Qt6 的 OBS Studio 前端插件：以停靠面板直接嵌入 OBS 主窗口，七大专栏覆盖体检、日志分析、设置体检、性能监控、插件管理、工具箱与系统信息，全程只读检测、零额外进程。</p>
+                    <div class="card-tags"><span class="tag">Windows x64</span><span class="tag">OBS 30.x–32.x</span><span class="tag">v2.8.0</span><span class="tag">开源</span></div>
+                    <div class="card-links"><a class="btn btn-primary" href="https://github.com/YYRMMAYO/OBS_Helper_Plugin/releases" target="_blank" rel="noopener">GitHub 下载</a><a class="btn btn-ghost" href="https://github.com/YYRMMAYO/OBS_Helper_Plugin" target="_blank" rel="noopener">主页</a><a class="btn btn-show" href="detail/obs-plugin.html" target="_blank" rel="noopener">详细介绍</a></div>
+                  </div>
+                </article>
+                <article class="card is-discontinued" data-reveal style="--card-accent:#4a6b52">
+                  <div class="card-thumb" data-detail="sinan" title="详细介绍"><span class="card-icon">🧰</span><span class="stamp-badge">停止开发</span></div>
+                  <div class="card-body">
+                    <h3 class="card-title" data-detail="sinan">司南工具箱 <span class="card-version">v6.1.0</span><span class="title-stamp">停止开发</span></h3>
+                    <p class="card-desc">完全免费、非盈利的 Windows 辅助工具：专注系统检测、清理优化、网络诊断与故障排查，本地运行、操作安全，内置 AI 助手与多套个性化主题。</p>
+                    <div class="card-tags"><span class="tag">Windows</span><span class="tag">系统工具</span><span class="tag">免费</span></div>
+                    <div class="card-links"><a class="btn btn-primary" href="https://github.com/YYRMMAYO/WINhelper" target="_blank" rel="noopener">GitHub 下载</a><span class="netdisk-block"><a class="btn btn-ghost" href="https://wwbpq.lanzouu.com/b01d71xtzg" target="_blank" rel="noopener">网盘下载</a><span class="netdisk-pwd">密码：YYRMM</span></span><a class="btn btn-show" href="detail/sinan.html" target="_blank" rel="noopener">详细介绍</a></div>
+                  </div>
+                </article>
+          <!-- PRERENDER:END -->
         </div>
         <p id="empty-state" class="empty-state" hidden data-i18n="emptyState">暂无可展示的软件，敬请期待。</p>
       </section>
@@ -179,7 +280,19 @@
           <p class="section-desc" data-i18n="resDesc">以下资料均由 AI 协助整理与编写，统一存放在云盘；点击「网盘下载」并输入密码即可获取。所有资料均免费发布，不含任何收费项，内容仅供参考、会持续修订。</p>
         </div>
         <div id="resource-grid" class="grid">
-          <!-- 资料卡片由 assets/js/main.js 根据 resourceList 动态生成 -->
+          <!-- PRERENDER:START 由 scripts/prerender.py 生成，勿手改 -->
+          <article class="card" data-reveal style="--card-accent:#3e5c57">
+                  <div class="card-thumb"><a class="card-thumb-link" href="https://wwbpq.lanzouu.com/b01d79bn7i" target="_blank" rel="noopener" aria-label="高中理科资料合集"><span class="card-icon">📚</span></a></div>
+                  <div class="card-body">
+                    <h3 class="card-title"><a href="https://wwbpq.lanzouu.com/b01d79bn7i" target="_blank" rel="noopener">高中理科资料合集</a></h3>
+                    <p class="card-desc">由 AI 协助整理与编写的高中理科学习资料：物理 / 化学 / 生物 / 数学预习资料、高中数学快捷公式与扩展方法汇总集，以及高中理科测试题库。</p>
+                    <p class="card-meta">共 7 份文档 · 约 63 MB · AI 整理与编写</p>
+                    <div class="card-tags"><span class="tag">AI 整理与编写</span><span class="tag">高中理科</span><span class="tag">Word / .docx</span><span class="tag">云盘下载</span></div>
+                    <div class="card-links"><a class="btn btn-primary" href="https://wwbpq.lanzouu.com/b01d79bn7i" target="_blank" rel="noopener">网盘下载</a></div>
+                    <div class="res-dl-note"><span class="res-pwd"><span class="res-pwd-label">密码：</span><b class="res-pwd-value">XY</b></span><span class="res-free"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>免费发布 · 不含收费项</span></div>
+                  </div>
+                </article>
+          <!-- PRERENDER:END -->
         </div>
         <p id="resource-empty-state" class="empty-state" hidden data-i18n="resEmptyState">资料整理中，敬请期待。</p>
         <div class="res-feedback" data-reveal>
