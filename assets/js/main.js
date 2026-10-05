@@ -43,30 +43,27 @@ const I18N = {
   resFeedbackText:    { zh: "资料有误、缺漏，或者想补充新的资料？欢迎填写反馈表告诉我。", en: "Found a mistake or a gap, or want to suggest new material? Tell me through the feedback form." },
   resFeedbackBtn:     { zh: "各资料的问题反馈", en: "Report an Issue" },
 
-  /* ---------- 科技风改版新增文案（Hero / 统计 / 特性 / 预览 / 页脚） ---------- */
+  /* ---------- 改版新增文案（Hero / 统计 / 特性 / 预览 / 页脚） ---------- */
   navFeatures:   { zh: "特性", en: "Features" },
-  heroBadge:     { zh: "开源 · 纯静态 · 中英双语", en: "Open source · Static · Bilingual" },
-  heroNote:      { zh: "纯静态站点 · 零依赖加载 · 由 GitHub Pages 托管", en: "Static site · zero dependencies · hosted on GitHub Pages" },
+  heroBadge:     { zh: "个人作品集 · 开源发布", en: "Personal portfolio · openly released" },
+  heroNote:      { zh: "纯静态，部署在 GitHub Pages；没有框架，也没有第三方库。", en: "Fully static on GitHub Pages — no framework, no third-party libraries." },
   ctaBrowse:     { zh: "浏览软件", en: "Browse software" },
   ctaAbout:      { zh: "关于我", en: "About me" },
 
-  featEyebrow:   { zh: "特性", en: "Features" },
-  featTitle:     { zh: "为长期使用而做的软件", en: "Software built to be used for a long time" },
-  featDesc:      { zh: "四个共同点贯穿全部项目：离线可用、开源可查、更新轻量、双语双主题。", en: "Four things run through every project: works offline, open to inspection, lightweight updates, and bilingual with dual themes." },
+  featEyebrow:   { zh: "共性", en: "Common ground" },
+  featTitle:     { zh: "这些软件的共同点", en: "What these projects have in common" },
+  featDesc:      { zh: "不管是排障工具、资源库还是小游戏，做法都差不多：能离线就别联网、源码放出来给人看、更新只下改动的那几个文件、中英文和深浅主题都备齐。", en: "Whether it's a troubleshooting tool, a resource library or a small game, the approach is much the same: stay offline where possible, keep the source out in the open, download only the files that changed, and cover both languages and both themes." },
 
   swEyebrow:     { zh: "作品集", en: "Portfolio" },
   resEyebrow:    { zh: "资源", en: "Resources" },
 
   previewTitle:      { zh: "YYRMM 软件库 — 总览", en: "YYRMM Software Library — Overview" },
-  previewRailLabel:  { zh: "库", en: "LIB" },
   previewRailAll:    { zh: "全部软件", en: "All software" },
   previewRailObs:    { zh: "OBS 系列", en: "OBS family" },
   previewRailRes:    { zh: "资料", en: "Resources" },
   previewRailAbout:  { zh: "关于", en: "About" },
-  previewStatusCount:{ zh: "个条目", en: "entries" },
-  previewStatusLang: { zh: "中英双语", en: "bilingual" },
-  previewStatusReady:{ zh: "就绪", en: "ready" },
-  figHero:           { zh: "fig. 01 — 软件库总览", en: "fig. 01 — software library overview" },
+  previewStatusCount:{ zh: "个作品 · 中英双语", en: "projects · bilingual" },
+  figHero:           { zh: "界面示意 — 条目直接读自下方软件列表", en: "Interface mockup — the entries are read straight from the software list below" },
 
   footTagline:     { zh: "个人软件作品集 · 纯静态 · 中英双语 · 深浅双主题", en: "A personal software portfolio · static · bilingual · dual themes" },
   footColSoftware: { zh: "软件", en: "Software" },
@@ -288,40 +285,40 @@ const resourceList = [
  * 改动数字时请同步核对对应软件详情页，避免出现自相矛盾。
  * -------------------------------------------------------- */
 const STATS = [
-  { value: "6",   label: { zh: "软件作品",       en: "Software projects" } },
-  { value: "212", label: { zh: "离线知识库条目", en: "Offline KB entries" } },
-  { value: "381", label: { zh: "通过单元测试",   en: "Passing unit tests" } },
-  { value: "57",  label: { zh: "精选 OBS 插件",  en: "Curated OBS plugins" } },
+  { value: "6",   label: { zh: "个收录作品",     en: "projects listed" } },
+  { value: "212", label: { zh: "条排障知识库",   en: "troubleshooting entries" } },
+  { value: "381", label: { zh: "项单元测试",     en: "unit tests" } },
+  { value: "57",  label: { zh: "个精选插件",     en: "curated plugins" } },
 ];
 
 /* ---------- 6. 特性（编号分段：01 / 02 / 03 …） ---------- */
 const FEATURES = [
   {
-    title: { zh: "离线优先", en: "Offline-first" },
+    title: { zh: "能离线就不联网", en: "Offline by default" },
     desc: {
-      zh: "问题知识库、日志分析规则与诊断引擎全部内嵌在本机，不联网也能完成排障与体检。",
-      en: "The knowledge base, log-analysis rules and diagnosis engine are all embedded, so troubleshooting and health checks work without a network.",
+      zh: "问题知识库、日志规则和诊断引擎都随程序装在本机，断网也能查、也能体检；只有你主动发起诊断时才需要网络。",
+      en: "The knowledge base, log rules and diagnosis engine ship inside the app, so searching and health checks work with no network — the connection is only needed when you start a diagnosis yourself.",
     },
   },
   {
-    title: { zh: "开源透明", en: "Open to inspection" },
+    title: { zh: "源码放在明面上", en: "Source stays public" },
     desc: {
-      zh: "项目全部开源，源码与更新记录公开可查，版本号、许可证与发布内容一一对应。",
-      en: "Every project is open source: code and changelogs are public, and versions, licences and release notes line up one to one.",
+      zh: "代码、许可证和每次更新的条目都公开可查，页面上写的版本号就是仓库里发布过的那个版本。",
+      en: "Code, licences and every changelog entry are public, and the version number on these pages is the one actually released in the repository.",
     },
   },
   {
-    title: { zh: "增量更新", en: "Lightweight updates" },
+    title: { zh: "更新只下改动", en: "Updates download only what changed" },
     desc: {
-      zh: "更新只下载变更文件，逐文件 SHA-256 校验，失败自动回退整包，数据与设置原样保留。",
-      en: "Updates download only the changed files, each verified with SHA-256, with an automatic full-pack fallback while keeping your data and settings.",
+      zh: "新版本按文件比对，只取变动的那几个，逐个校验 SHA-256；万一对不上就退回整包，你的设置和数据不受影响。",
+      en: "A new version is diffed file by file, only the changed ones are fetched, and each is verified with SHA-256. If something doesn't match it falls back to the full package, leaving your settings and data alone.",
     },
   },
   {
-    title: { zh: "双语 · 双主题", en: "Bilingual · dual theme" },
+    title: { zh: "中英文 · 深浅色", en: "Two languages, two themes" },
     desc: {
-      zh: "中英文一键切换，浅色与深色主题自动记忆，手机与桌面共用同一套完整界面。",
-      en: "Switch between Chinese and English in one click; light and dark themes are remembered, with one complete UI for phone and desktop.",
+      zh: "右上角切换中英文，页面和详情页一起换；浅色和深色各备一套，选过的会记住，手机上也是同一套完整界面。",
+      en: "Switch language from the top right and the detail pages follow along. Light and dark each have their own palette, your choice is remembered, and the phone gets the same complete UI.",
     },
   },
 ];
@@ -475,7 +472,6 @@ function renderPreview() {
       const off = s.status === "discontinued";
       return `<div class="preview-row">
           <span class="p-dot" style="background:${off ? "var(--amber)" : "var(--ok)"}"></span>
-          <span class="p-icon">${s.icon}</span>
           <span class="p-name">${s.name[lang]}</span>
           <span class="p-meta">${meta}</span>
         </div>`;
@@ -493,8 +489,6 @@ function renderPreview() {
   if (status) {
     status.innerHTML = `<span class="p-dot"></span><span>${softwareList.length} ${t(
       "previewStatusCount"
-    )}</span><span class="s-sep">|</span><span>${t("previewStatusLang")}</span><span class="s-sep">|</span><span class="s-accent">${t(
-      "previewStatusReady"
     )}</span>`;
   }
 }

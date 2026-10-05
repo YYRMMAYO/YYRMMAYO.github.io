@@ -1,56 +1,52 @@
 /* ============================================================
-   YYRMM 的软件库 — 科技风主题（Tech / Product Site）
-   浅色：白底科技官网   深色：深空玻璃（深色观感对齐 reasonix.io）
+   YYRMM 的软件库 — 站点样式（石墨 + 深青，浅 / 深双主题）
+   浅色：白底（细网格 + 柔光）   深色：深空石墨玻璃
    设计原则：
-     - 无衬线正文 + 等宽标签，冷色强调（蓝 / 青 / 紫）
+     - 无衬线正文 + 等宽标签；单一低饱和深青强调色，不用多彩渐变
      - 细网格背景 + 柔光晕；卡片为玻璃面板 + 悬浮高光
-     - 编号分段（01 / 02 / 03）与 fig. 图示标注
+     - 区块以短标签起头，特性区按 01 / 02 / 03 编号
    ============================================================ */
 
 :root {
   /* ---------- 表面与文字：浅色（默认日间主题） ---------- */
-  --bg:            #ffffff;
-  --bg-soft:       #f6f8fb;
+  --bg:            #f7f8f8;
+  --bg-soft:       #eff1f1;
   --surface:       #ffffff;
-  --surface-2:     #f3f6fa;
-  --surface-3:     #eaeff6;
+  --surface-2:     #f3f5f5;
+  --surface-3:     #e8eceb;
 
-  --text:          #0b1220;
-  --text-body:     #3b4557;
-  --text-muted:    #66738a;
-  --text-faint:    #97a2b4;
+  --text:          #101615;
+  --text-body:     #3d4746;
+  --text-muted:    #677170;
+  --text-faint:    #98a2a1;
 
-  --border:        #e2e8f1;
-  --border-strong: #c8d2e0;
+  --border:        #e1e5e4;
+  --border-strong: #c5cdcc;
 
-  /* ---------- 强调色：科技蓝 / 天青 / 紫 ---------- */
-  --accent:        #2563eb;
-  --accent-soft:   rgba(37, 99, 235, 0.09);
-  --accent-line:   rgba(37, 99, 235, 0.32);
-  --cyan:          #0e9bb5;
-  --cyan-soft:     rgba(14, 155, 181, 0.1);
-  --violet:        #7c3aed;
-  --violet-soft:   rgba(124, 58, 237, 0.1);
+  /* ---------- 强调色：低饱和深青（刻意不用蓝色） ---------- */
+  --accent:        #14655e;
+  --accent-soft:   rgba(20, 101, 94, 0.08);
+  --accent-line:   rgba(20, 101, 94, 0.3);
   --on-accent:     #ffffff;
 
   /* 状态色（资料板块沿用旧语义：琥珀=密码醒目，青绿=免费声明） */
-  --amber:         #b4690e;
-  --amber-soft:    rgba(180, 105, 14, 0.08);
-  --ok:            #0f766e;
-  --ok-soft:       rgba(15, 118, 110, 0.08);
+  --amber:         #8a6220;
+  --amber-soft:    rgba(138, 98, 32, 0.09);
+  --ok:            #2f6b4f;
+  --ok-soft:       rgba(47, 107, 79, 0.09);
 
   /* ---------- 背景层 ---------- */
-  --grid-line:     rgba(11, 18, 32, 0.045);
-  --glow-1:        rgba(37, 99, 235, 0.1);
-  --glow-2:        rgba(14, 155, 181, 0.1);
-  --glow-3:        rgba(124, 58, 237, 0.07);
+  --grid-line:     rgba(16, 21, 20, 0.04);
+  --glow-1:        rgba(20, 101, 94, 0.1);
+  --glow-2:        rgba(47, 107, 79, 0.07);
+  --glow-3:        rgba(138, 98, 32, 0.05);
 
   /* ---------- 派生 ---------- */
-  --topbar-bg:     rgba(255, 255, 255, 0.82);
-  --selection-bg:  rgba(37, 99, 235, 0.2);
-  --selection-fg:  #0b1220;
-  --shadow:        rgba(15, 26, 46, 0.16);
-  --shadow-soft:   rgba(15, 26, 46, 0.08);
+  --topbar-bg:     rgba(247, 248, 248, 0.85);
+  --selection-bg:  rgba(20, 101, 94, 0.18);
+  --selection-fg:  #101615;
+  --shadow:        rgba(14, 24, 22, 0.16);
+  --shadow-soft:   rgba(14, 24, 22, 0.07);
 
   --radius:     12px;
   --radius-sm:  8px;
@@ -69,42 +65,38 @@
    启用方式：<html data-theme="dark">（assets/js/theme.js 控制）
    ============================================================ */
 [data-theme="dark"] {
-  --bg:            #06080d;
-  --bg-soft:       #0a0e16;
-  --surface:       rgba(255, 255, 255, 0.028);
-  --surface-2:     rgba(255, 255, 255, 0.05);
-  --surface-3:     rgba(255, 255, 255, 0.075);
+  --bg:            #0c0f0f;
+  --bg-soft:       #111615;
+  --surface:       rgba(255, 255, 255, 0.032);
+  --surface-2:     rgba(255, 255, 255, 0.055);
+  --surface-3:     rgba(255, 255, 255, 0.08);
 
-  --text:          #eef3fa;
-  --text-body:     #c3ccdb;
-  --text-muted:    #8d99ab;
-  --text-faint:    #6a7484;
+  --text:          #e8edec;
+  --text-body:     #bdc6c5;
+  --text-muted:    #8b9594;
+  --text-faint:    #6b7473;
 
   --border:        rgba(255, 255, 255, 0.09);
   --border-strong: rgba(255, 255, 255, 0.2);
 
-  --accent:        #5c9dff;
-  --accent-soft:   rgba(92, 157, 255, 0.12);
-  --accent-line:   rgba(92, 157, 255, 0.42);
-  --cyan:          #3ad3e6;
-  --cyan-soft:     rgba(58, 211, 230, 0.12);
-  --violet:        #a78bfa;
-  --violet-soft:   rgba(167, 139, 250, 0.12);
-  --on-accent:     #04101f;
+  --accent:        #4bbfae;
+  --accent-soft:   rgba(75, 191, 174, 0.13);
+  --accent-line:   rgba(75, 191, 174, 0.4);
+  --on-accent:     #06201d;
 
-  --amber:         #e0a44a;
-  --amber-soft:    rgba(224, 164, 74, 0.12);
-  --ok:            #4fd1bd;
-  --ok-soft:       rgba(79, 209, 189, 0.12);
+  --amber:         #d2a869;
+  --amber-soft:    rgba(210, 168, 105, 0.13);
+  --ok:            #6fc49a;
+  --ok-soft:       rgba(111, 196, 154, 0.13);
 
-  --grid-line:     rgba(255, 255, 255, 0.038);
-  --glow-1:        rgba(92, 157, 255, 0.16);
-  --glow-2:        rgba(58, 211, 230, 0.12);
-  --glow-3:        rgba(167, 139, 250, 0.12);
+  --grid-line:     rgba(255, 255, 255, 0.035);
+  --glow-1:        rgba(75, 191, 174, 0.14);
+  --glow-2:        rgba(111, 196, 154, 0.1);
+  --glow-3:        rgba(210, 168, 105, 0.07);
 
-  --topbar-bg:     rgba(6, 8, 13, 0.78);
-  --selection-bg:  rgba(92, 157, 255, 0.3);
-  --selection-fg:  #eef3fa;
+  --topbar-bg:     rgba(12, 15, 15, 0.8);
+  --selection-bg:  rgba(75, 191, 174, 0.28);
+  --selection-fg:  #e8edec;
   --shadow:        rgba(0, 0, 0, 0.6);
   --shadow-soft:   rgba(0, 0, 0, 0.4);
 }
@@ -246,7 +238,7 @@ code {
   flex-shrink: 0;
   border-radius: 7px;
   color: #fff;
-  background: linear-gradient(135deg, var(--accent), var(--cyan) 62%, var(--violet));
+  background: linear-gradient(135deg, var(--accent), var(--accent) 62%, var(--accent));
   box-shadow: 0 4px 14px -4px var(--accent-line);
 }
 [data-theme="dark"] .brand-mark { color: #05101d; }
@@ -371,7 +363,7 @@ code {
   letter-spacing: -0.025em;
   line-height: 1.1;
   color: var(--text);
-  background-image: linear-gradient(100deg, var(--text) 6%, var(--accent) 52%, var(--cyan) 88%);
+  background-image: linear-gradient(100deg, var(--text) 0%, var(--text) 40%, var(--accent) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -503,15 +495,6 @@ code {
   background: var(--accent-soft);
   font-weight: 600;
 }
-.preview-rail-label {
-  margin: 10px 0 3px;
-  padding: 0 10px;
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-}
 
 .preview-list {
   display: flex;
@@ -530,11 +513,6 @@ code {
   min-width: 0;
 }
 .preview-row:nth-child(odd) { background: var(--surface-2); }
-.preview-row .p-icon {
-  font-size: 16px;
-  line-height: 1;
-  flex-shrink: 0;
-}
 .preview-row .p-name {
   font-size: 13px;
   font-weight: 500;
@@ -571,8 +549,6 @@ code {
   letter-spacing: 0.04em;
   color: var(--text-faint);
 }
-.preview-status .s-sep { opacity: 0.5; }
-.preview-status .s-accent { color: var(--accent); }
 
 .fig-caption {
   margin-top: 14px;
@@ -608,11 +584,7 @@ code {
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.1;
-  color: var(--text);
-  background-image: linear-gradient(120deg, var(--accent), var(--cyan));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--accent);
 }
 .stat-label {
   display: block;
@@ -783,7 +755,7 @@ code {
   content: "";
   width: 5px; height: 5px;
   border-radius: 50%;
-  background: var(--cyan);
+  background: var(--accent);
   flex-shrink: 0;
 }
 
@@ -873,7 +845,7 @@ code {
 /* 缩略图：柔光底 + 大图标 */
 .card-thumb {
   position: relative;
-  height: 116px;
+  height: 102px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -885,7 +857,7 @@ code {
 }
 .card-icon {
   display: inline-block;
-  font-size: 40px;
+  font-size: 30px;
   line-height: 1;
   filter: drop-shadow(0 6px 14px var(--shadow-soft));
 }
@@ -1129,12 +1101,12 @@ code {
 /* 详情按钮：天青描边 */
 .btn-show {
   background: transparent;
-  color: var(--cyan);
-  border: 1px solid color-mix(in srgb, var(--cyan) 45%, transparent);
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
 }
 .btn-show:hover {
-  background: var(--cyan-soft);
-  border-color: var(--cyan);
+  background: var(--accent-soft);
+  border-color: var(--accent);
 }
 
 /* ============================================================

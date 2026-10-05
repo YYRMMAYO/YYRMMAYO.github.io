@@ -1,68 +1,65 @@
 /* ============================================================
-   YYRMM 的软件库 — 详情页样式（科技风，与主页同源）
-   浅色：白底科技官网   深色：深空玻璃
+   YYRMM 的软件库 — 详情页样式（石墨 + 深青，与主页同源）
+   浅色：白底   深色：深空石墨玻璃
    变量命名与 assets/css/style.css 保持一致；同时保留 --gold /
-   --patina 两个历史别名，兼容详情页里的既有行内样式。
+   --patina 两个历史别名（都指向 --accent），兼容详情页里既有的行内样式。
    ============================================================ */
 
 :root {
   /* ---------- 表面与文字：浅色（默认日间主题） ---------- */
-  --bg:            #ffffff;
-  --bg-soft:       #f6f8fb;
+  --bg:            #f7f8f8;
+  --bg-soft:       #eff1f1;
   --surface:       #ffffff;
-  --surface-2:     #f3f6fa;
-  --surface-3:     #eaeff6;
+  --surface-2:     #f3f5f5;
+  --surface-3:     #e8eceb;
 
-  --text:          #0b1220;
-  --text-body:     #3b4557;
-  --text-muted:    #66738a;
-  --text-faint:    #97a2b4;
+  --text:          #101615;
+  --text-body:     #3d4746;
+  --text-muted:    #677170;
+  --text-faint:    #98a2a1;
 
-  --border:        #e2e8f1;
-  --border-strong: #c8d2e0;
+  --border:        #e1e5e4;
+  --border-strong: #c5cdcc;
 
-  /* ---------- 强调色 ---------- */
-  --accent:        #2563eb;
-  --accent-soft:   rgba(37, 99, 235, 0.09);
-  --accent-line:   rgba(37, 99, 235, 0.32);
-  --cyan:          #0e9bb5;
-  --cyan-soft:     rgba(14, 155, 181, 0.1);
-  --violet:        #7c3aed;
-  --violet-soft:   rgba(124, 58, 237, 0.1);
+  /* ---------- 强调色：低饱和深青（刻意不用蓝色） ---------- */
+  --accent:        #14655e;
+  --accent-soft:   rgba(20, 101, 94, 0.08);
+  --accent-line:   rgba(20, 101, 94, 0.3);
   --on-accent:     #ffffff;
 
-  --amber:         #b4690e;
-  --amber-soft:    rgba(180, 105, 14, 0.08);
-  --ok:            #0f766e;
-  --ok-soft:       rgba(15, 118, 110, 0.08);
-
-  /* ---------- 历史别名（详情页行内样式仍在使用） ---------- */
-  --gold:        var(--accent);
-  --gold-pale:   var(--accent);
-  --gold-deep:   var(--accent);
-  --patina:      var(--cyan);
-  --patina-pale: var(--cyan);
-  --patina-deep: var(--cyan);
-  --on-gold:     var(--on-accent);
+  /* 状态色（资料板块沿用旧语义：琥珀=密码醒目，青绿=免费声明） */
+  --amber:         #8a6220;
+  --amber-soft:    rgba(138, 98, 32, 0.09);
+  --ok:            #2f6b4f;
+  --ok-soft:       rgba(47, 107, 79, 0.09);
 
   /* ---------- 背景层 ---------- */
-  --grid-line:     rgba(11, 18, 32, 0.045);
-  --glow-1:        rgba(37, 99, 235, 0.1);
-  --glow-2:        rgba(14, 155, 181, 0.1);
-  --glow-3:        rgba(124, 58, 237, 0.07);
+  --grid-line:     rgba(16, 21, 20, 0.04);
+  --glow-1:        rgba(20, 101, 94, 0.1);
+  --glow-2:        rgba(47, 107, 79, 0.07);
+  --glow-3:        rgba(138, 98, 32, 0.05);
 
   /* ---------- 派生 ---------- */
-  --topbar-bg:     rgba(255, 255, 255, 0.82);
-  --selection-bg:  rgba(37, 99, 235, 0.2);
-  --selection-fg:  #0b1220;
-  --shadow:        rgba(15, 26, 46, 0.16);
-  --shadow-soft:   rgba(15, 26, 46, 0.08);
+  --topbar-bg:     rgba(247, 248, 248, 0.85);
+  --selection-bg:  rgba(20, 101, 94, 0.18);
+  --selection-fg:  #101615;
+  --shadow:        rgba(14, 24, 22, 0.16);
+  --shadow-soft:   rgba(14, 24, 22, 0.07);
 
   --radius:     12px;
   --radius-sm:  8px;
   --radius-pill: 999px;
   --max-width:  1000px;
   --ease: cubic-bezier(0.22, 0.7, 0.2, 1);
+
+  /* ---------- 历史别名（详情页行内样式仍在使用，统一指向 --accent） ---------- */
+  --gold:        var(--accent);
+  --gold-pale:   var(--accent);
+  --gold-deep:   var(--accent);
+  --patina:      var(--accent);
+  --patina-pale: var(--accent);
+  --patina-deep: var(--accent);
+  --on-gold:     var(--on-accent);
 
   --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, "PingFang SC",
     "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
@@ -75,42 +72,38 @@
    启用方式：<html data-theme="dark">（assets/js/theme.js 控制）
    ============================================================ */
 [data-theme="dark"] {
-  --bg:            #06080d;
-  --bg-soft:       #0a0e16;
-  --surface:       rgba(255, 255, 255, 0.028);
-  --surface-2:     rgba(255, 255, 255, 0.05);
-  --surface-3:     rgba(255, 255, 255, 0.075);
+  --bg:            #0c0f0f;
+  --bg-soft:       #111615;
+  --surface:       rgba(255, 255, 255, 0.032);
+  --surface-2:     rgba(255, 255, 255, 0.055);
+  --surface-3:     rgba(255, 255, 255, 0.08);
 
-  --text:          #eef3fa;
-  --text-body:     #c3ccdb;
-  --text-muted:    #8d99ab;
-  --text-faint:    #6a7484;
+  --text:          #e8edec;
+  --text-body:     #bdc6c5;
+  --text-muted:    #8b9594;
+  --text-faint:    #6b7473;
 
   --border:        rgba(255, 255, 255, 0.09);
   --border-strong: rgba(255, 255, 255, 0.2);
 
-  --accent:        #5c9dff;
-  --accent-soft:   rgba(92, 157, 255, 0.12);
-  --accent-line:   rgba(92, 157, 255, 0.42);
-  --cyan:          #3ad3e6;
-  --cyan-soft:     rgba(58, 211, 230, 0.12);
-  --violet:        #a78bfa;
-  --violet-soft:   rgba(167, 139, 250, 0.12);
-  --on-accent:     #04101f;
+  --accent:        #4bbfae;
+  --accent-soft:   rgba(75, 191, 174, 0.13);
+  --accent-line:   rgba(75, 191, 174, 0.4);
+  --on-accent:     #06201d;
 
-  --amber:         #e0a44a;
-  --amber-soft:    rgba(224, 164, 74, 0.12);
-  --ok:            #4fd1bd;
-  --ok-soft:       rgba(79, 209, 189, 0.12);
+  --amber:         #d2a869;
+  --amber-soft:    rgba(210, 168, 105, 0.13);
+  --ok:            #6fc49a;
+  --ok-soft:       rgba(111, 196, 154, 0.13);
 
-  --grid-line:     rgba(255, 255, 255, 0.038);
-  --glow-1:        rgba(92, 157, 255, 0.16);
-  --glow-2:        rgba(58, 211, 230, 0.12);
-  --glow-3:        rgba(167, 139, 250, 0.12);
+  --grid-line:     rgba(255, 255, 255, 0.035);
+  --glow-1:        rgba(75, 191, 174, 0.14);
+  --glow-2:        rgba(111, 196, 154, 0.1);
+  --glow-3:        rgba(210, 168, 105, 0.07);
 
-  --topbar-bg:     rgba(6, 8, 13, 0.78);
-  --selection-bg:  rgba(92, 157, 255, 0.3);
-  --selection-fg:  #eef3fa;
+  --topbar-bg:     rgba(12, 15, 15, 0.8);
+  --selection-bg:  rgba(75, 191, 174, 0.28);
+  --selection-fg:  #e8edec;
   --shadow:        rgba(0, 0, 0, 0.6);
   --shadow-soft:   rgba(0, 0, 0, 0.4);
 }
@@ -244,7 +237,7 @@ code {
   flex-shrink: 0;
   border-radius: 7px;
   color: #fff;
-  background: linear-gradient(135deg, var(--accent), var(--cyan) 62%, var(--violet));
+  background: linear-gradient(135deg, var(--accent), var(--accent) 62%, var(--accent));
   box-shadow: 0 4px 14px -4px var(--accent-line);
 }
 [data-theme="dark"] .brand-mark { color: #05101d; }
@@ -369,7 +362,7 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 40px;
+  font-size: 32px;
   border-radius: var(--radius);
   background:
     radial-gradient(125% 125% at 50% 0%, color-mix(in srgb, var(--card-accent, var(--accent)) 15%, transparent), transparent 72%),
@@ -490,12 +483,12 @@ code {
 /* 次操作：天青描边（沿用 btn-cyan 类名） */
 .btn-cyan {
   background: transparent;
-  color: var(--cyan);
-  border: 1px solid color-mix(in srgb, var(--cyan) 50%, transparent);
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
 }
 .btn-cyan:hover {
-  background: var(--cyan-soft);
-  border-color: var(--cyan);
+  background: var(--accent-soft);
+  border-color: var(--accent);
 }
 
 /* ============================================================
@@ -525,7 +518,7 @@ code {
   height: 18px;
   flex-shrink: 0;
   border-radius: var(--radius-pill);
-  background: linear-gradient(180deg, var(--accent), var(--cyan));
+  background: var(--accent);
 }
 
 .detail-text p {
@@ -557,7 +550,7 @@ code {
   left: 0; top: 0.7em;
   width: 6px; height: 6px;
   border-radius: 50%;
-  background: var(--cyan);
+  background: var(--accent);
 }
 .detail-list li strong { color: var(--text); font-weight: 650; }
 
@@ -637,8 +630,8 @@ code {
   line-height: 1.6;
   padding: 10px 14px;
   border-radius: var(--radius-sm);
-  border: 1px solid color-mix(in srgb, var(--cyan) 40%, var(--border));
-  background: var(--cyan-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border));
+  background: var(--accent-soft);
   color: var(--text-muted);
 }
 .changelog-note::before {
@@ -646,7 +639,7 @@ code {
   flex-shrink: 0;
   width: 7px; height: 7px;
   border-radius: 50%;
-  background: var(--cyan);
+  background: var(--accent);
 }
 .changelog-note strong { color: var(--text); font-weight: 700; }
 
@@ -696,7 +689,7 @@ code {
   left: 0; top: 0.7em;
   width: 5px; height: 5px;
   border-radius: 50%;
-  background: var(--cyan);
+  background: var(--accent);
 }
 .changelog-items li strong { color: var(--text); font-weight: 650; }
 
@@ -742,7 +735,7 @@ code {
 }
 .status-banner p { font-size: 14px; line-height: 1.7; color: var(--text-body); }
 .status-banner strong { color: var(--amber); font-weight: 700; }
-.status-banner a { color: var(--cyan); text-decoration: none; }
+.status-banner a { color: var(--accent); text-decoration: none; }
 .status-banner a:hover { text-decoration: underline; }
 
 /* ============================================================
