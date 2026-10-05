@@ -1,17 +1,24 @@
 /* ============================================================
  * YYRMM 的软件库 — 视觉特效（纯原生 JS，无依赖）
- * 1) 滚动进场 reveal（IntersectionObserver + MutationObserver）
- * 2) 卡片点击涟漪反馈
- * 全部尊重 prefers-reduced-motion；无粒子、无光晕（纸墨主题克制原则）
+ * 1) Hero 标题逐字上浮入场
+ * 2) 滚动进场 reveal（IntersectionObserver + MutationObserver）
+ * 3) 卡片鼠标跟随高光（--mx / --my）
+ * 4) 卡片点击涟漪反馈
+ * 全部尊重 prefers-reduced-motion；无粒子、无第三方库
  * ============================================================ */
 (function () {
   "use strict";
 
   var reduced = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
 
-  /* ---------------- 0. Hero 标题逐字水墨入场 ---------------- */
-  // 把标题文本拆成单字 span（--i 控制依次浮现的延迟）；
-  // 语言切换 / 重绘后由 main.js 再次调用。
+  /* ---------------- 0. Hero 标题逐字入场 ---------------- */
+  // 把标题拆成单字 span（--i 控制依次浮现的延迟），语言切换 / 重绘后由 main.js 再次调用。
+  // 两个坑：
+  //   1) 空白字符不能包进 inline-block（行首空白会被折叠，英文标题变成「YYRMM'sSoftware」）
+  //   2) 拉丁单词要整词包一层 nowrap 容器，否则逐字 span 之间会被断行（「Softwar / e」）
+  // 中文逐字仍保持可断行，窄屏不会顶出容器。
+  var CJK = /[\u2E80-\u9FFF\uF900-\uFAFF\uFF00-\uFFEF\u3000-\u303F]/;
+
   window.splitHeroTitle = function () {
     var el = document.getElementById("hero-title");
     if (!el) return;
@@ -19,12 +26,31 @@
     if (!text || el.dataset.split === text) return;
     el.dataset.split = text;
     el.textContent = "";
-    Array.prototype.forEach.call(text, function (ch, i) {
+
+    var idx = 0;
+    function charSpan(ch) {
       var s = document.createElement("span");
       s.className = "char";
-      s.style.setProperty("--i", i);
+      s.style.setProperty("--i", idx++);
       s.textContent = ch;
-      el.appendChild(s);
+      return s;
+    }
+
+    text.split(/(\s+)/).forEach(function (seg) {
+      if (!seg) return;
+      if (/^\s+$/.test(seg)) {          // 空白：留作文本节点，作为可断行位置
+        idx += seg.length;
+        el.appendChild(document.createTextNode(" "));
+        return;
+      }
+      if (CJK.test(seg)) {              // 中文：逐字 inline-block，允许逐字换行
+        Array.prototype.forEach.call(seg, function (ch) { el.appendChild(charSpan(ch)); });
+        return;
+      }
+      var word = document.createElement("span");   // 拉丁 / 数字：整词不可断开
+      word.className = "word";
+      Array.prototype.forEach.call(seg, function (ch) { word.appendChild(charSpan(ch)); });
+      el.appendChild(word);
     });
   };
   window.splitHeroTitle();
@@ -93,7 +119,24 @@
     if (!watched) mo.observe(document.body, { childList: true, subtree: true });
   }
 
-  /* ---------------- 2. 卡片点击涟漪反馈（极淡金色） ---------------- */
+  /* ---------------- 2. 卡片鼠标跟随高光 ---------------- */
+  // 仅在支持悬停的设备上启用：把光标位置写进 --mx / --my，由 CSS 画出高光
+  var GLOW_TARGETS = ".card, .feat-card";
+  if (!reduced && window.matchMedia && window.matchMedia("(hover: hover)").matches) {
+    document.addEventListener(
+      "pointermove",
+      function (e) {
+        var el = e.target && e.target.closest ? e.target.closest(GLOW_TARGETS) : null;
+        if (!el) return;
+        var r = el.getBoundingClientRect();
+        el.style.setProperty("--mx", (e.clientX - r.left) + "px");
+        el.style.setProperty("--my", (e.clientY - r.top) + "px");
+      },
+      { passive: true }
+    );
+  }
+
+  /* ---------------- 3. 卡片点击涟漪反馈（极淡强调色） ---------------- */
   if (!reduced) {
     document.addEventListener("pointerdown", function (e) {
       if (e.button !== 0) return;

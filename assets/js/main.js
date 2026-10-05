@@ -42,6 +42,46 @@ const I18N = {
   resFeedbackEyebrow: { zh: "问题反馈", en: "Feedback" },
   resFeedbackText:    { zh: "资料有误、缺漏，或者想补充新的资料？欢迎填写反馈表告诉我。", en: "Found a mistake or a gap, or want to suggest new material? Tell me through the feedback form." },
   resFeedbackBtn:     { zh: "各资料的问题反馈", en: "Report an Issue" },
+
+  /* ---------- 科技风改版新增文案（Hero / 统计 / 特性 / 预览 / 页脚） ---------- */
+  navFeatures:   { zh: "特性", en: "Features" },
+  heroBadge:     { zh: "开源 · 纯静态 · 中英双语", en: "Open source · Static · Bilingual" },
+  heroNote:      { zh: "纯静态站点 · 零依赖加载 · 由 GitHub Pages 托管", en: "Static site · zero dependencies · hosted on GitHub Pages" },
+  ctaBrowse:     { zh: "浏览软件", en: "Browse software" },
+  ctaAbout:      { zh: "关于我", en: "About me" },
+
+  featEyebrow:   { zh: "特性", en: "Features" },
+  featTitle:     { zh: "为长期使用而做的软件", en: "Software built to be used for a long time" },
+  featDesc:      { zh: "四个共同点贯穿全部项目：离线可用、开源可查、更新轻量、双语双主题。", en: "Four things run through every project: works offline, open to inspection, lightweight updates, and bilingual with dual themes." },
+
+  swEyebrow:     { zh: "作品集", en: "Portfolio" },
+  resEyebrow:    { zh: "资源", en: "Resources" },
+
+  previewTitle:      { zh: "YYRMM 软件库 — 总览", en: "YYRMM Software Library — Overview" },
+  previewRailLabel:  { zh: "库", en: "LIB" },
+  previewRailAll:    { zh: "全部软件", en: "All software" },
+  previewRailObs:    { zh: "OBS 系列", en: "OBS family" },
+  previewRailRes:    { zh: "资料", en: "Resources" },
+  previewRailAbout:  { zh: "关于", en: "About" },
+  previewStatusCount:{ zh: "个条目", en: "entries" },
+  previewStatusLang: { zh: "中英双语", en: "bilingual" },
+  previewStatusReady:{ zh: "就绪", en: "ready" },
+  figHero:           { zh: "fig. 01 — 软件库总览", en: "fig. 01 — software library overview" },
+
+  footTagline:     { zh: "个人软件作品集 · 纯静态 · 中英双语 · 深浅双主题", en: "A personal software portfolio · static · bilingual · dual themes" },
+  footColSoftware: { zh: "软件", en: "Software" },
+  footColResources:{ zh: "资料", en: "Resources" },
+  footColContact:  { zh: "开源", en: "Open source" },
+  footLinkList:    { zh: "全部软件", en: "All software" },
+  footLinkObs:     { zh: "OBS 排障助手", en: "OBS Helper" },
+  footLinkAi:      { zh: "AIStudioHub", en: "AIStudioHub" },
+  footLinkLove:    { zh: "第101种理由", en: "Love 101" },
+  footLinkRes:     { zh: "资料下载", en: "Downloads" },
+  footLinkFeedback:{ zh: "问题反馈", en: "Feedback" },
+  footLinkBili:    { zh: "Bilibili 主页", en: "Bilibili" },
+  footLinkGithub:  { zh: "GitHub 仓库", en: "GitHub repos" },
+  footLinkRelease: { zh: "下载与发布", en: "Downloads & releases" },
+  footLinkSite:    { zh: "站点源码", en: "Site source" },
 };
 
 /* ---------- 3. 软件数据（已从 GitHub 仓库整理，SC01 已按要求排除） ----------
@@ -243,6 +283,49 @@ const resourceList = [
   },
 ];
 
+/* ---------- 5. 数据统计条（首页 Hero 下方） ----------
+ * 只放真实数字，来源：softwareList 收录数 / 各软件详情页与 README 中已公布的数据。
+ * 改动数字时请同步核对对应软件详情页，避免出现自相矛盾。
+ * -------------------------------------------------------- */
+const STATS = [
+  { value: "6",   label: { zh: "软件作品",       en: "Software projects" } },
+  { value: "212", label: { zh: "离线知识库条目", en: "Offline KB entries" } },
+  { value: "381", label: { zh: "通过单元测试",   en: "Passing unit tests" } },
+  { value: "57",  label: { zh: "精选 OBS 插件",  en: "Curated OBS plugins" } },
+];
+
+/* ---------- 6. 特性（编号分段：01 / 02 / 03 …） ---------- */
+const FEATURES = [
+  {
+    title: { zh: "离线优先", en: "Offline-first" },
+    desc: {
+      zh: "问题知识库、日志分析规则与诊断引擎全部内嵌在本机，不联网也能完成排障与体检。",
+      en: "The knowledge base, log-analysis rules and diagnosis engine are all embedded, so troubleshooting and health checks work without a network.",
+    },
+  },
+  {
+    title: { zh: "开源透明", en: "Open to inspection" },
+    desc: {
+      zh: "项目全部开源，源码与更新记录公开可查，版本号、许可证与发布内容一一对应。",
+      en: "Every project is open source: code and changelogs are public, and versions, licences and release notes line up one to one.",
+    },
+  },
+  {
+    title: { zh: "增量更新", en: "Lightweight updates" },
+    desc: {
+      zh: "更新只下载变更文件，逐文件 SHA-256 校验，失败自动回退整包，数据与设置原样保留。",
+      en: "Updates download only the changed files, each verified with SHA-256, with an automatic full-pack fallback while keeping your data and settings.",
+    },
+  },
+  {
+    title: { zh: "双语 · 双主题", en: "Bilingual · dual theme" },
+    desc: {
+      zh: "中英文一键切换，浅色与深色主题自动记忆，手机与桌面共用同一套完整界面。",
+      en: "Switch between Chinese and English in one click; light and dark themes are remembered, with one complete UI for phone and desktop.",
+    },
+  },
+];
+
 /* ============================================================
  * 以下为逻辑代码，一般无需修改
  * ============================================================ */
@@ -357,6 +440,65 @@ function renderResourceCards() {
     .join("");
 }
 
+/* ---------- 首页：数据统计条 ---------- */
+function renderStats() {
+  const grid = document.getElementById("stat-grid");
+  if (!grid) return;
+  grid.innerHTML = STATS.map(
+    (s) => `<div class="stat">
+        <span class="stat-num">${s.value}</span>
+        <span class="stat-label">${s.label[lang]}</span>
+      </div>`
+  ).join("");
+}
+
+/* ---------- 首页：编号特性（01 / 02 / 03 …） ---------- */
+function renderFeatures() {
+  const grid = document.getElementById("feat-grid");
+  if (!grid) return;
+  grid.innerHTML = FEATURES.map(
+    (f, i) => `<li class="feat-card">
+        <span class="feat-num">${String(i + 1).padStart(2, "0")}</span>
+        <h3>${f.title[lang]}</h3>
+        <p>${f.desc[lang]}</p>
+      </li>`
+  ).join("");
+}
+
+/* ---------- 首页：Hero 产品预览面板（软件库总览示意） ---------- */
+function renderPreview() {
+  const list = document.getElementById("preview-list");
+  if (!list) return;
+  list.innerHTML = softwareList
+    .map((s) => {
+      const meta = s.version ? s.version : (typeof s.tags[0] === "string" ? s.tags[0] : s.tags[0][lang]);
+      const off = s.status === "discontinued";
+      return `<div class="preview-row">
+          <span class="p-dot" style="background:${off ? "var(--amber)" : "var(--ok)"}"></span>
+          <span class="p-icon">${s.icon}</span>
+          <span class="p-name">${s.name[lang]}</span>
+          <span class="p-meta">${meta}</span>
+        </div>`;
+    })
+    .join("");
+
+  // 版本徽章取软件数据里最新的一个版本号
+  const tag = document.getElementById("preview-tag");
+  if (tag) {
+    const versions = softwareList.map((s) => s.version).filter(Boolean);
+    tag.textContent = versions.length ? versions[0] : "latest";
+  }
+
+  const status = document.getElementById("preview-status");
+  if (status) {
+    status.innerHTML = `<span class="p-dot"></span><span>${softwareList.length} ${t(
+      "previewStatusCount"
+    )}</span><span class="s-sep">|</span><span>${t("previewStatusLang")}</span><span class="s-sep">|</span><span class="s-accent">${t(
+      "previewStatusReady"
+    )}</span>`;
+  }
+}
+
 function applyI18n() {
   document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
   document.title = t("brand");
@@ -377,6 +519,9 @@ function applyI18n() {
   const btn = document.getElementById("lang-toggle");
   btn.textContent = lang === "zh" ? "EN" : "中文";
   btn.setAttribute("aria-label", lang === "zh" ? "切换语言" : "Switch language");
+  renderStats();
+  renderFeatures();
+  renderPreview();
   renderCards();
   renderResourceCards();
   if (typeof window.splitHeroTitle === "function") window.splitHeroTitle();

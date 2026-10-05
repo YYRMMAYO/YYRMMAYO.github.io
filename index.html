@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="YYRMM的软件库 — 个人软件作品集 · 纯静态 · 中英双语" />
+  <meta name="description" content="YYRMM的软件库 — 个人软件作品集 · 纯静态 · 中英双语 · 深浅双主题" />
   <title>YYRMM的软件库</title>
   <link rel="icon" type="image/png" href="assets/images/favicon.png" />
   <!-- 主题脚本：head 中同步加载，第一时间应用已保存的主题（防闪烁） -->
@@ -11,15 +11,21 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <!-- ===== 背景层：纸墨主题（Paper & Ink） ===== -->
+  <!-- ===== 背景层：细网格 + 柔光晕（纯 CSS，无图片） ===== -->
   <div class="bg-scene" aria-hidden="true"></div>
 
   <!-- ===== 顶部导航栏 ===== -->
   <header class="topbar">
     <div class="container topbar-inner">
-      <a class="brand" href="#home" data-i18n="brand">我的软件</a>
+      <a class="brand" href="#home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 7 5 12l4.5 5M14.5 7 19 12l-4.5 5"/></svg>
+        </span>
+        <span data-i18n="brand">YYRMM的软件库</span>
+      </a>
       <nav class="top-nav" aria-label="站点导航">
         <a class="top-link" href="#home" data-i18n="navHome">首页</a>
+        <a class="top-link" href="#features" data-i18n="navFeatures">特性</a>
         <a class="top-link" href="#profile" data-i18n="navProfile">关于我</a>
         <a class="top-link" href="#software" data-i18n="navSoftware">软件列表</a>
         <a class="top-link" href="#resources" data-i18n="navResources">资料</a>
@@ -39,44 +45,107 @@
 
   <!-- ===== 内容区 ===== -->
   <div class="page">
-    <!-- Hero：逐字水墨浮现 + 印章落款（动画融入版式，不遮挡页面） -->
+    <!-- Hero：左文案 + 右产品预览（界面示意，由 main.js 依据软件数据生成） -->
     <section class="hero" id="home">
-      <div class="container">
-        <p class="hero-eyebrow"><span class="eyebrow-rule"></span><span data-i18n="heroEyebrow">软件作品集</span><span class="eyebrow-rule"></span></p>
-        <div class="hero-title-row">
-          <h1 class="hero-title" id="hero-title" data-i18n="heroTitle" aria-label="YYRMM的软件库">YYRMM的软件库</h1>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="hero-badge"><span class="hero-badge-dot" aria-hidden="true"></span><span data-i18n="heroBadge">开源 · 纯静态 · 中英双语</span></p>
+          <div class="hero-title-row">
+            <h1 class="hero-title" id="hero-title" data-i18n="heroTitle" data-i18n-aria="heroTitle">YYRMM的软件库</h1>
+          </div>
+          <p class="hero-sub" data-i18n="heroSub">这里收录了我开发的软件，欢迎试用与反馈。</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#software">
+              <span data-i18n="ctaBrowse">浏览软件</span>
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+            </a>
+            <a class="btn btn-ghost" href="#profile">
+              <span data-i18n="ctaAbout">关于我</span>
+            </a>
+            <a class="btn btn-ghost" href="https://github.com/YYRMMAYO?tab=repositories" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+          <p class="hero-note" data-i18n="heroNote">纯静态站点 · 零依赖加载 · 由 GitHub Pages 托管</p>
         </div>
-        <p class="hero-sub" data-reveal data-i18n="heroSub">这里收录了我开发的软件，欢迎试用与反馈。</p>
+
+        <div class="hero-visual" data-reveal>
+          <div class="preview" aria-hidden="true">
+            <div class="preview-chrome">
+              <span class="preview-dots"><i></i><i></i><i></i></span>
+              <span class="preview-title" data-i18n="previewTitle">YYRMM 软件库 — 总览</span>
+              <span class="preview-tag" id="preview-tag">latest</span>
+            </div>
+            <div class="preview-body">
+              <nav class="preview-rail">
+                <span class="preview-rail-label" data-i18n="previewRailLabel">库</span>
+                <span class="preview-rail-item is-active" data-i18n="previewRailAll">全部软件</span>
+                <span class="preview-rail-item" data-i18n="previewRailObs">OBS 系列</span>
+                <span class="preview-rail-item" data-i18n="previewRailRes">资料</span>
+                <span class="preview-rail-item" data-i18n="previewRailAbout">关于</span>
+              </nav>
+              <div class="preview-list" id="preview-list">
+                <!-- 条目由 assets/js/main.js 依据 softwareList 生成 -->
+              </div>
+            </div>
+            <div class="preview-status" id="preview-status">
+              <!-- 状态栏文案由 assets/js/main.js 生成 -->
+            </div>
+          </div>
+          <p class="fig-caption" data-i18n="figHero">fig. 01 — 软件库总览</p>
+        </div>
       </div>
+
+      <!-- 数据统计条：真实数字，由 main.js 的 STATS 渲染 -->
+      <div class="container">
+        <div class="stats" id="stat-grid" data-reveal>
+          <!-- 统计项由 assets/js/main.js 生成 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 特性：编号分段（01 / 02 / 03 …） -->
+    <section class="section container" id="features">
+      <div class="section-head" data-reveal>
+        <p class="section-eyebrow" data-i18n="featEyebrow">特性</p>
+        <h2 class="section-title" data-i18n="featTitle">为长期使用而做的软件</h2>
+        <p class="section-desc" data-i18n="featDesc">四个共同点贯穿全部项目：离线可用、开源可查、更新轻量、双语双主题。</p>
+      </div>
+      <ol class="feat-grid" id="feat-grid">
+        <!-- 编号特性由 assets/js/main.js 生成 -->
+      </ol>
     </section>
 
     <!-- 项目介绍 -->
     <section class="intro container" id="intro" data-reveal>
-      <div class="intro-head">
-        <span class="intro-eyebrow" data-i18n="introEyebrow">卷首语</span>
-        <h2 class="intro-title" data-i18n="introTitle">关于本项目</h2>
-      </div>
-      <div class="intro-body">
-        <p class="intro-text" data-lang="zh">
-          「YYRMM的软件库」是个人软件作品的集中展示站点，收录<strong>第101种理由</strong>、<strong>AIStudioHub</strong>、<strong>OBS 排障助手</strong>系列（Windows / macOS / OBS 插件）与<strong>司南工具箱</strong>等项目。
-          各软件均配有独立的详细介绍页；「更新记录」由脚本自动同步自对应仓库的 GitHub Releases / Tags，与正式发布版本保持一致。
-          「资料下载」板块另收录由 AI 整理与编写的学习资料合集，可通过云盘直接下载。
-        </p>
-        <p class="intro-text" data-lang="en">
-          A centralized showcase for my software — <strong>Love 101</strong>, <strong>AIStudioHub</strong>, the <strong>OBS Helper</strong> family (Windows / macOS / OBS plugin) and <strong>Sinan Toolbox</strong>.
-          Every project has a dedicated detail page; changelogs are synced automatically from each repository's GitHub Releases / Tags and stay in step with official versions.
-          The <strong>Downloads</strong> section also collects study materials organized and written with the help of AI, downloadable straight from a cloud drive.
-        </p>
-        <ul class="intro-points" data-lang="zh">
-          <li>中英双语 · 深浅双主题</li>
-          <li>独立详情页 · 版本更新记录</li>
-          <li>全部开源 · MIT 协议</li>
-        </ul>
-        <ul class="intro-points" data-lang="en">
-          <li>Bilingual · Light / dark themes</li>
-          <li>Dedicated detail pages · changelogs</li>
-          <li>All open source · MIT licensed</li>
-        </ul>
+      <div class="intro-inner">
+        <div class="intro-head">
+          <span class="intro-eyebrow" data-i18n="introEyebrow">卷首语</span>
+          <h2 class="intro-title" data-i18n="introTitle">关于本项目</h2>
+        </div>
+        <div class="intro-body">
+          <p class="intro-text" data-lang="zh">
+            「YYRMM的软件库」是个人软件作品的集中展示站点，收录<strong>第101种理由</strong>、<strong>AIStudioHub</strong>、<strong>OBS 排障助手</strong>系列（Windows / macOS / OBS 插件）与<strong>司南工具箱</strong>等项目。
+            各软件均配有独立的详细介绍页；「更新记录」由脚本自动同步自对应仓库的 GitHub Releases / Tags，与正式发布版本保持一致。
+            「资料下载」板块另收录由 AI 整理与编写的学习资料合集，可通过云盘直接下载。
+          </p>
+          <p class="intro-text" data-lang="en">
+            A centralized showcase for my software — <strong>Love 101</strong>, <strong>AIStudioHub</strong>, the <strong>OBS Helper</strong> family (Windows / macOS / OBS plugin) and <strong>Sinan Toolbox</strong>.
+            Every project has a dedicated detail page; changelogs are synced automatically from each repository's GitHub Releases / Tags and stay in step with official versions.
+            The <strong>Downloads</strong> section also collects study materials organized and written with the help of AI, downloadable straight from a cloud drive.
+          </p>
+          <ul class="intro-points" data-lang="zh">
+            <li>中英双语 · 深浅双主题</li>
+            <li>独立详情页 · 版本更新记录</li>
+            <li>全部开源 · MIT 协议</li>
+          </ul>
+          <ul class="intro-points" data-lang="en">
+            <li>Bilingual · Light / dark themes</li>
+            <li>Dedicated detail pages · changelogs</li>
+            <li>All open source · MIT licensed</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -92,8 +161,11 @@
     <!-- 软件展示区 / 资料下载区 -->
     <main class="container">
       <section class="section" id="software">
-        <h2 class="section-title" data-reveal data-i18n="sectionTitle">软件列表</h2>
-        <p class="section-desc" data-reveal data-reveal-delay="1" data-i18n="sectionDesc">点击卡片上的按钮即可下载或访问项目主页。</p>
+        <div class="section-head" data-reveal>
+          <p class="section-eyebrow" data-i18n="swEyebrow">作品集</p>
+          <h2 class="section-title" data-i18n="sectionTitle">软件列表</h2>
+          <p class="section-desc" data-i18n="sectionDesc">点击卡片上的按钮即可下载或访问项目主页。</p>
+        </div>
         <div id="software-grid" class="grid">
           <!-- 卡片由 assets/js/main.js 根据数据动态生成 -->
         </div>
@@ -102,8 +174,11 @@
 
       <!-- 资料下载：点击卡片按钮进入云盘下载；下方为问题反馈入口 -->
       <section class="section" id="resources">
-        <h2 class="section-title" data-reveal data-i18n="resTitle">资料下载</h2>
-        <p class="section-desc" data-reveal data-reveal-delay="1" data-i18n="resDesc">以下资料均由 AI 协助整理与编写，统一存放在云盘；点击「网盘下载」并输入密码即可获取。所有资料均免费发布，不含任何收费项，内容仅供参考、会持续修订。</p>
+        <div class="section-head" data-reveal>
+          <p class="section-eyebrow" data-i18n="resEyebrow">资源</p>
+          <h2 class="section-title" data-i18n="resTitle">资料下载</h2>
+          <p class="section-desc" data-i18n="resDesc">以下资料均由 AI 协助整理与编写，统一存放在云盘；点击「网盘下载」并输入密码即可获取。所有资料均免费发布，不含任何收费项，内容仅供参考、会持续修订。</p>
+        </div>
         <div id="resource-grid" class="grid">
           <!-- 资料卡片由 assets/js/main.js 根据 resourceList 动态生成 -->
         </div>
@@ -124,7 +199,46 @@
     <!-- 页脚 -->
     <footer class="site-footer">
       <div class="container">
-        <p>&copy; <span id="year"></span> <span data-i18n="footerName">我的软件</span> · <span data-i18n="footerHost">托管于 GitHub Pages</span></p>
+        <div class="foot-grid">
+          <div>
+            <span class="foot-brand-name">
+              <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 7 5 12l4.5 5M14.5 7 19 12l-4.5 5"/></svg>
+              </span>
+              <span data-i18n="footerName">YYRMM的软件库</span>
+            </span>
+            <p class="foot-tagline" data-i18n="footTagline">个人软件作品集 · 纯静态 · 中英双语 · 深浅双主题</p>
+          </div>
+          <div>
+            <p class="foot-title" data-i18n="footColSoftware">软件</p>
+            <ul class="foot-links">
+              <li><a href="#software" data-i18n="footLinkList">全部软件</a></li>
+              <li><a href="detail/obs.html" data-i18n="footLinkObs">OBS 排障助手</a></li>
+              <li><a href="detail/aistudio.html" data-i18n="footLinkAi">AIStudioHub</a></li>
+              <li><a href="detail/love101.html" data-i18n="footLinkLove">第101种理由</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="foot-title" data-i18n="footColResources">资料</p>
+            <ul class="foot-links">
+              <li><a href="#resources" data-i18n="footLinkRes">资料下载</a></li>
+              <li><a href="https://docs.qq.com/form/page/DSWp6cGJHZFVRdE1k" target="_blank" rel="noopener" data-i18n="footLinkFeedback">问题反馈</a></li>
+              <li><a href="https://space.bilibili.com/539873580?spm_id_from=333.1007.0.0" target="_blank" rel="noopener" data-i18n="footLinkBili">Bilibili 主页</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="foot-title" data-i18n="footColContact">开源</p>
+            <ul class="foot-links">
+              <li><a href="https://github.com/YYRMMAYO?tab=repositories" target="_blank" rel="noopener" data-i18n="footLinkGithub">GitHub 仓库</a></li>
+              <li><a href="https://github.com/YYRMMAYO?tab=repositories" target="_blank" rel="noopener" data-i18n="footLinkRelease">下载与发布</a></li>
+              <li><a href="https://github.com/YYRMMAYO/YYRMMAYO.github.io" target="_blank" rel="noopener" data-i18n="footLinkSite">站点源码</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          <span>&copy; <span id="year"></span> <span data-i18n="footerName">YYRMM的软件库</span></span>
+          <span data-i18n="footerHost">托管于 GitHub Pages</span>
+        </div>
       </div>
     </footer>
   </div>
