@@ -1,6 +1,55 @@
 {
   "obs": [
     {
+      "version": "v3.0.0",
+      "tagline": {
+        "zh": "数据安全 · 无障碍 · Win7 旧协议兼容 · 回放缓存与简单开播",
+        "en": "Data safety · accessibility · legacy Win7 protocol · replay buffer and simple stream start"
+      },
+      "items": [
+        {
+          "zh": "数据安全（本版主线）：所有「写用户文件」的动作走同一条事务通道 —— 写前快照 + 原子替换 + 校验读回，中途失败自动回滚并保留唯一的恢复副本；路径护栏覆盖全部写 basic.ini 的入口（净化成单个目录名 + 二次断言落在 OBS 配置目录内，可信根改为登记制），机密存储读失败不再被当成「空存储」整份覆盖写回",
+          "en": "Data safety is the headline: every write to user files goes through one transaction channel — snapshot, atomic replace and read-back verification, with automatic rollback that keeps the only recovery copy; path guardrails now cover every entry point that writes basic.ini (sanitised to a single directory name, asserted to stay inside the OBS config folder, with explicit trust-root registration), and a failed secret-store read is no longer treated as an empty store that gets written back over your keys."
+        },
+        {
+          "zh": "无障碍适配：键盘焦点可见并可用空格 / 回车激活、Toast 走读屏实时区域播报、跟随 Windows 高对比主题与系统「文本大小」，危险确认框的默认按钮落在「取消」",
+          "en": "Accessibility: visible keyboard focus with space / enter activation, toasts announced through screen-reader live regions, following the Windows high-contrast theme and system text size, and destructive confirmations defaulting to Cancel."
+        },
+        {
+          "zh": "双构建 + Win7 旧协议兼容：主构建面向 Windows 10 / 11（.NET 10），兼容构建面向 Windows 7 SP1+（.NET 6），安装包 / 便携包 / 增量包两条线分别发布，按系统选一个即可；兼容构建支持旧协议 obs-websocket 4.x（默认端口 4444，鉴权算式 / 请求映射 / 事件映射逐条对照官方协议），数据目录独立为 %LocalAppData%\\OBS_Helper_Win7，与主构建互不影响",
+          "en": "Two builds and legacy Win7 protocol support: the main build targets Windows 10 / 11 (.NET 10) and the compatible build covers Windows 7 SP1+ (.NET 6), each with its own installer, portable and delta package — pick the one matching your system. The compatible build speaks legacy obs-websocket 4.x (default port 4444, with the v4 auth algorithm, request and event mappings checked against the official protocol) from its own data directory %LocalAppData%\\OBS_Helper_Win7, so the two builds never clash."
+        },
+        {
+          "zh": "回放缓存一键存片：托盘菜单与全局热键 Ctrl+Alt+V 保存「刚才那段」，未开缓存时按钮自动禁用，旧协议同样支持",
+          "en": "One-click replay-buffer saving from the tray menu or the Ctrl+Alt+V hotkey; the button disables itself when the buffer is off, and the legacy protocol supports it too."
+        },
+        {
+          "zh": "简单开播：按下之前先查「已经在播 / 没连上 OBS / 没填服务器 / 没填串流密钥」，并提示上行拥塞、已在下行丢帧与同时录制；开播后显示已播时长、按已发送字节实测的码率与丢帧率，且串流密钥不进本应用",
+          "en": "Simple stream start checks \"already live / OBS unreachable / no server / no stream key\" before you press it and warns about uplink congestion, dropped frames and simultaneous recording; once live it shows elapsed time, bitrate measured from bytes sent and drop rate — and the stream key never enters the app."
+        },
+        {
+          "zh": "录制档案 + 录制中打点：每次录制留档（时长 / 大小 / 丢帧 / 打点），热键 Ctrl+Alt+K 标记精彩瞬间，停止后可导出章节并批量无损转 MP4（不重编码）",
+          "en": "Recording archive with in-recording markers: every recording is logged (duration, size, dropped frames, markers), Ctrl+Alt+K drops a highlight marker, and after stopping you can export chapters and batch-remux to MP4 losslessly."
+        },
+        {
+          "zh": "配置回收站：OBS 配置的每次改写都在本地留一份副本，可一键放回原位，恢复绝不覆盖已有文件；被锁定（回滚未竟）的副本永远不会被自动清理",
+          "en": "Config recycle bin: every rewrite of the OBS config keeps a local recovery copy that can be restored in one click, restoring never overwrites an existing file, and copies locked by an unfinished rollback are never auto-cleaned."
+        },
+        {
+          "zh": "开播前体检 + 一键处方：黑屏体检、编码顾问、带宽计算、磁盘测速、节点探测一次跑完，按严重度给一句人话结论与建议档位；推流侧只给建议，绝不自动改",
+          "en": "Pre-stream checkup with one-click prescription: black-screen, encoder, bandwidth, disk-speed and node probes in one pass, ranked by severity into a plain-language verdict and a suggested recording preset — streaming settings are advised, never changed automatically."
+        },
+        {
+          "zh": "我的模板 + 我的知识库 + 搜索增强：把当前场景集合反向存成模板（顺序 / 来源 / 滤镜 / 分组都带上），知识库可自建条目与分类、与内置 212 条按 id 合并；搜索支持拼音首字母、同义词与字段加权排序",
+          "en": "My templates + my knowledge base + better search: capture the current scene collection as a template (order, sources, filters and groups included) and write your own KB entries and categories, merged by id with the built-in 212; search gains pinyin initials, synonyms and weighted field ranking."
+        },
+        {
+          "zh": "质量基线：单元测试 630 → 1209 项全部通过，无界面自检 26 项（主构建与 Win7 兼容构建各跑一次），增量更新改为对齐 GitHub 资产 SHA-256 摘要；发布物仍未做代码签名，Win7 上的 v4 握手未在真机与 OBS 27 上验证",
+          "en": "Quality baseline: unit tests went from 630 to 1209, all passing, plus 26 headless self-check items run once per build, and incremental updates now verify against the GitHub asset SHA-256 digest. The artefacts still carry no code signature, and the v4 handshake has not been verified on a real Windows 7 machine with OBS 27."
+        }
+      ]
+    },
+    {
       "version": "v2.9.6",
       "tagline": {
         "zh": "更名「OBS帮助助手」· 图标统一 · 文档同步",

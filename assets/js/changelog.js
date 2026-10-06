@@ -2,7 +2,7 @@
  * 更新记录数据 — 由 scripts/sync-changelog.py 自动生成，请勿手改
  * 重新生成：python scripts/sync-changelog.py
  * 数据来源：GitHub Releases / Tags（每个软件最近 3 个版本）
- * 生成时间：2026-10-05 21:29
+ * 生成时间：2026-10-06 17:50
  * ============================================================ */
 const CHANGELOG = {
   "aistudio": [
@@ -119,6 +119,55 @@ const CHANGELOG = {
   ],
   "obs": [
     {
+      "version": "v3.0.0",
+      "tagline": {
+        "zh": "数据安全 · 无障碍 · Win7 旧协议兼容 · 回放缓存与简单开播",
+        "en": "Data safety · accessibility · legacy Win7 protocol · replay buffer and simple stream start"
+      },
+      "items": [
+        {
+          "zh": "数据安全（本版主线）：所有「写用户文件」的动作走同一条事务通道 —— 写前快照 + 原子替换 + 校验读回，中途失败自动回滚并保留唯一的恢复副本；路径护栏覆盖全部写 basic.ini 的入口（净化成单个目录名 + 二次断言落在 OBS 配置目录内，可信根改为登记制），机密存储读失败不再被当成「空存储」整份覆盖写回",
+          "en": "Data safety is the headline: every write to user files goes through one transaction channel — snapshot, atomic replace and read-back verification, with automatic rollback that keeps the only recovery copy; path guardrails now cover every entry point that writes basic.ini (sanitised to a single directory name, asserted to stay inside the OBS config folder, with explicit trust-root registration), and a failed secret-store read is no longer treated as an empty store that gets written back over your keys."
+        },
+        {
+          "zh": "无障碍适配：键盘焦点可见并可用空格 / 回车激活、Toast 走读屏实时区域播报、跟随 Windows 高对比主题与系统「文本大小」，危险确认框的默认按钮落在「取消」",
+          "en": "Accessibility: visible keyboard focus with space / enter activation, toasts announced through screen-reader live regions, following the Windows high-contrast theme and system text size, and destructive confirmations defaulting to Cancel."
+        },
+        {
+          "zh": "双构建 + Win7 旧协议兼容：主构建面向 Windows 10 / 11（.NET 10），兼容构建面向 Windows 7 SP1+（.NET 6），安装包 / 便携包 / 增量包两条线分别发布，按系统选一个即可；兼容构建支持旧协议 obs-websocket 4.x（默认端口 4444，鉴权算式 / 请求映射 / 事件映射逐条对照官方协议），数据目录独立为 %LocalAppData%\\OBS_Helper_Win7，与主构建互不影响",
+          "en": "Two builds and legacy Win7 protocol support: the main build targets Windows 10 / 11 (.NET 10) and the compatible build covers Windows 7 SP1+ (.NET 6), each with its own installer, portable and delta package — pick the one matching your system. The compatible build speaks legacy obs-websocket 4.x (default port 4444, with the v4 auth algorithm, request and event mappings checked against the official protocol) from its own data directory %LocalAppData%\\OBS_Helper_Win7, so the two builds never clash."
+        },
+        {
+          "zh": "回放缓存一键存片：托盘菜单与全局热键 Ctrl+Alt+V 保存「刚才那段」，未开缓存时按钮自动禁用，旧协议同样支持",
+          "en": "One-click replay-buffer saving from the tray menu or the Ctrl+Alt+V hotkey; the button disables itself when the buffer is off, and the legacy protocol supports it too."
+        },
+        {
+          "zh": "简单开播：按下之前先查「已经在播 / 没连上 OBS / 没填服务器 / 没填串流密钥」，并提示上行拥塞、已在下行丢帧与同时录制；开播后显示已播时长、按已发送字节实测的码率与丢帧率，且串流密钥不进本应用",
+          "en": "Simple stream start checks \"already live / OBS unreachable / no server / no stream key\" before you press it and warns about uplink congestion, dropped frames and simultaneous recording; once live it shows elapsed time, bitrate measured from bytes sent and drop rate — and the stream key never enters the app."
+        },
+        {
+          "zh": "录制档案 + 录制中打点：每次录制留档（时长 / 大小 / 丢帧 / 打点），热键 Ctrl+Alt+K 标记精彩瞬间，停止后可导出章节并批量无损转 MP4（不重编码）",
+          "en": "Recording archive with in-recording markers: every recording is logged (duration, size, dropped frames, markers), Ctrl+Alt+K drops a highlight marker, and after stopping you can export chapters and batch-remux to MP4 losslessly."
+        },
+        {
+          "zh": "配置回收站：OBS 配置的每次改写都在本地留一份副本，可一键放回原位，恢复绝不覆盖已有文件；被锁定（回滚未竟）的副本永远不会被自动清理",
+          "en": "Config recycle bin: every rewrite of the OBS config keeps a local recovery copy that can be restored in one click, restoring never overwrites an existing file, and copies locked by an unfinished rollback are never auto-cleaned."
+        },
+        {
+          "zh": "开播前体检 + 一键处方：黑屏体检、编码顾问、带宽计算、磁盘测速、节点探测一次跑完，按严重度给一句人话结论与建议档位；推流侧只给建议，绝不自动改",
+          "en": "Pre-stream checkup with one-click prescription: black-screen, encoder, bandwidth, disk-speed and node probes in one pass, ranked by severity into a plain-language verdict and a suggested recording preset — streaming settings are advised, never changed automatically."
+        },
+        {
+          "zh": "我的模板 + 我的知识库 + 搜索增强：把当前场景集合反向存成模板（顺序 / 来源 / 滤镜 / 分组都带上），知识库可自建条目与分类、与内置 212 条按 id 合并；搜索支持拼音首字母、同义词与字段加权排序",
+          "en": "My templates + my knowledge base + better search: capture the current scene collection as a template (order, sources, filters and groups included) and write your own KB entries and categories, merged by id with the built-in 212; search gains pinyin initials, synonyms and weighted field ranking."
+        },
+        {
+          "zh": "质量基线：单元测试 630 → 1209 项全部通过，无界面自检 26 项（主构建与 Win7 兼容构建各跑一次），增量更新改为对齐 GitHub 资产 SHA-256 摘要；发布物仍未做代码签名，Win7 上的 v4 握手未在真机与 OBS 27 上验证",
+          "en": "Quality baseline: unit tests went from 630 to 1209, all passing, plus 26 headless self-check items run once per build, and incremental updates now verify against the GitHub asset SHA-256 digest. The artefacts still carry no code signature, and the v4 handshake has not been verified on a real Windows 7 machine with OBS 27."
+        }
+      ]
+    },
+    {
       "version": "v2.9.6",
       "tagline": {
         "zh": "更名「OBS帮助助手」· 图标统一 · 文档同步",
@@ -181,47 +230,6 @@ const CHANGELOG = {
         {
           "zh": "功能行为与 V2.9.4 完全相同，本版只改文档、引导与应用内的一处提示文案",
           "en": "Behaviour is identical to V2.9.4 — this release only touches documentation, onboarding and one in-app notice."
-        }
-      ]
-    },
-    {
-      "version": "v2.9.4",
-      "tagline": {
-        "zh": "简单录像（一键配置 OBS 并开录）· 帮助与反馈页 · 626 项单测全通过",
-        "en": "Simple recording (configure OBS and start in one go) · help & feedback page · 626 unit tests passing"
-      },
-      "items": [
-        {
-          "zh": "首页新增「简单录像」卡：三档预设（快速录像 / 会议网课 / 游戏高码率）只回答「录什么」，输出模式、编码器族与码率一律不碰，需要时走「高级设置」跳录制环境部署卡",
-          "en": "A new \"Simple recording\" card on the home page: three presets (quick, meeting / lecture, high-bitrate game) decide only what to record — output mode, encoder family and bitrate are left alone, with an \"advanced settings\" link to the recording-setup card."
-        },
-        {
-          "zh": "预设只写「录像格式 / 录像质量 / 音频轨 / 分段」这几类可验证的键，帧率与分辨率复用 V2.9.3 的同一份目标，避免两条写入路径漂移",
-          "en": "Presets only write verifiable keys (recording format / quality / audio track / segmentation) and reuse the same frame-rate and resolution targets as V2.9.3, so the two write paths cannot drift apart."
-        },
-        {
-          "zh": "OBS 没启动时可由本工具接手：先整备份 basic.ini → 弹出确认 → 拉起 obs64.exe → 每秒轮询等 obs-websocket 就绪（最长 75 秒）→ 自动开录",
-          "en": "If OBS isn't running the tool takes over: back up basic.ini first, ask for confirmation, launch obs64.exe, poll until obs-websocket is ready (up to 75 seconds), then start recording on its own."
-        },
-        {
-          "zh": "没连上但 OBS 进程在跑时不落地、不拉起，只给原因与出口；录制中 / 推流中直接阻断，不写任何配置（建计划与执行点各判一次）",
-          "en": "If it can't connect but OBS is running, nothing is written and nothing is launched — you get the reason and a way forward. While recording or streaming it blocks outright and writes no config at all, checked both when planning and when executing."
-        },
-        {
-          "zh": "录前只有一行结论：就绪，或阻断 + 原因 + 出口，并声明「本工具不会替你静默改配置或重启 OBS」；判定按硬门槛排序，不再把「直播中不能改输出参数」笼统归到「没连上」",
-          "en": "One line before you record: ready, or blocked with a reason and an exit, plus an explicit \"this tool won't silently change your config or restart OBS\". The verdict follows hard gates, so \"can't change output while streaming\" no longer passes as \"not connected\"."
-        },
-        {
-          "zh": "录制中显示已录时长与剩余可录：时长优先取 OBS 自报的 outputTimecode（暂停不计入），剩余按空闲空间与预设码率估算",
-          "en": "While recording you see elapsed and remaining time: elapsed prefers OBS's own outputTimecode (pauses excluded), while remaining is estimated from free space and the preset bitrate."
-        },
-        {
-          "zh": "录完读回文件大小（正面回应「录完才发现是空文件」），可一键打开目录；本机有 ffmpeg 时可一键无损转封装为 MP4，没有时给出 OBS 自带「文件 → 重新封装录像」的路径",
-          "en": "When recording stops the file size is read back (a direct answer to \"the file turned out empty\"), with one-click open-folder access, and a lossless remux to MP4 when ffmpeg is available locally — otherwise you're pointed at OBS's own File → Remux Recordings."
-        },
-        {
-          "zh": "质量基线：单元测试 626 项全部通过（V2.9.1 时为 381 项）；Headless 自检 22 项 PASS（路由 18 项）；双目标构建 0 错误",
-          "en": "Quality baseline: all 626 unit tests pass (381 back in V2.9.1), 22 headless self-check items PASS (18 of them routing), and both build targets compile with zero errors."
         }
       ]
     }
