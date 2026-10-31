@@ -531,6 +531,15 @@ code {
 
 .detail-text strong { color: var(--text); font-weight: 650; }
 
+/* 段末小注（版权说明、「暂未提供预编译包」这类如实交代） */
+.detail-text p.detail-note {
+  border-left: 2px solid var(--border-strong);
+  padding-left: 12px;
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
 .detail-list {
   list-style: none;
   display: flex;

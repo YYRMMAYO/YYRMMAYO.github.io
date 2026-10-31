@@ -45,6 +45,9 @@ PAGES = [
     {"file": "detail/obs-mac.html", "url": "/detail/obs-mac.html", "key": "obs-mac"},
     {"file": "detail/sinan.html", "url": "/detail/sinan.html", "key": "sinan"},
     {"file": "detail/love101.html", "url": "/detail/love101.html", "key": "love101"},
+    {"file": "detail/xuxin.html", "url": "/detail/xuxin.html", "key": "xuxin"},
+    {"file": "detail/helpdesk.html", "url": "/detail/helpdesk.html", "key": "helpdesk"},
+    {"file": "detail/cookiesluncher.html", "url": "/detail/cookiesluncher.html", "key": "cookiesluncher"},
 ]
 
 # 每页在 sitemap 里的权重 / 更新频率
@@ -56,6 +59,9 @@ SITEMAP_META = {
     "/detail/obs-mac.html": ("0.8", "monthly"),
     "/detail/sinan.html": ("0.6", "yearly"),  # 已停止开发，仅存档
     "/detail/love101.html": ("0.7", "monthly"),
+    "/detail/xuxin.html": ("0.7", "monthly"),
+    "/detail/helpdesk.html": ("0.7", "monthly"),
+    "/detail/cookiesluncher.html": ("0.7", "monthly"),
 }
 
 CARDS_BEGIN = "<!-- PRERENDER:START 由 scripts/prerender.py 生成，勿手改 -->"

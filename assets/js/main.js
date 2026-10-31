@@ -73,6 +73,8 @@ const I18N = {
   footLinkObs:     { zh: "OBS帮助助手", en: "OBS Helper" },
   footLinkAi:      { zh: "AIStudioHub", en: "AIStudioHub" },
   footLinkLove:    { zh: "第101种理由", en: "Love 101" },
+  footLinkXuxin:   { zh: "绪心桌宠", en: "Xuxin Desktop Pet" },
+  footLinkHelp:    { zh: "HelpDesk 电脑助手", en: "HelpDesk PC Helper" },
   footLinkRes:     { zh: "资料下载", en: "Downloads" },
   footLinkFeedback:{ zh: "问题反馈", en: "Feedback" },
   footLinkBili:    { zh: "Bilibili 主页", en: "Bilibili" },
@@ -86,6 +88,9 @@ const I18N = {
  *   icon   卡片缩略图上的大图标（emoji 或文字，或换成真实截图）
  *   name   软件名称 { zh, en }
  *   desc   软件简介 { zh, en }
+ *   version    版本号（同时用于卡片徽章与 SEO 结构化数据）
+ *   versionAlt 同版本的另一条发布通道（可选，如 OBS 帮助助手的 X 系列），
+ *              只在卡片上以「主版本 / 另一通道」并列显示，不进结构化数据
  *   tags   标签，可写字符串（中英相同）或 { zh, en }
  *   links  download 填该软件 GitHub 仓库详情页地址（点击"GitHub 下载"跳转过去下载）；
  *          netdisk 填网盘分享地址 { url, pwd }，pwd 为访问密码；不填则不显示"网盘下载"按钮
@@ -157,32 +162,35 @@ const softwareList = [
     key: "obs",
     icon: "🎥",
     name: { zh: "OBS帮助助手（Windows）", en: "OBS Helper (Windows)" },
-    version: "V3.0.0",
+    version: "V3.5.3",
+    versionAlt: "X1031Y3",
     os: "Windows 10 / 11，另有 Windows 7 SP1 兼容构建",
     license: "MIT",
     desc: {
-      zh: "面向直播新手的 OBS Studio 排障工具：212 条离线知识库、简单录像与一键开录、录制守护与实时日志预警、黑屏/音频/虚拟摄像头三合一深度体检、OBS 远程控制台。V3.0.0 补上数据安全（文件事务回滚 / 路径护栏 / 机密加密存储）、无障碍适配与 Win7 旧协议兼容，并新增回放缓存存片、简单开播、录制档案与配置回收站。主构建面向 Windows 10 / 11，另有 Windows 7 SP1 兼容构建；纯离线可用。",
-      en: "An OBS Studio troubleshooting tool for livestreaming beginners: a 212-entry offline knowledge base, simple recording and one-click start, a recording watchdog, live log alerts, all-in-one black-screen / audio / virtual-camera checks and an OBS remote console. V3.0.0 adds data-safety work (file-transaction rollback, path guardrails, encrypted secrets), accessibility and legacy obs-websocket 4.x support for the Windows 7 build, plus replay-buffer clip saving, simple stream start, a recording archive and a config recycle bin. The main build targets Windows 10 / 11, with a separate Windows 7 SP1 compatible build — fully offline.",
+      zh: "面向直播新手的 OBS Studio 排障与直播助手：208 条离线知识库、一键体检与日志分析、简单录像与一键开录、远程控制台与提词器；V3.3 起又长成一套直播工作台 —— 虚拟直播（Live2D + 10 套直播间模板 + 16 个平台开播引导）、手机联动（扫码遥控 / 监看 / 提词 / 当 Wi-Fi 摄像头）、弹幕聚合、本地实时字幕、复盘切片与多平台转推。最新 V3.5.3 / X1031Y3 把精选插件与开源依赖做成应用内一键配置。主构建面向 Windows 10 / 11，另有 Windows 7 SP1 兼容构建；纯离线可用。",
+      en: "An OBS Studio troubleshooting and streaming assistant for beginners: a 208-entry offline knowledge base, one-click health checks and log analysis, simple recording with one-press start, a remote console and a teleprompter. Since V3.3 it has grown into a full streaming workbench — virtual streaming (Live2D plus 10 room templates and 16 platform guides), phone link (scan to control, monitor, prompt, or use the phone as a Wi-Fi camera), chat aggregation, local live captions, review/clipping and multi-platform relay. The latest V3.5.3 / X1031Y3 adds in-app one-click setup for curated plugins and open-source dependencies. The main build targets Windows 10 / 11, with a separate Windows 7 SP1 compatible build — fully offline.",
     },
     features: {
-      tagline: { zh: "直播排障一步到位", en: "Livestream troubleshooting, solved" },
+      tagline: { zh: "从排障到开播的一整套直播工作台", en: "From troubleshooting to going live" },
       items: [
-        { zh: "212 条问题知识库，离线可用；也可自己加条目与分类（V3.0.0）", en: "212-entry offline knowledge base — plus your own entries and categories (V3.0.0)" },
-        { zh: "主构建面向 Windows 10 / 11，另有 Windows 7 SP1 兼容构建（V3.0.0）", en: "The main build targets Windows 10 / 11, with a separate Windows 7 SP1 build (V3.0.0)" },
-        { zh: "数据安全：写配置文件走事务通道，写前快照 + 原子替换 + 读回校验，失败自动回滚（V3.0.0）", en: "Data safety: config writes go through one transaction channel — snapshot, atomic replace, read-back verify, automatic rollback (V3.0.0)" },
-        { zh: "回放缓存一键存片：托盘或热键存下「刚才那段」，旧协议同样支持（V3.0.0）", en: "One-click replay-buffer clip saving from the tray or a hotkey, legacy protocol included (V3.0.0)" },
-        { zh: "简单开播：先查服务器与串流密钥填没填，并提示上行拥塞 / 丢帧 / 同时录制（V3.0.0）", en: "Simple stream start: checks server and stream key first, warns about uplink congestion, dropped frames and simultaneous recording (V3.0.0)" },
-        { zh: "录制档案 + 录制中打点：导出章节、批量无损转 MP4（V3.0.0）", en: "Recording archive with in-recording markers, chapter export and batch lossless MP4 remux (V3.0.0)" },
-        { zh: "配置回收站 + 开播前体检一键处方（V3.0.0）", en: "Config recycle bin and a pre-stream checkup with one-click prescription (V3.0.0)" },
-        { zh: "简单录像：三档预设一键配置 OBS 并开录，OBS 没启动也能录（V2.9.4）", en: "Simple recording: three presets configure OBS and start — even if OBS is closed (V2.9.4)" },
-        { zh: "录制守护 + 实时日志尾随：掉帧、过载、断流即时预警", en: "Recording watchdog + live log tailing for frame loss and overload" },
-        { zh: "界面 + 随包内容中英双语，安装包可选语言（V2.9.2 / V2.9.3）", en: "Bilingual UI and bundled content; installer language choice (V2.9.2 / V2.9.3)" },
-        { zh: "纯离线运行，无需联网；1209 项单元测试 + 双构建自检 26 项全通过", en: "Fully offline, no network needed; 1209 unit tests and 26 headless self-checks on both builds" },
+        { zh: "208 条问题知识库，完全离线；知识库与插件目录都能单独热更新，不必等发版", en: "208-entry offline knowledge base; the KB and plugin catalog hot-update on their own, without waiting for a release" },
+        { zh: "一键体检 + 离线日志分析：34 条规则 + 5 条派生判定 + 3 项量化比值（共 42 条线索），分析前先脱敏", en: "One-click health check plus offline log analysis: 34 rules, 5 derived verdicts and 3 quantitative ratios (42 leads in total), sanitised before analysis" },
+        { zh: "插件一键配置（V3.5.3）：卡片或粘贴 owner/repo 直接查最新 Release → 下载 → SHA-256 校验 → 安全解压安装", en: "One-click plugin setup (V3.5.3): use a card or paste owner/repo to find the latest release, download, verify SHA-256, unpack and install" },
+        { zh: "开源依赖一键配置（V3.5.3）：FFmpeg / rclone / whisper / MediaMTX 应用内下载校验并自动填好路径", en: "One-click dependency setup (V3.5.3): FFmpeg / rclone / whisper / MediaMTX download, verify and wire themselves into the app" },
+        { zh: "本机插件管理（V3.5.3）：卸载只移进备份目录不硬删，支持用户级 ⇄ 全局级迁移与接管", en: "Local plugin management (V3.5.3): uninstall moves into a backup folder instead of deleting, with user-level ⇄ global migration and takeover" },
+        { zh: "手机联动（V3.4.0）：扫码遥控 / 监看 / 提词 / 补光 / 快传，手机还能当 Wi-Fi 摄像头与麦克风", en: "Phone link (V3.4.0): scan to control, monitor, prompt, light and transfer files — and use the phone as a Wi-Fi camera or microphone" },
+        { zh: "虚拟直播（V3.3.0）：Live2D 一键配置 + 10 套直播间模板 + 16 个平台开播引导", en: "Virtual streaming (V3.3.0): one-click Live2D setup, 10 room templates and guides for 16 streaming platforms" },
+        { zh: "弹幕聚合、本地实时字幕（whisper.cpp）、复盘切片、多平台转推与 rclone 归档（V3.4.0）", en: "Chat aggregation, local live captions (whisper.cpp), review and clipping, multi-platform relay and rclone archiving (V3.4.0)" },
+        { zh: "提词器：工具栏 / 拖动 / 滚轮 / 键盘四条手动上下移动（V3.1.1），支持镜像、点击穿透、手机远程改稿", en: "Teleprompter: four ways to scroll by hand — toolbar, drag, wheel, keyboard (V3.1.1) — plus mirroring, click-through and phone-side script editing" },
+        { zh: "简单录像与一键开录：三档预设一键配好并开录，OBS 没开也能拉起；回放缓存一键存片", en: "Simple recording: three presets configure and start in one press, even launching OBS when it's closed; one-click replay-buffer saving" },
+        { zh: "状态可信度与下载链路修复（V3.5.2 / V3.5.3）：停止录制不再显示「录制中」，插件与依赖下载恢复", en: "Trustworthy state and working downloads (V3.5.2 / V3.5.3): stopping a recording no longer leaves it showing as active, and plugin/dependency downloads work again" },
+        { zh: "数据安全与隐私：写文件走事务通道（快照 + 原子替换 + 读回校验 + 回滚），机密双层加密（AES-256-GCM + DPAPI）", en: "Data safety and privacy: file writes go through one transaction channel (snapshot, atomic replace, read-back verify, rollback); secrets are double-encrypted (AES-256-GCM + DPAPI)" },
+        { zh: "零 NuGet、无 WebView2 的原生 WPF；1809 项单元测试全绿，中英双语 3388 条文案键", en: "Native WPF with no NuGet and no WebView2; 1809 unit tests passing and 3388 bilingual string keys" },
       ],
     },
-    tags: ["Windows 10 / 11", "V3.0.0", { zh: "OBS 排障", en: "OBS Troubleshooting" }, { zh: "免费", en: "Free" }],
+    tags: ["Windows 10 / 11", { zh: "V3.5.3 / X1031Y3", en: "V3.5.3 / X1031Y3" }, { zh: "OBS 排障", en: "OBS Troubleshooting" }, { zh: "免费", en: "Free" }],
     links: {
-      download: "https://github.com/YYRMMAYO/OBS_Helper",
+      download: "https://github.com/YYRMMAYO/OBS_Helper/releases/latest",
       netdisk: { url: "https://wwbpq.lanzouu.com/b01d7578be", pwd: "YYKWY" },
       website: "",
     },
@@ -210,17 +218,18 @@ const softwareList = [
     key: "obs-plugin",
     icon: "🔌",
     name: { zh: "OBS 排障助手 · 插件版", en: "OBS Helper Plugin" },
-    version: "v2.8.0",
+    version: "v2.9.0",
     os: "Windows",
     license: "MIT",
     desc: {
-      zh: "纯原生 C++ / Qt6 的 OBS Studio 前端插件：以停靠面板直接嵌入 OBS 主窗口，七大专栏覆盖体检、日志分析、设置体检、性能监控、插件管理、工具箱与系统信息，全程只读检测、零额外进程。",
-      en: "A native C++ / Qt6 front-end plugin for OBS Studio: embeds a dock panel right inside the main window with seven tabs — health check, log analysis, settings audit, performance monitor, plugin manager, toolbox and system info. Read-only, zero extra processes.",
+      zh: "纯原生 C++ / Qt6 的 OBS Studio 前端插件：以停靠面板直接嵌入 OBS 主窗口，七大专栏覆盖体检、日志分析、设置体检、性能监控、插件管理、工具箱与系统信息，全程只读检测、零额外进程。v2.9.0 适配 OBS Studio 33（新的「一插件一目录」插件布局 + Qt 6.11.1 依赖）。",
+      en: "A native C++ / Qt6 front-end plugin for OBS Studio: embeds a dock panel right inside the main window with seven tabs — health check, log analysis, settings audit, performance monitor, plugin manager, toolbox and system info. Read-only, zero extra processes. v2.9.0 adds OBS Studio 33 support (the new one-folder-per-plugin layout plus the Qt 6.11.1 runtime).",
     },
     features: {
       tagline: { zh: "嵌进 OBS 的直播体检台", en: "A checkup desk inside OBS" },
       items: [
         { zh: "停靠面板嵌入 OBS 主窗口，无需 .NET 运行库", en: "Dock panel in OBS, no .NET runtime needed" },
+        { zh: "适配 OBS Studio 33：新插件布局与 Qt 6.11.1 依赖（v2.9.0）", en: "Ready for OBS Studio 33: new plugin layout and Qt 6.11.1 runtime (v2.9.0)" },
         { zh: "本地离线解析日志，对齐官方 Log Analyzer 规则", en: "Offline log analysis aligned with official rules" },
         { zh: "「元凶插件」一键禁用，崩溃转储定位崩溃模块", en: "One-click disable of culprit plugins; crash dump parsing" },
         { zh: "性能监控：帧耗时 / GPU 占用 / 丢帧实时告警", en: "Perf monitor: frame time, GPU usage, drop alerts" },
@@ -228,12 +237,99 @@ const softwareList = [
         { zh: "诊断报告一键导出，推流密钥自动脱敏", en: "One-click report export, stream key sanitized" },
       ],
     },
-    tags: ["Windows x64", "OBS 30.x–32.x", "v2.8.0", { zh: "开源", en: "Open Source" }],
+    tags: ["Windows x64", "OBS 30.x–33.x", "v2.9.0", { zh: "开源", en: "Open Source" }],
     links: {
       download: "https://github.com/YYRMMAYO/OBS_Helper_Plugin/releases",
       website: "https://github.com/YYRMMAYO/OBS_Helper_Plugin",
     },
     accent: "#3d5a56",
+  },
+  {
+    key: "xuxin",
+    icon: "🎀",
+    name: { zh: "绪心桌宠", en: "Xuxin Desktop Pet" },
+    version: "v1.4.0",
+    os: "Android 8.0+",
+    license: "MIT",
+    desc: {
+      zh: "安卓悬浮窗桌宠：初音未来 / 洛天依 / 乐正绫三套角色全部由 Canvas 程序化建模 + 骨骼动画逐像素绘制，不依赖 Live2D 与 3D 模型，APK 约 3.6 MB。待机 / 行走 / 拖拽 / 开心 / 困倦五态动画，点击投喂、离线 TTS 语音、心情与饱食度养成、久坐喝水提醒、陪伴统计与桌面小组件；V1.4.0 专治长时间挂机的耗电、统计恒为 0 与提醒不响。",
+      en: "An Android hover-window desktop pet: three characters (Hatsune Miku, Luo Tianyi and Yue Zhengling) are drawn pixel by pixel with Canvas procedural modelling and skeleton animation — no Live2D, no 3D models, and a ~3.6 MB APK. Five animation states (idle, walk, drag, happy, sleepy), tap-to-feed, offline TTS, mood and hunger systems, sit/water reminders, companionship stats and a home-screen widget; V1.4.0 targets idle battery drain, stats that stayed at zero and reminders that never rang.",
+    },
+    features: {
+      tagline: { zh: "程序化建模的安卓桌宠", en: "A procedurally drawn Android desktop pet" },
+      items: [
+        { zh: "三套角色（初音未来 / 洛天依 / 乐正绫）全部代码逐像素绘制，不依赖 Live2D 与 3D 模型", en: "Three characters drawn pixel by pixel in code — no Live2D, no 3D models" },
+        { zh: "骨骼动画状态机：待机呼吸 / 行走迈步 / 拖拽悬垂 / 开心弹跳 / 困倦闭眼", en: "Skeleton animation states: idle breathing, walking, dangling when dragged, happy bounce, sleepy eyes" },
+        { zh: "陪伴互动：点击与投喂反馈、双击爱心爆发、按时段问候、离线 TTS 说话", en: "Interaction: tap and feed feedback, double-tap heart burst, time-of-day greetings, offline TTS voice" },
+        { zh: "心情与饱食度养成，数据持久化并跨重启累计；久坐 / 喝水提醒走独立高优先级通知通道", en: "Mood and hunger systems persisted across restarts; sit/water reminders use their own high-priority channel" },
+        { zh: "悬浮窗贴边、长按菜单换形象、陪伴小窗与桌面小组件（心情 / 饱食 / 今日陪伴）", en: "Edge-snapping overlay, long-press menu to swap characters, a companion mini window and home-screen widgets" },
+        { zh: "省电渲染（V1.4.0）：动画出帧上限 60fps，熄屏或窗口不可见时暂停自刷新", en: "Battery-friendly rendering (V1.4.0): 60 fps frame cap, self-refresh paused when the screen is off or the window is hidden" },
+        { zh: "内置数据 JSON 备份 / 恢复（带类型校验），release 启用 R8 混淆与正式签名", en: "JSON backup and restore with type validation; release builds use R8 shrinking and a real signing key" },
+      ],
+    },
+    tags: ["Android", { zh: "桌宠", en: "Desktop Pet" }, { zh: "程序化建模", en: "Procedural Art" }, "MIT"],
+    links: {
+      download: "https://github.com/YYRMMAYO/xuxin-desktop-pet",
+      website: "",
+    },
+    accent: "#2f6f74",
+  },
+  {
+    key: "helpdesk",
+    icon: "🛠️",
+    name: { zh: "HelpDesk 电脑助手", en: "HelpDesk PC Helper" },
+    version: "v1.1.0",
+    os: "Windows 10 / 11",
+    desc: {
+      zh: "面向不太懂电脑的 Windows 用户的插件式电脑助手：主程序只保留一套薄外壳，网速检测、软件卸载、系统诊断、系统清理与故障排除指南都做成独立插件，从 GitHub 在线发现、下载、校验后加载，用户需要哪个装哪个。WPF / .NET 8 自包含发布，装到用户目录、全程不弹 UAC。",
+      en: "A plugin-based PC helper for Windows users who aren't computer experts: the host stays a thin shell while speed testing, app uninstalling, system diagnostics, cleanup and a troubleshooting guide all ship as separate plugins, discovered, downloaded and verified from GitHub on demand. Self-contained WPF / .NET 8, installed per-user with no UAC prompt.",
+    },
+    features: {
+      tagline: { zh: "需要哪个插件就装哪个", en: "Install only the plugins you need" },
+      items: [
+        { zh: "插件式架构：主程序只留外壳，功能按插件从 GitHub 在线发现 / 下载 / 校验 / 加载", en: "Plugin architecture: a thin host, with features discovered, downloaded, verified and loaded from GitHub" },
+        { zh: "网络工具：网速检测（下行 / 上行 / 延迟 / 抖动，多节点自动选择）、网卡信息、DNS 解析与 Ping", en: "Network toolkit: speed test (down/up, latency, jitter, automatic node choice), adapter info, DNS lookup and ping" },
+        { zh: "软件卸载：调用注册表登记的官方卸载程序，卸载后按注册表记录的安装目录清理残留", en: "App uninstaller: runs the registered official uninstaller, then cleans leftovers from the recorded install directory" },
+        { zh: "系统诊断：CPU / 内存 / 磁盘实时状态与健康评分", en: "System diagnostics: live CPU / memory / disk status with a health score" },
+        { zh: "系统清理与故障排除指南：清理当前账户临时文件，内置 15 类常见电脑故障的排查步骤", en: "Cleanup plus a troubleshooting guide: clears the current account's temp files and ships step-by-step fixes for 15 common problems" },
+        { zh: "插件分发链路（v1.1.0）：按提交号取内容并做校验，彻底消除 CDN 缓存导致「索引新、文件旧」", en: "Plugin distribution (v1.1.0): content is fetched by commit hash and verified, eliminating the stale-CDN \"new index, old file\" problem" },
+        { zh: "Inno Setup 6 安装包，装到用户目录、全程不弹 UAC；自包含发布，无需另装 .NET 运行时", en: "Inno Setup 6 installer into the user directory with no UAC prompt; self-contained, so no .NET runtime install is needed" },
+      ],
+    },
+    tags: ["Windows 10 / 11", { zh: "插件式", en: "Plugin-based" }, { zh: "电脑助手", en: "PC Helper" }, ".NET 8"],
+    links: {
+      download: "https://github.com/YYRMMAYO/HelpDesk/releases",
+      website: "https://github.com/YYRMMAYO/HelpDesk",
+    },
+    accent: "#3f5b8a",
+  },
+  {
+    key: "cookiesluncher",
+    icon: "🍪",
+    name: { zh: "CookieLuncher · Cookie 启动器", en: "CookieLuncher" },
+    version: "v1.0.0",
+    os: "Windows",
+    desc: {
+      zh: "本地运行的中文命令行小工具：把各网站的登录 Cookie 加密保存在本机单个 cookies.enc 里（明文永不落盘），需要时一键注入浏览器打开网站，也可以手动登录后采集 Cookie，并导出成 GitHub Action 保活项目能直接用的密文配置。支持内置 Thorium 与本机 Edge / Chrome 两种浏览器后端。",
+      en: "A small local Chinese-language CLI: it keeps per-site login cookies encrypted in a single cookies.enc (plaintext never touches disk), injects them into a browser on demand, captures cookies from a manual login, and exports an encrypted config that a GitHub Action keep-alive project can use directly. Two browser backends: bundled Thorium or your local Edge / Chrome.",
+    },
+    features: {
+      tagline: { zh: "登录状态加密保存在本机", en: "Login state, encrypted on your machine" },
+      items: [
+        { zh: "多网站 Cookie 加密存进单个 cookies.enc，密码错误无法解密，明文不落盘", en: "Per-site cookies encrypted into one cookies.enc — wrong password never decrypts, and plaintext never hits disk" },
+        { zh: "一键启动浏览器：创建临时用户目录注入 Cookie 后拉起浏览器，关闭后自动清理临时数据", en: "One-click launch: a temp profile gets the cookies, the browser opens, and the temp data is cleaned up on exit" },
+        { zh: "手动登录采集：打开可见浏览器登录账号 / 验证码，回车后自动采集全部有效 Cookie", en: "Manual capture: log in (or pass a captcha) in a visible browser, press Enter and all valid cookies are collected" },
+        { zh: "Cookie 管理：粘贴导入（分号 / JSON / Cookie-Editor 格式）、查看、删除与修改密码（整体重新加密）", en: "Cookie management: paste-import (semicolon / JSON / Cookie-Editor formats), view, delete and change password (re-encrypts everything)" },
+        { zh: "导出 GitHub Action 保活配置：只含密文的 action_config_output.json + Fernet 密钥，主菜单导出还带二重密码保护", en: "Export a GitHub Action keep-alive config: a ciphertext-only action_config_output.json plus the Fernet key, with a second export password from the menu" },
+        { zh: "双浏览器后端：内置 Thorium（离线自包含，自带 H.264 / AAC 可放 B 站视频）或本机 Edge / Chrome（DRM 会员视频）", en: "Two browser backends: bundled Thorium (offline, with H.264 / AAC for Bilibili video) or local Edge / Chrome for DRM member content" },
+      ],
+    },
+    tags: [{ zh: "命令行", en: "CLI" }, "Python 3.10+", { zh: "Cookie 管理", en: "Cookie Manager" }, "Windows"],
+    links: {
+      download: "https://github.com/YYRMMAYO/CookiesLuncher",
+      website: "",
+    },
+    accent: "#7a5b3a",
   },
   {
     key: "sinan",
@@ -302,9 +398,9 @@ const resourceList = [
  * 改动数字时请同步核对对应软件详情页，避免出现自相矛盾。
  * -------------------------------------------------------- */
 const STATS = [
-  { value: "6",   label: { zh: "个收录作品",     en: "projects listed" } },
-  { value: "212", label: { zh: "条排障知识库",   en: "troubleshooting entries" } },
-  { value: "1209",label: { zh: "项单元测试",     en: "unit tests" } },
+  { value: "9",   label: { zh: "个收录作品",     en: "projects listed" } },
+  { value: "208", label: { zh: "条排障知识库",   en: "troubleshooting entries" } },
+  { value: "1809",label: { zh: "项单元测试",     en: "unit tests" } },
   { value: "57",  label: { zh: "个精选插件",     en: "curated plugins" } },
 ];
 
@@ -394,7 +490,7 @@ function renderCards() {
         }</div>
         <div class="card-body">
           <h3 class="card-title" data-detail="${s.key}">${s.name[lang]}${
-            s.version ? ` <span class="card-version">${s.version}</span>` : ""
+            s.version ? ` <span class="card-version">${s.version}${s.versionAlt ? ` / ${s.versionAlt}` : ""}</span>` : ""
           }${s.status === "discontinued" ? `<span class="title-stamp">${t("badgeStopped")}</span>` : ""}</h3>
           <p class="card-desc">${s.desc[lang]}</p>
           <div class="card-tags">${renderTags(s.tags)}</div>

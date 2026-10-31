@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="绪心桌宠 v1.4.0 — 安卓悬浮窗桌宠：初音未来 / 洛天依 / 乐正绫三套角色由 Canvas 程序化建模 + 骨骼动画逐像素绘制，含互动养成、离线 TTS、久坐喝水提醒与桌面小组件，APK 约 3.6 MB" />
+  <title>绪心桌宠 — YYRMM的软件库</title>
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
+  <!-- 主题脚本：head 中同步加载，第一时间应用已保存的主题（防闪烁） -->
+  <script src="../assets/js/theme.js"></script>
+  <link rel="stylesheet" href="../assets/css/detail.css" />
+  <!-- SEO:START 由 scripts/prerender.py 生成，勿手改 -->
+  <link rel="canonical" href="https://yyrmmayo.github.io/detail/xuxin.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="YYRMM的软件库" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:title" content="绪心桌宠" />
+  <meta property="og:description" content="绪心桌宠 v1.4.0 — 安卓悬浮窗桌宠：初音未来 / 洛天依 / 乐正绫三套角色由 Canvas 程序化建模 + 骨骼动画逐像素绘制，含互动养成、离线 TTS、久坐喝水提醒与桌面小组件，APK 约 3.6 MB" />
+  <meta property="og:url" content="https://yyrmmayo.github.io/detail/xuxin.html" />
+  <meta property="og:image" content="https://yyrmmayo.github.io/assets/images/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="绪心桌宠" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="绪心桌宠" />
+  <meta name="twitter:description" content="绪心桌宠 v1.4.0 — 安卓悬浮窗桌宠：初音未来 / 洛天依 / 乐正绫三套角色由 Canvas 程序化建模 + 骨骼动画逐像素绘制，含互动养成、离线 TTS、久坐喝水提醒与桌面小组件，APK 约 3.6 MB" />
+  <meta name="twitter:image" content="https://yyrmmayo.github.io/assets/images/og-cover.png" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "绪心桌宠",
+  "url": "https://yyrmmayo.github.io/detail/xuxin.html",
+  "description": "绪心桌宠 v1.4.0 — 安卓悬浮窗桌宠：初音未来 / 洛天依 / 乐正绫三套角色由 Canvas 程序化建模 + 骨骼动画逐像素绘制，含互动养成、离线 TTS、久坐喝水提醒与桌面小组件，APK 约 3.6 MB",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Android 8.0+",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "CNY"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "YYRMMAYO",
+    "url": "https://github.com/YYRMMAYO"
+  },
+  "alternateName": "Xuxin Desktop Pet",
+  "softwareVersion": "1.4.0",
+  "license": "https://opensource.org/licenses/MIT",
+  "downloadUrl": "https://github.com/YYRMMAYO/xuxin-desktop-pet"
+}
+  </script>
+  <!-- SEO:END -->
+</head>
+<body>
+  <div class="bg-scene" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 7 5 12l4.5 5M14.5 7 19 12l-4.5 5"/></svg>
+        </span>
+        <span data-lang="zh">YYRMM的软件库</span>
+        <span data-lang="en">YYRMM's Software Library</span>
+      </a>
+      <nav class="top-nav">
+        <a class="top-link" href="../index.html#home" data-lang="zh">首页</a>
+        <a class="top-link" href="../index.html#home" data-lang="en">Home</a>
+        <a class="top-link" href="../index.html#features" data-lang="zh">特性</a>
+        <a class="top-link" href="../index.html#features" data-lang="en">Features</a>
+        <a class="top-link" href="../index.html#software" data-lang="zh">软件列表</a>
+        <a class="top-link" href="../index.html#software" data-lang="en">Software</a>
+        <a class="top-link" href="../index.html#resources" data-lang="zh">资料</a>
+        <a class="top-link" href="../index.html#resources" data-lang="en">Resources</a>
+      </nav>
+      <div class="top-actions">
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换到浅色主题"></button>
+        <a class="social-link" href="https://github.com/YYRMMAYO?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page container" data-app="xuxin">
+    <!-- ===== Hero ===== -->
+    <section class="detail-hero" data-reveal style="--card-accent:#2f6f74">
+      <div class="detail-icon">🎀</div>
+      <div class="detail-hero-text">
+        <h1 class="detail-name" data-lang="zh">绪心桌宠 <span class="detail-badge">v1.4.0</span></h1>
+        <h1 class="detail-name" data-lang="en">Xuxin Desktop Pet <span class="detail-badge">v1.4.0</span></h1>
+        <p class="detail-tagline" data-lang="zh">安卓悬浮窗上的程序化桌宠 · 三套角色全靠代码逐像素画出来（2026-10-31 更新）</p>
+        <p class="detail-tagline" data-lang="en">A procedurally drawn desktop pet for Android — three characters painted pixel by pixel in code (updated 2026-10-31)</p>
+        <div class="detail-meta">
+          <span class="chip">Android 8.0+</span>
+          <span class="chip">Kotlin</span>
+          <span class="chip">v1.4.0</span>
+          <span class="chip" data-lang="zh">程序化建模</span>
+          <span class="chip" data-lang="en">Procedural Art</span>
+          <span class="chip" data-lang="zh">约 3.6 MB</span>
+          <span class="chip" data-lang="en">about 3.6 MB</span>
+          <span class="chip">MIT</span>
+        </div>
+        <div class="detail-actions">
+          <a class="btn btn-primary" href="https://github.com/YYRMMAYO/xuxin-desktop-pet" target="_blank" rel="noopener">
+            <span data-lang="zh">GitHub 仓库</span><span data-lang="en">GitHub Repository</span>
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/YYRMMAYO/xuxin-desktop-pet/blob/main/README.md" target="_blank" rel="noopener">
+            <span data-lang="zh">构建与安装说明</span><span data-lang="en">Build &amp; install guide</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 软件介绍 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">软件介绍</h2>
+      <h2 class="detail-title" data-lang="en">About</h2>
+      <div class="detail-text">
+        <div data-lang="zh">
+          <p><strong>绪心桌宠</strong>是一款跑在安卓手机上的桌宠：像电脑桌宠那样悬浮在桌面最上层，随时陪着你。它<strong>不依赖 Live2D、也不加载任何 3D 模型</strong>——三套角色（初音未来 / 洛天依 / 乐正绫）全部由 <strong>Canvas 程序化建模 + 骨骼动画</strong>逐像素绘制，随包只有一个 APK，约 3.6 MB（R8 混淆 + 资源收缩）。</p>
+          <p>角色都按 3 头身 Q 版建模：蛋形头、发丝分层高光、渐变眼珠、腮红、小手小鞋，初音的面部还做了透明挖空，悬浮在桌面上时直接透出壁纸。骨骼层级写成显式状态机 —— 待机时呼吸起伏、漂浮与眨眼，行走时双腿交替迈步并反向摆臂、朝向随移动翻转，被拎起时悬垂摆动，开心与困倦则由心情 / 饱食度状态驱动。</p>
+          <p>陪伴系统是它和「一张会动的图」的区别：点击与投喂都有气泡和语音反馈（系统离线 TTS，没有引擎时静默降级为气泡），双击触发爱心爆发与弹跳，启动时按早 / 午 / 晚 / 深夜问候；心情与饱食度会随互动提升、闲置衰减并存进本地；久坐与喝水提醒走独立的高优先级通知通道（响铃 + 震动），点通知直达主界面；今日陪伴时长、互动次数与投喂次数跨重启累计，桌面小组件上也能看到。</p>
+          <p>最新版本 <strong>V1.4.0</strong> 是一次纯优化迭代，不改造型，专治三个真问题：长时间挂机的耗电（动画出帧上限 60fps，高刷屏不再按 120Hz 全速重绘，熄屏或窗口不可见时暂停自刷新）、<strong>今日陪伴时长恒为 0</strong>（统计入口此前没有调用方，现在由前台服务按分钟批量累加）、以及<strong>久坐 / 喝水提醒不响</strong>（此前复用常驻通知的低优先级通道，现在独立通道 + 震动 + 角标）。</p>
+          <p class="detail-note" data-lang="zh">说明：初音未来 / 洛天依 / 乐正绫为他人版权角色，本项目仅作个人学习与练习用途；仓库暂未提供预编译 APK，按 README 用 Android Studio / Gradle 自行构建即可（<code>compileSdk 34</code>、<code>minSdk 24</code>）。</p>
+        </div>
+        <div data-lang="en">
+          <p><strong>Xuxin Desktop Pet</strong> is a desktop pet that lives on an Android phone: it floats above the home screen, the way a PC desktop pet would. It uses <strong>no Live2D and loads no 3D models</strong> — all three characters (Hatsune Miku, Luo Tianyi and Yue Zhengling) are painted pixel by pixel with <strong>Canvas procedural modelling plus skeleton animation</strong>, shipped as a single ~3.6 MB APK (R8 shrinking and resource reduction).</p>
+          <p>Each character is modelled in a 3-head-tall chibi style: egg-shaped head, layered hair highlights, gradient irises, blush, little hands and shoes — and Miku's face is cut out transparent so the wallpaper shows straight through. The skeleton runs an explicit state machine: breathing, floating and blinking while idle; alternating legs, counter-swinging arms and a direction-aware flip while walking; dangling when picked up; and happy or sleepy expressions driven by the mood and hunger systems.</p>
+          <p>The companionship layer is what separates it from an animated picture: taps and feeding produce both a bubble and speech (the system's offline TTS, degrading silently to bubbles when no engine exists), a double tap triggers a heart burst and a bounce, and startup greets you by time of day. Mood and hunger rise with interaction and decay while idle, persisted locally. Sit and water reminders use their own high-priority notification channel (sound plus vibration) that opens the main screen when tapped, and today's companionship time, interactions and feedings accumulate across restarts — visible on the home-screen widget too.</p>
+          <p>The latest release, <strong>V1.4.0</strong>, is a pure optimisation pass with no character changes, aimed at three real problems: battery drain during long sessions (a 60 fps frame cap so 120 Hz screens stop redrawing at full speed, and self-refresh paused when the screen is off or the window is hidden), <strong>companionship time stuck at zero</strong> (the counter had no caller; the foreground service now accumulates it by the minute) and <strong>reminders that never rang</strong> (they reused the low-importance persistent channel; they now have their own channel with vibration and a badge).</p>
+          <p class="detail-note" data-lang="en">Note: Miku, Luo Tianyi and Yue Zhengling are characters owned by others, and this project is for personal study and practice only. The repository does not ship a prebuilt APK — build it with Android Studio / Gradle as described in the README (<code>compileSdk 34</code>, <code>minSdk 24</code>).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 功能特性 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">功能特性</h2>
+      <h2 class="detail-title" data-lang="en">Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card" data-lang="zh"><strong>三套程序化角色</strong>初音未来 / 洛天依 / 乐正绫，全部 Canvas 逐像素绘制：蛋形头、品红耳机、渐变眼珠、腮红、勺形双马尾、裙装与飘带，无图片素材、无 Live2D</div>
+        <div class="feature-card" data-lang="en"><strong>Three procedural characters</strong>Miku, Luo Tianyi and Yue Zhengling, all drawn pixel by pixel on Canvas — egg-shaped head, magenta headset, gradient irises, blush, scoop-shaped twin tails, dresses and ribbons, with no image assets and no Live2D</div>
+        <div class="feature-card" data-lang="zh"><strong>骨骼动画状态机</strong>待机（呼吸 / 漂浮 / 眨眼 / 发束摆动）、行走（交替迈步 + 反向摆臂 + 朝向翻转）、拖拽（悬垂摆动）、开心（弹跳举手）、困倦（闭眼慢呼吸）</div>
+        <div class="feature-card" data-lang="en"><strong>Skeleton state machine</strong>Idle (breathing, floating, blinking, swaying hair), walk (alternating steps, counter-swinging arms, direction flip), drag (dangling), happy (bounce and raised hands) and sleepy (closed eyes, slow breathing)</div>
+        <div class="feature-card" data-lang="zh"><strong>互动与语音</strong>单击随机萌语气泡、饥饿时点击自动投喂、双击爱心爆发 ×5；系统离线 TTS 让宠物「开口说话」，无引擎时静默降级为气泡</div>
+        <div class="feature-card" data-lang="en"><strong>Interaction and voice</strong>Random cute bubbles on tap, automatic feeding when hungry, a five-heart burst on double tap; offline system TTS lets the pet talk, degrading silently to bubbles when no engine exists</div>
+        <div class="feature-card" data-lang="zh"><strong>心情与饱食度养成</strong>互动提升、闲置衰减，结果持久化；状态反过来驱动表情与动画，饿了会提醒你投喂</div>
+        <div class="feature-card" data-lang="en"><strong>Mood and hunger systems</strong>Interaction raises them, idling decays them, and both persist — the state then drives expressions and animation, telling you when it's hungry</div>
+        <div class="feature-card" data-lang="zh"><strong>久坐 / 喝水提醒（V1.4.0 修复）</strong>前台服务内调度，独立高优先级通知渠道带响铃、震动与角标；点通知直达主界面</div>
+        <div class="feature-card" data-lang="en"><strong>Sit and water reminders (fixed in V1.4.0)</strong>Scheduled inside the foreground service on their own high-priority channel with sound, vibration and a badge; tapping the notification opens the main screen</div>
+        <div class="feature-card" data-lang="zh"><strong>陪伴统计（V1.4.0 落盘）</strong>今日陪伴时长按分钟批量累加，互动与投喂次数一并记录，跨重启累计，主界面与小组件同步显示</div>
+        <div class="feature-card" data-lang="en"><strong>Companionship stats (persisted in V1.4.0)</strong>Today's time accumulates per minute alongside interaction and feeding counts, survives restarts, and shows on both the main screen and the widget</div>
+        <div class="feature-card" data-lang="zh"><strong>悬浮窗与小组件</strong>窗口约屏幕短边 32%、自动贴边隐藏，长按迷你菜单可换形象 / 设置 / 退出陪伴；右上角陪伴小窗与桌面小组件（心情 / 饱食 / 今日陪伴，30 分钟刷新）</div>
+        <div class="feature-card" data-lang="en"><strong>Overlay and widget</strong>The window is about 32% of the screen's short edge and snaps to the edge to hide; a long-press mini menu swaps characters or opens settings. Plus a companion mini window and a home-screen widget (mood / hunger / today's time, refreshed every 30 minutes)</div>
+        <div class="feature-card" data-lang="zh"><strong>省电渲染（V1.4.0）</strong>动画出帧上限 60fps，超过 14ms 的重复帧直接跳过；熄屏或窗口不可见时停止自刷新，回到前台立即恢复；陪伴小窗每秒刷新只读内存态，不再每秒写盘</div>
+        <div class="feature-card" data-lang="en"><strong>Battery-friendly rendering (V1.4.0)</strong>A 60 fps frame cap with repeated frames over 14 ms skipped; self-refresh stops when the screen is off or the window hidden and resumes instantly; the mini window reads memory state instead of writing to disk every second</div>
+        <div class="feature-card" data-lang="zh"><strong>数据与备份</strong>心情 / 饱食 / 统计 / 设置存 SharedPreferences，支持导出与恢复 JSON 备份（带类型校验，坏备份不会让程序崩）</div>
+        <div class="feature-card" data-lang="en"><strong>Data and backup</strong>Mood, hunger, stats and settings live in SharedPreferences, with JSON backup export and restore (type-checked, so a corrupt backup can't crash the app)</div>
+        <div class="feature-card" data-lang="zh"><strong>轻量与可验证</strong>APK 约 3.6 MB；状态机是纯 Kotlin 可单测的部分（10 项状态机用例），release 启用 R8 与正式签名，避免手机不认安装包</div>
+        <div class="feature-card" data-lang="en"><strong>Small and testable</strong>A ~3.6 MB APK; the state machine is pure Kotlin with 10 unit-test cases, and release builds use R8 with a real signing key so phones accept the package</div>
+      </div>
+    </section>
+
+    <!-- ===== 项目档案 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">项目档案</h2>
+      <h2 class="detail-title" data-lang="en">Project Details</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-label">Platform</div>
+          <div class="info-value" data-lang="zh">Android 8.0+（minSdk 24 / targetSdk 33 / compileSdk 34），需要「显示在其他应用上层」权限</div>
+          <div class="info-value" data-lang="en">Android 8.0+ (minSdk 24 / targetSdk 33 / compileSdk 34); needs the "display over other apps" permission</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Stack</div>
+          <div class="info-value" data-lang="zh">Kotlin（JVM 1.8）+ ViewBinding；自定义 View 绘制（<code>PetCharacterView</code> / <code>AnimeGirlView</code>）、前台服务、AppWidget、离线 TTS</div>
+          <div class="info-value" data-lang="en">Kotlin (JVM 1.8) with ViewBinding; custom views (<code>PetCharacterView</code> / <code>AnimeGirlView</code>), a foreground service, AppWidget and offline TTS</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Rendering</div>
+          <div class="info-value" data-lang="zh">Canvas 程序化建模 + 显式骨骼层级（肩→肘→手 / 髋→膝→脚 / 脊柱），骨骼角度每帧由时间函数驱动；无图片素材、无 Live2D、无 3D 模型</div>
+          <div class="info-value" data-lang="en">Canvas procedural modelling with an explicit bone hierarchy (shoulder→elbow→hand, hip→knee→foot, spine), bone angles driven by time functions each frame — no image assets, no Live2D, no 3D models</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Permissions</div>
+          <div class="info-value" data-lang="zh">只申请悬浮窗、前台服务与通知所需权限；无网络权限，互动、语音与统计全在本机完成</div>
+          <div class="info-value" data-lang="en">Only the overlay, foreground-service and notification permissions; no network permission — interaction, voice and stats all stay on device</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Build</div>
+          <div class="info-value" data-lang="zh">Gradle Kotlin DSL；<code>gradlew.bat assembleRelease</code> 出正式签名包（需按 <code>keystore/README.md</code> 配置密钥），<code>gradlew test</code> 跑状态机单测</div>
+          <div class="info-value" data-lang="en">Gradle Kotlin DSL; <code>gradlew.bat assembleRelease</code> produces a signed build (configure keys per <code>keystore/README.md</code>), <code>gradlew test</code> runs the state-machine tests</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">License</div>
+          <div class="info-value">MIT</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 更新记录（数据由 scripts/sync-changelog.py 同步生成） ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">更新记录</h2>
+      <h2 class="detail-title" data-lang="en">Changelog</h2>
+      <div id="changelog" class="changelog"></div>
+    </section>
+
+    <!-- ===== 相关链接 ===== -->
+    <nav class="related" data-reveal aria-label="相关软件">
+      <span class="related-label" data-lang="zh">其他软件</span>
+      <span class="related-label" data-lang="en">More software</span>
+      <a href="helpdesk.html" data-lang="zh">HelpDesk 电脑助手</a>
+      <a href="helpdesk.html" data-lang="en">HelpDesk PC Helper</a>
+      <a href="love101.html" data-lang="zh">第101种理由</a>
+      <a href="love101.html" data-lang="en">Love 101</a>
+      <a href="../index.html#software" data-lang="zh">全部软件</a>
+      <a href="../index.html#software" data-lang="en">All software</a>
+    </nav>
+
+    <a class="back-link" href="../index.html#software" data-lang="zh">← 返回软件列表</a>
+    <a class="back-link" href="../index.html#software" data-lang="en">← Back to software list</a>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p data-lang="zh">© 2026 YYRMM的软件库 · 开源协议见 <a href="https://github.com/YYRMMAYO/xuxin-desktop-pet" target="_blank" rel="noopener">xuxin-desktop-pet 仓库</a></p>
+      <p data-lang="en">© 2026 YYRMM's Software Library · License: <a href="https://github.com/YYRMMAYO/xuxin-desktop-pet" target="_blank" rel="noopener">xuxin-desktop-pet repo</a></p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/changelog.js"></script>
+  <script src="../assets/js/detail.js"></script>
+</body>
+</html>

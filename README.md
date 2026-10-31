@@ -24,9 +24,12 @@
 |---|---|---|---|
 | **第101种理由** | 2.5D 恋爱叙事游戏：9 段爱情故事改编剧情，AI 生成立绘，点击推进 + 双选项互动，离线可玩，支持安卓 / Windows | HTML/CSS/JS（数据驱动） | [github.com/YYRMMAYO/love101](https://github.com/YYRMMAYO/love101) |
 | **AIStudioHub** | v1.9.0：AI 制作资源整合中心，181 个主流 AI 平台与开源工具，181 篇离线中文教程，AI Agent / Skill 专区；MIT 协议 | C# / WPF (.NET 8) | [github.com/YYRMMAYO/AIStudioHub](https://github.com/YYRMMAYO/AIStudioHub) |
-| **OBS帮助助手 (Windows)** | V3.0.0：212 条离线知识库、简单录像与一键开录、录制守护与实时日志预警、黑屏/音频/虚拟摄像头三合一深度体检；本版补数据安全（事务回滚 / 路径护栏 / 机密加密）、无障碍与 Win7 旧协议兼容，新增回放缓存存片、简单开播、录制档案与配置回收站；主构建面向 Windows 10 / 11，另有 Windows 7 SP1 兼容构建 | C# / WPF (.NET 10 / .NET 6) | [github.com/YYRMMAYO/OBS_Helper](https://github.com/YYRMMAYO/OBS_Helper) |
-| **OBS 排障助手 · 插件版** | v2.8.0：纯原生 C++/Qt6 的 OBS Studio 前端停靠面板插件，七大专栏本地体检、日志分析、性能监控 | C++ / Qt6 | [github.com/YYRMMAYO/OBS_Helper_Plugin](https://github.com/YYRMMAYO/OBS_Helper_Plugin) |
+| **OBS帮助助手 (Windows)** | V3.5.3 / X1031Y3：208 条离线知识库、一键体检与日志分析、简单录像与一键开录、插件与开源依赖一键配置、手机联动（遥控 / 监看 / Wi-Fi 摄像头）、虚拟直播（Live2D + 10 套模板 + 16 平台开播引导）、弹幕 / 实时字幕 / 复盘切片 / 多平台转推；主构建面向 Windows 10 / 11，另有 Windows 7 SP1 兼容构建 | C# / WPF (.NET 10 / .NET 6) | [github.com/YYRMMAYO/OBS_Helper](https://github.com/YYRMMAYO/OBS_Helper) |
+| **OBS 排障助手 · 插件版** | v2.9.0：纯原生 C++/Qt6 的 OBS Studio 前端停靠面板插件，七大专栏本地体检、日志分析、性能监控；本版适配 OBS Studio 33 新插件布局与 Qt 6.11.1 | C++ / Qt6 | [github.com/YYRMMAYO/OBS_Helper_Plugin](https://github.com/YYRMMAYO/OBS_Helper_Plugin) |
 | **OBS 排障助手 (macOS)** | OBS 直播排障助手 macOS 版：离线知识库、智能诊断、系统监控、场景模板 | Avalonia 11 / .NET 10 | [github.com/YYRMMAYO/OBS-Helpmac](https://github.com/YYRMMAYO/OBS-Helpmac) |
+| **绪心桌宠** | v1.4.0：安卓悬浮窗桌宠，初音未来 / 洛天依 / 乐正绫三套 Canvas 程序化建模 + 骨骼动画角色，互动养成、离线 TTS、久坐喝水提醒、陪伴统计与桌面小组件（APK 约 3.6 MB，需按 README 自行构建） | Kotlin / Canvas | [github.com/YYRMMAYO/xuxin-desktop-pet](https://github.com/YYRMMAYO/xuxin-desktop-pet) |
+| **HelpDesk 电脑助手** | v1.1.0：插件式 Windows 电脑助手，网速检测 / 软件卸载 / 系统诊断 / 系统清理 / 故障排除指南按需安装，装到用户目录、不弹 UAC | C# / WPF (.NET 8) | [github.com/YYRMMAYO/HelpDesk](https://github.com/YYRMMAYO/HelpDesk) |
+| **CookieLuncher** | v1.0.0：本地命令行 Cookie 启动器，多网站 Cookie 加密存本机、一键注入浏览器、手动登录采集，并可导出 GitHub Action 保活配置 | Python 3.10+ | [github.com/YYRMMAYO/CookiesLuncher](https://github.com/YYRMMAYO/CookiesLuncher) |
 | **司南工具箱** ⛔ 已停止开发 | 最终版 v6.1.0（点击交互修复）：免费非营利 Windows 辅助工具：系统检测、清理优化、网络诊断、故障排查（现有版本仍可用） | C# / WPF (.NET 10) | [github.com/YYRMMAYO/WINhelper](https://github.com/YYRMMAYO/WINhelper) |
 
 > GuideCraft 已于 2026-08 从站点移除。
@@ -60,8 +63,8 @@
 | 项目 | 位置 |
 |---|---|
 | `robots.txt`（允许抓取 + 指向 sitemap） | 仓库根目录 |
-| `sitemap.xml`（7 个 URL，带 git 提交日期做 `lastmod`） | 仓库根目录，由脚本生成 |
-| 每页 `canonical` + Open Graph + Twitter Card | 7 个页面的 `<head>`，由脚本生成 |
+| `sitemap.xml`（10 个 URL，带 git 提交日期做 `lastmod`） | 仓库根目录，由脚本生成 |
+| 每页 `canonical` + Open Graph + Twitter Card | 10 个页面的 `<head>`，由脚本生成 |
 | 每页 JSON-LD 结构化数据（`WebSite` / `SoftwareApplication`，含版本、平台、许可证、下载地址） | 同上 |
 | 首页软件卡片**预渲染成静态 HTML** | 百度 / Bing / 社交平台的预览抓取不跑 JS，静态化后它们也能读到内容 |
 | OBS 三个版本之间互相静态链接 + 页脚静态链接 | 让爬虫能从任意一页走遍全站 |
@@ -75,7 +78,7 @@
    - 打开 `index.html`，把 `google-site-verification` 那一行的 `content` 换成它，push 上线后再回 GSC 点「验证」
    - 验证通过后 → 「站点地图」→ 提交 `sitemap.xml`
 2. **Bing Webmaster Tools**：<https://www.bing.com/webmasters> → 可以从 GSC 一键导入
-3. **百度搜索资源平台**：<https://ziyuan.baidu.com> → 添加站点 → **HTML 标签验证** → 同理替换 `index.html` 里 `baidu-site-verification` 的 `content` → 再「普通收录 → 手动提交」这 7 个 URL
+3. **百度搜索资源平台**：<https://ziyuan.baidu.com> → 添加站点 → **HTML 标签验证** → 同理替换 `index.html` 里 `baidu-site-verification` 的 `content` → 再「普通收录 → 手动提交」这 10 个 URL
    - 百度对 `github.io` 这类共享子域收录偏慢，提交后要有耐心（几周量级）
 
 ### 平时要跑的脚本
@@ -106,11 +109,16 @@ python scripts/sync-changelog.py
 
 1. **拉取 GitHub Releases**：`api.github.com/repos/YYRMMAYO/<仓库>/releases`，无 Release 的仓库回退 **Tags**
 2. **解析 Release 正文**：提取 `- ` 列表项为更新条目，自动跳过下载/验证类小节、过滤安装包 / SHA-256 等资产噪音，每版本最多 8 条
-3. **手动维护源**：`scripts/changelog-source.json` — 中英双语条目优先采用，正文缺失的版本用它兜底
+3. **手动维护源**：`scripts/changelog-source.json` — 中英双语条目优先采用，正文缺失的版本（如只有 tag 的项目）用它兜底
 4. **保留最新 3 版**：按版本号从新到旧排序，每软件仅保留最近 3 个版本，旧版本自动丢弃
 5. **生成数据**：输出 `assets/js/changelog.js`，详情页渲染并提示"最近 N/3 个更新版本，来自 GitHub Releases / Tags"；`en` 字段为空时自动回退显示中文
+6. **失败兜底**：某个仓库没取到版本（限流 / 断网）时保留上次生成的记录；**全部**没取到则直接中止，不写文件
 
 > 发布新版本（打 tag / 发 Release）后，重跑脚本即可同步；不在 GitHub 上的版本不会展示。
+
+### OBS_Helper 的两条发布通道
+
+仓库里同时有 **V 系列**（`V3.5.3`）与 **X 系列**（`X1031`、`X1031Y2`、`X1031Y3`，`X` + 日期码）两类 tag，内容基本重合、只有图标不同。X 标签与语义化版本号没法一起排序，所以 `sync-changelog.py` 里给 `obs` 配了 `tag_exclude: r"^X\d{4}"`，**更新记录只取 V 系列**；X 系列的存在在首页卡片（`main.js` 的 `versionAlt` 字段）与 OBS 详情页正文里说明。
 
 ## 🚀 部署方式
 

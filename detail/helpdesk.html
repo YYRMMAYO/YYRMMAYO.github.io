@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="HelpDesk 电脑助手 v1.1.0 — 面向不太懂电脑的 Windows 用户的插件式电脑助手：网速检测、软件卸载、系统诊断、系统清理与故障排除都以插件形式按需安装，WPF / .NET 8 自包含，装到用户目录、不弹 UAC" />
+  <title>HelpDesk 电脑助手 — YYRMM的软件库</title>
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
+  <!-- 主题脚本：head 中同步加载，第一时间应用已保存的主题（防闪烁） -->
+  <script src="../assets/js/theme.js"></script>
+  <link rel="stylesheet" href="../assets/css/detail.css" />
+  <!-- SEO:START 由 scripts/prerender.py 生成，勿手改 -->
+  <link rel="canonical" href="https://yyrmmayo.github.io/detail/helpdesk.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="YYRMM的软件库" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:title" content="HelpDesk 电脑助手" />
+  <meta property="og:description" content="HelpDesk 电脑助手 v1.1.0 — 面向不太懂电脑的 Windows 用户的插件式电脑助手：网速检测、软件卸载、系统诊断、系统清理与故障排除都以插件形式按需安装，WPF / .NET 8 自包含，装到用户目录、不弹 UAC" />
+  <meta property="og:url" content="https://yyrmmayo.github.io/detail/helpdesk.html" />
+  <meta property="og:image" content="https://yyrmmayo.github.io/assets/images/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="HelpDesk 电脑助手" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="HelpDesk 电脑助手" />
+  <meta name="twitter:description" content="HelpDesk 电脑助手 v1.1.0 — 面向不太懂电脑的 Windows 用户的插件式电脑助手：网速检测、软件卸载、系统诊断、系统清理与故障排除都以插件形式按需安装，WPF / .NET 8 自包含，装到用户目录、不弹 UAC" />
+  <meta name="twitter:image" content="https://yyrmmayo.github.io/assets/images/og-cover.png" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "HelpDesk 电脑助手",
+  "url": "https://yyrmmayo.github.io/detail/helpdesk.html",
+  "description": "HelpDesk 电脑助手 v1.1.0 — 面向不太懂电脑的 Windows 用户的插件式电脑助手：网速检测、软件卸载、系统诊断、系统清理与故障排除都以插件形式按需安装，WPF / .NET 8 自包含，装到用户目录、不弹 UAC",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Windows 10 / 11",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "CNY"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "YYRMMAYO",
+    "url": "https://github.com/YYRMMAYO"
+  },
+  "alternateName": "HelpDesk PC Helper",
+  "softwareVersion": "1.1.0",
+  "downloadUrl": "https://github.com/YYRMMAYO/HelpDesk/releases"
+}
+  </script>
+  <!-- SEO:END -->
+</head>
+<body>
+  <div class="bg-scene" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 7 5 12l4.5 5M14.5 7 19 12l-4.5 5"/></svg>
+        </span>
+        <span data-lang="zh">YYRMM的软件库</span>
+        <span data-lang="en">YYRMM's Software Library</span>
+      </a>
+      <nav class="top-nav">
+        <a class="top-link" href="../index.html#home" data-lang="zh">首页</a>
+        <a class="top-link" href="../index.html#home" data-lang="en">Home</a>
+        <a class="top-link" href="../index.html#features" data-lang="zh">特性</a>
+        <a class="top-link" href="../index.html#features" data-lang="en">Features</a>
+        <a class="top-link" href="../index.html#software" data-lang="zh">软件列表</a>
+        <a class="top-link" href="../index.html#software" data-lang="en">Software</a>
+        <a class="top-link" href="../index.html#resources" data-lang="zh">资料</a>
+        <a class="top-link" href="../index.html#resources" data-lang="en">Resources</a>
+      </nav>
+      <div class="top-actions">
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换到浅色主题"></button>
+        <a class="social-link" href="https://github.com/YYRMMAYO?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page container" data-app="helpdesk">
+    <!-- ===== Hero ===== -->
+    <section class="detail-hero" data-reveal style="--card-accent:#3f5b8a">
+      <div class="detail-icon">🛠️</div>
+      <div class="detail-hero-text">
+        <h1 class="detail-name" data-lang="zh">HelpDesk 电脑助手 <span class="detail-badge">v1.1.0</span></h1>
+        <h1 class="detail-name" data-lang="en">HelpDesk PC Helper <span class="detail-badge">v1.1.0</span></h1>
+        <p class="detail-tagline" data-lang="zh">插件式电脑助手 · 需要哪个功能就装哪个（2026-09-24 更新）</p>
+        <p class="detail-tagline" data-lang="en">A plugin-based PC helper — install only the features you need (updated 2026-09-24)</p>
+        <div class="detail-meta">
+          <span class="chip">Windows 10 / 11</span>
+          <span class="chip">WPF / .NET 8</span>
+          <span class="chip">v1.1.0</span>
+          <span class="chip" data-lang="zh">插件式</span>
+          <span class="chip" data-lang="en">Plugin-based</span>
+          <span class="chip">Inno Setup 6</span>
+        </div>
+        <div class="detail-actions">
+          <a class="btn btn-primary" href="https://github.com/YYRMMAYO/HelpDesk/releases" target="_blank" rel="noopener">
+            <span data-lang="zh">GitHub 下载</span><span data-lang="en">GitHub Download</span>
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/YYRMMAYO/HelpDesk" target="_blank" rel="noopener">
+            <span data-lang="zh">GitHub 仓库</span><span data-lang="en">Repository</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 软件介绍 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">软件介绍</h2>
+      <h2 class="detail-title" data-lang="en">About</h2>
+      <div class="detail-text">
+        <div data-lang="zh">
+          <p><strong>HelpDesk</strong> 是给<strong>不太懂电脑</strong>的 Windows 用户做的电脑助手。它不把所有功能塞进一个胖程序里，而是只保留一套最必要的外壳 —— 网速检测、软件卸载、系统诊断、系统清理、故障排除指南这些都做成<strong>独立插件</strong>，从 GitHub 仓库在线发现、下载、校验后加载，用不上的一律不占地方。</p>
+          <p>主程序是 <strong>WPF / .NET 8</strong> 自包含发布，用户不需要另装 .NET 运行时；安装包用 <strong>Inno Setup 6</strong> 编译，装到用户目录、<strong>全程不弹 UAC</strong>。插件是独立的 .NET 程序集，附带 <code>metadata.json</code>（含每个文件的 SHA-256）与仓库根的 <code>plugins-index.json</code>；下载后会校验再加载，插件与主程序版本互不牵连。</p>
+          <p>最新版本 <strong>v1.1.0</strong>（2026-09-24）新增了两个最常被问到的插件 —— <strong>网速检测</strong>（下行 / 上行 / 延迟 / 抖动，多节点自动选择）与 <strong>软件卸载</strong>（调用注册表登记的官方卸载程序，卸载后按注册表记录的安装目录清理残留），并补齐了<strong>提权</strong>与<strong>插件分发链路</strong>。分发链路上还顺手把「索引更新了、文件还是旧的」这类 CDN 缓存问题按提交号取内容 + 校验的方式彻底解决。</p>
+          <p>面向的场景很朴素：家里长辈的电脑变慢、装了一堆不知道是什么的软件、网速忽快忽慢、想卸东西又怕删错 —— 每一件都给一个能看懂结果的小工具，而不是一堆需要自己判断的开关。</p>
+          <p class="detail-note" data-lang="zh">说明：仓库 Releases 上现有的安装包是 v1.0.0，v1.1.0 目前以源码 tag 形式发布；需要安装包时可用 <code>tools/build-release.ps1</code> 一条命令自建（要求 .NET 8 SDK 与 Inno Setup 6）。仓库暂未声明开源许可证。</p>
+        </div>
+        <div data-lang="en">
+          <p><strong>HelpDesk</strong> is a PC helper for Windows users who <strong>aren't computer experts</strong>. Instead of stuffing every feature into one fat program it keeps a minimal shell — speed testing, app uninstalling, system diagnostics, cleanup and a troubleshooting guide all ship as <strong>separate plugins</strong> discovered, downloaded, verified and loaded from a GitHub repository on demand, so anything you don't need takes up no space.</p>
+          <p>The host is a self-contained <strong>WPF / .NET 8</strong> app, so users never install a .NET runtime; the installer is built with <strong>Inno Setup 6</strong>, installs into the user directory and <strong>never raises a UAC prompt</strong>. Plugins are standalone .NET assemblies with a <code>metadata.json</code> (SHA-256 per file) plus a root <code>plugins-index.json</code>; every download is verified before loading, and plugin and host versions stay independent.</p>
+          <p>The latest release, <strong>v1.1.0</strong> (2026-09-24), adds the two most requested plugins — <strong>network speed test</strong> (down / up, latency, jitter, automatic node selection) and <strong>app uninstaller</strong> (runs the official uninstaller registered for the app, then cleans leftovers from the recorded install directory) — and completes the <strong>elevation</strong> and <strong>plugin distribution</strong> path. The distribution work also kills the "new index, old file" CDN caching problem by fetching content per commit hash and verifying it.</p>
+          <p>The intended scenarios are plain: a relative's PC has gone slow, there's software nobody recognises, the connection is flaky, and uninstalling feels risky — each gets a small tool with a readable answer instead of a wall of switches to judge.</p>
+          <p class="detail-note" data-lang="en">Note: the installer currently published under Releases is v1.0.0; v1.1.0 exists as a source tag for now. Build your own package with <code>tools/build-release.ps1</code> (requires the .NET 8 SDK and Inno Setup 6). No open-source licence is declared for this repository yet.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 功能特性 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">功能特性</h2>
+      <h2 class="detail-title" data-lang="en">Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card" data-lang="zh"><strong>插件式外壳</strong>主程序只留最必要的一套界面与插件市场；功能以独立程序集从 GitHub 在线发现、下载、校验、加载，装上不需要的功能不占体积</div>
+        <div class="feature-card" data-lang="en"><strong>Thin plugin host</strong>The host keeps only the essential UI and a plugin market; features are standalone assemblies discovered, downloaded, verified and loaded from GitHub, and unneeded ones cost nothing</div>
+        <div class="feature-card" data-lang="zh"><strong>网络工具</strong>网速检测（下行 / 上行 / 延迟 / 抖动，多节点自动选优）、网络适配器信息、DNS 解析与 Ping 连通性</div>
+        <div class="feature-card" data-lang="en"><strong>Network toolkit</strong>Speed test (down / up, latency, jitter, automatic best-node choice), adapter details, DNS resolution and ping connectivity</div>
+        <div class="feature-card" data-lang="zh"><strong>软件卸载（v1.1.0 新增）</strong>按注册表登记的官方卸载程序卸载，卸载后按注册表记录的安装目录清理残留，不用自己去翻 Program Files</div>
+        <div class="feature-card" data-lang="en"><strong>App uninstaller (new in v1.1.0)</strong>Runs the official uninstaller registered for each app, then cleans leftovers from the install directory recorded in the registry — no manual Program Files digging</div>
+        <div class="feature-card" data-lang="zh"><strong>系统诊断</strong>CPU / 内存 / 磁盘实时状态与健康评分，一眼看出机器是不是「该歇歇了」</div>
+        <div class="feature-card" data-lang="en"><strong>System diagnostics</strong>Live CPU / memory / disk status with a health score, so it's obvious whether the machine is struggling</div>
+        <div class="feature-card" data-lang="zh"><strong>系统清理</strong>扫描并清理当前账户的临时文件，只动当前用户范围，不碰系统目录</div>
+        <div class="feature-card" data-lang="en"><strong>Cleanup</strong>Scans and clears temp files for the current account only — system directories are left alone</div>
+        <div class="feature-card" data-lang="zh"><strong>故障排除指南</strong>内置 15 类常见电脑故障的分步排查指引，用词尽量避开术语</div>
+        <div class="feature-card" data-lang="en"><strong>Troubleshooting guide</strong>Step-by-step fix paths for 15 common PC problems, worded to avoid jargon</div>
+        <div class="feature-card" data-lang="zh"><strong>可验证的分发链路（v1.1.0）</strong>插件打包时重算每个文件的 SHA-256 并刷新索引；下载按提交号取内容，避免 CDN 缓存导致「索引新、文件旧」</div>
+        <div class="feature-card" data-lang="en"><strong>Verifiable distribution (v1.1.0)</strong>Packaging recomputes each file's SHA-256 and refreshes the index; downloads are fetched by commit hash so a stale CDN can't pair a new index with an old file</div>
+        <div class="feature-card" data-lang="zh"><strong>安装体验</strong>Inno Setup 6 安装包，装进用户目录、全程不弹 UAC；主程序自包含发布，不用另装 .NET 运行时</div>
+        <div class="feature-card" data-lang="en"><strong>Install experience</strong>An Inno Setup 6 installer into the user directory with no UAC prompt; the host is self-contained, so no .NET runtime install</div>
+        <div class="feature-card" data-lang="zh"><strong>一条命令出包</strong><code>tools/build-release.ps1</code> 依次完成构建 → 自包含发布 → 插件打包与索引刷新 → 编译安装包</div>
+        <div class="feature-card" data-lang="en"><strong>One-command release</strong><code>tools/build-release.ps1</code> chains build → self-contained publish → plugin packaging and index refresh → installer compile</div>
+      </div>
+    </section>
+
+    <!-- ===== 项目档案 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">项目档案</h2>
+      <h2 class="detail-title" data-lang="en">Project Details</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-label">Platform</div>
+          <div class="info-value" data-lang="zh">Windows 10 / 11（x64）；主程序自包含发布，用户无需安装 .NET 运行时</div>
+          <div class="info-value" data-lang="en">Windows 10 / 11 (x64); the host is self-contained, so users need no .NET runtime</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Stack</div>
+          <div class="info-value" data-lang="zh">WPF / .NET 8；插件契约 <code>IPlugin</code> / <code>IPluginContext</code> / <code>PluginManager</code>，每个插件一个项目</div>
+          <div class="info-value" data-lang="en">WPF / .NET 8; the plugin contract is <code>IPlugin</code> / <code>IPluginContext</code> / <code>PluginManager</code>, one project per plugin</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Plugins</div>
+          <div class="info-value" data-lang="zh">网络工具 / 软件卸载 / 系统诊断 / 系统清理 / 故障排除指南（共 5 个）；插件市场按索引在线安装</div>
+          <div class="info-value" data-lang="en">Network toolkit / app uninstaller / system diagnostics / cleanup / troubleshooting guide (5 in total), installed online from the market index</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Distribution</div>
+          <div class="info-value" data-lang="zh">插件分发在独立仓库 <code>HelpDesk-Plugins</code>，内容由 <code>tools/PluginPackager</code> 生成（含 SHA-256）</div>
+          <div class="info-value" data-lang="en">Plugins are distributed from the separate <code>HelpDesk-Plugins</code> repository, generated by <code>tools/PluginPackager</code> (SHA-256 included)</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Build</div>
+          <div class="info-value" data-lang="zh"><code>tools/build-release.ps1</code> 一条命令出安装包；Inno Setup 6 编译器路径可自动探测（含注册表）</div>
+          <div class="info-value" data-lang="en"><code>tools/build-release.ps1</code> produces the installer in one command; the Inno Setup 6 compiler path is auto-detected (registry included)</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">License</div>
+          <div class="info-value" data-lang="zh">仓库暂无 LICENSE 文件（未声明开源协议），使用前请先看仓库说明</div>
+          <div class="info-value" data-lang="en">No LICENSE file yet — no open-source licence is declared, so check the repository before use</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 更新记录（数据由 scripts/sync-changelog.py 同步生成） ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">更新记录</h2>
+      <h2 class="detail-title" data-lang="en">Changelog</h2>
+      <div id="changelog" class="changelog"></div>
+    </section>
+
+    <!-- ===== 相关链接 ===== -->
+    <nav class="related" data-reveal aria-label="相关软件">
+      <span class="related-label" data-lang="zh">其他软件</span>
+      <span class="related-label" data-lang="en">More software</span>
+      <a href="sinan.html" data-lang="zh">司南工具箱</a>
+      <a href="sinan.html" data-lang="en">Sinan Toolbox</a>
+      <a href="xuxin.html" data-lang="zh">绪心桌宠</a>
+      <a href="xuxin.html" data-lang="en">Xuxin Desktop Pet</a>
+      <a href="../index.html#software" data-lang="zh">全部软件</a>
+      <a href="../index.html#software" data-lang="en">All software</a>
+    </nav>
+
+    <a class="back-link" href="../index.html#software" data-lang="zh">← 返回软件列表</a>
+    <a class="back-link" href="../index.html#software" data-lang="en">← Back to software list</a>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p data-lang="zh">© 2026 YYRMM的软件库 · 项目见 <a href="https://github.com/YYRMMAYO/HelpDesk" target="_blank" rel="noopener">HelpDesk 仓库</a></p>
+      <p data-lang="en">© 2026 YYRMM's Software Library · Project: <a href="https://github.com/YYRMMAYO/HelpDesk" target="_blank" rel="noopener">HelpDesk repo</a></p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/changelog.js"></script>
+  <script src="../assets/js/detail.js"></script>
+</body>
+</html>

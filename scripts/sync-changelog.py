@@ -9,10 +9,11 @@ sync-changelog.py — YYRMM 的软件库「更新记录」一键同步脚本（G
   3) 合并 scripts/changelog-source.json 手动维护源（中英双语、正文缺失项目）
   4) 每个软件保留【最近 3 个版本】的更新记录
   5) 生成 assets/js/changelog.js 供详情页渲染（请勿手改该文件）
+  6) 网络失败 / GitHub 限流时保留上一次生成的记录，不会把更新记录清空
 
 用法：
   python scripts/sync-changelog.py
-  （依赖网络访问 api.github.com；Rate Limit 未认证 60 次/小时，本脚本每次约 12 次请求）
+  （依赖网络访问 api.github.com；Rate Limit 未认证 60 次/小时，本脚本每次约 18 次请求）
 
 手动维护：
   - 需要中英双语 / 给某版本补充内容的项目
@@ -42,10 +43,17 @@ MAX_VERSIONS = 3
 GITHUB_SOURCES = {
     "love101":   {"repo": "YYRMMAYO/love101",    "desc": "第101种理由"},
     "aistudio":  {"repo": "YYRMMAYO/AIStudioHub", "desc": "AIStudioHub"},
-    "obs":       {"repo": "YYRMMAYO/OBS_Helper",  "desc": "OBS 排障助手 (Windows)"},
+    # OBS_Helper 有 V 系列（V3.5.3）与 X 系列（X1031 / X1031Y2 / X1031Y3）两条发布通道，
+    # 内容基本重合（X 系列仅图标不同）。更新记录只取 V 系列：X 标签是「X + MMdd 日期码」，
+    # 与语义化版本号无法放在一起排序，并列展示也只会让读者以为发了两套不同的功能。
+    "obs":       {"repo": "YYRMMAYO/OBS_Helper",  "desc": "OBS帮助助手 (Windows)",
+                  "tag_exclude": r"^X\d{4}"},
     "obs-plugin": {"repo": "YYRMMAYO/OBS_Helper_Plugin", "desc": "OBS 排障助手 · 插件版"},
     "obs-mac":   {"repo": "YYRMMAYO/OBS-Helpmac", "desc": "OBS 排障助手 (macOS)"},
     "sinan":     {"repo": "YYRMMAYO/WINhelper",   "desc": "司南工具箱"},
+    "xuxin":     {"repo": "YYRMMAYO/xuxin-desktop-pet", "desc": "绪心桌宠"},
+    "helpdesk":  {"repo": "YYRMMAYO/HelpDesk",    "desc": "HelpDesk 电脑助手"},
+    "cookiesluncher": {"repo": "YYRMMAYO/CookiesLuncher", "desc": "CookieLuncher"},
 }
 
 # Release 正文中这些小节标题会被跳过（下载说明 / 构建验证等噪音）
@@ -79,15 +87,24 @@ def gh_api(url: str):
         return json.loads(resp.read().decode("utf-8"))
 
 
-def fetch_github_versions(key: str, repo: str) -> dict:
+def fetch_github_versions(key: str, repo: str, tag_exclude: str = "") -> dict:
     """拉取 Releases + Tags，合并去重。
+
+    tag_exclude：正则，命中的 tag 直接跳过（如 OBS_Helper 的 X 系列发布日期码标签）。
 
     返回 { 规范化版本号: {"source": "release"|"tag", "tag": 原始 tag,
                            "name": release 名称, "body": release 正文, "date": 发布日期} }
     """
+    skip = re.compile(tag_exclude) if tag_exclude else None
+
+    def excluded(tag: str) -> bool:
+        return bool(skip and skip.search(tag or ""))
+
     merged = {}
     try:
         for r in gh_api(f"https://api.github.com/repos/{repo}/releases?per_page=10"):
+            if excluded(r.get("tag_name", "")):
+                continue
             nv = norm_version(r.get("tag_name", ""))
             merged[nv] = {
                 "source": "release",
@@ -100,6 +117,8 @@ def fetch_github_versions(key: str, repo: str) -> dict:
         print(f"  [警告] Releases 拉取失败：{e}")
     try:
         for t in gh_api(f"https://api.github.com/repos/{repo}/tags?per_page=10"):
+            if excluded(t.get("name", "")):
+                continue
             nv = norm_version(t.get("name", ""))
             if nv and nv not in merged:  # 仅补充 Release 没有的版本
                 merged[nv] = {
@@ -189,10 +208,10 @@ def tagline_from_name(name: str) -> str:
 
 
 # ---------------------------------------------------------------
-# 读取现有 changelog.js 中已有的英文翻译（保留人工翻译）
+# 读取现有 changelog.js（英文翻译 + 网络失败时的兜底）
 # ---------------------------------------------------------------
-def load_existing_en() -> dict:
-    """返回 { key: { version: {"tagline": {"en": ...}, "items": [{"en": ...}]} } }"""
+def load_existing() -> dict:
+    """返回 changelog.js 里的全部条目 { key: [ {version, tagline, items} ] }。"""
     if not OUT_JS.exists():
         return {}
     text = OUT_JS.read_text(encoding="utf-8", errors="ignore")
@@ -203,8 +222,13 @@ def load_existing_en() -> dict:
         data = json.loads(m.group(1))
     except Exception:
         return {}
+    return data if isinstance(data, dict) else {}
+
+
+def load_existing_en() -> dict:
+    """返回 { key: { version: {"tagline": {"en": ...}, "items": [{"en": ...}]} } }"""
     result = {}
-    for key, entries in data.items():
+    for key, entries in load_existing().items():
         for e in entries:
             if "en" in str(e.get("tagline", {})) or any(
                 isinstance(i, dict) and "en" in i for i in e.get("items", [])
@@ -265,7 +289,7 @@ def main():
     print("\n[1/4] 拉取 GitHub Releases + Tags：")
     for key, cfg in GITHUB_SOURCES.items():
         print(f"  · {cfg['desc']} ({cfg['repo']})")
-        gh_data[key] = fetch_github_versions(key, cfg["repo"])
+        gh_data[key] = fetch_github_versions(key, cfg["repo"], cfg.get("tag_exclude", ""))
         srcs = [v["source"] for v in gh_data[key].values()]
         print(f"    共 {len(gh_data[key])} 个版本（Release {srcs.count('release')} / Tag {srcs.count('tag')}）")
 
@@ -288,8 +312,15 @@ def main():
 
     # 4) 合并输出（版本列表一律来自 GitHub）
     output = {}
+    existing_all = load_existing()
     print("\n[4/4] 合并并保留最新 3 版：")
     for key in sorted(gh_data):
+        if not gh_data[key]:
+            # 网络 / 限流导致这个仓库没取到任何版本：保留上一次生成的记录，不清空
+            prev = existing_all.get(key) or []
+            output[key] = prev
+            print(f"  · {key}：[警告] 未取到任何版本，保留原有 {len(prev)} 条记录")
+            continue
         merged = {}
         for ver, gh in gh_data[key].items():
             manual_ver = manual_data.get(key, {}).get(ver)
@@ -302,6 +333,12 @@ def main():
         output[key] = [{"version": v, **e} for v, e in kept]
         print(f"  · {key}：保留 {len(kept)} 版：{', '.join(v for v, _ in kept)}"
               + (f"（丢弃 {dropped} 个旧版）" if dropped else ""))
+
+    if not any(v for v in output.values()):
+        raise SystemExit(
+            "\n[中止] 所有仓库都没取到版本（多半是 GitHub API 限流或断网），"
+            "未写入 changelog.js —— 现有记录保持不变。稍后重跑即可。"
+        )
 
     # 5) 写文件
     gen_time = datetime.now(timezone.utc).astimezone().strftime("%Y-%m-%d %H:%M")

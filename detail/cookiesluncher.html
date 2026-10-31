@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CookieLuncher v1.0.0 — 本地运行的中文命令行 Cookie 启动器：多网站登录 Cookie 加密存在本机，一键注入浏览器打开网站，手动登录采集，并可导出 GitHub Action 保活配置" />
+  <title>CookieLuncher · Cookie 启动器 — YYRMM的软件库</title>
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
+  <!-- 主题脚本：head 中同步加载，第一时间应用已保存的主题（防闪烁） -->
+  <script src="../assets/js/theme.js"></script>
+  <link rel="stylesheet" href="../assets/css/detail.css" />
+  <!-- SEO:START 由 scripts/prerender.py 生成，勿手改 -->
+  <link rel="canonical" href="https://yyrmmayo.github.io/detail/cookiesluncher.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="YYRMM的软件库" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:title" content="CookieLuncher · Cookie 启动器" />
+  <meta property="og:description" content="CookieLuncher v1.0.0 — 本地运行的中文命令行 Cookie 启动器：多网站登录 Cookie 加密存在本机，一键注入浏览器打开网站，手动登录采集，并可导出 GitHub Action 保活配置" />
+  <meta property="og:url" content="https://yyrmmayo.github.io/detail/cookiesluncher.html" />
+  <meta property="og:image" content="https://yyrmmayo.github.io/assets/images/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="CookieLuncher · Cookie 启动器" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CookieLuncher · Cookie 启动器" />
+  <meta name="twitter:description" content="CookieLuncher v1.0.0 — 本地运行的中文命令行 Cookie 启动器：多网站登录 Cookie 加密存在本机，一键注入浏览器打开网站，手动登录采集，并可导出 GitHub Action 保活配置" />
+  <meta name="twitter:image" content="https://yyrmmayo.github.io/assets/images/og-cover.png" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "CookieLuncher · Cookie 启动器",
+  "url": "https://yyrmmayo.github.io/detail/cookiesluncher.html",
+  "description": "CookieLuncher v1.0.0 — 本地运行的中文命令行 Cookie 启动器：多网站登录 Cookie 加密存在本机，一键注入浏览器打开网站，手动登录采集，并可导出 GitHub Action 保活配置",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Windows",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "CNY"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "YYRMMAYO",
+    "url": "https://github.com/YYRMMAYO"
+  },
+  "alternateName": "CookieLuncher",
+  "softwareVersion": "1.0.0",
+  "downloadUrl": "https://github.com/YYRMMAYO/CookiesLuncher"
+}
+  </script>
+  <!-- SEO:END -->
+</head>
+<body>
+  <div class="bg-scene" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 7 5 12l4.5 5M14.5 7 19 12l-4.5 5"/></svg>
+        </span>
+        <span data-lang="zh">YYRMM的软件库</span>
+        <span data-lang="en">YYRMM's Software Library</span>
+      </a>
+      <nav class="top-nav">
+        <a class="top-link" href="../index.html#home" data-lang="zh">首页</a>
+        <a class="top-link" href="../index.html#home" data-lang="en">Home</a>
+        <a class="top-link" href="../index.html#features" data-lang="zh">特性</a>
+        <a class="top-link" href="../index.html#features" data-lang="en">Features</a>
+        <a class="top-link" href="../index.html#software" data-lang="zh">软件列表</a>
+        <a class="top-link" href="../index.html#software" data-lang="en">Software</a>
+        <a class="top-link" href="../index.html#resources" data-lang="zh">资料</a>
+        <a class="top-link" href="../index.html#resources" data-lang="en">Resources</a>
+      </nav>
+      <div class="top-actions">
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换到浅色主题"></button>
+        <a class="social-link" href="https://github.com/YYRMMAYO?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page container" data-app="cookiesluncher">
+    <!-- ===== Hero ===== -->
+    <section class="detail-hero" data-reveal style="--card-accent:#7a5b3a">
+      <div class="detail-icon">🍪</div>
+      <div class="detail-hero-text">
+        <h1 class="detail-name" data-lang="zh">CookieLuncher · Cookie 启动器 <span class="detail-badge">v1.0.0</span></h1>
+        <h1 class="detail-name" data-lang="en">CookieLuncher <span class="detail-badge">v1.0.0</span></h1>
+        <p class="detail-tagline" data-lang="zh">登录状态加密存在本机，要用的时候一键注入浏览器（2026-09-30 发布）</p>
+        <p class="detail-tagline" data-lang="en">Login state encrypted on your own machine, injected into the browser on demand (released 2026-09-30)</p>
+        <div class="detail-meta">
+          <span class="chip">Windows</span>
+          <span class="chip">Python 3.10+</span>
+          <span class="chip">v1.0.0</span>
+          <span class="chip" data-lang="zh">命令行</span>
+          <span class="chip" data-lang="en">CLI</span>
+          <span class="chip" data-lang="zh">Cookie 管理</span>
+          <span class="chip" data-lang="en">Cookie Manager</span>
+        </div>
+        <div class="detail-actions">
+          <a class="btn btn-primary" href="https://github.com/YYRMMAYO/CookiesLuncher" target="_blank" rel="noopener">
+            <span data-lang="zh">GitHub 仓库</span><span data-lang="en">GitHub Repository</span>
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/YYRMMAYO/CookiesLuncher/blob/main/README.md" target="_blank" rel="noopener">
+            <span data-lang="zh">使用说明</span><span data-lang="en">Usage guide</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 软件介绍 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">软件介绍</h2>
+      <h2 class="detail-title" data-lang="en">About</h2>
+      <div class="detail-text">
+        <div data-lang="zh">
+          <p><strong>CookieLuncher</strong>（Cookie 启动器）是一个本地运行的中文命令行小工具：把各网站的登录 Cookie <strong>加密保存在本机</strong>，需要时一键注入浏览器打开网站；也可以直接打开可见浏览器让你手动登录（含验证码），回来按回车就把全部有效 Cookie 采集下来。仓库目录名是 <code>CookiesLuncher</code>，程序内统一叫 CookieLuncher。</p>
+          <p>它解决的问题很具体：不想在每台设备、每个浏览器里重复登录，也不想把 Cookie 明文贴在脚本里。所有网站的 Cookie 加密写进单个 <code>cookies.enc</code>，<strong>明文永不落盘</strong>，密码错了就解不开；主菜单的导出还额外加了一道<strong>二重导出密码</strong>（只存哈希），避免别人拿到文件就能导。</p>
+          <p>启动流程是：先建一个临时用户数据目录 → Playwright 启动浏览器并把 Cookie 注入（Chromium 原生加密写盘，登录态可靠）→ 页面加载完成后退出 Playwright，由程序直接拉起同一个浏览器的独立进程 → 你正常用浏览器，关闭窗口后程序监控到全部进程退出，<strong>自动删除临时目录</strong>，不留登录态。内置的 Thorium 后端自带 H.264 / AAC 专有编解码，普通 B 站视频可直接播放；会员 / DRM 视频则切到本机 Edge / Chrome 后端。</p>
+          <p>另一个用途是配合 GitHub Action 的保活项目：一键导出只含密文的 <code>action_config_output.json</code> 与控制台打印的 Fernet 密钥（存进仓库 Secret，例如 <code>COOKIE_FERNET_KEY</code>），定时任务就能用同一份登录态去保活，不需要把 Cookie 明文放进仓库。</p>
+          <p class="detail-note" data-lang="zh">说明：需要 Python 3.10+ 与 <code>pip install -r requirements.txt</code>（首次安装依赖要联网）；Thorium 后端需自行从其 Releases 下载并放到 <code>external_browsers\thorium-win64\</code>。仓库暂未声明开源许可证。</p>
+        </div>
+        <div data-lang="en">
+          <p><strong>CookieLuncher</strong> is a small local Chinese-language CLI: it <strong>encrypts and stores</strong> per-site login cookies on your own machine and injects them into a browser on demand; it can also open a visible browser so you log in yourself (captcha included) and collect every valid cookie when you press Enter. The repository folder is still called <code>CookiesLuncher</code>, while the program calls itself CookieLuncher.</p>
+          <p>The problem it solves is concrete: you don't want to log in again on every device and browser, and you certainly don't want cookies sitting in plain text inside a script. All sites go into a single encrypted <code>cookies.enc</code> — <strong>plaintext never touches disk</strong>, and a wrong password simply can't decrypt it. Exporting from the menu adds a second, hash-only <strong>export password</strong> so that holding the file isn't enough.</p>
+          <p>Launching works like this: create a temporary profile, have Playwright start the browser and inject the cookies (Chromium's own encryption writes them to disk, so the session holds), then quit Playwright and relaunch the same browser as a standalone process. You browse normally, and once every process exits the tool <strong>deletes the temporary profile</strong>, leaving no session behind. The bundled Thorium backend carries the proprietary H.264 / AAC codecs so ordinary Bilibili videos play; member or DRM content switches to your local Edge / Chrome.</p>
+          <p>Its other job is feeding a GitHub Action keep-alive project: one click exports a ciphertext-only <code>action_config_output.json</code> plus a Fernet key printed to the console (store it as a repository secret such as <code>COOKIE_FERNET_KEY</code>), so the scheduled job can reuse the same login state without any plain-text cookies in the repository.</p>
+          <p class="detail-note" data-lang="en">Note: requires Python 3.10+ and <code>pip install -r requirements.txt</code> (the first install needs a network connection); the Thorium backend must be downloaded from its own releases into <code>external_browsers\thorium-win64\</code>. No open-source licence is declared for this repository yet.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 功能特性 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">功能特性</h2>
+      <h2 class="detail-title" data-lang="en">Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card" data-lang="zh"><strong>加密保存</strong>所有网站 Cookie 加密写进单个 <code>cookies.enc</code>，明文永不落盘，密码错误无法解密；忘记密码则 Cookie 不可找回</div>
+        <div class="feature-card" data-lang="en"><strong>Encrypted storage</strong>Every site's cookies go into one encrypted <code>cookies.enc</code>; plaintext never hits disk, a wrong password can't decrypt, and a forgotten password means the cookies are unrecoverable</div>
+        <div class="feature-card" data-lang="zh"><strong>一键启动浏览器</strong>创建临时用户目录注入 Cookie 后拉起浏览器，关闭窗口自动删除临时数据，不在本机留下登录态</div>
+        <div class="feature-card" data-lang="en"><strong>One-click browser launch</strong>A temporary profile receives the cookies, the browser starts, and everything is deleted once the window closes — no session left behind</div>
+        <div class="feature-card" data-lang="zh"><strong>手动登录采集</strong>打开可见浏览器登录账号 / 过验证码，回车确认后自动采集全部有效 Cookie；空结果或失败时拒绝保存</div>
+        <div class="feature-card" data-lang="en"><strong>Manual login capture</strong>Log in (and pass any captcha) in a visible browser, press Enter and every valid cookie is collected; empty or failed captures are refused rather than saved</div>
+        <div class="feature-card" data-lang="zh"><strong>Cookie 管理</strong>粘贴导入（分号 / JSON / Cookie-Editor 三种格式自动识别）、查看、删除（二次确认）、修改密码（用新密钥整体重新加密）</div>
+        <div class="feature-card" data-lang="en"><strong>Cookie management</strong>Paste-import (auto-detecting semicolon, JSON and Cookie-Editor formats), view, delete with confirmation, and change password by re-encrypting everything with a new key</div>
+        <div class="feature-card" data-lang="zh"><strong>导出保活配置</strong>生成只含密文的 <code>action_config_output.json</code> + Fernet 密钥，直接对接 GitHub Action 保活项目；主菜单导出带二重密码，命令行导出适合脚本</div>
+        <div class="feature-card" data-lang="en"><strong>Keep-alive export</strong>Produces a ciphertext-only <code>action_config_output.json</code> plus the Fernet key, ready for a GitHub Action keep-alive project; the menu export asks for the second password while the CLI export suits scripts</div>
+        <div class="feature-card" data-lang="zh"><strong>双浏览器后端</strong>内置 Thorium（离线自包含，自带 H.264 / AAC，可放 B 站视频）或本机 Edge / Chrome（会员 / DRM 视频），改 <code>config.json</code> 一行即可切换</div>
+        <div class="feature-card" data-lang="en"><strong>Two browser backends</strong>Bundled Thorium (offline, with H.264 / AAC so Bilibili plays) or your local Edge / Chrome for member and DRM video — one line in <code>config.json</code> switches them</div>
+      </div>
+    </section>
+
+    <!-- ===== 项目档案 ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">项目档案</h2>
+      <h2 class="detail-title" data-lang="en">Project Details</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-label">Environment</div>
+          <div class="info-value" data-lang="zh">Windows + Python 3.10 及以上；<code>pip install -r requirements.txt</code> 后 <code>python main.py</code> 启动</div>
+          <div class="info-value" data-lang="en">Windows with Python 3.10+; run <code>pip install -r requirements.txt</code>, then <code>python main.py</code></div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Storage</div>
+          <div class="info-value" data-lang="zh">Cookie 密文存 <code>cookies.enc</code>；访问密码首次启动时设定（至少 6 位），同时用于登录程序与加密</div>
+          <div class="info-value" data-lang="en">Ciphertext lives in <code>cookies.enc</code>; the access password is set on first run (6+ characters) and serves both as login and as the encryption key</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Capture</div>
+          <div class="info-value" data-lang="zh">Playwright 驱动浏览器注入 / 采集；采集与启动都用独立临时目录，结束自动查杀残留进程并删除</div>
+          <div class="info-value" data-lang="en">Playwright drives injection and capture, each in its own temporary profile that is cleaned up (stray processes included) when finished</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Export</div>
+          <div class="info-value" data-lang="zh">导出 Fernet 对称加密的 Cookie 清单；密钥只在控制台打印一次，需自行存进 GitHub Secret</div>
+          <div class="info-value" data-lang="en">Exports a Fernet-encrypted cookie list; the key is printed to the console once and must be stored as a GitHub secret</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Third-party</div>
+          <div class="info-value" data-lang="zh">Thorium 为独立社区项目，与本程序作者无关；分发包中的 Thorium 二进制遵循其自身许可</div>
+          <div class="info-value" data-lang="en">Thorium is an independent community project unrelated to this tool's author; the bundled Thorium binaries follow Thorium's own licence</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">License</div>
+          <div class="info-value" data-lang="zh">仓库暂无 LICENSE 文件（未声明开源协议），使用前请先看仓库说明</div>
+          <div class="info-value" data-lang="en">No LICENSE file yet — no open-source licence is declared, so check the repository before use</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 更新记录（数据由 scripts/sync-changelog.py 同步生成） ===== -->
+    <section class="detail-section" data-reveal>
+      <h2 class="detail-title" data-lang="zh">更新记录</h2>
+      <h2 class="detail-title" data-lang="en">Changelog</h2>
+      <div id="changelog" class="changelog"></div>
+    </section>
+
+    <!-- ===== 相关链接 ===== -->
+    <nav class="related" data-reveal aria-label="相关软件">
+      <span class="related-label" data-lang="zh">其他软件</span>
+      <span class="related-label" data-lang="en">More software</span>
+      <a href="helpdesk.html" data-lang="zh">HelpDesk 电脑助手</a>
+      <a href="helpdesk.html" data-lang="en">HelpDesk PC Helper</a>
+      <a href="sinan.html" data-lang="zh">司南工具箱</a>
+      <a href="sinan.html" data-lang="en">Sinan Toolbox</a>
+      <a href="../index.html#software" data-lang="zh">全部软件</a>
+      <a href="../index.html#software" data-lang="en">All software</a>
+    </nav>
+
+    <a class="back-link" href="../index.html#software" data-lang="zh">← 返回软件列表</a>
+    <a class="back-link" href="../index.html#software" data-lang="en">← Back to software list</a>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p data-lang="zh">© 2026 YYRMM的软件库 · 项目见 <a href="https://github.com/YYRMMAYO/CookiesLuncher" target="_blank" rel="noopener">CookiesLuncher 仓库</a></p>
+      <p data-lang="en">© 2026 YYRMM's Software Library · Project: <a href="https://github.com/YYRMMAYO/CookiesLuncher" target="_blank" rel="noopener">CookiesLuncher repo</a></p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/changelog.js"></script>
+  <script src="../assets/js/detail.js"></script>
+</body>
+</html>

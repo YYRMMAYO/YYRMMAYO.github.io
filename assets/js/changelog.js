@@ -2,7 +2,7 @@
  * 更新记录数据 — 由 scripts/sync-changelog.py 自动生成，请勿手改
  * 重新生成：python scripts/sync-changelog.py
  * 数据来源：GitHub Releases / Tags（每个软件最近 3 个版本）
- * 生成时间：2026-10-06 17:50
+ * 生成时间：2026-10-31 21:16
  * ============================================================ */
 const CHANGELOG = {
   "aistudio": [
@@ -94,6 +94,101 @@ const CHANGELOG = {
       ]
     }
   ],
+  "cookiesluncher": [
+    {
+      "version": "v1.0.0",
+      "tagline": {
+        "zh": "首次发布：Cookie 加密保存在本机，一键注入浏览器",
+        "en": "First release: cookies encrypted on your machine, injected on demand"
+      },
+      "items": [
+        {
+          "zh": "多网站 Cookie 加密写进单个 cookies.enc，明文永不落盘，密码错误无法解密",
+          "en": "Per-site cookies are encrypted into a single cookies.enc — plaintext never touches disk and a wrong password can't decrypt it."
+        },
+        {
+          "zh": "一键启动浏览器：临时用户目录注入 Cookie 后拉起浏览器，关闭窗口自动删除临时数据",
+          "en": "One-click launch: a temporary profile receives the cookies, the browser starts, and the temp data is deleted once the window closes."
+        },
+        {
+          "zh": "手动登录采集：打开可见浏览器登录账号 / 过验证码，回车后采集全部有效 Cookie；空结果拒绝保存",
+          "en": "Manual capture: log in and pass any captcha in a visible browser, press Enter and every valid cookie is collected; empty results are refused."
+        },
+        {
+          "zh": "Cookie 管理：分号 / JSON / Cookie-Editor 三种格式粘贴导入，查看、删除需二次确认，改密码用新密钥整体重新加密",
+          "en": "Cookie management: paste-import in semicolon, JSON or Cookie-Editor format, view, delete with confirmation, and change the password by re-encrypting everything."
+        },
+        {
+          "zh": "导出 GitHub Action 保活配置：只含密文的 action_config_output.json + Fernet 密钥；主菜单导出另设二重密码",
+          "en": "Export a GitHub Action keep-alive config: a ciphertext-only action_config_output.json plus the Fernet key, with a second export password from the menu."
+        },
+        {
+          "zh": "双浏览器后端：内置 Thorium（离线自包含，自带 H.264 / AAC）或本机 Edge / Chrome（DRM 会员视频）",
+          "en": "Two browser backends: bundled Thorium (offline, with H.264 / AAC) or local Edge / Chrome for DRM member content."
+        }
+      ]
+    }
+  ],
+  "helpdesk": [
+    {
+      "version": "v1.1.0",
+      "tagline": {
+        "zh": "新增网速检测与软件卸载 · 补齐提权与插件分发链路",
+        "en": "Speed test and app uninstaller · elevation and plugin distribution completed"
+      },
+      "items": [
+        {
+          "zh": "新增「网速检测」插件：下行 / 上行 / 延迟 / 抖动，多节点自动选优",
+          "en": "New network speed test plugin: download / upload, latency and jitter, with automatic best-node selection."
+        },
+        {
+          "zh": "新增「软件卸载」插件：按注册表登记的官方卸载程序卸载，卸载后按注册表记录的安装目录清理残留",
+          "en": "New app uninstaller plugin: runs the official uninstaller registered for the app, then cleans leftovers from the install directory recorded in the registry."
+        },
+        {
+          "zh": "补齐提权路径：需要管理员权限的操作会明确申请，不再静默失败",
+          "en": "Completed the elevation path: operations that need administrator rights now request them explicitly instead of failing silently."
+        },
+        {
+          "zh": "插件分发链路：下载按提交号取内容，彻底消除 CDN 缓存导致的「索引新、文件旧」",
+          "en": "Plugin distribution now fetches content by commit hash, eliminating the stale-CDN \"new index, old file\" problem."
+        },
+        {
+          "zh": "校验失败不再被重试期间的网络抖动掩盖：失败原因如实上报",
+          "en": "Verification failures are no longer masked by network jitter during retries — the real reason is reported."
+        }
+      ]
+    },
+    {
+      "version": "v1.0",
+      "tagline": {
+        "zh": "首次发布：插件式外壳 + 四个内置插件",
+        "en": "First release: a plugin host with four built-in plugins"
+      },
+      "items": [
+        {
+          "zh": "插件式外壳 + 插件市场：主程序只保留最必要的一套界面，功能以独立程序集按需下载加载",
+          "en": "A plugin host plus a plugin market: the app keeps only the essential UI while features ship as standalone assemblies loaded on demand."
+        },
+        {
+          "zh": "系统诊断：CPU / 内存 / 磁盘监控与健康评分",
+          "en": "System diagnostics: CPU / memory / disk monitoring with a health score."
+        },
+        {
+          "zh": "网络工具：网络适配器信息、DNS 解析与 Ping 测试",
+          "en": "Network toolkit: adapter details, DNS resolution and ping tests."
+        },
+        {
+          "zh": "故障排除指南：15 类常见电脑问题的修复步骤",
+          "en": "Troubleshooting guide: fix paths for 15 common PC problems."
+        },
+        {
+          "zh": "系统清理：当前账户临时文件扫描与清理",
+          "en": "Cleanup: scans and clears temp files for the current account."
+        }
+      ]
+    }
+  ],
   "love101": [
     {
       "version": "v1.0.0",
@@ -119,117 +214,101 @@ const CHANGELOG = {
   ],
   "obs": [
     {
-      "version": "v3.0.0",
+      "version": "v3.5.3",
       "tagline": {
-        "zh": "数据安全 · 无障碍 · Win7 旧协议兼容 · 回放缓存与简单开播",
-        "en": "Data safety · accessibility · legacy Win7 protocol · replay buffer and simple stream start"
+        "zh": "插件与开源依赖一键配置 · 本机插件可管理 · 修复下载全部失败",
+        "en": "One-click plugins and dependencies · managed local plugins · downloads fixed"
       },
       "items": [
         {
-          "zh": "数据安全（本版主线）：所有「写用户文件」的动作走同一条事务通道 —— 写前快照 + 原子替换 + 校验读回，中途失败自动回滚并保留唯一的恢复副本；路径护栏覆盖全部写 basic.ini 的入口（净化成单个目录名 + 二次断言落在 OBS 配置目录内，可信根改为登记制），机密存储读失败不再被当成「空存储」整份覆盖写回",
-          "en": "Data safety is the headline: every write to user files goes through one transaction channel — snapshot, atomic replace and read-back verification, with automatic rollback that keeps the only recovery copy; path guardrails now cover every entry point that writes basic.ini (sanitised to a single directory name, asserted to stay inside the OBS config folder, with explicit trust-root registration), and a failed secret-store read is no longer treated as an empty store that gets written back over your keys."
+          "zh": "插件一键配置：精选卡片或粘贴 owner/repo 直接查最新 Release、挑 Windows x64 包、下载、SHA-256 校验、安全解压并安装；保留「下载页」手动路径",
+          "en": "One-click plugin setup: use a curated card or paste owner/repo to look up the latest release, pick the Windows x64 asset, download, verify SHA-256 and unpack an install — with the download page kept as a manual path."
         },
         {
-          "zh": "无障碍适配：键盘焦点可见并可用空格 / 回车激活、Toast 走读屏实时区域播报、跟随 Windows 高对比主题与系统「文本大小」，危险确认框的默认按钮落在「取消」",
-          "en": "Accessibility: visible keyboard focus with space / enter activation, toasts announced through screen-reader live regions, following the Windows high-contrast theme and system text size, and destructive confirmations defaulting to Cancel."
+          "zh": "开源依赖一键配置：FFmpeg / rclone / whisper.cpp / MediaMTX 在应用内查 Release → 下载 → 校验 → 安全解压 → 定位 exe → 写入依赖目录，已就绪则直接复用",
+          "en": "One-click dependency setup: FFmpeg / rclone / whisper.cpp / MediaMTX are looked up, downloaded, verified, safely unpacked, located and written into the dependency folder — anything already present is reused."
         },
         {
-          "zh": "双构建 + Win7 旧协议兼容：主构建面向 Windows 10 / 11（.NET 10），兼容构建面向 Windows 7 SP1+（.NET 6），安装包 / 便携包 / 增量包两条线分别发布，按系统选一个即可；兼容构建支持旧协议 obs-websocket 4.x（默认端口 4444，鉴权算式 / 请求映射 / 事件映射逐条对照官方协议），数据目录独立为 %LocalAppData%\\OBS_Helper_Win7，与主构建互不影响",
-          "en": "Two builds and legacy Win7 protocol support: the main build targets Windows 10 / 11 (.NET 10) and the compatible build covers Windows 7 SP1+ (.NET 6), each with its own installer, portable and delta package — pick the one matching your system. The compatible build speaks legacy obs-websocket 4.x (default port 4444, with the v4 auth algorithm, request and event mappings checked against the official protocol) from its own data directory %LocalAppData%\\OBS_Helper_Win7, so the two builds never clash."
+          "zh": "本机插件管理：卸载整目录移入 plugins\\local-backups（不硬删，可放回）、用户级 ⇄ 全局级迁移、只登记不移动的接管管理、打开文件夹；OBS 运行中一律拒绝卸载",
+          "en": "Local plugin management: uninstall moves the whole folder into plugins\\local-backups (never a hard delete, restorable), migrate user-level ⇄ global-level, register without moving files, open the folder — and uninstalling is refused while OBS is running."
         },
         {
-          "zh": "回放缓存一键存片：托盘菜单与全局热键 Ctrl+Alt+V 保存「刚才那段」，未开缓存时按钮自动禁用，旧协议同样支持",
-          "en": "One-click replay-buffer saving from the tray menu or the Ctrl+Alt+V hotkey; the button disables itself when the buffer is off, and the legacy protocol supports it too."
+          "zh": "手机摄像头从「显示地址」变成「能用起来」：推流二维码、查询 MediaMTX API 检测手机是否已推流、只对 sidecar 里的 mediamtx.exe 一键放行防火墙",
+          "en": "The phone camera moved from \"showing an address\" to actually working: a streaming QR code, stream detection through the MediaMTX API, and one-click firewall allowance for the sidecar mediamtx.exe only."
         },
         {
-          "zh": "简单开播：按下之前先查「已经在播 / 没连上 OBS / 没填服务器 / 没填串流密钥」，并提示上行拥塞、已在下行丢帧与同时录制；开播后显示已播时长、按已发送字节实测的码率与丢帧率，且串流密钥不进本应用",
-          "en": "Simple stream start checks \"already live / OBS unreachable / no server / no stream key\" before you press it and warns about uplink congestion, dropped frames and simultaneous recording; once live it shows elapsed time, bitrate measured from bytes sent and drop rate — and the stream key never enters the app."
+          "zh": "MediaMTX WebRTC 视频监看与 OBS WHIP 推流地址：手机浏览器看到的是真实视频流而不是截图；不满足条件时回退到 1~5 FPS 截图监看",
+          "en": "WebRTC monitoring through MediaMTX plus an OBS WHIP ingest address, so the phone browser sees a real video stream instead of screenshots — falling back to 1–5 FPS stills when the requirements aren't met."
         },
         {
-          "zh": "录制档案 + 录制中打点：每次录制留档（时长 / 大小 / 丢帧 / 打点），热键 Ctrl+Alt+K 标记精彩瞬间，停止后可导出章节并批量无损转 MP4（不重编码）",
-          "en": "Recording archive with in-recording markers: every recording is logged (duration, size, dropped frames, markers), Ctrl+Alt+K drops a highlight marker, and after stopping you can export chapters and batch-remux to MP4 losslessly."
+          "zh": "字幕与归档：whisper 推荐模型固定 URL + 固定 SHA-256 + 200 MB 上限一键下载；「录制结束后自动归档」默认关闭；历史录像只做文件级索引",
+          "en": "Captions and archiving: the recommended whisper model downloads from a pinned URL with a pinned SHA-256 and a 200 MB cap; auto-archive after recording is off by default; the recording index stays file-level only."
         },
         {
-          "zh": "配置回收站：OBS 配置的每次改写都在本地留一份副本，可一键放回原位，恢复绝不覆盖已有文件；被锁定（回滚未竟）的副本永远不会被自动清理",
-          "en": "Config recycle bin: every rewrite of the OBS config keeps a local recovery copy that can be restored in one click, restoring never overwrites an existing file, and copies locked by an unfinished rollback are never auto-cleaned."
+          "zh": "功能中心：新增「运行环境准备」卡，集中列出 FFmpeg / rclone / whisper / MediaMTX / 模型的状态与一键按钮；18 项能力标注实验性 / 规划中 / 本地；直播日历与观众看板改为落盘",
+          "en": "Feature centre: a new runtime-preparation card lists FFmpeg / rclone / whisper / MediaMTX / model status with one-click buttons; 18 capabilities carry experimental / planned / local badges; the stream calendar and audience dashboard now persist locally."
         },
         {
-          "zh": "开播前体检 + 一键处方：黑屏体检、编码顾问、带宽计算、磁盘测速、节点探测一次跑完，按严重度给一句人话结论与建议档位；推流侧只给建议，绝不自动改",
-          "en": "Pre-stream checkup with one-click prescription: black-screen, encoder, bandwidth, disk-speed and node probes in one pass, ranked by severity into a plain-language verdict and a suggested recording preset — streaming settings are advised, never changed automatically."
-        },
-        {
-          "zh": "我的模板 + 我的知识库 + 搜索增强：把当前场景集合反向存成模板（顺序 / 来源 / 滤镜 / 分组都带上），知识库可自建条目与分类、与内置 212 条按 id 合并；搜索支持拼音首字母、同义词与字段加权排序",
-          "en": "My templates + my knowledge base + better search: capture the current scene collection as a template (order, sources, filters and groups included) and write your own KB entries and categories, merged by id with the built-in 212; search gains pinyin initials, synonyms and weighted field ranking."
-        },
-        {
-          "zh": "质量基线：单元测试 630 → 1209 项全部通过，无界面自检 26 项（主构建与 Win7 兼容构建各跑一次），增量更新改为对齐 GitHub 资产 SHA-256 摘要；发布物仍未做代码签名，Win7 上的 v4 握手未在真机与 OBS 27 上验证",
-          "en": "Quality baseline: unit tests went from 630 to 1209, all passing, plus 26 headless self-check items run once per build, and incremental updates now verify against the GitHub asset SHA-256 digest. The artefacts still carry no code signature, and the v4 handshake has not been verified on a real Windows 7 machine with OBS 27."
+          "zh": "修复插件与依赖下载全部失败：GitHub Release 资产 302 到 release-assets.githubusercontent.com 后被旧白名单拒绝；现放行新 CDN（并兼容旧重定向），失败原因写入 host / 状态码 / 体积日志",
+          "en": "Fixed every plugin and dependency download failing: GitHub release assets now 302 to release-assets.githubusercontent.com, which the old allow-list rejected. The new CDN is allowed (with the old redirect kept for compatibility) and failures log host, status code and size."
         }
       ]
     },
     {
-      "version": "v2.9.6",
+      "version": "v3.5.2",
       "tagline": {
-        "zh": "更名「OBS帮助助手」· 图标统一 · 文档同步",
-        "en": "Renamed to OBS帮助助手 · unified icon · docs aligned"
+        "zh": "状态可信度修复：停止录制后不再显示「录制中」",
+        "en": "Trustworthy state: stopping a recording no longer leaves it showing as active"
       },
       "items": [
         {
-          "zh": "「OBS 排障助手」正式更名为「OBS帮助助手」（英文侧仍为 OBS Helper）：窗口标题、托盘提示与通知、新手引导、诊断报告署名、安装向导的快捷方式 / 卸载项 / 完成页全部换名",
-          "en": "Renamed from \"OBS 排障助手\" to \"OBS帮助助手\" (the English name stays OBS Helper): window title, tray tooltip and notifications, onboarding, diagnostic report byline and the installer's shortcuts / uninstall entry / finish page all follow."
+          "zh": "停止录制后电脑端不再一直显示「录制：进行中」：状态事件是权威来源，查询只补时长与字节数，冲突时 3 秒内以事件为准，另有每 3 秒一次的轻量对账",
+          "en": "Stopping a recording no longer leaves the desktop showing it as active: state events are authoritative, queries only fill in duration and bytes, an event wins any conflict within three seconds, and a light reconciliation runs every three seconds."
         },
         {
-          "zh": "改名时刻意不动的四样东西：AppId（Inno 靠它把新包认成「升级」而不是并存装两份）、OBS_Helper.exe（增量更新与用户已有快捷方式都指着它）、%LocalAppData%\\OBS_Helper\\（prefs.json / secrets.dat 在此）、Release 资产命名",
-          "en": "Four things deliberately left untouched: AppId (so Inno reads the new package as an upgrade rather than a second install), OBS_Helper.exe (incremental updates and existing shortcuts point at it), %LocalAppData%\\OBS_Helper\\ (home of prefs.json / secrets.dat) and the release asset names."
+          "zh": "手机端刷新 / 重连时先向 OBS 对一次输出状态；状态灯按真实状态区分「直播中」「录制中」「直播中 · 录制中」，只录制时不再显示「直播中」",
+          "en": "The phone now reconciles output state with OBS on refresh or reconnect, and its status light distinguishes live / recording / live-and-recording — recording alone no longer shows \"live\"."
         },
         {
-          "zh": "安装目录默认值改为 {autopf}\\OBS帮助助手，但 Inno 升级时沿用「上次安装目录」——2.9.5 及更早的用户升级后仍装在原目录，只有全新安装才用新目录名",
-          "en": "The default install directory becomes {autopf}\\OBS帮助助手, but Inno reuses the previous directory on upgrade — anyone on 2.9.5 or earlier stays where they were; only a fresh install gets the new folder name."
+          "zh": "批量状态查询协议修正：改用 obs-websocket 5.x 的 RequestBatch（op 8 / 9）与协议要求的数字执行方式，连接后的录制 / 推流 / 虚拟摄像头状态、静音与音量重新实时刷新",
+          "en": "Fixed the batch state protocol: it now uses obs-websocket 5.x RequestBatch (op 8 / 9) with the numeric execution type the protocol expects, so record / stream / virtual-camera states plus mute and volume refresh live again after connecting."
         },
         {
-          "zh": "应用窗口 / 任务栏 / 托盘 / 安装包的图标与仓库封面统一为同一枚（深色圆角底 + 显示器 + 健康波形 + 录制指示点 + 体检对勾），并为 16 / 24 / 32 px 单独重绘，托盘与任务栏不再糊成一团",
-          "en": "App, taskbar, tray and installer icons now match the repository artwork (dark rounded tile, monitor, health waveform, record dot and check badge), redrawn separately at 16 / 24 / 32 px so tray and taskbar stay sharp."
+          "zh": "为什么不用 Parallel：在 OBS 33.0.1 + obs-websocket 5.7.6 上实测 executionType=2 会把 results 错配到别的子请求，故默认串行执行",
+          "en": "Why not Parallel: on OBS 33.0.1 with obs-websocket 5.7.6, executionType=2 mismatches results onto other sub-requests, so execution is serial by default."
         },
         {
-          "zh": "图标生成脚本 NOBS/scripts/gen_appicon.py 重写并入库（源 = 仓库图标），结果可复现",
-          "en": "The icon generator (NOBS/scripts/gen_appicon.py) was rewritten and committed, driven by the repository artwork so the result is reproducible."
-        },
-        {
-          "zh": "根 README / English README / NOBS README / 贡献指南 / 安全策略 / 行为准则 / 架构文档 / Issue 与 PR 模板全部对齐 2.9.6；品牌三图按新名重新渲染",
-          "en": "Root README, English README, NOBS README, contribution guide, security policy, code of conduct, architecture doc and the issue / PR templates all aligned to 2.9.6; brand images re-rendered under the new name."
-        },
-        {
-          "zh": "本版不新增功能 —— 这是一次「改名 + 换图标 + 对齐文档」的发布，升级路径、安装目录、数据目录与增量更新全都没动",
-          "en": "No new features here — this is a rename, icon and documentation pass; the upgrade path, install directory, data directory and incremental updates are untouched."
+          "zh": "其它：不在录制 / 推流时 RecordElapsed / StreamElapsed 固定返回 0；小窗「还可录约 X 分钟」改为整数显示，不再出现一长串小数",
+          "en": "Also: RecordElapsed / StreamElapsed return 0 when nothing is running, and the mini window's \"about X minutes left\" rounds to an integer instead of printing a long fraction."
         }
       ]
     },
     {
-      "version": "v2.9.5",
+      "version": "v3.5.1",
       "tagline": {
-        "zh": "私密反馈通道修正（GitHub 无私信）· 安全策略中英双语",
-        "en": "Private reporting path fixed (GitHub has no DMs) · bilingual security policy"
+        "zh": "详情图标修复 · 手机改提词稿修复 · 赞助码",
+        "en": "Icon fixes · phone-side teleprompter editing fixed · sponsorship codes"
       },
       "items": [
         {
-          "zh": "修掉一条走不通的反馈指引：GitHub 并没有面向任意用户的私信功能，原先写的「GitHub 私信维护者」已改为仓库 Security → Report a vulnerability（推荐）或邮件",
-          "en": "Fixed an unreachable feedback path: GitHub has no direct-message feature for arbitrary users, so the old \"DM the maintainer\" route becomes the repository's Security → Report a vulnerability (preferred) or email."
+          "zh": "设置页右侧头部与功能中心模块卡改为正确的描边渲染，不再把圆 / 方框填成实心色块（语言与地区页不再只剩一个圆点）",
+          "en": "Settings headers and feature-centre module cards now render outlined icons properly instead of filling circles and squares with solid colour — the Language & Region page is no longer a single dot."
         },
         {
-          "zh": "应用内反馈卡补一行安全上报引导（中英双语），让用户在点「到 GitHub 提 Issue」之前就知道安全问题不该贴在公开 Issue 里",
-          "en": "The in-app feedback card gained a short security-reporting note in both languages, so users learn before hitting \"open a GitHub issue\" that vulnerabilities don't belong in a public issue."
+          "zh": "图标语义重配：语言=地球、外观=调色板、后台=托盘、录制=摄像机、自动切换=双向箭头、热键=键盘、AI=芯片、数据=数据库、关于=信息圆（Tabler Icons，MIT）",
+          "en": "Icons re-matched to meaning: globe for language, palette for appearance, tray for background, camera for recording, arrows for auto-switch, keyboard for hotkeys, chip for AI, database for data, info circle for about (Tabler Icons, MIT)."
         },
         {
-          "zh": "SECURITY.md 改为中英两个完整版本（原来只有中文正文 + 英文摘要），写明支持范围、私密报告方式，以及报告应包含与不应包含的内容（流密钥 / 密码 / 未脱敏日志）",
-          "en": "SECURITY.md becomes two full versions (previously Chinese text with an English summary), spelling out supported scope, private reporting routes, and what a report should and should not contain (stream keys, passwords, unsanitised logs)."
+          "zh": "手机远程改提词稿失败修复：窗口操作与状态事件切回 UI Dispatcher，手机保存后电脑端提词器立即刷新，不再被路由吞成「操作失败」",
+          "en": "Fixed phone-side teleprompter editing: window operations and state events moved back to the UI dispatcher, so a phone save refreshes the desktop teleprompter immediately instead of being swallowed as \"operation failed\"."
         },
         {
-          "zh": "语言口径写清楚：中文、英文、中英双语都行；CODE_OF_CONDUCT.md 与 CONTRIBUTING.md 同步为双语正式版，举报渠道由「私信」改为邮件",
-          "en": "The language policy is now explicit — Chinese, English or both are all fine; CODE_OF_CONDUCT.md and CONTRIBUTING.md are full bilingual versions, with reporting moved from DMs to email."
+          "zh": "窗口尚未打开时也先写入脚本文件，下次呼出即为新稿；旧稿自动备份最近 5 份",
+          "en": "Even with the window closed the script file is written, so the next summon shows the new text — and the last five scripts are backed up."
         },
         {
-          "zh": "功能行为与 V2.9.4 完全相同，本版只改文档、引导与应用内的一处提示文案",
-          "en": "Behaviour is identical to V2.9.4 — this release only touches documentation, onboarding and one in-app notice."
+          "zh": "新增支付宝 / 微信赞助码（只保留二维码本体、随包离线可扫），并在界面写明赞助不解锁任何功能、不改变任何权限",
+          "en": "Added Alipay / WeChat sponsorship QR codes (QR only, bundled for offline scanning) with an explicit note that sponsoring unlocks no features and changes no permissions."
         }
       ]
     }
@@ -317,6 +396,27 @@ const CHANGELOG = {
   ],
   "obs-plugin": [
     {
+      "version": "v2.9.0",
+      "tagline": {
+        "zh": "适配 OBS Studio 33：新插件布局 + Qt 6.11.1",
+        "en": "OBS Studio 33 support: new plugin layout plus Qt 6.11.1"
+      },
+      "items": [
+        {
+          "zh": "跟随 OBS Studio 33 的插件布局：OBS 32 起改为「一插件一目录」的插件根，33 继续沿用，插件安装位置与枚举逻辑一并适配",
+          "en": "Follows the OBS Studio 33 plugin layout: OBS 32 introduced one-folder-per-plugin roots and 33 keeps them, so installation paths and enumeration were adapted."
+        },
+        {
+          "zh": "依赖的 Qt 运行时升级到 6.11.1 并随包分发，升级 OBS 之后不必再为「插件加载失败 / 面板消失」手动配库",
+          "en": "The Qt runtime moved to 6.11.1 and ships with the plugin, so upgrading OBS no longer leaves you fixing \"failed to load module\" or a missing panel by hand."
+        },
+        {
+          "zh": "七大专栏（体检 / 日志分析 / 设置体检 / 性能监控 / 插件管理 / 工具箱 / 系统信息）功能与 v2.8.0 一致，全程只读、零额外进程",
+          "en": "The seven tabs — health check, log analysis, settings audit, performance monitor, plugin manager, toolbox and system info — are unchanged from v2.8.0, still read-only with zero extra processes."
+        }
+      ]
+    },
+    {
       "version": "v2.8.0",
       "tagline": {
         "zh": "录制健康体检 · 开播前一键自检",
@@ -375,23 +475,6 @@ const CHANGELOG = {
         {
           "zh": "TR 宏查表化：社区可通过 locales ini 增补语言而无须发版（附模板提取脚本）；tools_tab.cpp 按功能拆为 6 个编译单元，加入 .clang-format / .gersemirc",
           "en": "TR macros became table-driven so the community can add languages via locales ini without a release (a template extractor is included); tools_tab.cpp split into 6 translation units, with .clang-format / .gersemirc added."
-        }
-      ]
-    },
-    {
-      "version": "v2.7.0",
-      "tagline": {
-        "zh": "录制体检 · 急救 + 开播前一键自检",
-        "en": "Recording check-up & rescue, plus a pre-flight self-check"
-      },
-      "items": [
-        {
-          "zh": "新增「录制体检 · 急救」：把录制路径、录制件与回放缓存等「录不上 / 录坏了」的常见成因做成一站式排查（R1 清单全部 7 项）",
-          "en": "New recording check-up and rescue: a one-stop pass over the usual reasons recording fails or comes out broken — paths, recording files and the replay buffer (all 7 items of the R1 checklist)."
-        },
-        {
-          "zh": "新增开播前一键自检，与体检项共用同一套规则，避免两处结论不一致",
-          "en": "New one-click pre-flight self-check that shares the same rule set as the check-up, so the two can't disagree."
         }
       ]
     }
@@ -461,6 +544,45 @@ const CHANGELOG = {
         {
           "zh": "清理死代码（插件清单机制等），版本号进入 6.x",
           "en": "Dead code removed (plugin manifest machinery and friends); the version line moves into 6.x."
+        }
+      ]
+    }
+  ],
+  "xuxin": [
+    {
+      "version": "v1.4.0",
+      "tagline": {
+        "zh": "省电渲染 · 陪伴统计落盘 · 提醒通道修复",
+        "en": "Battery-friendly rendering · companionship stats persisted · reminder channel fixed"
+      },
+      "items": [
+        {
+          "zh": "动画出帧上限 60fps：90 / 120Hz 高刷屏不再按屏幕刷新率全速重绘，超过 14ms 的重复帧直接跳过，只重新排帧",
+          "en": "The animation frame rate is capped at 60 fps: 90 / 120 Hz screens stop redrawing at the panel's refresh rate, skipping repeated frames longer than 14 ms and only rescheduling."
+        },
+        {
+          "zh": "熄屏 / 不可见暂停：窗口不可见（熄屏、被遮挡）时停止自刷新，恢复可见时立即重新拉起，避免后台空转",
+          "en": "Refresh pauses when the screen is off or the window is hidden and resumes immediately on becoming visible, so nothing spins in the background."
+        },
+        {
+          "zh": "修复今日陪伴时长恒为 0（严重）：统计入口此前没有调用方，现由前台服务按分钟批量累加，服务销毁时补末尾零头",
+          "en": "Fixed today's companionship time always reading zero (a serious bug): the counter had no caller, and the foreground service now accumulates it per minute, adding the remainder when the service is destroyed."
+        },
+        {
+          "zh": "久坐 / 喝水提醒静默修复：改走独立的高优先级通知渠道（IMPORTANCE_HIGH + 震动 + 角标），此前复用常驻通知的低优先级渠道",
+          "en": "Fixed silent sit / water reminders: they now use their own high-importance channel (IMPORTANCE_HIGH with vibration and a badge) instead of reusing the low-importance persistent one."
+        },
+        {
+          "zh": "通知点击无响应修复：常驻通知与提醒通知补上 contentIntent，点击直达主界面",
+          "en": "Fixed unresponsive notification taps: both the persistent and reminder notifications now carry a contentIntent that opens the main screen."
+        },
+        {
+          "zh": "陪伴小窗低写盘：每秒刷新的小窗改用只读内存态的取数方式，衰减结果改由低频路径合并落盘",
+          "en": "Lower disk churn for the mini window: it now reads in-memory state instead of writing SharedPreferences every second, with decay results persisted by a lower-frequency path."
+        },
+        {
+          "zh": "构建：versionCode 4 → 5，versionName 1.3.0 → 1.4.0；release 继续启用 R8 与正式签名",
+          "en": "Build: versionCode 4 → 5 and versionName 1.3.0 → 1.4.0, with R8 and the real signing key kept for release builds."
         }
       ]
     }
