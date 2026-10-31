@@ -65,10 +65,11 @@
 | `robots.txt`（允许抓取 + 指向 sitemap） | 仓库根目录 |
 | `sitemap.xml`（10 个 URL，带 git 提交日期做 `lastmod`） | 仓库根目录，由脚本生成 |
 | 每页 `canonical` + Open Graph + Twitter Card | 10 个页面的 `<head>`，由脚本生成 |
-| 每页 JSON-LD 结构化数据（`WebSite` / `SoftwareApplication`，含版本、平台、许可证、下载地址） | 同上 |
+| 每页 JSON-LD 结构化数据（`WebSite` / `SoftwareApplication`，含版本、平台、许可证、下载地址；首页另带 `ItemList` 列出全部软件） | 同上 |
 | 首页软件卡片**预渲染成静态 HTML** | 百度 / Bing / 社交平台的预览抓取不跑 JS，静态化后它们也能读到内容 |
 | OBS 三个版本之间互相静态链接 + 页脚静态链接 | 让爬虫能从任意一页走遍全站 |
 | IndexNow key 文件 | 仓库根目录 `<key>.txt` |
+| **IndexNow 自动提交**（部署成功后自动把 sitemap 里的 URL 全交一遍） | `.github/workflows/indexnow.yml`，用 `workflow_run` 等 Pages 部署成功后才发，避免搜索引擎抓到还没上线的页面 |
 
 ### 需要你操作的（要账号，我做不了）
 
@@ -85,8 +86,10 @@
 
 ```bash
 python scripts/prerender.py        # 首页静态卡片 + 全站 SEO 元数据 + sitemap（改了软件数据/页面标题后跑）
-python scripts/indexnow-submit.py  # 主动通知 Bing / Yandex 等「这些页面变了」（上线后跑）
+python scripts/indexnow-submit.py  # 手动补交一次 IndexNow（平时不用跑：部署成功后 Actions 会自动提交）
 ```
+
+> IndexNow 由 `.github/workflows/indexnow.yml` 在每次 Pages 部署成功后自动执行（`workflow_run` 触发，也可以在 Actions 页面手动 Run workflow）。它覆盖 Bing / Yandex / Seznam / Naver 等参与方；**Google 不参与 IndexNow**，只能去 Search Console 提交 sitemap。
 
 `prerender.py` 的所有产物都放在 `<!-- PRERENDER:... -->` 与 `<!-- SEO:... -->` 标记之间，**不要手改那两段**，下次运行会被覆盖。
 

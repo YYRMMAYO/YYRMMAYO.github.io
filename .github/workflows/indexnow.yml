@@ -1,0 +1,82 @@
+name: Submit to IndexNow
+
+# 每次部署成功后，把 sitemap.xml 里的 URL 全部提交给 IndexNow
+# （Bing / Yandex / Seznam / Naver 等参与方，Google 不参与，需在 Search Console 里提交）。
+# 触发方式用 workflow_run 而不是直接 push：等「Deploy to GitHub Pages」成功之后再提交，
+# 免得搜索引擎来抓的时候新页面还没上线（拿到 404 会被记成抓取错误）。
+#
+# 也可以手动跑：Actions → Submit to IndexNow → Run workflow。
+
+on:
+  workflow_run:
+    workflows: ["Deploy to GitHub Pages"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: true
+
+jobs:
+  submit:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout deployed commit
+        uses: actions/checkout@v4
+        with:
+          # workflow_run 拿不到默认 checkout 的那一版，显式取刚部署的提交
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - name: Submit sitemap URLs to IndexNow
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          import re
+          import sys
+          import urllib.error
+          import urllib.request
+          import xml.etree.ElementTree as ET
+
+          # key 文件是仓库根目录的 <8-128 位十六进制>.txt，内容就是 key 本身
+          keys = [f[:-4] for f in os.listdir(".") if re.fullmatch(r"[0-9a-f]{8,128}\.txt", f)]
+          if not keys:
+              sys.exit("找不到 IndexNow key 文件（仓库根目录的 <key>.txt）")
+          key = keys[0]
+
+          ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+          urls = [el.text.strip() for el in ET.parse("sitemap.xml").getroot().findall(".//sm:loc", ns) if el.text]
+          if not urls:
+              sys.exit("sitemap.xml 里没有 <loc> 条目；先跑 scripts/prerender.py")
+
+          host = re.sub(r"^https?://", "", urls[0]).split("/")[0]
+          payload = {
+              "host": host,
+              "key": key,
+              "keyLocation": f"https://{host}/{key}.txt",
+              "urlList": urls,
+          }
+          req = urllib.request.Request(
+              "https://api.indexnow.org/indexnow",
+              data=json.dumps(payload).encode("utf-8"),
+              headers={
+                  "Content-Type": "application/json; charset=utf-8",
+                  "User-Agent": "yyrmm-site/indexnow-action",
+              },
+              method="POST",
+          )
+          print(f"submitting {len(urls)} URLs for {host} (key {key})")
+          try:
+              with urllib.request.urlopen(req, timeout=30) as resp:
+                  print(f"IndexNow HTTP {resp.status}: accepted")
+          except urllib.error.HTTPError as e:
+              # 403 = key 文件取不到或与提交的 key 不符；422 = URL 不属于该 host
+              print(f"IndexNow HTTP {e.code}: {e.reason}")
+              print(e.read().decode("utf-8", "replace")[:500])
+              sys.exit(1)
+          PY

@@ -167,6 +167,22 @@ def build_seo_block(page: dict, text: str, sw: dict) -> str:
                 "name": "YYRMMAYO",
                 "url": "https://github.com/YYRMMAYO",
             },
+            # 首页把收录软件列成一个 ItemList：搜索引擎能直接看出「这是一份软件清单」，
+            # 每条指向对应详情页，顺序与卡片一致（顺序取自 main.js 的 softwareList）
+            "mainEntity": {
+                "@type": "ItemList",
+                "name": "YYRMM 的软件库 · 收录软件",
+                "numberOfItems": len(sw),
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": i,
+                        "name": entry["name"]["zh"],
+                        "url": f"{SITE}/detail/{key}.html",
+                    }
+                    for i, (key, entry) in enumerate(sw.items(), start=1)
+                ],
+            },
         }
     else:
         entry = sw.get(page["key"])
