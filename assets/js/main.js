@@ -76,6 +76,8 @@ const I18N = {
   footLinkXuxin:   { zh: "绪心桌宠", en: "Xuxin Desktop Pet" },
   footLinkHelp:    { zh: "HelpDesk 电脑助手", en: "HelpDesk PC Helper" },
   footLinkRes:     { zh: "资料下载", en: "Downloads" },
+  footLinkShared:  { zh: "学习资料共享", en: "Shared study materials" },
+  footLinkSharedPwd:{ zh: "网盘密码：yykwy05", en: "Password: yykwy05" },
   footLinkFeedback:{ zh: "问题反馈", en: "Feedback" },
   footLinkBili:    { zh: "Bilibili 主页", en: "Bilibili" },
   footLinkGithub:  { zh: "GitHub 仓库", en: "GitHub repos" },

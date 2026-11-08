@@ -1201,6 +1201,13 @@ code {
   transition: color 0.2s ease;
 }
 .foot-links a:hover { color: var(--accent); }
+/* 页脚链接的补充小字（如网盘密码） */
+.foot-link-note {
+  display: block;
+  margin-top: 3px;
+  font-size: 11.5px;
+  color: var(--text-faint);
+}
 .foot-bottom {
   margin-top: 34px;
   padding-top: 20px;
